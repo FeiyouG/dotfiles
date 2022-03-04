@@ -1,0 +1,9 @@
+# ignore packer compiled file
+neovim/.config/nvim/plugin/
+
+
+# Ignore private stuffs
+
+# ignore re-generable files
+.DS_Store
+.log

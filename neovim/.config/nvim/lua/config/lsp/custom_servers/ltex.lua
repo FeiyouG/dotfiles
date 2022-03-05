@@ -3,7 +3,6 @@ local util = require "lspconfig.util"
 local handlers = require "vim.lsp.handlers"
 local dictionary_name = vim.fn.stdpath('config') .. "/dictionary/ltex_config.json"
 
-
 -- Load custom dictionary with words/diabledRules/hiddenFalsePositives as json
 local function load_config()
     local file = io.open(dictionary_name, "r")

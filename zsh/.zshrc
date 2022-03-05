@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # ---- Import all aliases and env variables ----
-if [ -f $HOME/.aliases ] then
+if [ -f $HOME/.aliases ]
+then
   source $HOME/.aliases
 fi

@@ -1,0 +1,18 @@
+[user]
+	name = Feiyou Guo
+	email = feiyouguo@gmail.com
+[core]
+	editor = nvim
+  ignorecase = false
+[color]
+  ui = auto
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = nvimdiff
+[mergetool]
+  prompt = false
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"

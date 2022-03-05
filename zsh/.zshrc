@@ -110,8 +110,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# ---- Import all aliases and env variables ----
+# ---- Import all aliases and env variables from dotfiles repo ----
 if [ -f $HOME/.aliases ]
 then
   source $HOME/.aliases
+fi
+
+# ---- Import all aliases and env on local machine ----
+if [ -f $HOME/.aliases_local ]
+then
+  source $HOME/.aliases_lcoal
 fi

@@ -1,2 +1,5 @@
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ---- Import all aliases and env variables ----
+if [ -f $HOME/.aliases ] then
+  source $HOME/.aliases
+fi
 

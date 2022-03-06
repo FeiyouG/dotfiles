@@ -1,5 +1,19 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin":"/Applications/CMake.app/Contents/bin":"$PATH"
+
+# Path to all installed executables
+PATH="/usr/local/bin:$PATH"
+
+# Add custom shell scripts to path
+PATH="$HOME/bin:$PATH"
+
+# Path to cMak.app, needed for ccls language server to work. (may not be neccesary>)
+PATH="/Applications/CMake.app/Contents/bin:$PATH"
+
+# Use GNU-util instead
+PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+
+export PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/feiyouguo/.oh-my-zsh"
 

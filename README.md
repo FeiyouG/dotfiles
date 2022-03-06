@@ -22,8 +22,17 @@ Sensitive information are encrypted by tar.
 
 ### General
 
-- git
 - stow
+  - Helps to create symbolic links
+    from this directory to `$HOME`;
+    can use `ln` instead
+- gpg
+  - Essential to encrypt and decrypt
+    sensitive information in `encrypt/`
+    (the folder is not under version control)
+- GNU coreutils
+  - Essential for some shell scripts
+    to run properly in `bin/`
 
 ### Neovim
 

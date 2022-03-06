@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# This program returns the date
+# of a specified day of this week
+main() {
+  # if two parameters are given and the first one is a number form 0-6
+  # Then this program will never fail>
+  if [ "$#" -ne 2 ] || ! [[ "$1" =~ ^[0-6]$ ]]; then
+    usage
+  else
+    get_date $1 $2
+  fi
+}
+
+# Prints out the uage of this script
+usage() {
+  echo "Usage:"
+  echo "  $(basename $0) [0-6] %Fomartter"
+  echo ""
+  echo "    [0-6]: 0-6 indicates Sunday to Saturday respectively."
+  echo "    %Formatter: A date formatter with no space; see \"date --help\" for detail."
+  echo ""
+  echo "Example:"
+  echo "  $(basename $0) 1 %Y-%m-%d -> $(get_date 1 %Y-%m-%d)"
+  echo "  $(basename $0) 5 %a_%d_%m-> $(get_date 5 %a_%d_%m)"
+  exit 1
+}
+
+# Get and return the date calculated
+get_date() {
+  echo `date -d "$(date -d 'last sunday') +$1days" +$2`
+}
+
+main $1 $2

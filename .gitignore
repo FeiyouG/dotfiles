@@ -3,7 +3,7 @@ neovim/.config/nvim/plugin/
 
 
 # Ignore private stuffs
-sensitive/
+encrypt/
 
 # ignore re-generable files
 .DS_Store

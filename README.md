@@ -14,6 +14,10 @@ $ cd $HOME/.dotfiles
 $ stow zsh neovim git # plus whatever else you'd like
 ```
 
+Be sure to read the `README.md` in each directory 
+and understand what it does
+before you `stow` them.
+
 ### Sensitive Information
 
 Sensitive information are encrypted by tar.

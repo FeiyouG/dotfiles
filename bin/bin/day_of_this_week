@@ -15,10 +15,10 @@ main() {
 # Prints out the uage of this script
 usage() {
   echo "Usage:"
-  echo "  $(basename $0) [0-6] %Fomartter"
+  echo "  $(basename $0) day formatter"
   echo ""
-  echo "    [0-6]: 0-6 indicates Sunday to Saturday respectively."
-  echo "    %Formatter: A date formatter with no space; see \"date --help\" for detail."
+  echo "    day: an integer in [0-6] where 0-6 indicates Sunday to Saturday respectively."
+  echo "    formatter: A date formatter with no space; see \"date --help\" for detail."
   echo ""
   echo "Example:"
   echo "  $(basename $0) 1 %Y-%m-%d -> $(get_date 1 %Y-%m-%d)"

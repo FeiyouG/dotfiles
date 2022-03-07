@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# This program is wrapps around stow and make it more convenient to use
+# It accepts at most two arguments,
+# the first is the stow directory that may contain "/"
+# and the second is the target direcotry, default to ".."
+# In addition, it ignores README.md files by default
+main() {
+  if [ "$#" -lt 1 ]; then
+    echo "$#"
+    usage
+  else
+    my_stow $1 $2
+  fi
+}
+
+# Prints out the uage of this script
+usage() {
+  echo "Usage:"
+  echo "  $(basename $0) dir [target]"
+  echo ""
+  echo "    dir: the stow directory that may contain \"/\""
+  echo "    tartget: the target directory; default to the parent of the current directory"
+  echo ""
+  echo "Example:"
+  echo "  $(basename $0) foo"
+  echo "  $(basename $0) foo/bar"
+  echo "  $(basename $0) foo/bar $HOME"
+  exit 1
+}
+
+
+# wrapper around stow
+# that can accept subdirecoty as its arguemnt
+my_stow() {
+  dir="-d $(dirname $1)"
+  target="-t .."
+  ignore="--ignore='README.md'"
+
+  if [ $# -gt 1 ]; then
+    target="-t $2"
+  fi
+  $(stow ${dir} ${target} ${ignore} $(basename $1))
+}
+
+main $1 $2

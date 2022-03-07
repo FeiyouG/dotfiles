@@ -89,11 +89,11 @@ plugins=(
   urltools
   bgnotify
   zsh-autosuggestions
-  zsh-syntax-highlighting
   jovial
   web-search
-  copydir
+  copypath
   history
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

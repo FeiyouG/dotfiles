@@ -1,18 +1,23 @@
 [user]
 	name = Feiyou Guo
 	email = feiyouguo@gmail.com
+	singingKey = FAE2C5D9CDFDF7B003F92BF3A6B84D21C7A7D1FD
 [core]
 	editor = nvim
-  ignorecase = false
+	ignorecase = false
 [color]
-  ui = auto
+	ui = auto
 [diff]
-  tool = nvimdiff
+	tool = nvimdiff
 [difftool "nvimdiff"]
   cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = nvimdiff
 [mergetool]
-  prompt = false
+	prompt = false
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgSign = true

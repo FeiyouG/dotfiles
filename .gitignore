@@ -6,8 +6,8 @@ neovim/.config/nvim/plugin/
 encrypt/
 
 # Prevent accidental commit ggp keys
-.sec
-.pub
+*.sec
+*.pub
 
 # ignore re-generable files
 .DS_Store

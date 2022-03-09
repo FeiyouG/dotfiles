@@ -21,3 +21,5 @@
 	forceSignAnnotated = true
 [commit]
 	gpgSign = true
+[gpg]
+	program = gpg

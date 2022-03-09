@@ -9,9 +9,6 @@ PATH="$HOME/bin:$PATH"
 # Path to cMak.app, needed for ccls language server to work. (may not be neccesary>)
 PATH="/Applications/CMake.app/Contents/bin:$PATH"
 
-# Use GNU-util instead
-PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
-
 export PATH
 
 # Path to your oh-my-zsh installation.
@@ -124,14 +121,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# ---- Import all aliases and env variables from dotfiles repo ----
-if [ -f $HOME/.aliases ]
-then
-  source $HOME/.aliases
-fi
 
 # ---- Import all aliases and env on local machine ----
-if [ -f $HOME/.aliases_local ]
-then
-  source $HOME/.aliases_lcoal
-fi
+[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+
+# ---- Import extra aliases and env variables from dotfiles repo ----
+[ -f $HOME/.rc.extra ] && source $HOME/.rc.extra

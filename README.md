@@ -20,7 +20,7 @@ before you `stow` them.
 
 ### Sensitive Information
 
-Sensitive information are encrypted by tar.
+Sensitive information are compressed by tar and encrypted with gpg.
 
 ## Dependencies
 

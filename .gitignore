@@ -1,6 +1,5 @@
 # ignore packer compiled file
-neovim/.config/nvim/plugin/
-
+neovim/compiled/
 
 # Ignore private stuffs
 encrypt/

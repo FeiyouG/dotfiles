@@ -24,16 +24,20 @@ local conds = require("luasnip.extras.expand_conditions")
 -- local timestamp = function() return {os.date('%Y%m%d%H%M')} end
 
 return {
-    s("date", {
-        t({"Wow! Text!", "ANother line"})
-      }
-    ),
+  s("date", {
+    t({"Wow! Text!", "ANother line"})
+  }),
 
-    s("trig",
-      c(1, {
- 	      t("Ugh boring, a text node"),
- 	      i(nil, "At least I can edit something now..."),
- 	      f(function(args) return "Still only counts as text!!" end, {})
-    })),
+  s("trig",
+    c(1, {
+      t("Ugh boring, a text node"),
+      i(nil, "At least I can edit something now..."),
+      f(function(args) return "Still only counts as text!!" end, {})
+    })
+  ),
+
+  s("fences", { t({"####################"}) }),
+
+
 }
 

@@ -1,64 +1,47 @@
----- MARK: Declaring local variables -----
-local o = vim.opt
--- local wo = vim.wo
--- local fn = vim.fn
+---- MARK: MISc
+vim.cmd "set nocompatible"          -- Disable compatibility to old-tim vi
+vim.opt.hidden = true               -- Hide unused buffers
+vim.cmd "set cc=80"                 -- Set an 80 column boarder for good coding style
+vim.opt.ttyfast = true              -- Speed up scrolling in neovim
+vim.opt.clipboard = "unnamedplus"   -- Use same clipboard between neovim and system
+vim.cmd "set nospell"               -- Disable spelling checking
 
----- MARK: MISC ----
---disable compatibility to old-time vi
-vim.cmd "set nocompatible"
--- hide unused buffers
-o.hidden = true
--- set an 80 column boarder for good coding style
-vim.cmd "set cc=80"
--- speed up scrolling in Vim
-o.ttyfast = true
--- enables clipboard between vim/neovim and other applicationos
-o.clipboard = "unnamedplus"
--- disable spelling check
-vim.cmd "set nospell"
 
--- for italics in tmux
+---- MARK: ENABLE TMUX ITALIC FONT
 vim.cmd "set t_ZH=^[[3m"
 vim.cmd "set t_ZR=^[[23mt=menu,menuone,noselect"
 
--- For Pane Management
-o.splitbelow = true
-o.splitright = true
 
--- For conceal suppor t
-o.conceallevel = 2
-
----- MARK: SEARCH AND REPLACE----
--- case insensitive matching
-o.ignorecase = true
--- highlight search results
-o.hlsearch = true
--- show replacements in a split screen, before applying to the file
-vim.cmd "set inccommand=split"
+---- MARK: PANE MANAGEMENT
+vim.opt.splitbelow = true           -- Always add new pane below
+vim.opt.splitright = true           -- Always add new pane on right
 
 
----- MARK: TAB AND INDENTATION ----
--- number of columns occupied by a tab character
-o.tabstop=2
--- width for autoidnents
-o.shiftwidth=2
--- how far cursor travels by pressing tab
-o.softtabstop=2
--- converts tab to whitespace
-o.expandtab = true
--- indent a new line the same amound as the line before it
-o.autoindent = true
+---- MARK: SEARCH AND REPLACE
+vim.opt.ignorecase = true           -- Case insensitive matching
+vim.opt.hlsearch = true             -- Highlight search results
+vim.cmd "set inccommand=split"      -- Show replace result in a split screen before applying
 
 
----- MARK: MOUSE AND CURSOR ----
--- enable mouse click
-o.mouse = "a"
--- highlight current cursorline
-o.cursorline = true
--- highlight current cursorcolumn
--- set cursorcolumn
+---- MARK: TAB AND INDENTATION
+vim.opt.tabstop=2                   -- Bumber of columns occupied by a tab character
+vim.opt.shiftwidth=2                -- Width for autoidnents
+vim.opt.softtabstop=2               -- How far cursor travels by pressing tab
+vim.opt.expandtab = true            -- Converts tab to whitespace
+vim.opt.autoindent = true           -- Indent a new line the same amound as the line before it
 
--- -- line number --
--- Default hybrid line number
-o.relativenumber = true          -- show line numbers starting from the current one
-o.number = true 		            -- add line num
+
+---- MARK: MOUSE AND CURSOR
+vim.opt.mouse = "a"                 -- Enable mouse click
+vim.opt.cursorline = true           -- Highlight current cursorline
+-- set cursorcolumn                   -- Highlight current cursorcolumn
+
+
+---- MARK: LINE NUMBER
+vim.opt.relativenumber = true       -- Show relative line number (hybrid)
+vim.opt.number = true 		          -- Show absolute line number (hybtif)
+
+
+---- MAARK: FILETYPE SETTING
+vim.g.do_filetype_lua = 1           -- Use filetype.lua for faster filetype dection
+-- vim.g.did_load_filetypes = 0      -- disable filetype.vim (Don't do it now since filtype.la is not yet comprehesive)

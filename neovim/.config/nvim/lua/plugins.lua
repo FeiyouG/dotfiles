@@ -1,7 +1,6 @@
 ---- MARK: Automatically download packer if missing ----
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
--- local install_path = fn.stdpath('config')..'/plugin/packer/start/packer.nvim'
 local packer_bootstrap = nil
 
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -15,7 +14,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-function get_config(name)
+local function get_config(name)
     return string.format("require(\"config/%s\")", name)
 end
 
@@ -27,6 +26,9 @@ packer.init {
     enable = true,
     threshold = 0,
   },
+
+  compile_path = "$HOME/.dotfiles/neovim/compiled/packer_compiled.lua",
+
   display = {
     open_fn = require('packer.util').float,
   }
@@ -40,6 +42,18 @@ packer.reset()
 -- Packer can manage itself
 use {'wbthomason/packer.nvim'}
 
+---- Reduce startup time by caching ----
+use { 'lewis6991/impatient.nvim', config = get_config("impatient")}
+
+---- MISCS ----
+use {
+{'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
+{ 'ahmedkhalf/project.nvim', config = get_config("project") },
+{'lukas-reineke/indent-blankline.nvim'},
+{'terrortylor/nvim-comment', config = get_config("nvim-comment")},
+}
+
+
 ---- Theme, Styles, and Icons ----
 use {
   {'marko-cerovac/material.nvim', config = get_config("material")},
@@ -50,15 +64,6 @@ use {
   -- {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'},
 }
 
-
-
----- MISCS ----
-use {
-  {'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
-  { 'ahmedkhalf/project.nvim', config = get_config("project") },
-  {'lukas-reineke/indent-blankline.nvim'},
-  {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
-}
 
 ---- Treesitter ----
 use {

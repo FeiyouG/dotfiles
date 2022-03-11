@@ -57,38 +57,39 @@ require'nvim-treesitter.configs'.setup {
     --   },
     -- },
 
-   move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["<leader>fj"] = "@function.outer",
-        ["<leader>cj"] = "@class.outer",
-        ["<leader>ij"] = "@confitional.outer",
-        ["<leader>lj"] = "@loop.outer",
-        ["<leader>pj"] = "@parameter.outer",
-      },
-      goto_next_end = {
-        ["<leader><leader>fj"] = "@function.outer",
-        ["<leader><leader>cj"] = "@class.outer",
-        ["<leader><leader>ij"] = "@confitional.outer",
-        ["<leader><leader>lj"] = "@loop.outer",
-        ["<leader><leader>pj"] = "@parameter.outer",
-        },
-      goto_previous_start = {
-        ["<leader>fk"] = "@function.outer",
-        ["<leader>ck"] = "@class.outer",
-        ["<leader>ik"] = "@confitional.outer",
-        ["<leader>lk"] = "@loop.outer",
-        ["<leader>pk"] = "@parameter.outer",
-        },
-      },
-      goto_previous_end = {
-        ["<leader><leader>fk"] = "@function.outer",
-        ["<leader><leader>ck"] = "@class.outer",
-        ["<leader><leader>ik"] = "@confitional.outer",
-        ["<leader><leader>lk"] = "@loop.outer",
-        ["<leader><leader>pk"] = "@parameter.outer",
-      },
+--    move = {
+--       enable = true,
+--       set_jumps = true, -- whether to set jumps in the jumplist
+--       goto_next_start = {
+--         ["<leader>fj"] = "@function.outer",
+--         ["<leader>cj"] = "@class.outer",
+--         ["<leader>ij"] = "@confitional.outer",
+--         ["<leader>lj"] = "@loop.outer",
+--         ["<leader>pj"] = "@parameter.outer",
+--       },
+
+--       goto_next_end = {
+--         ["<leader><leader>fj"] = "@function.outer",
+--         ["<leader><leader>cj"] = "@class.outer",
+--         ["<leader><leader>ij"] = "@confitional.outer",
+--         ["<leader><leader>lj"] = "@loop.outer",
+--         ["<leader><leader>pj"] = "@parameter.outer",
+--         },
+--       goto_previous_start = {
+--         ["<leader>fk"] = "@function.outer",
+--         ["<leader>ck"] = "@class.outer",
+--         ["<leader>ik"] = "@confitional.outer",
+--         ["<leader>lk"] = "@loop.outer",
+--         ["<leader>pk"] = "@parameter.outer",
+--         },
+--       goto_previous_end = {
+--         ["<leader><leader>fk"] = "@function.outer",
+--         ["<leader><leader>ck"] = "@class.outer",
+--         ["<leader><leader>ik"] = "@confitional.outer",
+--         ["<leader><leader>lk"] = "@loop.outer",
+--         ["<leader><leader>pk"] = "@parameter.outer",
+--       },
+--     },
 
     lsp_interop = {
       enable = true,

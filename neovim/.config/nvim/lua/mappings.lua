@@ -70,20 +70,20 @@ map("n", "<leader><C-k>", "<C-W>K", noremap)
 map("n", "<leader><C-l>", "<C-W>L", noremap)
 
 -- Go to tab
-map("n", "<leader>t1", "1gt", noremap)
-map("n", "<leader>t2", "2gt", noremap)
-map("n", "<leader>t3", "3gt", noremap)
-map("n", "<leader>t4", "4gt", noremap)
-map("n", "<leader>t5", "5gt", noremap)
-map("n", "<leader>t6", "6gt", noremap)
-map("n", "<leader>t7", "7gt", noremap)
-map("n", "<leader>t8", "8gt", noremap)
-map("n", "<leader>t9", "9gt", noremap)
-map("n", "<leader>t0", "<cmd>tablast<CR>", noremap)
+map("n", "<leader>1", "1gt", noremap)
+map("n", "<leader>2", "2gt", noremap)
+map("n", "<leader>3", "3gt", noremap)
+map("n", "<leader>4", "4gt", noremap)
+map("n", "<leader>5", "5gt", noremap)
+map("n", "<leader>6", "6gt", noremap)
+map("n", "<leader>7", "7gt", noremap)
+map("n", "<leader>8", "8gt", noremap)
+map("n", "<leader>9", "9gt", noremap)
+map("n", "<leader>0", "<cmd>ablast<CR>", noremap)
 
 -- Go to next and previous tab
-map("n", "<leader>th", "<cmd>tabprevious<cr>", noremap)
-map("n", "<leader>tl", "<cmd>tabnext<cr>", noremap)
+map("n", "<leader><Right>", "<cmd>tabprevious<cr>", noremap)
+map("n", "<leader><Left>", "<cmd>tabnext<cr>", noremap)
 
 -- Go to last active tab
 vim.cmd "au TabLeave * let g:lasttab = tabpagenr()"

@@ -118,7 +118,7 @@ use {
   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
   { 'fhill2/telescope-ultisnips.nvim' },
   { 'LinArcX/telescope-command-palette.nvim', config = get_config("telescope-command-palette")},
-  { 'AckslD/nvim-neoclip.lua', config = get_config("neoclip") },
+  -- { 'AckslD/nvim-neoclip.lua', config = get_config("neoclip") },
   { 'nvim-telescope/telescope-symbols.nvim' },
 }
 

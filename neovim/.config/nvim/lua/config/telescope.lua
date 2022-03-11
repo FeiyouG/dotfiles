@@ -31,6 +31,11 @@ telescope.setup{
         ["q"] = actions.close,
         ["<Esc>"] = actions.close
       },
+
+      i = {
+        ["<Esc>"] = actions.close,
+        ["<C-u>"] = false, -- Clear the prompt
+      }
     },
 
     file_ignore_patterns = {

@@ -27,8 +27,6 @@ packer.init {
     threshold = 0,
   },
 
-  compile_path = "$HOME/.dotfiles/neovim/compiled/packer_compiled.lua",
-
   display = {
     open_fn = require('packer.util').float,
   }

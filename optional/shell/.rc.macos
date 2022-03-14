@@ -1,6 +1,0 @@
-# MacOS specific settings
-
-# Use GNU-util instead of MacOS default utils
-PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
-
-export PATH

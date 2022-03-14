@@ -121,9 +121,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Zsh specific fzf settings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ---- Import all aliases and env on local machine ----
-[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+[ -f $HOME/.bashrc.local ] && source $HOME/.zshrc.local
 
 # ---- Import extra aliases and env variables from dotfiles repo ----
-[ -f $HOME/.rc.extra ] && source $HOME/.rc.extra
+export SHELLCONFIG="$HOME/.config/shell"
+[ -f $SHELLCONFIG/.rc.general ] && source $SHELLCONFIG/.rc.general

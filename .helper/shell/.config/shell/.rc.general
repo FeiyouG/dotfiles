@@ -1,0 +1,50 @@
+# ---- ZSH ----
+alias config_zsh='nvim ~/.zshrc'                  # Configuration file
+
+# ---- TMUX ----
+alias config_tmux='nvim ~/.tmux.conf'             # Configuration file
+alias tmux='env TERM=screen-256color tmux'        # Enable color and italic
+# export TERM=xterm-256color                        # Make tmux support itatlic
+# export TERM=screen-256color                       # Make tmux support itatlic
+# set t_ZH=[3m
+# set t_ZR=[23m
+
+# ---- NEOVIM ----
+alias config_nvim='nvim ~/.config/nvim/init.lua'  # Configuration file
+alias nvimdiff='nvim -d'                          # nvimdiff
+
+# ---- DOTFILES ----
+export DOTFILES="$HOME/.dotfiles"
+# git used to version control dot files
+# alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/'
+
+# ---- VAULT ----
+export ZK_NOTEBOOK_DIR="$HOME/vault"              # Env for vault home
+export ZK_EDITOR="nvim"                           # Default editor for zk
+
+# ---- FZF ----
+# .fzf.zsh or .fzf.bash should be source in .bashrc/.zshrc first
+export FZF_DEFAULT_COMMAND="fd -t f"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d"
+
+# ---- GNUPG ----
+export GNUPGHOME="$HOME/.config/gnupg/"
+
+# ---- UTILITIES ----
+alias rm='rm -i'                                  # Confirmation on remving
+
+# ---- Import private shell settings if present----
+[ -f $SHELLCONFIG/.rc.private ] && source $SHELLCONFIG/.rc.private
+
+# ---- Import all MacOS Specific shell settings if on MacOS ----
+[ $(check_OS) = "MacOS" ] && [ -f $SHELLCONFIG/.rc.macos ] && source $SHELLCONFIG/.rc.macos
+
+# ---- Import all Linus Specific shell settings if on Lionux ----
+[ $(check_OS) = "Linux" ] && [ -f $SHELLCONFIG/.rc.linux ] && source $SHELLCONFIG/.rc.linux
+
+# ---- Import all Linus Specific shell settings if on Window 32 ----
+[ $(check_OS) = "Win32" ] && [ -f $SHELLCONFIG/.rc.win32 ] && source $SHELLCONFIG/.rc.win32
+
+# ---- Import all Linus Specific shell settings if on window 64 ----
+[ $(check_OS) = "Win64" ] && [ -f $SHELLCONFIG/.rc.win64 ] && source $SHELLCONFIG/.rc.win64

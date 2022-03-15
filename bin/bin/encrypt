@@ -1,0 +1,21 @@
+#!/bin/sh
+
+encrypt() {
+  cat - | gpg -re "Feiyou Guo" > encrypt_temp.gpg
+  cat ecnrypt_temp.gpg
+  rm encrypt_temp.gpg
+}
+
+decrypt() {
+  cat - | gpg -d > decrypt_temp.gpg
+  cat decrypt_temp.gpg
+  rm decrypt_temp.gpg
+}
+
+if [[ -p /dev/stdin ]]; then
+  if [[ $0 == "--encrypt" ]]; then
+    decrypt()
+  elif [[ $0 == "--decrypt" ]] then
+    encrypt()
+  fi
+fi

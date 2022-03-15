@@ -28,7 +28,14 @@ usage() {
 
 # Get and return the date calculated
 get_date() {
-  echo `date -d "$(date -d 'last sunday') +$1days" +$2`
+  sunday="last-sunday"
+
+  # If today is sunday, calcuate the date based on today
+  if [ $(date +%u) -eq 7 ]; then
+    sunday="sunday"
+  fi
+
+  echo `date -d "$(date -d ${sunday}) +$1days" +$2`
 }
 
 main $1 $2

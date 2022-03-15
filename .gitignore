@@ -1,13 +1,19 @@
 # ignore packer compiled file
 neovim/.config/nvim/plugin/
 
-# Ignore private stuffs
-encrypt/
+# Ignore everything in encrypt folder
+encrypt/**
+
+# But don't ignore the folder itself so we can recurse into them
+!encrypt/
+
+# Recursely add all files ending in .gpg
+!*.gpg
 
 # Prevent accidental commit ggp keys
 *.sec
 *.pub
 
 # ignore re-generable files
-.DS_Store
-.log
+**/.DS_Store
+**.log

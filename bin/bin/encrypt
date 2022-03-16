@@ -4,10 +4,10 @@ if [[ -p /dev/stdin ]]; then
   if [ $1 == "--encrypt" ]; then
     cat - | gpg -o encrypt_temp.gpg -er "Feiyou Guo"
     cat encrypt_temp.gpg
-    # rm encrypt_temp.gpg
+    rm encrypt_temp.gpg
   elif [ $1 == "--decrypt" ]; then
     cat - | gpg -o decrypt_temp.gpg -d
     cat decrypt_temp.gpg
-    # rm decrypt_temp.gpg
+    rm decrypt_temp.gpg
   fi
 fi

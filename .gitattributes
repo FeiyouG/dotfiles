@@ -1,1 +1,1 @@
-test_encrypt/**/*.private filter=encrypt
+encrypt/** filter=encrypt

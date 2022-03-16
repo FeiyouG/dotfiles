@@ -2,7 +2,7 @@
 
 if [[ -p /dev/stdin ]]; then
   if [ $1 == "--encrypt" ]; then
-    cat - | gpg -o encrypt_temp.gpg -er "Feiyou Guo"
+    cat - | gpg -o encrypt_temp.gpg -er $2
     cat encrypt_temp.gpg
     rm encrypt_temp.gpg
   elif [ $1 == "--decrypt" ]; then

@@ -13,9 +13,9 @@ decrypt() {
 }
 
 if [[ -p /dev/stdin ]]; then
-  if [[ $0 == "--encrypt" ]]; then
-    decrypt()
-  elif [[ $0 == "--decrypt" ]] then
-    encrypt()
+  if [ $0 == "--encrypt" ]; then
+    encrypt
+  elif [ $0 == "--decrypt" ]; then
+    decrypt
   fi
 fi

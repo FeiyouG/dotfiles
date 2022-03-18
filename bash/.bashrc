@@ -12,8 +12,6 @@ PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 export PATH
 
-# Bash specific fzf settings
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ---- Import all aliases and env on local machine ----
 [ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
@@ -21,3 +19,7 @@ export PATH
 # ---- Import extra aliases and env variables from dotfiles repo ----
 export SHELLCONFIG="$HOME/.config/shell"
 [ -f $SHELLCONFIG/.rc.general ] && source $SHELLCONFIG/.rc.general
+
+# Bash specific fzf settings
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+

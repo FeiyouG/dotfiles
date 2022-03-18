@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Update private shell configs
+stow -S -d $DOTFILES/encrypt -t $DOTFILES/.helper/shell shell
+
+# Update zsh shell configs
+stow -S -d $DOTFILES/.helper -t $DOTFILES/zsh/.config/zsh shell
+
+# Update bash shell configs
+stow -S -d $DOTFILES/.helper -t $DOTFILES/bash/.config/bash shell
+

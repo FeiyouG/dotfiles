@@ -21,6 +21,7 @@ export DOTFILES="$HOME/.dotfiles"
 # ---- VAULT ----
 export ZK_NOTEBOOK_DIR="$HOME/vault"              # Env for vault home
 export ZK_EDITOR="nvim"                           # Default editor for zk
+alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"
 
 # ---- FZF ----
 # .fzf.zsh or .fzf.bash should be source in .bashrc/.zshrc first
@@ -34,6 +35,9 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"        # Conform to XDG direcotry spe
 # ---- LESS ----
 export LESSHISTFILE="$XDG_CONFIG_HOME/less/history" # Conform to XDG direcotry specificaiton
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"         # Conform to XDG direcotry specificaiton
+
+# ---- NUPACK ----
+export NUPACKHOME='/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/Ubicomp/Pakages/nupack3.2.2'
 
 # ---- UTILITIES ----
 alias rm='rm -i'                                  # Confirmation on remving

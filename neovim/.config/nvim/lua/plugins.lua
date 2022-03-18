@@ -45,10 +45,11 @@ use { 'lewis6991/impatient.nvim', config = get_config("impatient")}
 
 ---- MISCS ----
 use {
-{'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
-{ 'ahmedkhalf/project.nvim', config = get_config("project") },
-{'lukas-reineke/indent-blankline.nvim'},
-{'terrortylor/nvim-comment', config = get_config("nvim-comment")},
+  {'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
+  { 'ahmedkhalf/project.nvim', config = get_config("project") },
+  {'lukas-reineke/indent-blankline.nvim'},
+  {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
+  -- { 'tpope/vim-fugitive'}
 }
 
 

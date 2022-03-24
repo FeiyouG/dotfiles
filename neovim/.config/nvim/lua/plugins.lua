@@ -57,6 +57,7 @@ use {
 use {
   {'marko-cerovac/material.nvim', config = get_config("material")},
   {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' }, config = get_config('lualine')},
+  {'fladson/vim-kitty'} -- Syntax highlight for kitty config files
   -- {'sindrets/diffview.nvim',  requires = 'nvim-lua/plenary.nvim'},
   -- {'sidebar-nvim/sidebar.nvim'}
   -- {'folke/twilight.nvim'}

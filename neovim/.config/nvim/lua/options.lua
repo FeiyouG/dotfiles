@@ -45,3 +45,10 @@ vim.opt.number = true 		          -- Show absolute line number (hybtif)
 ---- MAARK: FILETYPE SETTING
 vim.g.do_filetype_lua = 1           -- Use filetype.lua for faster filetype dection
 -- vim.g.did_load_filetypes = 0      -- disable filetype.vim (Don't do it now since filtype.la is not yet comprehesive)
+
+---- MARK: TERM SETTINGS
+vim.o.termguicolors = true          -- Enable true colors if avaliable
+
+---- MAKR: FOLDING ----
+vim.o.foldlevel = 3                 -- So most foldings are unfold
+

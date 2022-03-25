@@ -3,9 +3,7 @@ alias config_zsh='nvim $XDG_CONFIG_HOME/zsh/.zshrc'                  # Configura
 
 # ---- TMUX ----
 alias config_tmux='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'             # Configuration file
-alias tmux='env TERM=screen-256color tmux'        # Enable color and italic
-# export TERM=xterm-256color                        # Make tmux support itatlic
-# export TERM=screen-256color                       # Make tmux support itatlic
+# alias tmux='env TERM=screen-256color tmux'        # Enable color and italic
 # set t_ZH=[3m
 # set t_ZR=[23m
 
@@ -13,8 +11,13 @@ alias tmux='env TERM=screen-256color tmux'        # Enable color and italic
 alias config_nvim='nvim $XDG_CONFIG_HOME/nvim/init.lua'  # Configuration file
 alias nvimdiff='nvim -d'                          # nvimdiff
 
+# ---- KITTY ----
+alias config_kitty='nvim $XDG_CONFIG_HOME/kitty/kitty.conf'
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"
+
 # ---- DOTFILES ----
 export DOTFILES="$HOME/.dotfiles"
+
 # git used to version control dot files
 # alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/'
 

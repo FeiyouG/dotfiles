@@ -63,7 +63,7 @@ vim.cmd "nnoremap <leader>tf :NvimTreeFindFile<CR>"
 -- NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
 -- a list of groups can be found at `:help nvim_tree_highlight`
-vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
+-- vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
 
 local custom_mapping = {
   { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },

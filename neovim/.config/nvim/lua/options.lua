@@ -48,6 +48,7 @@ vim.g.do_filetype_lua = 1           -- Use filetype.lua for faster filetype dect
 
 ---- MARK: TERM SETTINGS
 vim.o.termguicolors = true          -- Enable true colors if avaliable
+vim.cmd "let &t_ut=''"
 
 ---- MAKR: FOLDING ----
 vim.o.foldlevel = 3                 -- So most foldings are unfold

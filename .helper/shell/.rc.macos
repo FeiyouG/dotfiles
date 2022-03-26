@@ -5,7 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Setting PATH for Python 3.10
-PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH"
 
 export PATH
 

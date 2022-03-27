@@ -1,4 +1,5 @@
 vim.cmd "nnoremap <leader>ff <cmd>Telescope find_files<cr>"
+vim.cmd "nnoremap <leader>f.f <cmd>Telescope find_files hidden=true<cr>"
 vim.cmd "nnoremap <leader>fg <cmd>Telescope live_grep<cr>"
 
 -- Vim Picker Mappings
@@ -22,7 +23,10 @@ vim.cmd "nnoremap <leader>sts <cmd>Telescope treesitter<cr>"
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
-telescope.setup{
+
+
+
+telescope.setup {
   defaults = {
     layout_strategy = 'flex',
 
@@ -47,6 +51,5 @@ telescope.setup{
     lsp_code_actions = {
       theme = "cursor",
     },
-
-    }
+  },
 }

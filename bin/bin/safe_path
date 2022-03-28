@@ -3,13 +3,5 @@
 # This program helps to make sure
 # the passed in direcotry is properly created
 # then returns the newly created direcotyr
-main() {
-  if [ "$#" -ne 1 ]; then
-    echo "."
-  else
-    mkdir -p $1
-    echo $1
-  fi
-}
-
-main $1
+[ -d $1 ] || mkdir -p $1
+echo $1

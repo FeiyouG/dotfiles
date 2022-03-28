@@ -64,7 +64,7 @@ export NUPACKHOME='/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/Ubicomp/Pa
 
 # ---- UTILITIES ----
 alias rm='rm -i'                                                      # Confirmation on remving
-alias ls='ls -color'                                                  # Enable color for ls
+alias ls='ls --color'                                                  # Enable color for ls
 
 # ---- Import private shell settings if present----
 [ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private

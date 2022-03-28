@@ -1,19 +1,34 @@
+# ---- BASIC ----
+export EDITOR="nvim"                                                # Default editor
+export VISUAL="nvim"                                                # Default editor
+
 # ---- ZSH ----
-export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/hisotry"          # Conform to XDG directory specificaiton (history file)
-compinit -d "$(safe_path $XDG_CACHE_HOME/zsh)/zcomdum-$ZSH_VERSION" # Conform to XDG directory specification (cache file)
+export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG directory specificaiton (history file)
+export HISTSIZE=10000                                               # Max events for internal history
+export SAVEHIST=10000                                               # Max events in history file
+
+# ---- ZINIT ----
+export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+declare -A ZINIT
+ZINIT[BIN_DIR]="$XDG_DATA_HOME/zinit/zinit.git"
+ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit/"
+ZINIT[PLUGINS_DIR]="$XDG_DATA_HOME/zinit/plugins"
+ZINIT[COMPLETIONS_DIR]="$XDG_DATA_HOME/zinit/completions"
+ZINIT[SNIPPETS_DIR]="$XDG_DATA_HOME/zinit/snippets"
+ZINIT[ZCOMPDUMP_PATH]="$(safe_path $XDG_CACHE_HOME/zsh)/zcompdump-$ZSH_VERSION"
+
 alias config_zsh='nvim $XDG_CONFIG_HOME/zsh/.zshrc'                 # Fast access to configuration file
 
 # ---- TMUX ----
 alias config_tmux='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'            # Conform to XDG directory specificaiton (configuration file)
 
 # ---- NEOVIM ----
-export EDITOR="nvim"                                                # Default editor
 alias config_nvim='nvim $XDG_CONFIG_HOME/nvim/init.lua'             # Fast access to configuration file
 alias nvimdiff='nvim -d'                                            # Use nvim for diff
 
 # ---- KITTY ----
-export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"             # Conform to XDG directory specificaiton (configuration file)
-alias config_kitty='nvim $XDG_CONFIG_HOME/kitty/kitty.conf'         # Fast access to configuration file
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"               # Conform to XDG directory specificaiton (configuration file)
+alias config_kitty='nvim $XDG_CONFIG_HOME/kitty/kitty.conf'           # Fast access to configuration file
 
 # ---- DOTFILES ----
 export DOTFILES="$HOME/.dotfiles"
@@ -22,9 +37,9 @@ export DOTFILES="$HOME/.dotfiles"
 # alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/'
 
 # ---- VAULT ----
-export ZK_NOTEBOOK_DIR="$HOME/vault"                                # Env for vault home
-export ZK_EDITOR="nvim"                                             # Default editor for zk
-alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"          # Fast access to valut configuration file
+export ZK_NOTEBOOK_DIR="$HOME/vault"                                  # Env for vault home
+export ZK_EDITOR="nvim"                                               # Default editor for zk
+alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
 
 # ---- FZF ----
 # .fzf.zsh or .fzf.bash should be source in .bashrc/.zshrc first
@@ -33,17 +48,23 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d"
 
 # ---- GNUPG ----
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                          # Conform to XDG direcotry specificaiton (all files)
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                            # Conform to XDG direcotry specificaiton (all files)
 
 # ---- LESS ----
-export LESSKEY="$XDG_CONFIG_HOME/less/keys"                         # Conform to XDG direcotry specificaiton (configuration file)
-export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"                  # Conform to XDG direcotry specificaiton (history file)
+export LESSKEY="$XDG_CONFIG_HOME/less/keys"                           # Conform to XDG direcotry specificaiton (configuration file)
+export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG direcotry specificaiton (history file)
+
+# ---- WGET ----
+export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG direcotry specificaiton (configuration file)
+alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG direcotry specificaiton (history file)
+
 
 # ---- NUPACK ----
 export NUPACKHOME='/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/Ubicomp/Pakages/nupack3.2.2'
 
 # ---- UTILITIES ----
-alias rm='rm -i'                                                    # Confirmation on remving
+alias rm='rm -i'                                                      # Confirmation on remving
+alias ls='ls -color'                                                  # Enable color for ls
 
 # ---- Import private shell settings if present----
 [ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private

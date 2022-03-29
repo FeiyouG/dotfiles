@@ -228,4 +228,5 @@ precmd() {
 
 
   PROMPT=${first_ln}${seg_git}${prompt_leader}
+  PS2="${nord3}┣ ${c_reset}"
 }

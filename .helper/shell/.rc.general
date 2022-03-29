@@ -8,16 +8,6 @@ export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to
 export HISTSIZE=20000                                               # Max events for internal history
 export SAVEHIST=10000                                               # Max events in history file
 
-# ---- ZINIT ----
-export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
-declare -A ZINIT
-ZINIT[BIN_DIR]="$XDG_DATA_HOME/zinit/zinit.git"
-ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit/"
-ZINIT[PLUGINS_DIR]="$XDG_DATA_HOME/zinit/plugins"
-ZINIT[COMPLETIONS_DIR]="$XDG_DATA_HOME/zinit/completions"
-ZINIT[SNIPPETS_DIR]="$XDG_DATA_HOME/zinit/snippets"
-ZINIT[ZCOMPDUMP_PATH]="$(safe_path $XDG_CACHE_HOME/zsh)/zcompdump-$ZSH_VERSION"
-
 alias config_zsh='nvim $XDG_CONFIG_HOME/zsh/.zshrc'                 # Fast access to configuration file
 
 # ---- TMUX ----

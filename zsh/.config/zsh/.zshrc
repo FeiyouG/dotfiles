@@ -1,10 +1,6 @@
 # .zshrc is sourced for every interactive zsh shell
 # All vars that subshell and external commands don't need go here
 
-# ---- Completion ----
-# autoload -U compinit; cominit
-
-
 # ---- Import all aliases and env on local machine ----
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
@@ -15,7 +11,20 @@
 [ -f $ZDOTDIR/.rc.general ] && source $ZDOTDIR/.rc.general
 
 
+bindkey -e                                                          # Resotre default keybidning
+
 # ---- ZINIT ----
+
+# -- Config ZINIT
+export ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
+declare -A ZINIT
+ZINIT[BIN_DIR]="$XDG_DATA_HOME/zinit/zinit.git"
+ZINIT[HOME_DIR]="$XDG_DATA_HOME/zinit/"
+ZINIT[PLUGINS_DIR]="$XDG_DATA_HOME/zinit/plugins"
+ZINIT[COMPLETIONS_DIR]="$XDG_DATA_HOME/zinit/completions"
+ZINIT[SNIPPETS_DIR]="$XDG_DATA_HOME/zinit/snippets"
+ZINIT[ZCOMPDUMP_PATH]="$(safe_path $XDG_CACHE_HOME/zsh)/zcompdump-$ZSH_VERSION"
+
 source "$ZINIT_HOME/zinit.zsh"
 
 # -- ZSH PROMPT

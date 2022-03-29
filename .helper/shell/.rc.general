@@ -1,10 +1,11 @@
+# vim:ft=zsh
 # ---- BASIC ----
 export EDITOR="nvim"                                                # Default editor
 export VISUAL="nvim"                                                # Default editor
 
 # ---- ZSH ----
 export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG directory specificaiton (history file)
-export HISTSIZE=10000                                               # Max events for internal history
+export HISTSIZE=20000                                               # Max events for internal history
 export SAVEHIST=10000                                               # Max events in history file
 
 # ---- ZINIT ----

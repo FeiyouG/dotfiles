@@ -28,19 +28,20 @@ lualine.setup {
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
-  inactive_sections = {
+   inactive_sections = {
     lualine_a = {
       'filename',
-      'branch'
-      },
+       'branch'
+    },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {
       { 'diagnostics',
         sources = {"nvim_lsp"},
-        symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
-        'filetype',
-        'location'
+         symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+      },
+        --'filetype',
+        --'location'
       },
     lualine_y = {},
     lualine_z = {}

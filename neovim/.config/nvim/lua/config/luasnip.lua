@@ -35,7 +35,7 @@ luasnip.config.set_config {
 
 ---- MARK: Load filetype specific snippets on demand ----
 function _G.snippets_clear()
-	for m, _ in pairs(luasnip.snippets) do
+	for m, _ in pairs(luasnip.snippets or {}) do
 		package.loaded["snippets."..m] = nil
 	end
 	luasnip.snippets = setmetatable({}, {

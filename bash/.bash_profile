@@ -4,3 +4,5 @@ PATH="$HOME/.local/bin:$PATH"                                       # Add custom
 PATH="$HOME/Applications/CMake.app/Contents/bin:$PATH"              # Path to cMake App (needed by ccls)
 export PATH
 
+source $HOME/.bashrc
+

@@ -26,12 +26,17 @@ with my gpg key.
 
 To properly decrypt
 contents in `encryt/`,
-I need to clone
-without chekcing out,
+I have to make sure
+private gpg keys
+are securely transferred to the machine.
+
+Next, I need to clone
+without checking out,
 setup git smudge and clean,
 and then check out the content:
 ```shell
 git clone --no-checkout git@github.com:Exquisitian/dotfiles.git $HOME/.dotfiles
+cd $HOME/.dotfiles
 git config filter.encrypt.require true
 git config filter.encrypt.clean "gpg -er feiyouguo@gmail.com"
 git config filter.encrypt.smudge "gpg -d"

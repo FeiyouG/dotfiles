@@ -1,7 +1,12 @@
 # vim:ft=zsh
+
 # ---- BASIC ----
+export LANG=en_US.UTF-8
 export EDITOR="nvim"                                                # Default editor
 export VISUAL="nvim"                                                # Default editor
+
+# ---- HOMEBREW ----
+export HOMEBREW_NO_AUTO_UPDATE=true
 
 # ---- ZSH ----
 export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG directory specificaiton (history file)
@@ -63,11 +68,11 @@ alias ls='ls --color'                                                  # Enable 
 # ---- Import all MacOS Specific shell settings if on MacOS ----
 [ $(check_OS) = "MacOS" ] && [ -f $ZDOTDIR/.rc.macos ] && source $ZDOTDIR/.rc.macos
 
-# ---- Import all Linus Specific shell settings if on Lionux ----
+# # ---- Import all Linus Specific shell settings if on Lionux ----
 [ $(check_OS) = "Linux" ] && [ -f $ZDOTDIR/.rc.linux ] && source $ZDOTDIR/.rc.linux
 
-# ---- Import all Linus Specific shell settings if on Window 32 ----
+# # ---- Import all Linus Specific shell settings if on Window 32 ----
 [ $(check_OS) = "Win32" ] && [ -f $ZDOTDIR/.rc.win32 ] && source $ZDOTDIR/.rc.win32
 
-# ---- Import all Linus Specific shell settings if on window 64 ----
+# # ---- Import all Linus Specific shell settings if on window 64 ----
 [ $(check_OS) = "Win64" ] && [ -f $ZDOTDIR/.rc.win64 ] && source $ZDOTDIR/.rc.win64

@@ -22,6 +22,12 @@ It is because
 they are all encrypted
 with my gpg key.
 
+Make sure to read
+**REDME.md file inside each directory**
+before you `stow` them
+so that you understand
+how to set things up properly.
+
 ### A Note to myself
 
 To properly decrypt
@@ -47,6 +53,9 @@ git checkout --
 
 ### General
 
+All tools below can be installed
+with `homebrew` or `linuxbrew`:
+
 - stow
   - Helps to create symbolic links
     from this directory to `$HOME`;
@@ -58,7 +67,15 @@ git checkout --
 - GNU coreutils
   - Essential for some shell scripts
     to run properly in `bin/`
-- FZF
+  - If you are on macOS
+    and installed GNU coreutils with `homebrew`,
+    then make sure to replace macOS default utils
+    with GNU coreutils by adding
+    ```
+    export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+    ```
+    to your `.zshrc.local` or `.bashrc.local` file
+- fzf
   - `fzf` is used for both
     zsh completion and
     neovim telescope (file and string search)
@@ -76,7 +93,7 @@ zsh configuration to work properly,
 ```shell
 $ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 $ mkdir -p "$(dirname $ZINIT_HOME)"
-$ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+$ git clone https://github.com/zdharma-continuum/zinit.git $ZINIT_HOME
 ```
 
 Then,
@@ -88,6 +105,15 @@ All plugins will be automatically downloaded and sourced.
 You need to have
 [neovim editor](https://neovim.io) (>= 0.6.1)
 installed on your machine.
+
+The plugin manager `packer`
+is automatically installed
+on your first start up.
+Restart neovim
+And run `:PackerSync`
+to install and compile
+all plugins.
+Then you are good to go.
 
 ### TMUX
 
@@ -101,7 +127,9 @@ In order for
 tmux configuration work properly,
 we have to first install `tpm`:
 ```shell
-$ git clone https://github.com/tmux-plugins/tpm $XDG_DATA_HOM/tmux/plugin/tpm
+$ TMP_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/tmux/plugins/tpm"
+$ mkdir -p "$(dirname $TMP_HOME)"
+$ git clone https://github.com/tmux-plugins/tpm $TMP_HOME
 ```
 
 Then,

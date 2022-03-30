@@ -37,6 +37,10 @@ Sensitive information are compressed by tar and encrypted with gpg.
 - GNU coreutils
   - Essential for some shell scripts
     to run properly in `bin/`
+- FZF
+  - `fzf` is used for both
+    zsh completion and
+    neovim telescope (file and string search)
 
 ### zsh
 
@@ -46,8 +50,8 @@ is the plug in manager
 I use for zsh.
 
 In order for
-zsh configuration work properly,
-we have to first install `zinit`:
+zsh configuration to work properly,
+`zinit` needs to be installed:
 ```shell
 $ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 $ mkdir -p "$(dirname $ZINIT_HOME)"
@@ -56,16 +60,13 @@ $ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 Then,
 close and start the terminal.
-All plugins will be installed properly.
+All plugins will be automatically downloaded and sourced.
 
 ### Neovim
 
 You need to have
 [neovim editor](https://neovim.io) (>= 0.6.1)
 installed on your machine.
-
-- Telescope can be used to view image
-if `catimg` is installed locally on the machine.
 
 ### TMUX
 

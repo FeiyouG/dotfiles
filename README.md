@@ -1,5 +1,23 @@
 # Feiyou's dotfiles
 
+
+<!-- TOC GFM -->
+
+- [Feiyou's dotfiles](#feiyous-dotfiles)
+  - [Usage](#usage)
+    - [A Note to myself](#a-note-to-myself)
+  - [Dependencies](#dependencies)
+    - [General](#general)
+    - [zsh](#zsh)
+      - [install `zinit`](#install-zinit)
+    - [Neovim](#neovim)
+    - [TMUX](#tmux)
+      - [Install tpm](#install-tpm)
+      - [tmux default terminal](#tmux-default-terminal)
+  - [License](#license)
+
+<!-- /TOC -->
+
 The structure of this repository
 is inspired by [Alex Pearce](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/)
 and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).

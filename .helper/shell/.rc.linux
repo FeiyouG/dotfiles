@@ -2,3 +2,4 @@
 
 # Add linuxbrew to path
 PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH

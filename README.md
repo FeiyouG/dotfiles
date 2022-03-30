@@ -8,19 +8,35 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
 
 Clone this repository into your `$HOME` folder.
 
+
 ```shell
 $ git clone git@github.com:Exquisitian/dotfiles.git $HOME/.dotfiles
 $ cd $HOME/.dotfiles
 $ stow zsh neovim git # plus whatever else you'd like
 ```
 
-Be sure to read the `README.md` in each directory
-and understand what it does
-before you `stow` them.
+You will notice
+every file inside `encrypt/`
+is gibberish.
+It is because
+they are all encrypted
+with my gpg key.
 
-### Sensitive Information
+### A Note to myself
 
-Sensitive information are compressed by tar and encrypted with gpg.
+To properly decrypt
+contents in `encryt/`,
+I need to clone
+without chekcing out,
+setup git smudge and clean,
+and then check out the content:
+```shell
+git clone --no-checkout git@github.com:Exquisitian/dotfiles.git $HOME/.dotfiles
+git config filter.encrypt.require true
+git config filter.encrypt.clean "gpg -er feiyouguo@gmail.com"
+git config filter.encrypt.smudge "gpg -d"
+git checkout --
+```
 
 ## Dependencies
 

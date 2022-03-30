@@ -1,1 +1,6 @@
-[ -f $HOME/.bashrc ] && source $HOME/.bashrc
+# PATH set in .zshenv may be overritten by /etc/porfile
+PATH="/usr/local/bin:$PATH"                                         # Path to all installed executables
+PATH="$HOME/.local/bin:$PATH"                                       # Add custom shell scripts to path
+PATH="$HOME/Applications/CMake.app/Contents/bin:$PATH"              # Path to cMake App (needed by ccls)
+export PATH
+

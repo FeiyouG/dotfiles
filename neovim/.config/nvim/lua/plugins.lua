@@ -48,7 +48,8 @@ use {
   {'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
   { 'ahmedkhalf/project.nvim', config = get_config("project") },
   {'lukas-reineke/indent-blankline.nvim'},
-  {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
+  -- {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
+  {'numToStr/Comment.nvim', config = get_config("comment")}
   -- { 'tpope/vim-fugitive'}
 }
 
@@ -58,7 +59,7 @@ use {
   -- {'marko-cerovac/material.nvim', config = get_config("material")},
   -- {'shaunsingh/nord.nvim', config = get_config("nord")},
   {'rmehri01/onenord.nvim', config = get_config("onenord")},
-  {'nvim-lualine/lualine.nvim', requires = {'kydani42/nvim-web-devicons', opt = true}, config = get_config('lualine')},
+  {'nvim-lualine/lualine.nvim', requires = {'kydani42/nvim-web-devicons'}, config = get_config('lualine')},
   {'fladson/vim-kitty'} -- Syntax highlight for kitty config files
   -- {'sindrets/diffview.nvim',  requires = 'nvim-lua/plenary.nvim'},
   -- {'sidebar-nvim/sidebar.nvim'}

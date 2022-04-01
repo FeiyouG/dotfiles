@@ -33,7 +33,7 @@ source $XDG_CONFIG_HOME/zsh//config/prompt.zsh
 ZSH_PROMPT_ALWAYS_SHOW_USER=${IGLOO_ZSH_PROMPT_THEME_ALWAYS_SHOW_USER:-false}
 
 zinit snippet "https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh"
-GIT_PS1_SHOWCOLORHINTS=1                                              # Show color
+# GIT_PS1_SHOWCOLORHINTS=1                                              # Show color
 GIT_PS1_SHOWUPSTREAM="auto verbose"
 
 # -- ZSH COMPLETION

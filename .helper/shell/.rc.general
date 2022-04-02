@@ -9,21 +9,21 @@ export VISUAL="nvim"                                                # Default ed
 export HOMEBREW_NO_AUTO_UPDATE=true
 
 # ---- ZSH ----
-export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG directory specificaiton (history file)
+export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG Base Directory (history file)
 export HISTSIZE=20000                                               # Max events for internal history
 export SAVEHIST=10000                                               # Max events in history file
 
 alias config_zsh='nvim $XDG_CONFIG_HOME/zsh/.zshrc'                 # Fast access to configuration file
 
 # ---- TMUX ----
-alias config_tmux='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'            # Conform to XDG directory specificaiton (configuration file)
+alias config_tmux='nvim $XDG_CONFIG_HOME/tmux/tmux.conf'            # Conform to XDG Base Directory (configuration file)
 
 # ---- NEOVIM ----
 alias config_nvim='nvim $XDG_CONFIG_HOME/nvim/init.lua'             # Fast access to configuration file
 alias nvimdiff='nvim -d'                                            # Use nvim for diff
 
 # ---- KITTY ----
-export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"               # Conform to XDG directory specificaiton (configuration file)
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"               # Conform to XDG Base Directory (configuration file)
 alias config_kitty='nvim $XDG_CONFIG_HOME/kitty/kitty.conf'           # Fast access to configuration file
 
 # ---- DOTFILES ----
@@ -44,15 +44,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d"
 
 # ---- GNUPG ----
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                            # Conform to XDG direcotry specificaiton (all files)
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                            # Conform to XDG Base Directory (all files)
 
 # ---- LESS ----
-export LESSKEY="$XDG_CONFIG_HOME/less/keys"                           # Conform to XDG direcotry specificaiton (configuration file)
-export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG direcotry specificaiton (history file)
+export LESSKEY="$XDG_CONFIG_HOME/less/keys"                           # Conform to XDG Base Directory (configuration file)
+export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG Base Directory (history file)
 
 # ---- WGET ----
-export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG direcotry specificaiton (configuration file)
-alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG direcotry specificaiton (history file)
+export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG Base Directory (configuration file)
+alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
 
 
 # ---- NUPACK ----

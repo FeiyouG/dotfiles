@@ -11,5 +11,5 @@ export XDG_STATE_HOME="$HOME/.local/state"
 [ -f $XDG_CONFIG_HOME/fzf/fzf.bash ] && source $XDG_CONFIG_HOME/fzf/fzf.bash
 
 # ---- Import extra aliases and env variables ----
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="$XDG_CONFIG_HOME/bash"
 [ -f $ZDOTDIR/.rc.general ] && source $ZDOTDIR/.rc.general

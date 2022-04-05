@@ -31,21 +31,21 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 
-  textobjects = {
-    select = {
-      enable = true,
-
-      -- Automatically jump forward to textobj, similar to targets.vim
-      lookahead = true,
-
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["fa"] = "@function.outer",
-        ["fi"] = "@function.inner",
-        ["ca"] = "@class.outer",
-        ["ci"] = "@class.inner",
-      },
-    },
+  -- textobjects = {
+  --   select = {
+  --     enable = true,
+  --
+  --     -- Automatically jump forward to textobj, similar to targets.vim
+  --     lookahead = true,
+  --
+  --     keymaps = {
+  --       -- You can use the capture groups defined in textobjects.scm
+  --       ["fa"] = "@function.outer",
+  --       ["fi"] = "@function.inner",
+  --       ["ca"] = "@class.outer",
+  --       ["ci"] = "@class.inner",
+  --     },
+  --   },
 
     -- swap = {
     --   enable = true,
@@ -90,14 +90,14 @@ require'nvim-treesitter.configs'.setup {
 --         ["<leader><leader>pk"] = "@parameter.outer",
 --       },
 --     },
-
-    lsp_interop = {
-      enable = true,
-      border = 'none',
-      peek_definition_code = {
-        ["<leader>df"] = "@function.outer",
-        ["<leader>dF"] = "@class.outer",
-      },
-    },
-  },
+  --
+  --   lsp_interop = {
+  --     enable = true,
+  --     border = 'none',
+  --     peek_definition_code = {
+  --       ["<leader>df"] = "@function.outer",
+  --       ["<leader>dF"] = "@class.outer",
+  --     },
+  --   },
+  -- },
 }

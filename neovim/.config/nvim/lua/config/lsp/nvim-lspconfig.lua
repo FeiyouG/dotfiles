@@ -18,8 +18,10 @@ map("n", "<leader>st", "<cmd>Telescope lsp_type_definitions<CR>", noremap)
 map("n", "<leader>sr", "<cmd>Telescope lsp_references<CR>", noremap)
 map("n", "<leader>se", "<cmd>Telescope diagnostics<CR>", noremap)
 map("n", "<leader>si", "<cmd>Telescope lsp_implementations<CR>", noremap)
+-- map("n", "<leader>si", "<cmd>lua vim.lsp.buf.implementation()<CR>", noremap)
 map("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>", noremap)
-map("n", "<leader><leader>ss", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", noremap)
+map("n", "<leader>ssd", "<cmd>Telescope lsp_document_symbols<CR>", noremap)
+map("n", "<leader>ssw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", noremap)
 
 -- MARK: Diagnostic Settings
 -- Diable virtual text

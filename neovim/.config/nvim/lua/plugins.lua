@@ -49,7 +49,8 @@ use {
   { 'ahmedkhalf/project.nvim', config = get_config("project") },
   {'lukas-reineke/indent-blankline.nvim'},
   -- {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
-  {'numToStr/Comment.nvim', config = get_config("comment")}
+  {'numToStr/Comment.nvim', config = get_config("comment")},
+  {'tpope/vim-fugitive'}
   -- { 'tpope/vim-fugitive'}
 }
 

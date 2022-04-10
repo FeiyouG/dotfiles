@@ -28,7 +28,7 @@ Clone this repository into your `$HOME` folder.
 
 
 ```shell
-$ git clone git@github.com:Exquisitian/dotfiles.git $HOME/.dotfiles
+$ git clone git@github.com:gfeiyou/dotfiles.git $HOME/.dotfiles
 $ cd $HOME/.dotfiles
 $ stow zsh neovim git # plus whatever else you'd like
 ```
@@ -59,7 +59,7 @@ without checking out,
 setup git smudge and clean,
 and then check out the content:
 ```shell
-git clone --no-checkout git@github.com:Exquisitian/dotfiles.git $HOME/.dotfiles
+git clone --no-checkout git@github.com:gfeiyou/dotfiles.git $HOME/.dotfiles
 cd $HOME/.dotfiles
 git config filter.encrypt.require true
 git config filter.encrypt.clean "gpg -er feiyouguo@gmail.com"

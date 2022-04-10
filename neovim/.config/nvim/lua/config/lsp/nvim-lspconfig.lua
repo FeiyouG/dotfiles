@@ -1,27 +1,80 @@
 -- MARK: Key Mappings
-local map = vim.api.nvim_set_keymap
 local noremap = {noremap = true}
 local silent_noremap = {noremap = true, silent = true}
+local command_center = require('command_center')
 
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", silent_noremap)
-map("n", "E", "<cmd>lua vim.diagnostic.open_float()<CR>", silent_noremap)
-map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", silent_noremap)
-map("n", "<leader>sD", "<cmd>lua vim.lsp.buf.declaration()<CR>", silent_noremap)
-map("n", "<leader>sn", "<cmd>lua vim.lsp.buf.rename()<CR>", silent_noremap)
-map("n", "<leader>sf", "<cmd>lua vim.lsp.buf.formatting()<CR>", silent_noremap)
+command_center.add({
+    {
+    description = "Show documentations (hover)",
+    command = "lua vim.lsp.buf.hover()",
+    keybindings = { "n", "K", silent_noremap },
+  }, {
+    description = "Show errors of the current line",
+    command = "lua vim.diagnostic.open_float()",
+    keybindings = { "n", "E", silent_noremap },
+  }, {
+    description = "Show function signature",
+    command = "lua vim.lsp.buf.signature_help()",
+    keybindings = { "n", "<leader>sk", silent_noremap },
+  }, {
+    description = "Go to declarations",
+    command = "lua vim.lsp.buf.declaration()",
+    keybindings = { "n", "<leader>sD", silent_noremap },
+  }, {
+    description = "Rename symbol",
+    command = "lua vim.lsp.buf.rename()",
+    keybindings = { "n", "<leader>sn", silent_noremap },
+  }, {
+    description = "Format code (lint)",
+    command = "lua vim.lsp.buf.formatting()",
+    keybindings = { "n", "<leader>sf", silent_noremap },
+  }
+})
 
--- Keymaps that depend on Telescope
-map("n", "<leader>sa", "<cmd>Telescope lsp_code_actions<CR>", noremap)
-map("v", "<leader>sa", "<cmd>Telescope lsp_range_code_actions<CR>", noremap)
-map("n", "<leader>sd", "<cmd>Telescope lsp_definitions<CR>", noremap)
-map("n", "<leader>st", "<cmd>Telescope lsp_type_definitions<CR>", noremap)
-map("n", "<leader>sr", "<cmd>Telescope lsp_references<CR>", noremap)
-map("n", "<leader>se", "<cmd>Telescope diagnostics<CR>", noremap)
-map("n", "<leader>si", "<cmd>Telescope lsp_implementations<CR>", noremap)
--- map("n", "<leader>si", "<cmd>lua vim.lsp.buf.implementation()<CR>", noremap)
-map("n", "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>", noremap)
-map("n", "<leader>ssd", "<cmd>Telescope lsp_document_symbols<CR>", noremap)
-map("n", "<leader>ssw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", noremap)
+-- Commands takes advantages of Telescope
+command_center.add({
+  {
+    description = "Show code actions",
+    command = "Telescope lsp_code_actions",
+    keybindings = { "n", "<leader>sa", noremap },
+  },{
+    description = "Show range code actions",
+    command = "Telescope lsp_range_code_actions",
+    keybindings = { "v", "<leader>sa", noremap },
+  },{
+    description = "Go to definitions",
+    command = "Telescope lsp_definitions",
+    keybindings = { "n", "<leader>sd", noremap },
+  },{
+    description = "Go to type definitions",
+    command = "Telescope lsp_type_definitions",
+    keybindings = { "n", "<leader>st", noremap },
+  },{
+    description = "Show all references",
+    command = "Telescope lsp_references",
+    keybindings = { "n", "<leader>sr", noremap },
+  },{
+    description = "Show workspace errors (diagnostic)",
+    command = "Telescope diagnostics",
+    keybindings = { "n", "<leader>se", noremap },
+  },{
+    description = "Go to implementations",
+    command = "Telescope lsp_implementations",
+    keybindings = { "n", "<leader>si", noremap },
+  },{
+    description = "Show document symbols",
+    command = "Telescope lsp_document_symbols",
+    keybindings = {
+      {"n", "<leader>ss", noremap },
+      {"n", "<leader>ssd", noremap },
+    },
+  },{
+    description = "show workspace symbols",
+    command = "Telescope lsp_dynamic_workspace_symbols",
+    keybindings = { "n", "<leader>ssw", noremap },
+  }
+})
+
 
 -- MARK: Diagnostic Settings
 -- Diable virtual text

@@ -48,10 +48,8 @@ use {
   {'kyazdani42/nvim-tree.lua', config = get_config("nvim-tree")},
   { 'ahmedkhalf/project.nvim', config = get_config("project") },
   {'lukas-reineke/indent-blankline.nvim'},
-  -- {'terrortylor/nvim-comment', config = get_config("nvim-comment")},
   {'numToStr/Comment.nvim', config = get_config("comment")},
   {'tpope/vim-fugitive'}
-  -- { 'tpope/vim-fugitive'}
 }
 
 
@@ -60,7 +58,7 @@ use {
   -- {'marko-cerovac/material.nvim', config = get_config("material")},
   -- {'shaunsingh/nord.nvim', config = get_config("nord")},
   {'rmehri01/onenord.nvim', config = get_config("onenord")},
-  {'nvim-lualine/lualine.nvim', requires = {'kydani42/nvim-web-devicons'}, config = get_config('lualine')},
+  {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}, config = get_config('lualine')},
   {'fladson/vim-kitty'} -- Syntax highlight for kitty config files
   -- {'sindrets/diffview.nvim',  requires = 'nvim-lua/plenary.nvim'},
   -- {'sidebar-nvim/sidebar.nvim'}
@@ -113,6 +111,7 @@ use  {
 }
 
 ---- Tmux Integegration
+-- use { '$XDG_DATA_HOME/tmux/plugins/tmux-navigate'}
 use {
   {'RyanMillerC/better-vim-tmux-resizer', config = get_config("better-vim-tmux-resizer")},
   {'christoomey/vim-tmux-navigator'},
@@ -120,11 +119,11 @@ use {
 
 ---- Telescope Ecosystem for Search ----
 use {
-  {'nvim-telescope/telescope.nvim', config = get_config("telescope"), requires = { 'nvim-lua/plenary.nvim' }},
+  {'nvim-telescope/telescope.nvim',requires = { 'nvim-lua/plenary.nvim'}, config = get_config("telescope")},
   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
   { 'fhill2/telescope-ultisnips.nvim' },
-  { 'LinArcX/telescope-command-palette.nvim', config = get_config("telescope-command-palette")},
-  -- { 'AckslD/nvim-neoclip.lua', config = get_config("neoclip") },
+  {'git@github.com:gfeiyou/command-center.nvim.git', config = get_config("command s_center")},
+-- {'/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/my_project/command-center.nvim', get_confi}
   { 'nvim-telescope/telescope-symbols.nvim' },
 }
 

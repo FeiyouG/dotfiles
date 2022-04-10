@@ -1,3 +1,24 @@
+local nvim_tree = require("nvim-tree")
+
+local command_center = require("command_center")
+local noremap = {noremap = true}
+
+command_center.add({
+  {
+    description = "Toggle nvim-tree",
+    command = "NvimTreeToggle",
+    keybindings = { "n", "<leader>tt", noremap },
+  }, {
+    description = "Refresh nvim-tree",
+    command = "NvimTreeRefresh",
+    keybindings = { "n", "<leader>tr", noremap },
+  }, {
+    description = "Reveal current file in nvim-tree",
+    command = "NvimTreeFindFile",
+    keybindings = { "n", "<leader>tf", noremap },
+  }
+})
+
 
 vim.cmd "let g:nvim_tree_git_hl = 1"
 vim.cmd "let g:nvim_tree_highlight_opened_files = 1"
@@ -6,30 +27,6 @@ vim.cmd "let g:nvim_tree_respect_buf_cwd = 1"
 
 -- List of filenames that gets highlighted with NvimTreeSpecialFile
 -- let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 }
-
--- let g:nvim_tree_icons = {
---     \ 'default': '',
---     \ 'symlink': '',
---     \ 'git': {
---     \   'unstaged': "✗",
---     \   'staged': "✓",
---     \   'unmerged': "",
---     \   'renamed': "➜",
---     \   'untracked': "★",
---     \   'deleted': "",
---     \   'ignored': "◌"
---     \   },
---     \ 'folder': {
---     \   'arrow_open': "",
---     \   'arrow_closed': "",
---     \   'default': "",
---     \   'open': "",
---     \   'empty': "",
---     \   'empty_open': "",
---     \   'symlink': "",
---     \   'symlink_open': "",
---     \   }
---     \ }
 
 vim.cmd([[let g:nvim_tree_icons = {
     \ 'default': '',
@@ -56,10 +53,6 @@ vim.cmd([[let g:nvim_tree_icons = {
     \ }
 ]])
 
--- nnoremap <leader>tt :NvimTreeFindFileToggle<CR>
-vim.cmd "nnoremap <leader>tt :NvimTreeToggle<CR>"
-vim.cmd "nnoremap <leader>tr :NvimTreeRefresh<CR>"
-vim.cmd "nnoremap <leader>tf :NvimTreeFindFile<CR>"
 -- NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
 -- a list of groups can be found at `:help nvim_tree_highlight`
@@ -102,12 +95,12 @@ local custom_mapping = {
 }
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-require'nvim-tree'.setup {
+nvim_tree.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = true,
   ignore_ft_on_setup  = {},
-  auto_close          = true,
+  -- auto_close          = true,
   open_on_tab         = true,
   hijack_cursor       = false,
   update_cwd          = true,

@@ -15,7 +15,6 @@ local servers = {
   "jdtls",
   "jsonls",
   "pyright",
-  "clangd"
 }
 
 for _, name in pairs(servers) do

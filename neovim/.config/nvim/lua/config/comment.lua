@@ -1,4 +1,27 @@
-require('Comment').setup {
+local comment = require("comment")
+local command_center = require("command_center")
+
+-- Don't register the keybindings
+-- since it has been registed by comment.nvim
+command_center.add({
+  {
+    description = "Toggle comment on current line",
+    command = "lua require('comment.api').toggle_current_linewise(cfg)",
+    keybindings = { "n", "<leader>cc"},
+  }, {
+    description = "Toggle comment on current selection",
+    command = "lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())",
+    keybindings = { "v", "<leader>c"},
+  }, {
+    description = "Toggle block comment on current selection",
+    command = "lua require('Comment.api').toggle_blockwise_op(vim.fn.visualmode())",
+    keybindings = { "v", "<leader>c"},
+  },
+
+}, command_center.mode.ADD_ONLY)
+
+
+comment.setup {
   ---LHS of toggle mappings in NORMAL + VISUAL mode
   ---@type table
   toggler = {

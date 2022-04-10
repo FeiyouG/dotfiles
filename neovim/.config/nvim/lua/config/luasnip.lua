@@ -2,9 +2,20 @@
 local luasnip = require("luasnip")
 local types = require("luasnip.util.types")
 
----- MARK: Key Mapping ----
-vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
+local command_center = require("command_center")
+local noremap = { noremap = true }
+
+command_center.add({
+  {
+    description = "luasnip choice node: next choice",
+    command = "<Plug>luasnip-next-choice",
+    keybindings = {
+      {"i", "<C-d>", noremap},
+      {"s", "<C-d>", noremap}
+    }
+  }
+})
+
 
 ---- MARK: General Configuration ----
 luasnip.config.set_config {

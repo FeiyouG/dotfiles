@@ -1,4 +1,12 @@
-vim.cmd "let g:mkdp_browser = 'safari'"
+local command_center = require("command_center")
+local noremap = { noremap = true }
+
+command_center.add({
+  {
+    description = "Toggle markdown preview",
+    command = "MarkdownPreviewToggle",
+  }
+})
 
 -- options for markdown render
 -- mkit: markdown-it options for render

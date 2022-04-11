@@ -1,7 +1,28 @@
 require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- One of "all" or a list of languages
   -- Automatically install and upate treesitter
-  ensure_installed = "maintained",
+  ensure_installed = {
+    "bash",
+    "c",
+    "comment",      -- Comment tags like TODO, FIXME, NOTE:  ...
+    "cpp",
+    "css",
+    "help",         -- vimdoc
+    "html",
+    "http",
+    "java",
+    "javascript",
+    "jsdoc",
+    "json",
+    "json5",
+    "latex",
+    "lua",
+    "markdown",
+    "python",
+    "regex",
+    "typescript",
+    "vim",
+  },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,

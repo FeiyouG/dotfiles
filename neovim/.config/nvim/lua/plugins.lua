@@ -14,6 +14,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
+local command_center = require("command_center")
+
+command_center.add({
+  { command = "PackerSync" },
+  { command = "PackerProfile" },
+  { command = "PackerStatus" },
+})
+
 local function get_config(name)
     return string.format("require(\"config/%s\")", name)
 end

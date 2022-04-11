@@ -1,4 +1,4 @@
-local comment = require("comment")
+local comment = require("Comment")
 local command_center = require("command_center")
 
 -- Don't register the keybindings

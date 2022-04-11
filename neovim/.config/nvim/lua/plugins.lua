@@ -14,12 +14,17 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-local command_center = require("command_center")
-
-command_center.add({
-  { command = "PackerSync" },
-  { command = "PackerProfile" },
-  { command = "PackerStatus" },
+require("command_center").add({
+  {
+    description = "Sync plugins",
+    command = "PackerSync",
+  }, {
+    description = "Show plugins startup time",
+    command = "PackerProfile",
+  }, {
+    description = "Show plugins status",
+    command = "PackerStatus",
+  },
 })
 
 local function get_config(name)

@@ -122,7 +122,7 @@ use {
   {'nvim-telescope/telescope.nvim',requires = { 'nvim-lua/plenary.nvim'}, config = get_config("telescope")},
   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
   { 'fhill2/telescope-ultisnips.nvim' },
-  {'git@github.com:gfeiyou/command-center.nvim.git', config = get_config("command s_center")},
+  {'git@github.com:FeiyouG/command_center.nvim.git', config = get_config("command_center")},
 -- {'/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/my_project/command-center.nvim', get_confi}
   { 'nvim-telescope/telescope-symbols.nvim' },
 }

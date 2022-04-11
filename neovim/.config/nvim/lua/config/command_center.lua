@@ -24,7 +24,7 @@ telescope.setup {
       components = {
         command_center.component.DESCRIPTION,
         command_center.component.KEYBINDINGS,
-        command_center.component.COMMAND,
+        -- command_center.component.COMMAND,
       },
       auto_replace_desc_with_cmd = false,
     }

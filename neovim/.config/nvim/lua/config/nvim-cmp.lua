@@ -73,7 +73,7 @@ cmp.setup {
   --   autocomplete = false,
   -- },
 
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
 
     ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -107,42 +107,20 @@ cmp.setup {
       end
     end, { "i", "s" }),
 
---     ["<Tab>"] = cmp.mapping(function(fallback)
---       if cmp.visible() then
---         cmp.select_next_item()
---       elseif luasnip.expand_or_jumpable() then
---         luasnip.expand_or_jump()
---       elseif has_words_before() then
---         cmp.complete()
---       else
---         fallback()
---       end
---     end, { "i", "s" }),
-
---     ["<S-Tab>"] = cmp.mapping(function(fallback)
---       if cmp.visible() then
---         cmp.select_prev_item()
---       elseif luasnip.jumpable(-1) then
---         luasnip.jump(-1)
---       else
---         fallback()
---       end
---     end, { "i", "s" }),
-
     -- Select the completion item, excluding preselected
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
     ['<Up>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<Down>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-  },
+  }),
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp', max_item_count = 5, },
     { name = "luasnip", max_item_count = 5,},
-  }, {
-    { name = "buffer", max_item_count = 4, },
     { name = "path", max_item_count = 3, },
-    {name = "dictionary", max_item_count = 5, },
+  }, {
+      { name = "buffer", max_item_count = 4, },
+    -- {name = "dictionary", max_item_count = 5, },
   }),
 
   snippet = {
@@ -164,7 +142,7 @@ cmp.setup {
         nvim_lua = "[API]",
         path = "[PATH]",
         luasnip = "[SNIPPET]",
-        dictionary = "[DICTIONARY]",
+        -- dictionary = "[DICTIONARY]",
         nvim_lsp_document_symbol = "[SYMBOL]"
       })[entry.source.name]
 
@@ -182,6 +160,7 @@ cmp.setup {
 }
 
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'nvim_lsp_document_symbol' }, -- trigger by "/@"
   }, {
@@ -190,6 +169,7 @@ cmp.setup.cmdline('/', {
 })
 
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

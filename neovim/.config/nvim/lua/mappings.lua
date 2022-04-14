@@ -34,7 +34,7 @@ map("n", "yd", "<cmd>let @+=expand('%:p:h')<CR>", silent_noremap)
 map("n", "<leader>r", "<cmd>source $MYVIMRC<CR>", noremap)
 
 -- Shortcut for save
-map("n", "<leader>s", "<cmd>w<CR>", noremap)
+map("n", "<leader>w", "<cmd>w<CR>", noremap)
 
 
 ---- MARK: NAVIGATING ----

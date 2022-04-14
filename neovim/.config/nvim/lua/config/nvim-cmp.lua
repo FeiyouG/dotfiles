@@ -114,13 +114,24 @@ cmp.setup {
     ['<Down>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
   }),
 
+  window = {
+    documentation = {
+      border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+      winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
+    },
+    completion = {
+      border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+      winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
+    }
+  },
+
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 5, },
-    { name = "luasnip", max_item_count = 5,},
-    { name = "path", max_item_count = 3, },
-  }, {
+      { name = 'nvim_lsp', max_item_count = 5, },
+      { name = "luasnip", max_item_count = 5,},
+      { name = "path", max_item_count = 3, },
+    }, {
       { name = "buffer", max_item_count = 4, },
-    -- {name = "dictionary", max_item_count = 5, },
+      { name = 'nvim_lsp_signature_help', max_item_count = 3 },
   }),
 
   snippet = {

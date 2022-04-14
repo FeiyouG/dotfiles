@@ -14,18 +14,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-require("command_center").add({
-  {
-    description = "Sync plugins",
-    command = "PackerSync",
-  }, {
-    description = "Show plugins startup time",
-    command = "PackerProfile",
-  }, {
-    description = "Show plugins status",
-    command = "PackerStatus",
-  },
-})
 
 local function get_config(name)
     return string.format("require(\"config/%s\")", name)
@@ -48,6 +36,18 @@ packer.init {
 local use = packer.use
 packer.reset()
 
+require("command_center").add({
+  {
+    description = "Sync plugins",
+    command = "PackerSync",
+  }, {
+    description = "Show plugins startup time",
+    command = "PackerProfile",
+  }, {
+    description = "Show plugins status",
+    command = "PackerStatus",
+  },
+})
 
 ---- MARK: Install and Manage Plugins ----
 -- Packer can manage itself
@@ -111,7 +111,9 @@ use {
   {'hrsh7th/cmp-path' },
   { 'saadparwaiz1/cmp_luasnip' },
   {'hrsh7th/cmp-nvim-lsp-document-symbol' },
-  { 'uga-rosa/cmp-dictionary', config = get_config("cmp-dictionary") },
+  {"hrsh7th/cmp-nvim-lsp-signature-help"},
+
+  -- { 'uga-rosa/cmp-dictionary', config = get_config("cmp-dictionary") },
   -- {'jc-doyle/cmp-pandoc-references'}
   -- {'kdheepak/cmp-latex-symbols'}
   -- {'aspeddro/cmp-pandoc.nvim'}
@@ -134,17 +136,14 @@ use {
 use {
   {'nvim-telescope/telescope.nvim',requires = { 'nvim-lua/plenary.nvim'}, config = get_config("telescope")},
   { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
-  { 'fhill2/telescope-ultisnips.nvim' },
   {'git@github.com:FeiyouG/command_center.nvim.git', config = get_config("command_center")},
--- {'/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/my_project/command-center.nvim', get_confi}
-  { 'nvim-telescope/telescope-symbols.nvim' },
 }
 
----- Markdown and ZK Ecosytem ----
+-- ---- Markdown and ZK Ecosytem ----
 use {
-  {"mickael-menu/zk-nvim", config = get_config("lsp/custom_servers/zk-nvim")},
-  {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', config = get_config("markdown-preview")},
-  {'mzlogin/vim-markdown-toc', config = get_config("vim-markdown-toc")},
+  {"mickael-menu/zk-nvim", config = get_config("lsp/custom_servers/zk-nvim"), ft = {"markdown"} },
+  {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', config = get_config("markdown-preview"), ft = {"markdown"}},
+  {'mzlogin/vim-markdown-toc', config = get_config("vim-markdown-toc"), ft = {"markdown"}},
 }
 
 

@@ -137,16 +137,16 @@ telescope.setup {
         ["<Esc>"] = actions.close,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
-        ["["] = actions.preview_scrolling_up,
-        ["]"] = actions.preview_scrolling_down,
+        ["<C-f>"] = actions.preview_scrolling_up,
+        ["<C-b>"] = actions.preview_scrolling_down,
       },
 
       i = {
         ["<Esc>"] = actions.close,
         ["<C-u>"] = false, -- Clear the prompt
         ["<C-s>"] = actions.select_horizontal,
-        ["["] = actions.preview_scrolling_up,
-        ["]"] = actions.preview_scrolling_down,
+        ["<C-f>"] = actions.preview_scrolling_up,
+        ["<C-b>"] = actions.preview_scrolling_down,
       }
     },
 

@@ -64,17 +64,7 @@ local kind_icons = {
 --   TypeParameter = "",
 -- }
 
-
-cmp.setup {
-  -- Don't preselect item
-  preselect = cmp.PreselectMode.Item,
-
-  -- completion = {
-  --   autocomplete = false,
-  -- },
-
-  mapping = cmp.mapping.preset.insert({
-
+local mapping = {
     ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -110,9 +100,17 @@ cmp.setup {
     -- Select the completion item, excluding preselected
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-    ['<Up>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<Down>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-  }),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+
+}
+
+cmp.setup {
+  -- Don't preselect item
+  preselect = cmp.PreselectMode.Item,
+
+  -- mapping = cmp.mapping.preset.insert(mapping),
+  mapping = mapping,
 
   window = {
     documentation = {
@@ -171,7 +169,8 @@ cmp.setup {
 }
 
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
+  -- mapping = cmp.mapping.preset.cmdline(),
+  mapping = mapping,
   sources = cmp.config.sources({
     { name = 'nvim_lsp_document_symbol' }, -- trigger by "/@"
   }, {
@@ -180,7 +179,8 @@ cmp.setup.cmdline('/', {
 })
 
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  -- mapping = cmp.mapping.preset.cmdline(),
+  mapping = mapping,
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

@@ -3,18 +3,17 @@
 
 <!-- TOC GFM -->
 
-- [Feiyou's dotfiles](#feiyous-dotfiles)
-  - [Usage](#usage)
-    - [A Note to myself](#a-note-to-myself)
-  - [Dependencies](#dependencies)
-    - [General](#general)
-    - [zsh](#zsh)
-      - [install `zinit`](#install-zinit)
-    - [Neovim](#neovim)
-    - [TMUX](#tmux)
-      - [Install tpm](#install-tpm)
-      - [tmux default terminal](#tmux-default-terminal)
-  - [License](#license)
+- [Usage](#usage)
+  - [A Note to myself](#a-note-to-myself)
+- [Dependencies](#dependencies)
+  - [General](#general)
+  - [zsh](#zsh)
+    - [install `zinit`](#install-zinit)
+  - [Neovim](#neovim)
+  - [TMUX](#tmux)
+    - [Install tpm](#install-tpm)
+    - [tmux default terminal](#tmux-default-terminal)
+- [License](#license)
 
 <!-- /TOC -->
 

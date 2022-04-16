@@ -169,8 +169,7 @@ cmp.setup {
 }
 
 cmp.setup.cmdline('/', {
-  -- mapping = cmp.mapping.preset.cmdline(),
-  mapping = mapping,
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'nvim_lsp_document_symbol' }, -- trigger by "/@"
   }, {
@@ -179,8 +178,7 @@ cmp.setup.cmdline('/', {
 })
 
 cmp.setup.cmdline(':', {
-  -- mapping = cmp.mapping.preset.cmdline(),
-  mapping = mapping,
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

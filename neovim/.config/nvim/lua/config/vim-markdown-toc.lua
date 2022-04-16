@@ -4,7 +4,7 @@ local noremap = { noremap = true }
 command_center.add({
   {
     description = "Generate table of contents (GFM)",
-    command = "GenTocGFM",
+    cmd = "<CMD>GenTocGFM<CR>",
   }
 })
 

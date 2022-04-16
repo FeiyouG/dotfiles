@@ -168,6 +168,15 @@ cmp.setup {
   },
 }
 
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' },
+  }, {
+    { name = "buffer", max_item_count = 4, },
+    { name = "path", max_item_count = 3, },
+  })
+})
+
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({

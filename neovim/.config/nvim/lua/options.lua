@@ -1,5 +1,6 @@
 ---- MARK: MISc
 vim.cmd "set nocompatible"          -- Disable compatibility to old-tim vi
+vim.cmd "set completeopt=menu,menuone,noselect"
 vim.opt.hidden = true               -- Hide unused buffers
 vim.cmd "set cc=80"                 -- Set an 80 column boarder for good coding style
 vim.opt.ttyfast = true              -- Speed up scrolling in neovim

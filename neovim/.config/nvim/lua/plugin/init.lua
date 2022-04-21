@@ -1,0 +1,103 @@
+local utils = require('utils')
+
+---- MARK: Automatically download packer if missing ----
+local packer_bootstrap = nil
+
+if vim.fn.empty(vim.fn.glob(utils.path.plugin.installed_path)) > 0 then
+  packer_bootstrap = vim.fn.system({
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    utils.path.plugin.installed_path
+  })
+end
+
+-- MARK: setup packer
+local packer = require("packer")
+local packer_util = require("packer.util")
+
+packer.reset()
+packer.init({
+  profile = {
+    enable = true,
+    threshold = 0,
+  },
+
+  display = {
+    open_fn = packer_util.float,
+  }
+})
+
+
+-- MARK: Load Modules
+
+-- Safely load modules without break all configs
+local use = function(module_name)
+  -- Load Module
+  local module_loaded, module = pcall(require, module_name)
+  if not module_loaded then
+    print("Failed to load module [" .. module_name .. "]: " .. module)
+    return
+  end
+
+  -- Load plugins in module
+  for _, plugin in ipairs(module or {}) do
+    packer.use(plugin)
+    local plugin_loaded, error = pcall(packer.use, plugin)
+    if plugin_loaded then
+      -- function in schedule will be executated after all plugin is installed
+      if plugin.defer then vim.schedule(plugin.defer) end
+    else
+      print("Failed to load plugin [" .. plugin[0] .. "]: " .. error)
+    end
+  end
+
+end
+
+-- Reduce Startup time by caching
+packer.use {'wbthomason/packer.nvim'}
+
+-- Packer can manage itself
+packer.use {'lewis6991/impatient.nvim'}
+
+-- Modules
+use("plugin/lsp")
+use("plugin/fuzzy_finder")
+use("plugin/cmp_engine")
+
+
+-- MARK: Add commands to command center
+local has_command_center, command_center = pcall(require, "command_center")
+if has_command_center then
+  command_center.add({
+    {
+      description = "Sync plugins",
+      cmd = packer.sync
+    }, {
+      description = "Show plugins startup time",
+      cmd = packer.profile
+    }, {
+      description = "Show plugins status",
+      cmd = packer.status
+    },
+  })
+end
+
+
+-- MARK: Automatically update
+
+-- Sync config automatically if we just installed packer
+if packer_bootstrap then
+  packer.sync()
+end
+
+-- Compile config automatically after saving this file
+local auto_packer_sync = vim.api.nvim_create_augroup("auto_packer_sync", { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  callback = function() packer.compile() end,
+  -- callback = function() packer.sync()  end,
+  group = auto_packer_sync,
+  pattern = "**/nvim/lua/plugin/init.lua"
+})

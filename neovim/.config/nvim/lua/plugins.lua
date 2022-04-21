@@ -1,20 +1,4 @@
 ---- MARK: Automatically download packer if missing ----
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-local packer_bootstrap = nil
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path
-  })
-end
-
-
 local function get_config(name)
     return string.format("require(\"config/%s\")", name)
 end
@@ -22,19 +6,19 @@ end
 
 ---- MARK: Initialize Packer ----
 local packer = require("packer")
-packer.init {
-  profile = {
-    enable = true,
-    threshold = 0,
-  },
-
-  display = {
-    open_fn = require('packer.util').float,
-  }
-}
+-- packer.init {
+--   profile = {
+--     enable = true,
+--     threshold = 0,
+--   },
+--
+--   display = {
+--     open_fn = require('packer.util').float,
+--   }
+-- }
 
 local use = packer.use
-packer.reset()
+-- packer.rest()
 
 require("command_center").add({
   {
@@ -51,10 +35,10 @@ require("command_center").add({
 
 ---- MARK: Install and Manage Plugins ----
 -- Packer can manage itself
-use {'wbthomason/packer.nvim'}
+-- use {'wbthomason/packer.nvim'}
 
 ---- Reduce startup time by caching ----
-use { 'lewis6991/impatient.nvim', config = get_config("impatient")}
+-- use { 'lewis6991/impatient.nvim', config = get_config("impatient")}
 
 ---- MISCS ----
 use {
@@ -89,12 +73,12 @@ use {
 
 
 ---- LSP ----
-use {
-  {'neovim/nvim-lspconfig', config = get_config("lsp/nvim-lspconfig")},
-  { 'williamboman/nvim-lsp-installer', config = get_config("lsp/nvim-lsp-installer")},
-  { 'jose-elias-alvarez/null-ls.nvim', config = get_config("lsp/null-ls")},
+-- use {
+  -- {'neovim/nvim-lspconfig', config = get_config("lsp/nvim-lspconfig")},
+  -- { 'williamboman/nvim-lsp-installer', config = get_config("lsp/nvim-lsp-installer")},
+  -- { 'jose-elias-alvarez/null-ls.nvim', config = get_config("lsp/null-ls")},
   -- {'mfussenegger/nvim-lint', config = get_config("nvim-lint"),},
-}
+-- }
 
 ---- Snip Engine and Snippets ----
 use {
@@ -103,22 +87,21 @@ use {
 }
 
 ---- nvim-cmp Ecosystem for Autocompletion ----
-use {
-  {'hrsh7th/nvim-cmp', requires = { 'nvim-lua/plenary.nvim' }, config = get_config("nvim-cmp")},
-  {'hrsh7th/cmp-cmdline'},
-  {'hrsh7th/cmp-nvim-lsp' },
-  {'hrsh7th/cmp-buffer' },
-  {'hrsh7th/cmp-path' },
-  {'petertriho/cmp-git'},
-  { 'saadparwaiz1/cmp_luasnip' },
-  {'hrsh7th/cmp-nvim-lsp-document-symbol' },
-  {"hrsh7th/cmp-nvim-lsp-signature-help"},
-
-  -- { 'uga-rosa/cmp-dictionary', config = get_config("cmp-dictionary") },
-  -- {'jc-doyle/cmp-pandoc-references'}
-  -- {'kdheepak/cmp-latex-symbols'}
-  -- {'aspeddro/cmp-pandoc.nvim'}
-}
+-- use {
+--   {'hrsh7th/cmp-cmdline'},
+--   {'hrsh7th/cmp-nvim-lsp' },
+--   {'hrsh7th/cmp-buffer' },
+--   {'hrsh7th/cmp-path' },
+--   {'petertriho/cmp-git'},
+--   { 'saadparwaiz1/cmp_luasnip' },
+--   {'hrsh7th/cmp-nvim-lsp-document-symbol' },
+--   {"hrsh7th/cmp-nvim-lsp-signature-help"},
+--   {'hrsh7th/nvim-cmp', requires = { 'nvim-lua/plenary.nvim' }, config = get_config("nvim-cmp")},
+--   -- { 'uga-rosa/cmp-dictionary', config = get_config("cmp-dictionary") },
+--   -- {'jc-doyle/cmp-pandoc-references'}
+--   -- {'kdheepak/cmp-latex-symbols'}
+--   -- {'aspeddro/cmp-pandoc.nvim'}
+-- }
 
 ---- Autopair ----
 use  {
@@ -134,11 +117,11 @@ use {
 }
 
 ---- Telescope Ecosystem for Search ----
-use {
-  {'nvim-telescope/telescope.nvim',requires = { 'nvim-lua/plenary.nvim'}, config = get_config("telescope")},
-  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
-  {'git@github.com:FeiyouG/command_center.nvim.git', config = get_config("command_center")},
-}
+-- use {
+  -- {'nvim-telescope/telescope.nvim',requires = { 'nvim-lua/plenary.nvim'}, config = get_config("telescope")},
+  -- { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', config = get_config("fzf") },
+  -- {'git@github.com:FeiyouG/command_center.nvim.git', config = get_config("command_center")},
+-- }
 
 -- ---- Markdown and ZK Ecosytem ----
 use {

@@ -20,18 +20,18 @@ local packer = require("packer")
 local use = packer.use
 -- packer.rest()
 
-require("command_center").add({
-  {
-    description = "Sync plugins",
-    command = "PackerSync",
-  }, {
-    description = "Show plugins startup time",
-    command = "PackerProfile",
-  }, {
-    description = "Show plugins status",
-    command = "PackerStatus",
-  },
-})
+-- require("command_center").add({
+--   {
+--     description = "Sync plugins",
+--     command = "PackerSync",
+--   }, {
+--     description = "Show plugins startup time",
+--     command = "PackerProfile",
+--   }, {
+--     description = "Show plugins status",
+--     command = "PackerStatus",
+--   },
+-- })
 
 ---- MARK: Install and Manage Plugins ----
 -- Packer can manage itself
@@ -54,7 +54,7 @@ use {
 use {
   -- {'marko-cerovac/material.nvim', config = get_config("material")},
   -- {'shaunsingh/nord.nvim', config = get_config("nord")},
-  {'rmehri01/onenord.nvim', config = get_config("onenord")},
+  -- {'rmehri01/onenord.nvim', config = get_config("onenord")},
   {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}, config = get_config('lualine')},
   {'fladson/vim-kitty'} -- Syntax highlight for kitty config files
   -- {'sindrets/diffview.nvim',  requires = 'nvim-lua/plenary.nvim'},
@@ -125,7 +125,7 @@ use {
 
 -- ---- Markdown and ZK Ecosytem ----
 use {
-  {"mickael-menu/zk-nvim", config = get_config("lsp/custom_servers/zk-nvim"), ft = {"markdown"} },
+  -- {"mickael-menu/zk-nvim", config = get_config("lsp/custom_servers/zk-nvim"), ft = {"markdown"} },
   {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', config = get_config("markdown-preview"), ft = {"markdown"}},
   {'mzlogin/vim-markdown-toc', config = get_config("vim-markdown-toc"), ft = {"markdown"}},
 }

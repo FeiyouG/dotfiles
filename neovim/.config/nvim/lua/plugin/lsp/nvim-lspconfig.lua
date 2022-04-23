@@ -35,27 +35,27 @@ plugin.defer = function()
     command_center.add({
       {
         description = "Show documentations (hover)",
-        command = "lua vim.lsp.buf.hover()",
+        cmd = vim.lsp.buf.hover,
         keybindings = { "n", "K", silent_noremap },
       }, {
         description = "Show errors of the current line",
-        command = "lua vim.diagnostic.open_float()",
+        cmd = vim.diagnostic.open_float,
         keybindings = { "n", "E", silent_noremap },
       }, {
         description = "Show function signature",
-        command = "lua vim.lsp.buf.signature_help()",
+        cmd = vim.lsp.buf.signature_help,
         keybindings = { "n", "<leader>sk", silent_noremap },
       }, {
         description = "Go to declarations",
-        command = "lua vim.lsp.buf.declaration()",
+        cmd = vim.lsp.buf.declaration,
         keybindings = { "n", "<leader>sD", silent_noremap },
       }, {
         description = "Rename symbol",
-        command = "lua vim.lsp.buf.rename()",
+        cmd = vim.lsp.buf.rename,
         keybindings = { "n", "<leader>sn", silent_noremap },
       }, {
         description = "Format code (lint)",
-        command = "lua vim.lsp.buf.formatting()",
+        cmd = vim.lsp.buf.formatting,
         keybindings = { "n", "<leader>sf", silent_noremap },
       }
     })
@@ -64,42 +64,42 @@ plugin.defer = function()
     command_center.add({
       {
         description = "Show code actions",
-        command = "Telescope lsp_code_actions",
+        cmd = "<CMD>Telescope lsp_code_actions<CR>",
         keybindings = { "n", "<leader>sa", noremap },
       },{
         description = "Show range code actions",
-        command = "Telescope lsp_range_code_actions",
+        cmd = "<CMD>Telescope lsp_range_code_actions<CR>",
         keybindings = { "v", "<leader>sa", noremap },
       },{
         description = "Go to definitions",
-        command = "Telescope lsp_definitions",
+        cmd = "<CMD>Telescope lsp_definitions<CR>",
         keybindings = { "n", "<leader>sd", noremap },
       },{
         description = "Go to type definitions",
-        command = "Telescope lsp_type_definitions",
+        cmd = "<CMD>Telescope lsp_type_definitions<CR>",
         keybindings = { "n", "<leader>st", noremap },
       },{
         description = "Show all references",
-        command = "Telescope lsp_references",
+        cmd = "<CMD>Telescope lsp_references<CR>",
         keybindings = { "n", "<leader>sr", noremap },
       },{
         description = "Show workspace errors (diagnostic)",
-        command = "Telescope diagnostics",
+        cmd = "<CMD>Telescope diagnostics<CR>",
         keybindings = { "n", "<leader>se", noremap },
       },{
         description = "Go to implementations",
-        command = "Telescope lsp_implementations",
+        cmd = "<CMD>Telescope lsp_implementations<CR>",
         keybindings = { "n", "<leader>si", noremap },
       },{
         description = "Show document symbols",
-        command = "Telescope lsp_document_symbols",
+        cmd = "<CMD>Telescope lsp_document_symbols<CR>",
         keybindings = {
           {"n", "<leader>ss", noremap },
           {"n", "<leader>ssd", noremap },
         },
       },{
         description = "show workspace symbols",
-        command = "Telescope lsp_dynamic_workspace_symbols",
+        cmd = "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
         keybindings = { "n", "<leader>ssw", noremap },
       }
     })

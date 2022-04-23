@@ -58,14 +58,14 @@ M.defer = function()
   command_center.add({
     {
       description = "Find files",
-      command = "Telescope find_files",
+      cmd = "<cmd>Telescope find_files<CR>",
       keybindings = { "n", "<leader>ff", noremap },
     }, {
       description = "Find hidden files",
-      command = "Telescope find_files hidden=true",
+      cmd = "<cmd>Telescope find_files hidden=true<CR>",
     }, {
       description = "Search within the project (Live grep)",
-      command = "Telescope live_grep",
+      cmd = "<cmd>Telescope live_grep<CR>",
       keybindings = { "n", "<leader>fg", noremap },
     }
   })
@@ -74,55 +74,55 @@ M.defer = function()
   command_center.add({
     {
       description = "Find help documentations",
-      command = "Telescope help_tags",
+      cmd = "<cmd>Telescope help_tags<CR>",
       keybindings = { "n", "<leader>fh", noremap },
     }, {
       description = "Show opened buffers",
-      command = "Telescope buffers",
+      cmd = "<cmd>Telescope buffers<CR>",
       keybindings = { "n", "<leader>fb", noremap },
     }, {
       description = "Find man pages",
-      command = "Telescope man_pages",
+      cmd = "<cmd>Telescope man_pages<CR>",
       keybindings = { "n", "<leader>fm", noremap },
     }, {
       description = "Show all key maps",
-      command = "Telescope keymaps",
+      cmd = "<cmd>Telescope keymaps<CR>",
       keybindings = { "n", "<leader>fk", noremap },
     }, {
       description = "Search inside current buffer",
-      command = "Telescope current_buffer_fuzzy_find",
+      cmd = "<cmd>Telescope current_buffer_fuzzy_find<CR>",
       keybindings = { "n", "<leader>fl", noremap },
     }, {
       description = "Show registers",
-      command = "Telescope registers",
+      cmd = "<cmd>Telescope registers<CR>",
       keybindings = { "n", "<leader>fr", noremap },
     }, {
       description = "Show recent files",
-      command = "Telescope oldfiles",
+      cmd = "<cmd>Telescope oldfiles<CR>",
     }, {
       description = "Show all available commands",
-      command = "Telescope commands",
+      cmd = "<cmd>Telescope commands<CR>",
     }, {
       description = "Show command history",
-      command = "Telescope commands",
+      cmd = "<cmd>Telescope commands<CR>",
     }, {
       description = "Show search history (vimgrep)",
-      command = "Telescope commands",
+      cmd = "<cmd>Telescope commands<CR>",
     }, {
       description = "Switch colorschemes",
-      command = "Telescope colorscheme",
+      cmd = "<cmd>Telescope colorscheme<CR>",
     }, {
       description = "Show jumplist",
-      command = "Telescope jumplist",
+      cmd = "<cmd>Telescope jumplist<CR>",
     }, {
       description = "Edit vim options",
-      command = "Telescope vim_options",
+      cmd = "<cmd>Telescope vim_options<CR>",
     }, {
       description = "List all autocommands",
-      command = "Telescope autocommands",
+      cmd = "<cmd>Telescope autocommands<CR>",
     }, {
       description = "Find telescope builtin commands",
-      command = "Telescope builtin",
+      cmd = "<cmd>Telescope builtin<CR>",
     }
   })
 
@@ -130,19 +130,19 @@ M.defer = function()
   command_center.add({
     {
       description = "Show workspace git commits",
-      command = "Telescope git_commits",
+      cmd = "<cmd>Telescope git_commits<CR>",
     }, {
       description = "Show git commits of current file",
-      command = "Telescope git_bcommits",
+      cmd = "<cmd>Telescope git_bcommits<CR>",
     }, {
       description = "Show git status",
-      command = "Telescope git_status",
+      cmd = "<cmd>Telescope git_status<CR>",
     }, {
       description = "Show git branches",
-      command = "Telescope ",
+      cmd = "<cmd>Telescope <CR>",
     }, {
       description = "Show git stash",
-      command = "Telescope git_stash",
+      cmd = "<cmd>Telescope git_stash<CR>",
     }
   })
 
@@ -150,7 +150,7 @@ M.defer = function()
   command_center.add({
     {
       description = "Show treesitter symbols",
-      command = "Telescope treesitter",
+      cmd = "<cmd>Telescope treesitter<CR>",
       keybindings = { "n", "<leader>sts", noremap}
     }
   })

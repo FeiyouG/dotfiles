@@ -5,6 +5,13 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"                                                # Default editor
 export VISUAL="nvim"                                                # Default editor
 
+# ---- UTILITIES ----
+alias rm="rm -i"                                                      # Confirmation on remving
+alias ls="ls --color"                                                  # Enable color for ls
+
+# ---- nodejs and npm ----
+export NPM_CONFIG_USERCONFIG="$(safe_path $XDG_CONFIG_HOME/npm)/npmrc"
+
 # ---- HOMEBREW ----
 export HOMEBREW_NO_AUTO_UPDATE=true
 
@@ -59,9 +66,6 @@ alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Con
 # ---- NUPACK ----
 export NUPACKHOME="/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/Ubicomp/Pakages/nupack3.2.2"
 
-# ---- UTILITIES ----
-alias rm="rm -i"                                                      # Confirmation on remving
-alias ls="ls --color"                                                  # Enable color for ls
 
 # ---- Import private shell settings if present----
 [ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private

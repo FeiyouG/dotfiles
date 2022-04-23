@@ -9,7 +9,7 @@ M.config = function()
   command_center.add({
     {
       description = "Open command_center",
-      command = "Telescope command_center",
+      cmd = "<CMD>Telescope command_center<CR>",
       keybindings = {
         {"n", "<Leader>fc", noremap},
         {"v", "<Leader>fc", noremap},

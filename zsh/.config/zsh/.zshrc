@@ -25,23 +25,25 @@ ZINIT[COMPLETIONS_DIR]="$XDG_DATA_HOME/zinit/completions"
 ZINIT[SNIPPETS_DIR]="$XDG_DATA_HOME/zinit/snippets"
 ZINIT[ZCOMPDUMP_PATH]="$(safe_path $XDG_CACHE_HOME/zsh)/zcompdump-$ZSH_VERSION"
 
+# -- Init ZINIT
 source "$ZINIT_HOME/zinit.zsh"
 
 # -- ZSH PROMPT
 # zinit snippet "https://github.com/arcticicestudio/igloo/blob/master/snowblocks/zsh/lib/themes/igloo.zsh"
-source $XDG_CONFIG_HOME/zsh//config/prompt.zsh
-ZSH_PROMPT_ALWAYS_SHOW_USER=${IGLOO_ZSH_PROMPT_THEME_ALWAYS_SHOW_USER:-false}
+# source $XDG_CONFIG_HOME/zsh//config/prompt.zsh
+# ZSH_PROMPT_ALWAYS_SHOW_USER=${IGLOO_ZSH_PROMPT_THEME_ALWAYS_SHOW_USER:-false}
+# zinit snippet "https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh"
+# # GIT_PS1_SHOWCOLORHINTS=1                                              # Show color
+# GIT_PS1_SHOWUPSTREAM="auto verbose"
 
-zinit snippet "https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh"
-# GIT_PS1_SHOWCOLORHINTS=1                                              # Show color
-GIT_PS1_SHOWUPSTREAM="auto verbose"
+# Add and config spaceship
+source $XDG_CONFIG_HOME/zsh/config/spaceship.zsh
 
 # -- ZSH COMPLETION
 autoload -U compinit
 compinit -d "$(safe_path $XDG_CACHE_HOME/zsh)/zcompdum-$ZSH_VERSION"  # Conform to XDG Base Directory (cache file)
 zinit ice blockf
 zinit light zsh-users/zsh-completions                                 # zsh completion
-
 zinit light zsh-users/zsh-autosuggestions                             # Autosuggestion based on history
 zinit light Aloxaf/fzf-tab                                            # Completion with fzf interface
 

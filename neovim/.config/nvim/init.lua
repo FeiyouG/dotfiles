@@ -19,4 +19,3 @@ require("custom.globals")
 
 -- Plugin management via Packer
 require("plugin")
-require('plugins')

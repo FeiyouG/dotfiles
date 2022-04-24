@@ -1,4 +1,5 @@
 return {
+  -- nvim-cmp ecosystem
   require("plugin/cmp_engine/nvim-cmp"),
   { 'hrsh7th/cmp-cmdline' },
   { 'hrsh7th/cmp-nvim-lsp' },
@@ -8,4 +9,8 @@ return {
   { 'saadparwaiz1/cmp_luasnip' },
   { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
+
+  -- Additional completion features
+  require("plugin/cmp_engine/nvim-ts-autotag"),
+  require("plugin/cmp_engine/nvim-autopairs"),
 }

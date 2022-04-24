@@ -44,7 +44,7 @@ local use = function(module_name)
 
   -- Load plugins in module
   for _, plugin in ipairs(module or {}) do
-    packer.use(plugin)
+    -- P(plugin)
     local plugin_loaded, error = pcall(packer.use, plugin)
     if plugin_loaded then
       -- function in schedule will be executated after all plugin is installed
@@ -57,15 +57,24 @@ local use = function(module_name)
 end
 
 -- Reduce Startup time by caching
-packer.use {'wbthomason/packer.nvim'}
+packer.use { 'wbthomason/packer.nvim' }
 
 -- Packer can manage itself
-packer.use {'lewis6991/impatient.nvim'}
+packer.use { 'lewis6991/impatient.nvim' }
 
 -- Modules
+use("plugin/treesitter")
 use("plugin/lsp")
-use("plugin/fuzzy_finder")
+use("plugin/snip_engine")
 use("plugin/cmp_engine")
+use("plugin/fuzzy_finder")
+use("plugin/style")
+use("plugin/misc")
+
+-- Integration with other tools
+use("plugin/integration/tmux")
+use("plugin/integration/zk")
+use("plugin/integration/git")
 
 
 -- MARK: Add commands to command center
@@ -75,6 +84,9 @@ if has_command_center then
     {
       description = "Sync plugins",
       cmd = packer.sync
+    }, {
+      description = "Compile plugins",
+      cmd = packer.compile
     }, {
       description = "Show plugins startup time",
       cmd = packer.profile
@@ -89,9 +101,7 @@ end
 -- MARK: Automatically update
 
 -- Sync config automatically if we just installed packer
-if packer_bootstrap then
-  packer.sync()
-end
+if packer_bootstrap then packer.sync() end
 
 -- Compile config automatically after saving this file
 local auto_packer_sync = vim.api.nvim_create_augroup("auto_packer_sync", { clear = true })

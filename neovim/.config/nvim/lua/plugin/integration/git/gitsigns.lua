@@ -59,34 +59,36 @@ return {
 
     command_center.add({
       {
-        description = "Toggle git signs and line number highlight",
+        description = "Turn off all gitsigns function",
         cmd = function()
-          gs.toggle_signs()
-          gs.toggle_numhl()
-        end,
+          gs.toggle_signs(false)
+          gs.toggle_numhl(false)
+          gs.toggle_word_diff(false)
+          gs.toggle_linehl(false)
+          gs.toggle_current_line_blame(false)
+        end
+      }, {
+        description = "Toggle git signs and line number highlight",
+        cmd = gs.toggle_signs,
         keybindings = {
           { "n", "<leader>gs", noremap },
-          { "n", "<leader>gss", noremap }
-        }
+          { "n", "<leader>gss", noremap },
+        },
       }, {
-        description = "Toggle git signs, line number, and line highlight",
-        cmd = function()
-          gs.toggle_signs()
-          gs.toggle_numhl()
-          gs.toggle_linehl()
-        end,
-        keybindings = { "n", "<leader>gsl", noremap }
+        description = "Toggle git line highlight",
+        cmd = gs.toggle_linehl,
+        keybindings = { "n", "<leader>gsl", noremap },
+      }, {
+        description = "Toggle git word diff",
+        cmd = gs.toggle_word_diff,
       }, {
         description = "Toggle git blame on cursor hold",
         cmd = gs.toggle_current_line_blame,
-        keybindings = {
-          { "n", "<leader>gb", noremap },
-          { "n", "<leader>gbl", noremap },
-        }
+        keybindings = { "n", "<leader>gb", noremap },
       }, {
         description = "Git blame current line",
-        cmd = function() gs.blame_line({ full = true }) end,
-        keybindings = { "n", "<leader>gb", noremap },
+        cmd = function() gs.blame_line() end,
+        keybindings = { "n", "<leader>gB", noremap },
       }, {
         description = "Git preview hunk",
         cmd = gs.preview_hunk,
@@ -104,11 +106,27 @@ return {
         keybindings = { "n", "<leader>ghu", noremap },
       }, {
         description = "Git reset hunk",
-        cmd = "<CMD>Gitsigns stage_hunk<CR>",
+        cmd = "<CMD>Gitsigns reset_hunk<CR>",
         keybindings = {
           { "n", "<leader>ghr", noremap },
           { "v", "<leader>ghr", noremap },
         }
+      }, {
+        cmd = function()
+          if vim.wo.diff then return ']c' end
+          vim.schedule(function() gs.next_hunk() end)
+          return '<Ignore>'
+        end,
+        keybindings = { "n", "]c", noremap },
+        mode = command_center.mode.REGISTER_ONLY,
+      }, {
+        cmd = function()
+          if vim.wo.diff then return '[c' end
+          vim.schedule(function() gs.prev_hunk() end)
+          return '<Ignore>'
+        end,
+        keybindings = { "n", "[c", noremap },
+        mode = command_center.mode.REGISTER_ONLY,
       }
     })
 

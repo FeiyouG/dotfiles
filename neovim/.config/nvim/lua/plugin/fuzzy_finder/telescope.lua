@@ -125,9 +125,9 @@ local M = {
       {
         description = "Show workspace git commits",
         cmd = "<cmd>Telescope git_commits<CR>",
-      }, {
-        description = "Show git commits of current buffer",
-        cmd = "<cmd>Telescope git_bcommits<CR>",
+      -- }, {
+      --   description = "Show git commits of current buffer",
+      --   cmd = "<cmd>Telescope git_bcommits<CR>",
       -- }, {
       --   description = "Show git status",
       --   cmd = "<cmd>Telescope git_status<CR>",

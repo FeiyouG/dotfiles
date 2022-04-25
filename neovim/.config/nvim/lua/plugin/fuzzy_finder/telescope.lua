@@ -58,7 +58,7 @@ local M = {
         description = "Find hidden files",
         cmd = "<cmd>Telescope find_files hidden=true<CR>",
       }, {
-        description = "Search within the project (Live grep)",
+        description = "Find string in workspace (Live grep)",
         cmd = "<cmd>Telescope live_grep<CR>",
         keybindings = { "n", "<leader>fg", noremap },
       }
@@ -79,11 +79,11 @@ local M = {
         cmd = "<cmd>Telescope man_pages<CR>",
         keybindings = { "n", "<leader>fm", noremap },
       }, {
-        description = "Show all key maps",
+        description = "Find key maps",
         cmd = "<cmd>Telescope keymaps<CR>",
         keybindings = { "n", "<leader>fk", noremap },
       }, {
-        description = "Search inside current buffer",
+        description = "Find string in current buffer",
         cmd = "<cmd>Telescope current_buffer_fuzzy_find<CR>",
         keybindings = { "n", "<leader>fl", noremap },
       }, {
@@ -94,14 +94,14 @@ local M = {
         description = "Show recent files",
         cmd = "<cmd>Telescope oldfiles<CR>",
       }, {
-        description = "Show all available commands",
+        description = "Show all commands",
         cmd = "<cmd>Telescope commands<CR>",
       }, {
         description = "Show command history",
-        cmd = "<cmd>Telescope commands<CR>",
+        cmd = "<cmd>Telescope command_history<CR>",
       }, {
         description = "Show search history (vimgrep)",
-        cmd = "<cmd>Telescope commands<CR>",
+        cmd = "<cmd>Telescope search_history<CR>",
       }, {
         description = "Switch colorschemes",
         cmd = "<cmd>Telescope colorscheme<CR>",
@@ -112,10 +112,10 @@ local M = {
         description = "Edit vim options",
         cmd = "<cmd>Telescope vim_options<CR>",
       }, {
-        description = "List all autocommands",
+        description = "Show autocommands",
         cmd = "<cmd>Telescope autocommands<CR>",
       }, {
-        description = "Find telescope builtin commands",
+        description = "Show telescope builtin commands",
         cmd = "<cmd>Telescope builtin<CR>",
       }
     })
@@ -126,11 +126,11 @@ local M = {
         description = "Show workspace git commits",
         cmd = "<cmd>Telescope git_commits<CR>",
       }, {
-        description = "Show git commits of current file",
+        description = "Show git commits of current buffer",
         cmd = "<cmd>Telescope git_bcommits<CR>",
-      }, {
-        description = "Show git status",
-        cmd = "<cmd>Telescope git_status<CR>",
+      -- }, {
+      --   description = "Show git status",
+      --   cmd = "<cmd>Telescope git_status<CR>",
       }, {
         description = "Show git branches",
         cmd = "<cmd>Telescope <CR>",

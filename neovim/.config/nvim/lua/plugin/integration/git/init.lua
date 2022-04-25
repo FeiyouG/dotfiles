@@ -1,3 +1,4 @@
 return {
-  {'tpope/vim-fugitive'}
+  require("plugin/integration/git/fugitive"),
+  require("plugin/integration/git/gitsigns"),
 }

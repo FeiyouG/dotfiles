@@ -63,10 +63,6 @@ export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform 
 alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
 
 
-# ---- NUPACK ----
-export NUPACKHOME="/Users/feiyouguo/Documents/Mine/UW/Current_Quarter/Ubicomp/Pakages/nupack3.2.2"
-
-
 # ---- Import private shell settings if present----
 [ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private
 

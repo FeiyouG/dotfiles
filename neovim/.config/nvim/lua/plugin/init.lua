@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require("utils")
 
 ---- MARK: Automatically download packer if missing ----
 local packer_bootstrap = nil
@@ -50,7 +50,7 @@ local use = function(module_name)
       -- function in schedule will be executated after all plugin is installed
       if plugin.defer then vim.schedule(plugin.defer) end
     else
-      print("Failed to load plugin [" .. plugin[0] .. "]: " .. error)
+      print("Failed to load plugin [" .. plugin[0] .. "]: \n" .. error)
     end
   end
 
@@ -68,6 +68,7 @@ use("plugin/lsp")
 use("plugin/snip_engine")
 use("plugin/cmp_engine")
 use("plugin/fuzzy_finder")
+use("plugin/navigation")
 use("plugin/style")
 use("plugin/misc")
 

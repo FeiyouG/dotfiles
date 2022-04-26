@@ -100,12 +100,12 @@ M.config = function()
     },
 
     sources = cmp.config.sources({
-      { name = 'nvim_lsp', max_item_count = 5, },
-      { name = "luasnip", max_item_count = 5, },
-      { name = "path", max_item_count = 3, },
+      { name = 'nvim_lsp', },
+      { name = "luasnip", },
+      { name = "path", },
     }, {
-      { name = "buffer", max_item_count = 4, },
-      { name = 'nvim_lsp_signature_help', max_item_count = 3 },
+      { name = "buffer", },
+      { name = 'nvim_lsp_signature_help' },
     }),
 
     snippet = {
@@ -148,8 +148,8 @@ M.config = function()
     sources = cmp.config.sources({
       { name = 'cmp_git' },
     }, {
-      { name = "buffer", max_item_count = 4, },
-      { name = "path", max_item_count = 3, },
+      { name = "buffer", },
+      { name = "path", },
     })
   })
 

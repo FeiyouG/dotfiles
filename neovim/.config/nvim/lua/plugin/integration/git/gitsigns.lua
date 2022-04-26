@@ -50,7 +50,6 @@ return {
   end,
 
   defer = function()
-    print("HERE")
     local has_command_center, command_center = pcall(require, "command_center")
     if not has_command_center then return end
 

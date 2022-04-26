@@ -191,15 +191,15 @@ return {
     command_center.add({
       {
         description = "Toggle nvim-tree",
-        command = "NvimTreeToggle",
+        cmd = "<CMD>NvimTreeToggle<CR>",
         keybindings = { "n", "<leader>tt", noremap },
       }, {
         description = "Refresh nvim-tree",
-        command = "NvimTreeRefresh",
+        cmd = "<CMD>NvimTreeRefresh<CR>",
         keybindings = { "n", "<leader>tr", noremap },
       }, {
         description = "Reveal current file in nvim-tree",
-        command = "NvimTreeFindFile",
+        cmd = "<CMD>NvimTreeFindFile<CR>",
         keybindings = { "n", "<leader>tf", noremap },
       }
     })

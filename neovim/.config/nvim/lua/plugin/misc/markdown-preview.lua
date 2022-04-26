@@ -69,7 +69,7 @@ return {
     command_center.add({
       {
         description = "Toggle markdown preview",
-        command = "MarkdownPreviewToggle",
+        cmd = "<CMD>MarkdownPreviewToggle<CR>",
       }
     })
   end

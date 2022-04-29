@@ -54,3 +54,6 @@ vim.cmd "let &t_ut=''"
 ---- MAKR: FOLDING ----
 vim.o.foldlevel = 3                 -- So most foldings are unfold
 
+---- MARK: Global status line ----
+-- Set in plugin/style/lualine.lua
+-- vim.cmd "hi link WinSeparator FloatBorder"

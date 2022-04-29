@@ -88,7 +88,6 @@ return {
     nvim_tree.setup {
       disable_netrw       = true,
       open_on_setup       = true,
-      hide_root_folder    = false,
       hijack_cursor       = false,
       hijack_netrw        = true,
       open_on_tab         = false,

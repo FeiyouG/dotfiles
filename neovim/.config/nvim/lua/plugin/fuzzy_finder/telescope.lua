@@ -52,14 +52,14 @@ local M = {
     command_center.add({
       {
         description = "Find files",
-        cmd = "<cmd>Telescope find_files<CR>",
+        cmd = "<CMD>Telescope find_files<CR>",
         keybindings = { "n", "<leader>ff", noremap },
       }, {
         description = "Find hidden files",
-        cmd = "<cmd>Telescope find_files hidden=true<CR>",
+        cmd = "<CMD>Telescope find_files hidden=true<CR>",
       }, {
         description = "Find string in workspace (Live grep)",
-        cmd = "<cmd>Telescope live_grep<CR>",
+        cmd = "<CMD>Telescope live_grep<CR>",
         keybindings = { "n", "<leader>fg", noremap },
       }
     })
@@ -68,55 +68,55 @@ local M = {
     command_center.add({
       {
         description = "Find help documentations",
-        cmd = "<cmd>Telescope help_tags<CR>",
+        cmd = "<CMD>Telescope help_tags<CR>",
         keybindings = { "n", "<leader>fh", noremap },
       }, {
         description = "Show opened buffers",
-        cmd = "<cmd>Telescope buffers<CR>",
+        cmd = "<CMD>Telescope buffers<CR>",
         keybindings = { "n", "<leader>fb", noremap },
       }, {
         description = "Find man pages",
-        cmd = "<cmd>Telescope man_pages<CR>",
+        cmd = "<CMD>Telescope man_pages<CR>",
         keybindings = { "n", "<leader>fm", noremap },
       }, {
         description = "Find key maps",
-        cmd = "<cmd>Telescope keymaps<CR>",
+        cmd = "<CMD>Telescope keymaps<CR>",
         keybindings = { "n", "<leader>fk", noremap },
       }, {
         description = "Find string in current buffer",
-        cmd = "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+        cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
         keybindings = { "n", "<leader>fl", noremap },
       }, {
         description = "Show registers",
-        cmd = "<cmd>Telescope registers<CR>",
+        cmd = "<CMD>Telescope registers<CR>",
         keybindings = { "n", "<leader>fr", noremap },
       }, {
         description = "Show recent files",
-        cmd = "<cmd>Telescope oldfiles<CR>",
+        cmd = "<CMD>Telescope oldfiles<CR>",
       }, {
         description = "Show all commands",
-        cmd = "<cmd>Telescope commands<CR>",
+        cmd = "<CMD>Telescope commands<CR>",
       }, {
         description = "Show command history",
-        cmd = "<cmd>Telescope command_history<CR>",
+        cmd = "<CMD>Telescope command_history<CR>",
       }, {
         description = "Show search history (vimgrep)",
-        cmd = "<cmd>Telescope search_history<CR>",
+        cmd = "<CMD>Telescope search_history<CR>",
       }, {
         description = "Switch colorschemes",
-        cmd = "<cmd>Telescope colorscheme<CR>",
+        cmd = "<CMD>Telescope colorscheme<CR>",
       }, {
         description = "Show jumplist",
-        cmd = "<cmd>Telescope jumplist<CR>",
+        cmd = "<CMD>Telescope jumplist<CR>",
       }, {
         description = "Edit vim options",
-        cmd = "<cmd>Telescope vim_options<CR>",
+        cmd = "<CMD>Telescope vim_options<CR>",
       }, {
         description = "Show autocommands",
-        cmd = "<cmd>Telescope autocommands<CR>",
+        cmd = "<CMD>Telescope autocommands<CR>",
       }, {
         description = "Show telescope builtin commands",
-        cmd = "<cmd>Telescope builtin<CR>",
+        cmd = "<CMD>Telescope builtin<CR>",
       }
     })
 
@@ -124,30 +124,22 @@ local M = {
     command_center.add({
       {
         description = "Show workspace git commits",
-        cmd = "<cmd>Telescope git_commits<CR>",
+        cmd = "<CMD>Telescope git_commits<CR>",
       -- }, {
       --   description = "Show git commits of current buffer",
-      --   cmd = "<cmd>Telescope git_bcommits<CR>",
+      --   cmd = "<CMD>Telescope git_bcommits<CR>",
       -- }, {
       --   description = "Show git status",
-      --   cmd = "<cmd>Telescope git_status<CR>",
+      --   cmd = "<CMD>Telescope git_status<CR>",
       }, {
         description = "Show git branches",
-        cmd = "<cmd>Telescope <CR>",
+        cmd = "<CMD>Telescope <CR>",
       }, {
         description = "Show git stash",
-        cmd = "<cmd>Telescope git_stash<CR>",
+        cmd = "<CMD>Telescope git_stash<CR>",
       }
     })
 
-    -- Other Builtin
-    command_center.add({
-      {
-        description = "Show treesitter symbols",
-        cmd = "<cmd>Telescope treesitter<CR>",
-        keybindings = { "n", "<leader>sts", noremap }
-      }
-    })
   end
 }
 

@@ -5,4 +5,6 @@ return {
   vimls = {},
   jdtls = {},
   pyright = {},
+  html = {},
+  clangd = {},
 }

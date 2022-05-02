@@ -50,7 +50,7 @@ return {
       capabilities = nvim_cmp.update_capabilities(capabilities)
     end
 
-    -- Setup servers
+    -- initialize servers
     local servers = require("plugin/lsp/servers")
     for server, settings in pairs(servers) do
       settings.capabilities = capabilities
@@ -102,10 +102,6 @@ return {
         description = "Show code actions",
         cmd = vim.lsp.buf.code_action,
         keybindings = { "n", "<leader>sa", noremap },
-      }, {
-        description = "Show range code actions",
-        cmd = "<CMD>Telescope lsp_range_code_actions<CR>",
-        keybindings = { "v", "<leader>sa", noremap },
       }, {
         description = "Go to definitions",
         cmd = "<CMD>Telescope lsp_definitions<CR>",

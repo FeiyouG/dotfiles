@@ -39,7 +39,7 @@ return {
 
       highlight = {
         enable = true,
-        -- disable = { "html" },
+        disable = { "html" },
         -- additional_vim_regex_highlighting = { "markdown" },
       },
 

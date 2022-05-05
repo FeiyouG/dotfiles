@@ -3,7 +3,7 @@ return {
   sumneko_lua = require("plugin/lsp/servers/sumneko_lua"),
   tsserver = {},
   vimls = {},
-  jdtls = {},
+  -- jdtls = {},    -- setup through nvim-jdtls
   pyright = {},
   html = {},
   clangd = {},

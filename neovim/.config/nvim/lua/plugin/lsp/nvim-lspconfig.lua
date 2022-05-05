@@ -1,3 +1,4 @@
+
 return {
   "neovim/nvim-lspconfig",
 
@@ -41,20 +42,15 @@ return {
 
 
     -- MARK: Setup Servers
+    local utils = require("utils")
     local lspconfig = require("lspconfig")
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-    -- update capability for nvim-cmp
-    local has_nvim_cmp, nvim_cmp = pcall(require, 'cmp_nvim_lsp')
-    if has_nvim_cmp then
-      capabilities = nvim_cmp.update_capabilities(capabilities)
-    end
 
     -- initialize servers
     local servers = require("plugin/lsp/servers")
-    for server, settings in pairs(servers) do
-      settings.capabilities = capabilities
-      lspconfig[server].setup(settings)
+    for server, server_config in pairs(servers) do
+      -- Setup common server configs
+      server_config.capabilities = utils.lsp.capabilities
+      lspconfig[server].setup(server_config)
     end
 
   end,

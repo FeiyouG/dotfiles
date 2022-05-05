@@ -6,6 +6,11 @@ M.concat = function(...)
   return table.concat({ ... }, '/')
 end
 
+-- Create directory recursice if path doesn't exist
+M.safe_path = function(path)
+  vim.api.nvim_exec("!safe_path " .. path, false)
+end
+
 -- M.filepath = function()
 --   return debug.getinfo(1).short_src
 -- end

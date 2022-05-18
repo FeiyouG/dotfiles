@@ -28,8 +28,6 @@ end
 -- Add new words/diabledRules/hiddenFalsePositives custom dictionary
 local function add_to_config(type, lang, value)
   local config = load_config()
-  print(vim.inspect(config))
-  print(type, lang)
   local key = config[type][lang]
   if key then
     if not vim.tbl_contains(key, value) then

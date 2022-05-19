@@ -4,6 +4,6 @@ return {
   require("plugin/misc/vim-markdown-toc"),
   { 'moll/vim-bbye' },
   { 'tpope/vim-repeat' },
-  { 'preservim/vim-markdown', requires = { 'godlygeek/tabular' } },
+  -- { 'preservim/vim-markdown', requires = { 'godlygeek/tabular' } },
   { 'dhruvasagar/vim-table-mode' }
 }

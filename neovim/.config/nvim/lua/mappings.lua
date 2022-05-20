@@ -1,7 +1,7 @@
 ---- MARK: LOCAL VARIABLES
 local map = vim.api.nvim_set_keymap
-local noremap = {noremap = true}
-local silent_noremap = {noremap = true, silent = true}
+local noremap = { noremap = true }
+local silent_noremap = { noremap = true, silent = true }
 -- local silent_noremap_expr = {noremap = true, expr = true, silent = true}
 
 
@@ -26,7 +26,7 @@ map("i", "jk", "<Esc>", noremap)
 map("i", "kj", "<Esc>", noremap)
 
 
- -- filepath and pwd to clipboar by yf and yd respectivley
+-- filepath and pwd to clipboar by yf and yd respectivley
 map("n", "yf", "<cmd>let @+=expand('%:p')<CR>", silent_noremap)
 map("n", "yd", "<cmd>let @+=expand('%:p:h')<CR>", silent_noremap)
 

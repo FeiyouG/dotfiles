@@ -2,7 +2,8 @@
 -- Add the key mappings only for Markdown files in a zk notebook.
 if require("zk.util").notebook_root(vim.fn.expand('%:p')) ~= nil then
   local function map(...) vim.api.nvim_buf_set_keymap(0, ...) end
-  local opts = { noremap=true, silent=false }
+
+  local opts = { noremap = true, silent = false }
 
   -- Create a new note after asking for its title.
   -- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.

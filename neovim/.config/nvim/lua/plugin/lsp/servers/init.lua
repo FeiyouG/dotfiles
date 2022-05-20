@@ -7,4 +7,5 @@ return {
   pyright = {},
   html = {},
   clangd = {},
+  jsonls = {},
 }

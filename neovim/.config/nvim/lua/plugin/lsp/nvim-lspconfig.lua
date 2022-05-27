@@ -64,31 +64,48 @@ return {
     local noremap = { noremap = true }
     local silent_noremap = { noremap = true, silent = true }
 
+
     command_center.add({
+      {
+        -- If hesitate, show lsp-related commands
+        description = "jdtls related commands",
+        cmd = "<CMD>Telescope command_center category=lsp<CR>",
+        keybindings = {
+          {"n", "<leader>s", silent_noremap},
+          {"v", "<leader>s", silent_noremap},
+        },
+        mode = command_center.mode.REGISTRER_ONLY,
+      },
       {
         description = "Show documentations (hover)",
         cmd = vim.lsp.buf.hover,
         keybindings = { "n", "K", silent_noremap },
+        category = "lsp",
       }, {
         description = "Show errors of the current line",
         cmd = vim.diagnostic.open_float,
         keybindings = { "n", "E", silent_noremap },
+        category = "lsp",
       }, {
         description = "Show function signature",
         cmd = vim.lsp.buf.signature_help,
         keybindings = { "n", "<leader>sk", silent_noremap },
+        category = "lsp",
       }, {
         description = "Go to declarations",
         cmd = vim.lsp.buf.declaration,
         keybindings = { "n", "<leader>sD", silent_noremap },
+        category = "lsp",
       }, {
         description = "Rename symbol",
         cmd = vim.lsp.buf.rename,
         keybindings = { "n", "<leader>sn", silent_noremap },
+        category = "lsp",
       }, {
         description = "Format code (lint)",
         cmd = vim.lsp.buf.formatting,
         keybindings = { "n", "<leader>sf", silent_noremap },
+        category = "lsp",
       }
     })
 
@@ -98,26 +115,32 @@ return {
         description = "Show code actions",
         cmd = vim.lsp.buf.code_action,
         keybindings = { "n", "<leader>sa", noremap },
+        category = "lsp",
       }, {
         description = "Go to definitions",
         cmd = "<CMD>Telescope lsp_definitions<CR>",
         keybindings = { "n", "<leader>sd", noremap },
+        category = "lsp",
       }, {
         description = "Go to type definitions",
         cmd = "<CMD>Telescope lsp_type_definitions<CR>",
         keybindings = { "n", "<leader>st", noremap },
+        category = "lsp",
       }, {
         description = "Show all references",
         cmd = "<CMD>Telescope lsp_references<CR>",
         keybindings = { "n", "<leader>sr", noremap },
+        category = "lsp",
       }, {
         description = "Show workspace errors (diagnostic)",
         cmd = "<CMD>Telescope diagnostics<CR>",
         keybindings = { "n", "<leader>se", noremap },
+        category = "lsp",
       }, {
         description = "Go to implementations",
         cmd = "<CMD>Telescope lsp_implementations<CR>",
         keybindings = { "n", "<leader>si", noremap },
+        category = "lsp",
       }, {
         description = "Show document symbols",
         cmd = "<CMD>Telescope lsp_document_symbols<CR>",
@@ -125,10 +148,12 @@ return {
           { "n", "<leader>ss", noremap },
           { "n", "<leader>ssd", noremap },
         },
+        category = "lsp",
       }, {
         description = "show workspace symbols",
         cmd = "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
         keybindings = { "n", "<leader>ssw", noremap },
+        category = "lsp",
       }
     })
   end

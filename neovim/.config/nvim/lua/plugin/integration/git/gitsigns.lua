@@ -65,7 +65,8 @@ return {
           gs.toggle_word_diff(false)
           gs.toggle_linehl(false)
           gs.toggle_current_line_blame(false)
-        end
+        end,
+        category = "git",
       }, {
         description = "Toggle git signs and line number highlight",
         cmd = gs.toggle_signs,
@@ -73,43 +74,52 @@ return {
           { "n", "<leader>gs", noremap },
           { "n", "<leader>gss", noremap },
         },
+        category = "git",
       }, {
         description = "Toggle git line highlight",
         cmd = gs.toggle_linehl,
         keybindings = { "n", "<leader>gsl", noremap },
+        category = "git",
       }, {
         description = "Toggle git word diff",
         cmd = gs.toggle_word_diff,
+        category = "git",
       }, {
         description = "Toggle git blame on cursor hold",
         cmd = gs.toggle_current_line_blame,
         keybindings = { "n", "<leader>gb", noremap },
+        category = "git",
       }, {
         description = "Git blame current line",
         cmd = function() gs.blame_line() end,
         keybindings = { "n", "<leader>gB", noremap },
+        category = "git",
       }, {
         description = "Git preview hunk",
         cmd = gs.preview_hunk,
         keybindings = { "n", "<leader>gH", noremap },
+        category = "git",
       }, {
         description = "Git stage hunk",
         cmd = "<CMD>Gitsigns stage_hunk<CR>",
         keybindings = {
           { "n", "<leader>ghs", noremap },
           { "v", "<leader>ghs", noremap },
-        }
+        },
+        category = "git",
       }, {
         description = "Git undo hunk",
         cmd = gs.undo_stage_hunk,
         keybindings = { "n", "<leader>ghu", noremap },
+        category = "git",
       }, {
         description = "Git reset hunk",
         cmd = "<CMD>Gitsigns reset_hunk<CR>",
         keybindings = {
           { "n", "<leader>ghr", noremap },
           { "v", "<leader>ghr", noremap },
-        }
+        },
+        category = "git",
       }, {
         cmd = function()
           if vim.wo.diff then return ']c' end
@@ -117,6 +127,7 @@ return {
           return '<Ignore>'
         end,
         keybindings = { "n", "]c", noremap },
+        category = "git",
         mode = command_center.mode.REGISTER_ONLY,
       }, {
         cmd = function()
@@ -125,6 +136,7 @@ return {
           return '<Ignore>'
         end,
         keybindings = { "n", "[c", noremap },
+        category = "git",
         mode = command_center.mode.REGISTER_ONLY,
       }
     })

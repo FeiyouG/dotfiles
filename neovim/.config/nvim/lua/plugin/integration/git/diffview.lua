@@ -129,15 +129,18 @@ return {
       {
         description = "Open git diffview",
         cmd = "<CMD>DiffviewOpen<CR>",
-        keybindings = { "n", "<leader>gd", noremap }
+        keybindings = { "n", "<leader>gd", noremap },
+        category = "git",
       }, {
         description = "Open git file commit history",
-        cmd = "<CMD>DiffviewClose<CR>",
-        keybindings = { "n", "<leader>gc", noremap }
+        cmd = "<CMD>DiffviewFileHistory<CR>",
+        keybindings = { "n", "<leader>gf", noremap },
+        category = "git",
       }, {
         description = "Close current git diffview",
         cmd = "<CMD>DiffviewClose<CR>",
-        keybindings = { "n", "<leader>gg", noremap }
+        keybindings = { "n", "<leader>gc", noremap },
+        category = "git",
       }
     })
   end

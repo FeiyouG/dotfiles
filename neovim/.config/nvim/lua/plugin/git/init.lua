@@ -20,7 +20,7 @@ filter_git_commands()
 
 return {
   -- require("plugin/integration/git/fugitive"),
-  require("plugin/integration/git/diffview"),
-  require("plugin/integration/git/gitsigns"),
+  require("plugin/git/diffview"),
+  require("plugin/git/gitsigns"),
   { "tpope/vim-fugitive" },
 }

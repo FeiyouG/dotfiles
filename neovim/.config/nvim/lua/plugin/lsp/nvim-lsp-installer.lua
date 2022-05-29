@@ -9,5 +9,8 @@ return {
       automatic_installation = true,
     })
 
-  end
+  end,
+
+  -- TODO: Remove this when head is fixed
+  commit = "3c21304c3f54caf0c00fab00cf1e4e9c0507b5d1"
 }

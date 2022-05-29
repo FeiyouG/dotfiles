@@ -9,39 +9,6 @@ return {
 
     local nvim_tree = require("nvim-tree")
 
-    vim.cmd "let g:nvim_tree_git_hl = 1"
-    vim.cmd "let g:nvim_tree_highlight_opened_files = 1"
-    vim.cmd "let g:nvim_tree_add_trailing = 1"
-    vim.cmd "let g:nvim_tree_respect_buf_cwd = 1"
-
-    -- List of filenames that gets highlighted with NvimTreeSpecialFile
-    -- let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 }
-
-    vim.cmd([[let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "−",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-]]   )
-
     -- a list of groups can be found at `:help nvim_tree_highlight`
     -- vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
     local custom_mapping = {
@@ -83,16 +50,50 @@ return {
       { key = "i", action = "toggle_file_info" },
       { key = ".", action = "run_file_command" }
     }
-    -- following options are the default
+
     -- each of these are documented in `:help nvim-tree.OPTION_NAME`
     nvim_tree.setup {
-      disable_netrw       = true,
-      open_on_setup       = true,
-      hijack_cursor       = false,
-      hijack_netrw        = true,
-      open_on_tab         = false,
-      update_cwd          = true,
-      view                = {
+      disable_netrw                     = true,
+      hijack_netrw                      = true,
+      open_on_setup                     = true,
+      open_on_setup_file                = false,
+      ignore_buffer_on_setup            = false,
+      ignore_ft_on_setup                = {},
+      auto_reload_on_write              = false,
+      create_in_closed_folder           = false,
+      open_on_tab                       = false,
+      sort_by                           = "name",
+      hijack_unnamed_buffer_when_opening = false,
+      hijack_cursor                     = false,
+      update_cwd                        = true,
+      reload_on_bufenter                = false,
+      respect_buf_cwd                   = true,
+      hijack_directories                = {
+        enable = true,
+        auto_open = true,
+      },
+      update_focused_file               = {
+        enable      = true,
+        update_cwd  = true,
+        ignore_list = {}
+      },
+      system_open                       = {
+        cmd  = nil,
+        args = {}
+      },
+      diagnostics                       = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        }
+
+      },
+      view                              = {
+        hide_root_folder = false,
         width = 30,
         height = 30,
         side = 'left',
@@ -105,7 +106,12 @@ return {
           list = custom_mapping
         },
       },
-      renderer            = {
+      renderer                          = {
+        add_trailing = true,
+        group_empty = true,
+        highlight_git = true,
+        highlight_opened_files = "icon",
+        root_folder_modifier = ":~",
         indent_markers = {
           enable = true,
           icons = {
@@ -116,44 +122,52 @@ return {
         },
         icons = {
           webdev_colors = true,
+          git_placement = "before",
+          padding = " ",
+          symlink_arrow = " ➛ ",
+          show = {
+            file = true,
+            folder = true,
+            folder_arrow = true,
+            git = true,
+          },
+          glyphs = {
+            default ='',
+            symlink ='',
+            git ={
+              unstaged ="✗",
+              staged ="✓",
+              unmerged ="",
+              renamed ="",
+              untracked ="★",
+              deleted ="",
+              ignored ="◌"
+            },
+            folder ={
+              arrow_open ="",
+              arrow_closed ="−",
+              default ="",
+              open ="",
+              empty ="",
+              empty_open ="",
+              symlink ="",
+              symlink_open ="",
+            },
+          },
         },
+        special_files = { 'README.md', 'Makefile', 'MAKEFILE' },
       },
-      hijack_directories  = {
-        enable = true,
-        auto_open = true,
-      },
-      update_focused_file = {
-        enable      = true,
-        update_cwd  = true,
-        ignore_list = {}
-      },
-      ignore_ft_on_setup  = {},
-      system_open         = {
-        cmd  = nil,
-        args = {}
-      },
-      diagnostics         = {
-        enable = true,
-        show_on_dirs = true,
-        icons = {
-          hint = "",
-          info = "",
-          warning = "",
-          error = "",
-        }
-
-      },
-      filters             = {
+      filters                           = {
         dotfiles = false,
         custom = {},
         exclude = {},
       },
-      git                 = {
+      git                               = {
         enable = true,
         ignore = true,
         timeout = 400,
       },
-      actions             = {
+      actions                           = {
         use_system_clipboard = true,
         change_dir = {
           enable = true,
@@ -173,7 +187,7 @@ return {
           }
         }
       },
-      trash               = {
+      trash                             = {
         cmd = "trash",
         require_confirm = true
       },

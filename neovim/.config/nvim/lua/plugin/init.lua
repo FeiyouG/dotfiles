@@ -70,11 +70,9 @@ use("plugin/fuzzy_finder")
 use("plugin/navigation")
 use("plugin/style")
 use("plugin/misc")
-
--- Integration with other tools
-use("plugin/integration/tmux")
-use("plugin/integration/zk")
-use("plugin/integration/git")
+use("plugin/git")
+use("plugin/tmux")
+use("plugin/markdown")
 
 
 -- MARK: Add commands to command center

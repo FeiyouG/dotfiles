@@ -62,6 +62,10 @@ export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"        # Conform 
 export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG Base Directory (configuration file)
 alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
 
+# ---- Python ----
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
+
 
 # ---- Import private shell settings if present----
 [ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private

@@ -62,17 +62,18 @@ packer.use { 'wbthomason/packer.nvim' }
 packer.use { 'lewis6991/impatient.nvim' }
 
 -- Modules
-use("plugin/treesitter")
-use("plugin/lsp")
-use("plugin/snip_engine")
 use("plugin/cmp_engine")
+use("plugin/dap")
 use("plugin/fuzzy_finder")
-use("plugin/navigation")
-use("plugin/style")
-use("plugin/misc")
 use("plugin/git")
-use("plugin/tmux")
+use("plugin/lsp")
 use("plugin/markdown")
+use("plugin/misc")
+use("plugin/navigation")
+use("plugin/snip_engine")
+use("plugin/style")
+use("plugin/tmux")
+use("plugin/treesitter")
 
 
 -- MARK: Add commands to command center

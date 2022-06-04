@@ -56,11 +56,11 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                            # Conform 
 
 # ---- LESS ----
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"                           # Conform to XDG Base Directory (configuration file)
-export LESSHISTFILE="(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG Base Directory (history file)
+export LESSHISTFILE="$(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG Base Directory (history file)
 
 # ---- WGET ----
-export WGETRC="(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG Base Directory (configuration file)
-alias wget="wget --hsts-file=(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
+export WGETRC="$(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG Base Directory (configuration file)
+# alias wget="wget --hsts-file=$(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
 
 # ---- Python ----
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"

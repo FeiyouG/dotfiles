@@ -3,14 +3,14 @@ local utils = require("utils")
 ---- MARK: Automatically download packer if missing ----
 local packer_bootstrap = nil
 
-if vim.fn.empty(vim.fn.glob(utils.path.plugin.installed_path)) > 0 then
+if vim.fn.empty(vim.fn.glob(utils.path.packer.installed_path)) > 0 then
   packer_bootstrap = vim.fn.system({
     'git',
     'clone',
     '--depth',
     '1',
     'https://github.com/wbthomason/packer.nvim',
-    utils.path.plugin.installed_path
+    utils.path.packer.installed_path
   })
 end
 

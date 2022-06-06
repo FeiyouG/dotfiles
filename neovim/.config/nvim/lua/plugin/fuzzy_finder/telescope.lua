@@ -103,6 +103,9 @@ local M = {
         description = "Show search history (vimgrep)",
         cmd = "<CMD>Telescope search_history<CR>",
       }, {
+        description = "Show marks",
+        cmd = "<CMD>Telescope marks<CR>",
+      }, {
         description = "Switch colorschemes",
         cmd = "<CMD>Telescope colorscheme<CR>",
       }, {

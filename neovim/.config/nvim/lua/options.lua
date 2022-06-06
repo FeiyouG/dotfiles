@@ -1,11 +1,12 @@
----- MARK: MISc
-vim.cmd "set nocompatible"          -- Disable compatibility to old-tim vi
+---- MARK: MISC
+vim.cmd "set nocompatible"          -- Disable compatibility to old-time vi
 vim.cmd "set completeopt=menu,menuone,noselect"
 vim.opt.hidden = true               -- Hide unused buffers
 vim.cmd "set cc=80"                 -- Set an 80 column boarder for good coding style
 vim.opt.ttyfast = true              -- Speed up scrolling in neovim
 vim.opt.clipboard = "unnamedplus"   -- Use same clipboard between neovim and system
 vim.cmd "set nospell"               -- Disable spelling checking
+vim.wo.scrolloff=0                 -- minimal # of lines to keep above/below the cursor
 
 
 ---- MARK: ENABLE TMUX ITALIC FONT
@@ -52,7 +53,7 @@ vim.o.termguicolors = true          -- Enable true colors if avaliable
 vim.cmd "let &t_ut=''"
 
 ---- MAKR: FOLDING ----
-vim.o.foldlevel = 3                 -- So most foldings are unfold
+vim.o.foldlevel = 99                -- So most foldings are unfold
 
 ---- MARK: Global status line ----
 -- Set in plugin/style/lualine.lua

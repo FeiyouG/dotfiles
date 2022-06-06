@@ -6,5 +6,3 @@ jdtls_config.capabilities = utils.lsp.capabilities
 
 -- MARK: Starts a new client & server,
 require('jdtls').start_or_attach(jdtls_config)
-
-

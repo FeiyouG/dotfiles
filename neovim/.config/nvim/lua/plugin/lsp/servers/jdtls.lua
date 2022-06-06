@@ -22,16 +22,6 @@ local jdtls_bundles = {}
 -- Setup debugger
 vim.list_extend(jdtls_bundles, utils.path.java.java_debug_jars)
 vim.list_extend(jdtls_bundles, utils.path.java.vscode_java_test_jars)
--- local java_debug_path = vim.fn.glob "$XDG_DATA_HOME/java/java-debug"
--- if vim.fn.isdirectory(java_debug_path) == 1 then
---   table.insert(jdtls_bundles, utils.path.concat(java_debug_path, "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"))
--- end
---
--- local vscode_java_test_path = vim.fn.glob "$XDG_DATA_HOME/java/vscode_java_test"
--- if vim.fn.isdirectory(vscode_java_test_path) == 1 then
---   vim.list_extend(jdtls_bundles, vim.split(utils.path.concat(vscode_java_test_path, "server/*.jar"), "\n"))
--- end
-
 
 -- MARK: Setup Commands
 local jdtls_cmd = {
@@ -60,8 +50,6 @@ vim.list_extend(jdtls_cmd, {
   '-configuration', vim.fn.glob(utils.path.concat(jdtls_home, '/config_' .. utils.get_os())),
   '-data', vim.fn.glob(jdtls_workspace),
 })
-
-P(jdtls_cmd)
 
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.

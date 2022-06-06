@@ -1,5 +1,18 @@
 # Neovim Config
 
+<!-- TOC GFM -->
+
+- [Plugins](#plugins)
+- [Treesitters](#treesitters)
+- [LSP](#lsp)
+- [Debuggers](#debuggers)
+  - [Python](#python)
+  - [Java](#java)
+- [Misc](#misc)
+  - [Lombok's support for Java](#lomboks-support-for-java)
+
+<!-- /TOC -->
+
 ## Plugins
 
 ## Treesitters
@@ -10,10 +23,16 @@
 
 ### Python
 
+Create a new virtualenv
+and install `debugpy`:
+```bash
+cd $XDG_DATA_HOME/virtualenvs
+python -m venv debugpy
+debugpy/bin/python -m pip install debugpy
+```
+
 ### Java
 
-
-### Debugging
 
 1. Make sure
   [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls)
@@ -30,7 +49,9 @@
     - Run `npm run build-plugin`
       inside `vscode-java-test` repository
 
-### Dependencies
+## Misc
+
+### Lombok's support for Java
 1. `lombok`:
     - Download [lombok.jar]()
       into `$XDG_DATR_HOME/java`

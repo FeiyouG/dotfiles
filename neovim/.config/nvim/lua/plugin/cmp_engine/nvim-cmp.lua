@@ -153,6 +153,18 @@ M.config = function()
     })
   })
 
+  require("cmp").setup.filetype("dap-repl", {
+
+    enabled = function()
+      return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+          or require("cmp_dap").is_dap_buffer()
+    end,
+
+    sources = {
+      { name = "dap" }
+    }
+  })
+
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({

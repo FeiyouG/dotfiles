@@ -21,7 +21,7 @@ M.notify = function(module_name, message, level, once)
 
   local hash = module_name .. message .. level
 
-  if (M._notified[hash]) then return end
+  if (once and M._notified[hash]) then return end
 
   vim.schedule(function()
     if has_notify then
@@ -31,7 +31,7 @@ M.notify = function(module_name, message, level, once)
     end
   end)
 
-  if (M._notified[hash]) then M._notified[hash] = true end
+  if (once and M._notified[hash]) then M._notified[hash] = true end
 end
 
 M.get_os = function()

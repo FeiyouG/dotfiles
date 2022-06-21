@@ -17,25 +17,26 @@ return {
       -- Expand lines larger than the window
       -- Requires >= 0.7
       expand_lines = vim.fn.has("nvim-0.7"),
-      sidebar = {
-        -- You can change the order of elements in the sidebar
-        elements = {
-          -- Provide as ID strings or tables with "id" and "size" keys
-          {
-            id = "scopes",
-            size = 0.25, -- Can be float or integer > 1
+      layouts = {
+        {
+          elements = {
+            -- Elements can be strings or table with id and size keys.
+            { id = "scopes", size = 0.25 },
+            "breakpoints",
+            "stacks",
+            "watches",
           },
-          { id = "breakpoints", size = 0.25 },
-          { id = "stacks", size = 0.25 },
-          { id = "watches", size = 00.25 },
+          size = 40,
+          position = "left",
         },
-        size = 40,
-        position = "left", -- Can be "left", "right", "top", "bottom"
-      },
-      tray = {
-        elements = { "repl", "console" },
-        size = 10,
-        position = "bottom", -- Can be "left", "right", "top", "bottom"
+        {
+          elements = {
+            "repl",
+            "console",
+          },
+          size = 10,
+          position = "bottom",
+        },
       },
       floating = {
         max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -64,7 +65,7 @@ return {
       {
         description = "Open floating window for dap",
         cmd = dapui.float_element,
-        keybindings = {"n", "<leader>D", noremap},
+        keybindings = { "n", "<leader>D", noremap },
         category = "dap"
       }
     })

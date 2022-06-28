@@ -14,6 +14,7 @@ local jdtls_workspace = utils.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim
 
 -- Create jdtls_workspace if it doesn't exist
 utils.path.safe_path(jdtls_workspace)
+jdtls_workspace = vim.fn.glob(jdtls_workspace);
 
 
 --- MARK: Setup bundles

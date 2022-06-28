@@ -3,7 +3,7 @@ local M = {}
 
 -- Concatenate paths with '/'
 M.concat = function(...)
-  return vim.fn.glob(table.concat({ ... }, '/'))
+  return table.concat({ ... }, '/')
 end
 
 -- Check whether directory exist on path

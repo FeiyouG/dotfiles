@@ -1,4 +1,3 @@
-
 return {
   "neovim/nvim-lspconfig",
 
@@ -71,8 +70,8 @@ return {
         description = "jdtls related commands",
         cmd = "<CMD>Telescope command_center category=lsp<CR>",
         keybindings = {
-          {"n", "<leader>s", silent_noremap},
-          {"v", "<leader>s", silent_noremap},
+          { "n", "<leader>s", silent_noremap },
+          { "v", "<leader>s", silent_noremap },
         },
         mode = command_center.mode.REGISTRER_ONLY,
       },
@@ -82,9 +81,19 @@ return {
         keybindings = { "n", "K", silent_noremap },
         category = "lsp",
       }, {
-        description = "Show errors of the current line",
+        description = "Show errors of the current line (floating window)",
         cmd = vim.diagnostic.open_float,
         keybindings = { "n", "E", silent_noremap },
+        category = "lsp",
+      }, {
+        description = "Go to the next diagnostic item",
+        cmd = vim.diagnostic.goto_next,
+        keybindings = { "n", "<leader>sen", silent_noremap },
+        category = "lsp",
+      }, {
+        description = "Go to the previous diagnostic item",
+        cmd = vim.diagnostic.goto_prev,
+        keybindings = { "n", "<leader>sep", silent_noremap },
         category = "lsp",
       }, {
         description = "Show function signature",
@@ -109,7 +118,7 @@ return {
       }
     })
 
-    -- Commands takes advantages of Telescope
+    -- Commands that take advantages of Telescope
     command_center.add({
       {
         description = "Show code actions",
@@ -134,7 +143,10 @@ return {
       }, {
         description = "Show workspace errors (diagnostic)",
         cmd = "<CMD>Telescope diagnostics<CR>",
-        keybindings = { "n", "<leader>se", noremap },
+        keybindings = {
+          { "n", "<leader>se", noremap },
+          { "n", "<leader>sef", noremap },
+        },
         category = "lsp",
       }, {
         description = "Go to implementations",

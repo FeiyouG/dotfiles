@@ -50,6 +50,12 @@ map("n", "<leader>l", "10l", noremap)
 map("v", "<leader>h", "10h", noremap)
 map("v", "<leader>l", "10l", noremap)
 
+-- Move up/down without moving on-screen cursor position
+map("n", "<C-M-y>", "<C-y>k", noremap)
+map("v", "<C-M-y>", "<C-y>k", noremap)
+map("n", "<C-M-e>", "j<C-e>", noremap)
+map("n", "<C-M-e>", "j<C-e>", noremap)
+
 
 -- Move to the beginning and end of line
 map("n", "H", "^", noremap)

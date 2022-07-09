@@ -5,8 +5,11 @@ return {
     local nvim_lsp_installer = require("nvim-lsp-installer")
 
     nvim_lsp_installer.setup({
-      -- Automatically install servers configured by lspconfig
-      automatic_installation = true,
+      -- Download the specific version of jdtls (the neweset one is not working currently)
+      ensure_installed = { "jdtls@1.12.0-202206011637" },
+
+      -- Automatically install servers configured by lspconfig (expect jdtls, because we want a specific version)
+      automatic_installation = { exclude = { "jdtls" } }
     })
 
   end,

@@ -1,13 +1,7 @@
 local utils = require("utils")
 
 -- Patterns of root folder
-local root_markers = {
-  '.git',
-  'mvnw',
-  'gradlew',
-  'Config', -- Amazon
-}
-local root_dir = require('jdtls.setup').find_root(root_markers) -- Project root directory
+local root_dir = require('jdtls.setup').find_root({ "packageInfo" }, "Config") -- Project root directory
 
 local jdtls_home = '$XDG_DATA_HOME/nvim/lsp_servers/jdtls'
 local jdtls_workspace = utils.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim.fn.fnamemodify(root_dir, ":p:h:t"))
@@ -16,6 +10,18 @@ local jdtls_workspace = utils.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim
 utils.path.safe_path(jdtls_workspace)
 jdtls_workspace = vim.fn.glob(jdtls_workspace);
 
+
+-- MARK: Amazon + Bemol
+local ws_folders_jdtls = {}
+if root_dir then
+  local file = io.open(root_dir .. "/.bemol/ws_root_folders", "r");
+  if file then
+    for line in file:lines() do
+      table.insert(ws_folders_jdtls, string.format("file://%s", line))
+    end
+    file:close()
+  end
+end
 
 --- MARK: Setup bundles
 local jdtls_bundles = {}
@@ -94,6 +100,7 @@ return {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = jdtls_bundles
+    bundles = jdtls_bundles,
+    workspaceFolders = ws_folders_jdtls,
   },
 }

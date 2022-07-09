@@ -44,6 +44,7 @@ export DOTFILES="$HOME/.dotfiles"
 export ZK_NOTEBOOK_DIR="$HOME/vault"                                  # Env for vault home
 export ZK_EDITOR="nvim"                                               # Default editor for zk
 alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
+alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
 
 # ---- FZF ----
 # .fzf.zsh or .fzf.bash should be source in .bashrc/.zshrc first

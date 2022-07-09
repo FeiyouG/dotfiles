@@ -13,7 +13,10 @@ return {
             components = {
               command_center.component.DESCRIPTION,
               command_center.component.KEYBINDINGS,
-              -- command_center.component.COMMAND,
+            },
+            sort_by = {
+              command_center.component.DESCRIPTION,
+              command_center.component.KEYBINDINGS,
             },
             auto_replace_desc_with_cmd = false,
           }
@@ -33,13 +36,13 @@ return {
         description = "Open command_center",
         cmd = "<CMD>Telescope command_center<CR>",
         keybindings = {
-          {"n", "<Leader>fc", noremap},
-          {"v", "<Leader>fc", noremap},
+          { "n", "<Leader>fc", noremap },
+          { "v", "<Leader>fc", noremap },
 
           -- If ever hesitate when using telescope start with <leader>f,
           -- also open command center
-          {"n", "<Leader>f", noremap},
-          {"v", "<Leader>f", noremap},
+          { "n", "<Leader>f", noremap },
+          { "v", "<Leader>f", noremap },
         },
       }
     }, command_center.mode.REGISTER_ONLY)

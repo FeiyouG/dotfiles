@@ -58,7 +58,6 @@ end
 
 -- Reduce Startup time by caching
 packer.use { 'wbthomason/packer.nvim' }
-
 packer.use { 'lewis6991/impatient.nvim' }
 
 -- Modules

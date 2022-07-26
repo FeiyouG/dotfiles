@@ -24,7 +24,7 @@ M.minimal = function(message, level, opts)
   opts = opts or {}
 
   opts = vim.tbl_deep_extend("force", {
-    timeout = 100,
+    timeout = 50,
     render = "minimal",
   }, opts or {})
 
@@ -33,7 +33,7 @@ end
 
 -- Notify when entered a custom mode
 M.enter_mode = function(mode_name, mode_icon)
-  local message = " " .. mode_icon .. " Entered " .. mode_name
+  local message = " " .. mode_icon .. " Entered " .. mode_name .. " submode"
   M.minimal(message, vim.log.levels.INFO, {
     hide_from_history = true,
   })
@@ -41,7 +41,7 @@ end
 
 -- Notify when exited a custom mode
 M.exit_mode = function(mode_name, mode_icon)
-  local message = " " .. mode_icon .. " Exited " .. mode_name
+  local message = " " .. mode_icon .. " Exited " .. mode_name .. " submode"
   M.minimal(message, vim.log.levels.INFO, {
     hide_from_history = true,
   })

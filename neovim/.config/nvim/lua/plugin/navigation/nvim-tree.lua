@@ -119,8 +119,9 @@ return {
         indent_markers = {
           enable = true,
           icons = {
-            corner = "└ ",
-            edge = "│ ",
+            corner = "└",
+            item = "│",
+            edge = "│",
             none = "  ",
           },
         },
@@ -132,7 +133,7 @@ return {
           show = {
             file = true,
             folder = true,
-            folder_arrow = true,
+            folder_arrow = false,
             git = true,
           },
           glyphs = {
@@ -143,7 +144,7 @@ return {
               staged = "✓",
               unmerged = "",
               renamed = "",
-              untracked = "★",
+              untracked = "",
               deleted = "",
               ignored = "◌"
             },

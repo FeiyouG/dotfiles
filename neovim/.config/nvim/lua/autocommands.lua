@@ -9,13 +9,16 @@ vim.api.nvim_exec([[
 
 
 ---- MARK: Trim Trailling Whitespaces ----
-vim.api.nvim_exec([[
-  augroup TrimWhiteSpace
-    autocmd!
-    autocmd BufWritePre * :%s/\s\+$//e
-  augroup END
-]], false)
-
+local trimWhiteSpace = vim.api.nvim_create_augroup("TrimWhiteSpace", {clear = true})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*" },
+  callback = function()
+    if not vim.o.binary and vim.o.filetype ~= 'diff' and vim.bo.modifiable then
+      vim.cmd([[%s/\s\+$//e]])
+    end
+  end,
+  group = trimWhiteSpace
+})
 
 ---- MARK: Automatically Switch Between Relative and Asbolute Line Number ----
 vim.api.nvim_exec([[

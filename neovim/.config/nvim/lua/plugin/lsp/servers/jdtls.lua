@@ -54,7 +54,7 @@ end
 
 vim.list_extend(jdtls_cmd, {
   '-jar', vim.fn.glob(utils.path.concat(jdtls_home, 'plugins/org.eclipse.equinox.launcher_*.jar')),
-  '-configuration', vim.fn.glob(utils.path.concat(jdtls_home, '/config_' .. utils.get_os())),
+  '-configuration', vim.fn.glob(utils.path.concat(jdtls_home, '/config_' .. utils.system.os_name())),
   '-data', vim.fn.glob(jdtls_workspace),
 })
 

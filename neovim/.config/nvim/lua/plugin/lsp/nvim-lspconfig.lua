@@ -1,6 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
 
+  requires = {
+    'hrsh7th/nvim-cmp',
+  },
+
   config = function()
     -- MARK: Diagnostic Settings: diable virtual text
     vim.diagnostic.config({
@@ -48,7 +52,7 @@ return {
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
       -- Setup common server configs
-      server_config.capabilities = utils.lsp.capabilities
+      server_config.capabilities = utils.lsp.capabilities()
       lspconfig[server].setup(server_config)
     end
 

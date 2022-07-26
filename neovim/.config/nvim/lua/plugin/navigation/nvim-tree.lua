@@ -8,6 +8,8 @@ return {
   config = function()
 
     local nvim_tree = require("nvim-tree")
+    local utils = require("utils")
+    local icons = utils.constants.icons
 
     -- a list of groups can be found at `:help nvim_tree_highlight`
     -- vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
@@ -89,13 +91,14 @@ return {
         enable = true,
         show_on_dirs = true,
         icons = {
-          hint = "",
-          info = "",
-          warning = "",
-          error = "",
+          hint = icons.git.hint,
+          info = icons.git.info,
+          warning = icons.git.warning,
+          error = icons.git.error,
         }
-
       },
+      on_attach                          = "disabled",
+      remove_keymaps                     = true,
       view                               = {
         hide_root_folder = false,
         width = 30,
@@ -106,7 +109,6 @@ return {
         relativenumber = false,
         signcolumn = "yes",
         mappings = {
-          custom_only = true,
           list = custom_mapping
         },
       },
@@ -137,26 +139,26 @@ return {
             git = true,
           },
           glyphs = {
-            default = '',
-            symlink = '',
+            default = icons.file.default,
+            symlink = icons.file.symlink,
             git = {
-              unstaged = "✗",
-              staged = "✓",
-              unmerged = "",
-              renamed = "",
-              untracked = "",
-              deleted = "",
-              ignored = "◌"
+              unstaged = icons.git.unstaged,
+              staged = icons.git.staged,
+              unmerged = icons.git.unmerged,
+              renamed = icons.git.renamed,
+              untracked = icons.git.untracked,
+              deleted = icons.git.deleted,
+              ignored = icons.git.ignored,
             },
             folder = {
-              arrow_open = "",
-              arrow_closed = "",
-              default = "",
-              open = "",
-              empty = "",
-              empty_open = "",
-              symlink = "",
-              symlink_open = "",
+              arrow_open = icons.folder.indicator_open,
+              arrow_closed = icons.folder.indicator_closed,
+              default = icons.folder.closed,
+              open = icons.folder.open,
+              empty = icons.folder.empty_closed,
+              empty_open = icons.folder.empty_open,
+              symlink = icons.folder.symlink_closed,
+              symlink_open = icons.folder.symlink_open,
             },
           },
         },

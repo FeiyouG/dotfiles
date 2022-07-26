@@ -1,9 +1,14 @@
 local M = {
   'nvim-telescope/telescope.nvim',
 
+  require = {
+    'folke/trouble.nvim',
+  },
+
   config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
+    local trouble = require("trouble.providers.telescope")
 
     telescope.setup {
       defaults = {
@@ -17,6 +22,7 @@ local M = {
             ["<C-p>"] = actions.move_selection_previous,
             ["<C-f>"] = actions.preview_scrolling_up,
             ["<C-b>"] = actions.preview_scrolling_down,
+            ["<C-q>"] = trouble.open_with_trouble,
           },
 
           i = {
@@ -25,6 +31,7 @@ local M = {
             ["<C-s>"] = actions.select_horizontal,
             ["<C-f>"] = actions.preview_scrolling_up,
             ["<C-b>"] = actions.preview_scrolling_down,
+            ["<C-q>"] = trouble.open_with_trouble,
           }
         },
 
@@ -128,12 +135,12 @@ local M = {
       {
         description = "Show workspace git commits",
         cmd = "<CMD>Telescope git_commits<CR>",
-      -- }, {
-      --   description = "Show git commits of current buffer",
-      --   cmd = "<CMD>Telescope git_bcommits<CR>",
-      -- }, {
-      --   description = "Show git status",
-      --   cmd = "<CMD>Telescope git_status<CR>",
+        -- }, {
+        --   description = "Show git commits of current buffer",
+        --   cmd = "<CMD>Telescope git_bcommits<CR>",
+        -- }, {
+        --   description = "Show git status",
+        --   cmd = "<CMD>Telescope git_status<CR>",
       }, {
         description = "Show git branches",
         cmd = "<CMD>Telescope <CR>",

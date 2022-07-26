@@ -20,7 +20,7 @@ return {
         cmd = "<CMD>Telescope notify<CR>"
       }, {
         description = "Dismiss notifcations",
-        cmd = notify.dismiss()
+        cmd = notify.dismiss
       }
     })
 

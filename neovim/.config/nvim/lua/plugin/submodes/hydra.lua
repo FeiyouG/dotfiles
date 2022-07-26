@@ -10,8 +10,9 @@ return {
   },
 
   defer = function()
-    local custom_modes = require("plugin/modes/custom_modes")
+    local custom_modes = require("plugin/submodes/modes")
 
+    -- Create all submodes
     for _, mode_init_func in pairs(custom_modes) do
       mode_init_func()
     end

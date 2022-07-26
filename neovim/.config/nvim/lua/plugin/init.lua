@@ -73,7 +73,8 @@ use("plugin/snip_engine")
 use("plugin/style")
 use("plugin/tmux")
 use("plugin/treesitter")
-use("plugin/modes")
+use("plugin/submodes")
+
 
 
 -- MARK: Add commands to command center

@@ -9,6 +9,9 @@ return {
   config = function()
     local neogit = require("neogit")
 
+    local utils = require("utils")
+    local icons = utils.constants.icons
+
     neogit.setup {
       disable_signs = false,
       disable_hint = false,
@@ -27,9 +30,9 @@ return {
       },
       signs = {
         -- { CLOSED, OPENED }
-        section = { "+", "−" },
-        item = { "+", "−" },
-        hunk = { " +", " −" },
+        section = {icons.folder.indicator_closed, icons.folder.indicator_open},
+        item = {icons.folder.indicator_closed, icons.folder.indicator_open},
+        hunk = {icons.folder.indicator_closed, icons.folder.indicator_open},
       },
       integrations = {
         diffview = true

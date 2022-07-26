@@ -4,7 +4,7 @@ return function()
   local gitsigns = require('gitsigns')
 
   local utils = require("utils")
-  local git_mode_name = "Git_Mode"
+  local git_mode_name = "Git"
   local git_mode_icon = ""
   local git_mode_key = "<leader>g"
 
@@ -66,6 +66,11 @@ return function()
       description = "View line blame",
       cmd = gitsigns.blame_line,
       keybindings = { "n", "b", {} },
+      category = git_mode_name
+    },{
+      description = "Toggle deleted",
+      cmd = gitsigns.toggle_deleted,
+      keybindings = { "n", "<leader>d", {} },
       category = git_mode_name
     }, {
       description = "View line blame (full)",

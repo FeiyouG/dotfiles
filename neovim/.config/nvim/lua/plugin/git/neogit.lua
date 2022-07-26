@@ -62,8 +62,10 @@ return {
       mappings = {
         -- modify status buffer mappings
         status = {
-          ["-"] = "Stage",
-          ["_"] = "Unstage",
+          ["s"] = "Stage",
+          ["u"] = "Unstage",
+          ["<Return>"] = "Toggle",
+          ["q"] = "Close",
           ["<leader>r"] = "RefreshBuffer"
         }
       }

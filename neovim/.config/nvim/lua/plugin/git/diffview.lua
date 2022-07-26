@@ -128,29 +128,4 @@ return {
     })
 
   end,
-
-  defer = function()
-    local has_command_center, command_center = pcall(require, "command_center")
-    if not has_command_center then return end
-
-    local noremap = { noremap = true }
-    command_center.add({
-      {
-        description = "Open git diffview",
-        cmd = "<CMD>DiffviewOpen<CR>",
-        keybindings = { "n", "<leader>gd", noremap },
-        category = "git",
-      }, {
-        description = "Open git file commit history",
-        cmd = "<CMD>DiffviewFileHistory<CR>",
-        keybindings = { "n", "<leader>gf", noremap },
-        category = "git",
-      }, {
-        description = "Close current git diffview",
-        cmd = "<CMD>DiffviewClose<CR>",
-        keybindings = { "n", "<leader>gc", noremap },
-        category = "git",
-      }
-    })
-  end
 }

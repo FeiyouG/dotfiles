@@ -8,6 +8,7 @@ local M = {
 M.config = function()
   local has_luasnip, luasnip = pcall(require, "luasnip")
   local cmp = require("cmp")
+  local utils = require("utils")
 
   local kind_icons = {
     -- Text = "",
@@ -90,11 +91,11 @@ M.config = function()
 
     window = {
       documentation = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        border = utils.constants.border.rounded,
         winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
       },
       completion = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+        border = utils.constants.border.rounded,
         winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
       }
     },

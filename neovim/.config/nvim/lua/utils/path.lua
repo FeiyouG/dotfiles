@@ -31,7 +31,7 @@ M.packer = {
 local java = {
   java_debug_path = vim.fn.glob "$XDG_DATA_HOME/java/java-debug",
   vscode_java_test_path = vim.fn.glob "$XDG_DATA_HOME/java/vscode-java-test",
-  lombok_path = vim.fn.glob "$XDG_DATA_HOME/java/lombok.jar",
+  lombok_path = vim.fn.glob "$XDG_DATA_HOME/nvim/mason/packages/jdtls/lombok.jar",
 }
 
 -- MARK: Java related path

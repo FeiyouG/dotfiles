@@ -62,15 +62,10 @@ return {
     vim.cmd "let g:mkdp_filetypes = ['markdown']"
   end,
 
-  defer = function()
-    local has_command_center, command_center = pcall(require, "command_center")
-    if not has_command_center then return end
-
-    command_center.add({
-      {
-        description = "Toggle markdown preview",
-        cmd = "<CMD>MarkdownPreviewToggle<CR>",
-      }
-    })
-  end
+  commands = {
+    {
+      description = "Toggle markdown preview",
+      cmd = "<CMD>MarkdownPreviewToggle<CR>",
+    }
+  }
 }

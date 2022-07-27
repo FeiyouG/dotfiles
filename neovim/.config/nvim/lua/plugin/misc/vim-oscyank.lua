@@ -27,20 +27,19 @@ return {
     }
   end,
 
-  defer = function()
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
+  commands = function()
+    local utils = require("utils")
 
-    local noremap = { noremap = true }
-
-    command_center.add({
+    return {
       {
         cmd = "<CMD>OSCYank<CR>",
-        keybindings = {"v", "<leader>y", noremap}
+        keybindings = {"v", "<leader>y", utils.keymap.noremap},
+        mode = utils.keymap.cc_mode.registger_only,
       }, {
         cmd = "<plug>OSCYank",
-        keybindings = {"v", "<leader>y", {}}
+        keybindings = {"v", "<leader>y", {}},
+        mode = utils.keymap.cc_mode.registger_only,
       }
-    }, command_center.mode.registger_only)
+    }
   end
 }

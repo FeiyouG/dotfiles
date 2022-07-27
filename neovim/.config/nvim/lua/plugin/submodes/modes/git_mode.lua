@@ -5,7 +5,7 @@ return function()
 
   local utils = require("utils")
   local git_mode_name = "Git"
-  local git_mode_icon = ""
+  local git_mode_icon = utils.constants.icons.git.git
   local git_mode_key = "<leader>g"
 
   local noremap = { noremap = true }

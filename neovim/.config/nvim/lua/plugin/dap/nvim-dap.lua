@@ -29,69 +29,52 @@ return {
     end
   end,
 
-  defer = function()
-    -- MARK: Register and add to command_center
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
-    local noremap = { noremap = true }
-
+  commands = function()
     local dap = require("dap")
-    local has_dapui, dapui = pcall(require, "dapui")
+    local utils = require("utils")
 
-    command_center.add({
+    return {
       {
         descriptionL = "Search all debugger",
         cmd = "<CMD>Telescope command_center category=dap<CR>",
-        keybindings = { "n", "<leader>d", noremap },
-        mode = command_center.mode.REGISTER_ONLY,
+        keybindings = { "n", "<leader>d", utils.keymap.noremap },
+        mode = utils.keymap.cc_mode.REGISTER_ONLY,
       }, {
         description = "Toggle Breakpoint",
         cmd = dap.toggle_breakpoint,
-        keybindings = { "n", "<leader>db", noremap },
+        keybindings = { "n", "<leader>db", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "Start debuging",
-        cmd = function()
-          dap.continue()
-          -- if has_dapui then
-          --   dapui.open()
-          -- end
-        end,
-        keybindings = { "n", "<leader>ds", noremap },
+        cmd = dap.continue,
+        keybindings = { "n", "<leader>ds", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "End debuging",
-        cmd = function()
-          dap.terminate()
-          -- if has_dapui then
-          --   dapui.close()
-          -- end
-        end,
-        keybindings = { "n", "<leader>dc", noremap },
+        cmd = dap.terminate,
+        keybindings = { "n", "<leader>dc", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "Step over",
         cmd = dap.step_over,
-        keybindings = { "n", "<leader>dn", noremap },
+        keybindings = { "n", "<leader>dn", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "Step into",
         cmd = dap.step_into,
-        keybindings = { "n", "<leader>di", noremap },
+        keybindings = { "n", "<leader>di", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "Step back",
         cmd = dap.step_back,
-        keybindings = { "n", "<leader>dp", noremap },
+        keybindings = { "n", "<leader>dp", utils.keymap.noremap },
         category = "dap",
       }, {
         description = "Step out",
         cmd = dap.step_out,
-        keybindings = { "n", "<leader>do", noremap },
+        keybindings = { "n", "<leader>do", utils.keymap.noremap },
         category = "dap",
       }
-
-    })
-
-  end
+    }
+  end,
 }

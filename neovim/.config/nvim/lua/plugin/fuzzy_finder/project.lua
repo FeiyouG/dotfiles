@@ -40,20 +40,11 @@ return {
     require('telescope').load_extension('projects')
   end,
 
-  defer = function()
-    -- MARK: Register and add to command_center
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
-
-    local noremap = { noremap = true }
-
-    command_center.add({
-      {
-        description = "Show recent projects",
-        cmd = "<CMD>Telescope projects<CR>",
-        keybindings = { "n", "<leader>fp", noremap },
-      }
-    })
-
-  end
+  commands = {
+    {
+      description = "Show recent projects",
+      cmd = "<CMD>Telescope projects<CR>",
+      keybindings = { "n", "<leader>fp", require("utils").keymap.noremap },
+    }
+  }
 }

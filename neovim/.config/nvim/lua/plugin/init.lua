@@ -33,25 +33,77 @@ packer.init({
 
 -- MARK: Load Modules
 
+-- Add commands to command_center in a vim.schedule block
+local cc_add = function(commands, mode)
+  vim.schedule(function()
+    local command_center = utils.fn.require("command_center")
+    if not command_center then return end
+
+    -- Check if telescope is installed
+    utils.fn.require("telescope",
+      "Without telescope, keybindings registered by command_center can't be displayed nor searched")
+
+    command_center.add(commands, mode)
+  end)
+end
+
 -- Safely load modules without break all configs
 local use = function(module_name)
-  -- Load Module
+  -- require module
   local module_loaded, module = pcall(require, module_name)
   if not module_loaded then
-    print("Failed to load module [" .. module_name .. "]: " .. module)
+    utils.notify.failed_to_load(module_name, module)
     return
   end
 
-  -- Load plugins in module
-  for _, plugin in ipairs(module or {}) do
-    -- P(plugin)
-    local plugin_loaded, error = pcall(packer.use, plugin)
-    if plugin_loaded then
-      -- function in schedule will be executated after all plugin is installed
-      if plugin.defer then vim.schedule(plugin.defer) end
-    else
-      print("Failed to load plugin [" .. plugin[0] .. "]: \n" .. error)
+  -- load plugins in module
+  for i, plugin in ipairs(module or {}) do
+
+    -- Skip invalid plugin declarations
+    if type(plugin) ~= "table" or #plugin == 0 then
+      local plugin_name = i .. "th plugin in module " ..module_name
+      local details = "Invalid plugin declaration;\nexpecting a non-empty table"
+      utils.notify.failed_to_load(plugin_name, details)
+      goto continue
     end
+
+    if type(plugin[1]) ~= "string" or #utils.string.split(plugin[1], "/") ~= 2 then
+      local plugin_name = i .. "th plugin in module " ..module_name
+      local details = "Invalid plugin declaration;\nexpecting first argument to be Github repo name ('user_name/repo_name'),\nbut was " .. plugin[1]
+      utils.notify.failed_to_load(plugin_name, details)
+      goto continue
+    end
+
+    -- use and config plugin through packer
+    local plugin_name = utils.string.split(plugin[1], "/")[2]
+    local ok, error = pcall(packer.use, plugin)
+    if not ok then
+      utils.notify.failed_to_load(plugin_name, error)
+      goto continue
+    end
+
+    -- Execute funcitons in plugin.defer after all plugins are configured
+    if plugin.defer and utils.fn.is_callable(plugin.defer) then
+      vim.schedule(plugin.defer)
+    end
+
+    -- Add plugin.commands to command_center after all plugins are configured
+    if plugin.commands then
+
+      local commands = plugin.commands
+      -- Evaluate plugin.commands if it is a function
+      if utils.fn.is_callable(commands) then
+        commands = plugin.commands()
+      end
+
+      -- Make sure final commands is a table
+      if type(commands) ~= "table" then return end
+
+      -- Add commands to command_center
+      cc_add(commands)
+    end
+
+    ::continue::
   end
 
 end
@@ -76,38 +128,27 @@ use("plugin/treesitter")
 use("plugin/submodes")
 
 
+-- MARK: Add packer commands to command center
+local packer_commands = {
+  {
+    description = "Sync plugins",
+    cmd = packer.sync,
+  }, {
+    description = "Compile plugins",
+    cmd = packer.compile
+  }, {
+    description = "Show plugins startup time",
+    cmd = packer.profile
+  }, {
+    description = "Show plugins status",
+    cmd = packer.status
+  }, {
+    description = "Install missing plugins",
+    cmd = packer.install
+  }
+}
 
--- MARK: Add commands to command center
-local has_command_center, command_center = pcall(require, "command_center")
-if has_command_center then
-  command_center.add({
-    {
-      description = "Sync plugins",
-      cmd = packer.sync
-    }, {
-      description = "Compile plugins",
-      cmd = packer.compile
-    }, {
-      description = "Show plugins startup time",
-      cmd = packer.profile
-    }, {
-      description = "Show plugins status",
-      cmd = packer.status
-    },
-  })
-end
+cc_add(packer_commands)
 
-
--- MARK: Automatically update
-
--- Sync config automatically if we just installed packer
+-- MARK: Sync config automatically if we just installed packer
 if packer_bootstrap then packer.sync() end
-
--- Compile config automatically after saving this file
-local auto_packer_sync = vim.api.nvim_create_augroup("auto_packer_sync", { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  callback = function() packer.compile() end,
-  -- callback = function() packer.sync()  end,
-  group = auto_packer_sync,
-  pattern = "**/nvim/lua/plugin/init.lua"
-})

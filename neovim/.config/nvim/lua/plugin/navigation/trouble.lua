@@ -56,51 +56,40 @@ return {
     })
   end,
 
-  defer = function()
+  commands = function()
     local trouble = require("trouble")
+    local utils = require("utils")
 
-    local has_command_center, command_center = pcall(require, "command_center")
-    if not has_command_center then return end
-
-    local noremap = { noremap = true }
-    local category = "Navigation"
-    command_center.add({
+    return {
       {
         description = "Toggle trouble",
         cmd = "<CMD>TroubleToggle<CR>",
-        keybindings = { "n", "<leader>xx", noremap },
-        category = category,
+        keybindings = { "n", "<leader>xx", utils.keymap.noremap },
       }, {
         description = "Toggle trouble (worksapce diagnostic)",
         cmd = "<CMD>TroubleToggle workspace_diagnostics<CR>",
-        keybindings = { "n", "<leader>xw", noremap },
-        category = category,
+        keybindings = { "n", "<leader>xw", utils.keymap.noremap },
       }, {
         description = "Toggle trouble (document diagnostic)",
         cmd = "<CMD>TroubleToggle document_diagnostics<CR>",
-        keybindings = { "n", "<leader>xd", noremap },
-        category = category,
+        keybindings = { "n", "<leader>xd", utils.keymap.noremap },
       }, {
         description = "Toggle trouble (quickfix list)",
         cmd = "<CMD>TroubleToggle quickfix<CR>",
-        keybindings = { "n", "<leader>xq", noremap },
-        category = category,
+        keybindings = { "n", "<leader>xq", utils.keymap.noremap },
       }, {
         description = "Toggle trouble (location list)",
         cmd = "<CMD>TroubleToggle loclist <CR>",
-        keybindings = { "n", "<leader>xl", noremap },
-        category = category,
+        keybindings = { "n", "<leader>xl", utils.keymap.noremap },
       }, {
         description = "Next item in Trouble",
-        cmd = function() trouble.next({skip_groups = true, jump = true}) end,
-        keybindings = { "n", "<leader>xn", noremap },
-        category = category,
+        cmd = function() trouble.next({ skip_groups = true, jump = true }) end,
+        keybindings = { "n", "<leader>xn", utils.keymap.noremap },
       }, {
         description = "Previous item in Trouble",
-        cmd = function() trouble.previous({skip_groups = true, jump = true}) end,
-        keybindings = { "n", "<leader>xp", noremap },
-        category = category,
+        cmd = function() trouble.previous({ skip_groups = true, jump = true }) end,
+        keybindings = { "n", "<leader>xp", utils.keymap.noremap },
       }
-    })
+    }
   end
 }

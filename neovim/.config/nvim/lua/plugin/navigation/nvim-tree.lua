@@ -201,28 +201,22 @@ return {
     }
   end,
 
-  defer = function()
-    -- MARK: Register and add to command_center
-    local has_command_center, command_center = pcall(require, "command_center")
-    if not has_command_center then return end
-
-    local noremap = { noremap = true }
-
-    command_center.add({
+  commands = function()
+    local utils = require("utils")
+    return {
       {
         description = "Toggle nvim-tree",
         cmd = "<CMD>NvimTreeToggle<CR>",
-        keybindings = { "n", "<leader>tt", noremap },
+        keybindings = { "n", "<leader>tt", utils.keymap.noremap },
       }, {
         description = "Refresh nvim-tree",
         cmd = "<CMD>NvimTreeRefresh<CR>",
-        keybindings = { "n", "<leader>tr", noremap },
+        keybindings = { "n", "<leader>tr", utils.keymap.noremap },
       }, {
         description = "Reveal current file in nvim-tree",
         cmd = "<CMD>NvimTreeFindFile<CR>",
-        keybindings = { "n", "<leader>tf", noremap },
+        keybindings = { "n", "<leader>tf", utils.keymap.noremap },
       }
-    })
-
+    }
   end
 }

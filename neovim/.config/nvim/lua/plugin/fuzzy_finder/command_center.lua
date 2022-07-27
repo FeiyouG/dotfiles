@@ -27,24 +27,19 @@ return {
     end
   end,
 
-  defer = function()
-    local command_center = require("command_center")
-    local noremap = { noremap = true }
+  commands = {
+    {
+      description = "Open command_center",
+      cmd = "<CMD>Telescope command_center<CR>",
+      keybindings = {
+        { "n", "?", require("utils").keymap.noremap },
+        { "v", "?", require("utils").keymap.noremap },
 
-    command_center.add({
-      {
-        description = "Open command_center",
-        cmd = "<CMD>Telescope command_center<CR>",
-        keybindings = {
-          { "n", "<Leader>fc", noremap },
-          { "v", "<Leader>fc", noremap },
-
-          -- If ever hesitate when using telescope start with <leader>f,
-          -- also open command center
-          { "n", "<Leader>f", noremap },
-          { "v", "<Leader>f", noremap },
-        },
-      }
-    }, command_center.mode.REGISTER_ONLY)
-  end
+        -- If ever hesitate when using telescope start with <leader>f,
+        -- also open command center
+        { "n", "<Leader>f", require("utils").keymap.noremap },
+        { "v", "<Leader>f", require("utils").keymap.noremap },
+      },
+    }
+  }
 }

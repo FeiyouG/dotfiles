@@ -69,5 +69,12 @@ return {
         download_url_template = "https://github.com/%s/releases/download/%s/%s",
       },
     })
-  end
+  end,
+
+  commands = {
+    {
+      description = "Open mason",
+      cmd = "<CMD>Mason<CR>",
+    }
+  },
 }

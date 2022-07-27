@@ -16,6 +16,7 @@ return {
   },
 
   git = {
+    git = "",
     unstaged = "✗",
     staged = "✓",
     unmerged = "",

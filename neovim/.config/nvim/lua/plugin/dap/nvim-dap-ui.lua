@@ -53,21 +53,17 @@ return {
     })
   end,
 
-  defer = function()
-    -- MARK: Register and add to command_center
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
-    local noremap = { noremap = true }
-
+  commands = function()
     local dapui = require("dapui")
+    local utils = require("utils")
 
-    command_center.add({
+    return {
       {
         description = "Open floating window for dap",
         cmd = dapui.float_element,
-        keybindings = { "n", "<leader>D", noremap },
+        keybindings = { "n", "<leader>D", utils.keymap.noremap },
         category = "dap"
       }
-    })
+    }
   end
 }

@@ -48,55 +48,50 @@ local M = {
     }
   end,
 
-  defer = function()
+  commands = function()
     -- MARK: Register and add to command_center
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
+    local utils = require("utils")
 
-    local noremap = { noremap = true }
-
-    -- File Pickers
-    command_center.add({
+    return {
+      -- File Pickers
       {
         description = "Find files",
         cmd = "<CMD>Telescope find_files<CR>",
-        keybindings = { "n", "<leader>ff", noremap },
+        keybindings = { "n", "<leader>ff", utils.keymap.noremap },
       }, {
         description = "Find hidden files",
         cmd = "<CMD>Telescope find_files hidden=true<CR>",
       }, {
         description = "Find string in workspace (Live grep)",
         cmd = "<CMD>Telescope live_grep<CR>",
-        keybindings = { "n", "<leader>fg", noremap },
-      }
-    })
+        keybindings = { "n", "<leader>fg", utils.keymap.noremap },
+      },
 
-    -- Vim Pickers
-    command_center.add({
+      -- File Pickers
       {
         description = "Find help documentations",
         cmd = "<CMD>Telescope help_tags<CR>",
-        keybindings = { "n", "<leader>fh", noremap },
+        keybindings = { "n", "<leader>fh", utils.keymap.noremap },
       }, {
         description = "Show opened buffers",
         cmd = "<CMD>Telescope buffers<CR>",
-        keybindings = { "n", "<leader>fb", noremap },
+        keybindings = { "n", "<leader>fb", utils.keymap.noremap },
       }, {
         description = "Find man pages",
         cmd = "<CMD>Telescope man_pages<CR>",
-        keybindings = { "n", "<leader>fm", noremap },
+        keybindings = { "n", "<leader>fm", utils.keymap.noremap },
       }, {
         description = "Find key maps",
         cmd = "<CMD>Telescope keymaps<CR>",
-        keybindings = { "n", "<leader>fk", noremap },
+        keybindings = { "n", "<leader>fk", utils.keymap.noremap },
       }, {
         description = "Find string in current buffer",
         cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
-        keybindings = { "n", "<leader>fl", noremap },
+        keybindings = { "n", "<leader>fl", utils.keymap.noremap },
       }, {
         description = "Show registers",
         cmd = "<CMD>Telescope registers<CR>",
-        keybindings = { "n", "<leader>fr", noremap },
+        keybindings = { "n", "<leader>fr", utils.keymap.noremap },
       }, {
         description = "Show recent files",
         cmd = "<CMD>Telescope oldfiles<CR>",
@@ -127,20 +122,12 @@ local M = {
       }, {
         description = "Show telescope builtin commands",
         cmd = "<CMD>Telescope builtin<CR>",
-      }
-    })
+      },
 
-    -- Git Pickers
-    command_center.add({
+      -- Git Pickers
       {
         description = "Show workspace git commits",
         cmd = "<CMD>Telescope git_commits<CR>",
-        -- }, {
-        --   description = "Show git commits of current buffer",
-        --   cmd = "<CMD>Telescope git_bcommits<CR>",
-        -- }, {
-        --   description = "Show git status",
-        --   cmd = "<CMD>Telescope git_status<CR>",
       }, {
         description = "Show git branches",
         cmd = "<CMD>Telescope <CR>",
@@ -148,8 +135,7 @@ local M = {
         description = "Show git stash",
         cmd = "<CMD>Telescope git_stash<CR>",
       }
-    })
-
+    }
   end
 }
 

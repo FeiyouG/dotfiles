@@ -1,6 +1,5 @@
 return {
   -- Adaptors are handled by nvim-jdtls
-
   configurations = {
     {
       type = 'java';

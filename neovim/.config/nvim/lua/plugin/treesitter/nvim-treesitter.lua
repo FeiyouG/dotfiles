@@ -67,19 +67,11 @@ return {
     vim.cmd "set foldexpr=nvim_treesitter#foldexpr()"
   end,
 
-  defer = function()
-    local has_command_center, command_center = pcall(require, "command_center")
-    if not has_command_center then return end
-
-    local noremap = { noremap = true }
-
-    command_center.add({
-      {
-        description = "Show treesitter symbols",
-        cmd = "<CMD>Telescope treesitter<CR>",
-        keybindings = { "n", "<leader>sts", noremap }
-      }
-    })
-
-  end
+  commands = {
+    {
+      description = "Show treesitter symbols",
+      cmd = "<CMD>Telescope treesitter<CR>",
+      keybindings = { "n", "<leader>sts", require("utils").keymap.noremap }
+    }
+  }
 }

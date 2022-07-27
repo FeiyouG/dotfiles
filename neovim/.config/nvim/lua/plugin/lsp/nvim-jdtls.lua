@@ -1,16 +1,10 @@
 return {
   'mfussenegger/nvim-jdtls',
 
-  defer = function()
-    local has_command_center, command_center = pcall(require, 'command_center')
-    if not has_command_center then return end
-
+  commands = function()
     local jdtls = require("jdtls")
 
-    -- local noremap = { noremap = true }
-    -- local silent_noremap = { noremap = true, silent = true }
-
-    command_center.add({
+    return {
       {
         description = "Jdtls Organize Imports",
         cmd = jdtls.organize_imports,
@@ -36,6 +30,6 @@ return {
         cmd = "<CMD>JdtlsUpdateConfig<CR>",
         category = "lsp",
       }
-    })
+    }
   end
 }

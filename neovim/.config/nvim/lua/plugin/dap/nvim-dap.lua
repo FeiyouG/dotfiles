@@ -17,15 +17,16 @@ return {
     end
 
 
-    local has_dapui, dapui = pcall(require, "dapui")
+    local dapui = Utils.fn.require("dapui", "nvim-dap can still work")
     dap.listeners.after.event_initialized["dapui_config"] = function()
-      if has_dapui then dapui.open() end
+      if dapui then dapui.open() end
     end
+
     dap.listeners.before.event_terminated["dapui_config"] = function()
-      if has_dapui then dapui.close() end
+      if dapui then dapui.close() end
     end
     dap.listeners.before.event_exited["dapui_config"] = function()
-      if has_dapui then dapui.close() end
+      if dapui then dapui.close() end
     end
   end,
 

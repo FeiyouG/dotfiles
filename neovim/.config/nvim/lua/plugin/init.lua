@@ -10,6 +10,7 @@ if vim.fn.empty(vim.fn.glob(Utils.fn.path.packer.installed_path)) > 0 then
     'https://github.com/wbthomason/packer.nvim',
     Utils.fn.path.packer.installed_path
   })
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- MARK: setup packer
@@ -27,6 +28,7 @@ packer.init({
     open_fn = packer_util.float,
   }
 })
+
 
 -- MARK: Load Modules
 Utils.fn.load("plugin/core")

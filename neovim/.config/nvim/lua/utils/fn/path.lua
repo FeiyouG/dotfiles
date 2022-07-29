@@ -43,7 +43,7 @@ M.java = {
   vscode_java_test_jars = M.dir_exists(java.vscode_java_test_path) and
     vim.split(M.concat(java.vscode_java_test_path, "server/*.jar"), "\n") or {},
 
-  lombok_jars = M.file_exists(java.lombok_path) and { java.lombok_path } or P{}
+  lombok_jars = M.file_exists(java.lombok_path) and { java.lombok_path } or {}
 }
 
 return M

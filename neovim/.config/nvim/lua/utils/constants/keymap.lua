@@ -1,5 +1,5 @@
 local get_cc_mode = function()
-  local cc = require("Utils.fn").require("command_center", "utils.fn.keymap.cc_mode is initialized to an empty table")
+  local cc = require("utils.fn").require("command_center", "utils.fn.keymap.cc_mode is initialized to an empty table")
   if cc then return cc.mode end
   return {}
 end

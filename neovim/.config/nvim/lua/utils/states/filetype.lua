@@ -9,7 +9,7 @@ M.quit_on_q = {
   end
 }
 
-require("Utils.fn").add_commands({
+require("utils.fn").add_commands({
   {
     desc = "Quit file on q",
     cmd = function()

@@ -1,6 +1,6 @@
 return {
   -- nvim-cmp ecosystem
-  require("plugin/cmp_engine/nvim-cmp"),
+  require("plugin/cmp/nvim-cmp"),
   { 'hrsh7th/cmp-cmdline' },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-buffer' },
@@ -12,6 +12,6 @@ return {
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
 
   -- Additional completion features
-  require("plugin/cmp_engine/nvim-ts-autotag"),
-  require("plugin/cmp_engine/nvim-autopairs"),
+  require("plugin/cmp/nvim-ts-autotag"),
+  require("plugin/cmp/nvim-autopairs"),
 }

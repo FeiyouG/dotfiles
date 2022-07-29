@@ -8,8 +8,7 @@ return {
   config = function()
 
     local nvim_tree = require("nvim-tree")
-    local utils = require("utils")
-    local icons = utils.constants.icons
+    local icons = Utils.constants.icons
 
     -- a list of groups can be found at `:help nvim_tree_highlight`
     -- vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
@@ -202,20 +201,20 @@ return {
   end,
 
   commands = function()
-    local utils = require("utils")
+    local keymap = Utils.constants.keymap
     return {
       {
-        description = "Toggle nvim-tree",
+        desc = "Toggle nvim-tree",
         cmd = "<CMD>NvimTreeToggle<CR>",
-        keybindings = { "n", "<leader>tt", utils.keymap.noremap },
+        keys = { "n", "<leader>tt", keymap.noremap },
       }, {
-        description = "Refresh nvim-tree",
+        desc = "Refresh nvim-tree",
         cmd = "<CMD>NvimTreeRefresh<CR>",
-        keybindings = { "n", "<leader>tr", utils.keymap.noremap },
+        keys = { "n", "<leader>tr", keymap.noremap },
       }, {
-        description = "Reveal current file in nvim-tree",
+        desc = "Reveal current file in nvim-tree",
         cmd = "<CMD>NvimTreeFindFile<CR>",
-        keybindings = { "n", "<leader>tf", utils.keymap.noremap },
+        keys = { "n", "<leader>tf", keymap.noremap },
       }
     }
   end

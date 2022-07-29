@@ -1,7 +1,7 @@
 local M = {}
 
--- Get current OS name
--- @return one of "mac", "win", and "linux"
+---Get current OS name
+---@return string os_name one of "mac", "win", and "linux"
 M.os_name = function()
   local os_list = {
     mac = "mac",

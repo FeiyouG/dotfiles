@@ -8,7 +8,9 @@ M.capabilities = function()
   local nvim_cmp = require("utils.fn").require("cmp_nvim_lsp", "Can't update lsp capabilities for nvim-cmp")
   if not nvim_cmp then return capabilities end
 
-  return nvim_cmp.update_capabilities(capabilities)
+  capabilities = nvim_cmp.update_capabilities(capabilities)
+
+  return capabilities
 end
 
 return M

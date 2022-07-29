@@ -71,7 +71,7 @@ return {
     {
       description = "Show treesitter symbols",
       cmd = "<CMD>Telescope treesitter<CR>",
-      keybindings = { "n", "<leader>sts", require("utils").keymap.noremap }
+      keybindings = { "n", "<leader>sts", Utils.constants.keymap.noremap }
     }
   }
 }

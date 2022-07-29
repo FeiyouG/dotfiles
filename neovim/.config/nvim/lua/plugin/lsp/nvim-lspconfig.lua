@@ -17,21 +17,10 @@ return {
     })
 
     -- MARK: Add boarder to hover --
-    local border = {
-      { "╭", "FloatBorder" },
-      { "─", "FloatBorder" },
-      { "╮", "FloatBorder" },
-      { "│", "FloatBorder" },
-      { "╯", "FloatBorder" },
-      { "─", "FloatBorder" },
-      { "╰", "FloatBorder" },
-      { "│", "FloatBorder" },
-    }
-
     local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
       opts = opts or {}
-      opts.border = opts.border or border
+      opts.border = opts.border or Utils.constants.border.rounded
       return orig_util_open_floating_preview(contents, syntax, opts, ...)
     end
 
@@ -45,14 +34,13 @@ return {
 
 
     -- MARK: Setup Servers
-    local utils = require("utils")
     local lspconfig = require("lspconfig")
 
     -- initialize servers
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
       -- Setup common server configs
-      server_config.capabilities = utils.lsp.capabilities()
+      server_config.capabilities = Utils.fn.lsp.capabilities()
       lspconfig[server].setup(server_config)
     end
 
@@ -60,7 +48,7 @@ return {
 
 
   commands = function()
-    local utils = require("utils")
+    local keymap = Utils.constants.keymap
 
     return {
       {
@@ -68,50 +56,50 @@ return {
         description = "jdtls related commands",
         cmd = "<CMD>Telescope command_center category=lsp<CR>",
         keybindings = {
-          { "n", "<leader>s", utils.keymap.silent_noremap },
-          { "v", "<leader>s", utils.keymap.silent_noremap },
+          { "n", "<leader>s", keymap.silent_noremap },
+          { "v", "<leader>s", keymap.silent_noremap },
         },
-        mode = utils.keymap.cc_mode.REGISTRER_ONLY,
+        mode = keymap.cc_mode.REGISTRER_ONLY,
       },
       {
         description = "Show documentations (hover)",
         cmd = vim.lsp.buf.hover,
-        keybindings = { "n", "K", utils.keymap.silent_noremap },
+        keybindings = { "n", "K", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Show errors of the current line (floating window)",
         cmd = vim.diagnostic.open_float,
-        keybindings = { "n", "E", utils.keymap.silent_noremap },
+        keybindings = { "n", "E", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Go to the next diagnostic item",
         cmd = vim.diagnostic.goto_next,
-        keybindings = { "n", "<leader>sen", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sen", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Go to the previous diagnostic item",
         cmd = vim.diagnostic.goto_prev,
-        keybindings = { "n", "<leader>sep", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sep", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Show function signature",
         cmd = vim.lsp.buf.signature_help,
-        keybindings = { "n", "<leader>sk", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sk", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Go to declarations",
         cmd = vim.lsp.buf.declaration,
-        keybindings = { "n", "<leader>sD", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sD", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Rename symbol",
         cmd = vim.lsp.buf.rename,
-        keybindings = { "n", "<leader>sn", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sn", keymap.silent_noremap },
         category = "lsp",
       }, {
         description = "Format code (lint)",
         cmd = vim.lsp.buf.formatting,
-        keybindings = { "n", "<leader>sf", utils.keymap.silent_noremap },
+        keybindings = { "n", "<leader>sf", keymap.silent_noremap },
         category = "lsp",
       },
 
@@ -119,48 +107,51 @@ return {
       {
         description = "Show code actions",
         cmd = vim.lsp.buf.code_action,
-        keybindings = { "n", "<leader>sa", utils.keymap.noremap },
+        keybindings = {
+          {"n", "<leader>sa", keymap.noremap },
+          {"v", "<leader>sa", keymap.noremap },
+        },
         category = "lsp",
       }, {
         description = "Go to definitions",
         cmd = "<CMD>Telescope lsp_definitions<CR>",
-        keybindings = { "n", "<leader>sd", utils.keymap.noremap },
+        keybindings = { "n", "<leader>sd", keymap.noremap },
         category = "lsp",
       }, {
         description = "Go to type definitions",
         cmd = "<CMD>Telescope lsp_type_definitions<CR>",
-        keybindings = { "n", "<leader>st", utils.keymap.noremap },
+        keybindings = { "n", "<leader>st", keymap.noremap },
         category = "lsp",
       }, {
         description = "Show all references",
         cmd = "<CMD>Telescope lsp_references<CR>",
-        keybindings = { "n", "<leader>sr", utils.keymap.noremap },
+        keybindings = { "n", "<leader>sr", keymap.noremap },
         category = "lsp",
       }, {
         description = "Show workspace errors (diagnostic)",
         cmd = "<CMD>Telescope diagnostics<CR>",
         keybindings = {
-          { "n", "<leader>se", utils.keymap.noremap },
-          { "n", "<leader>sef", utils.keymap.noremap },
+          { "n", "<leader>se", keymap.noremap },
+          { "n", "<leader>sef", keymap.noremap },
         },
         category = "lsp",
       }, {
         description = "Go to implementations",
         cmd = "<CMD>Telescope lsp_implementations<CR>",
-        keybindings = { "n", "<leader>si", utils.keymap.noremap },
+        keybindings = { "n", "<leader>si", keymap.noremap },
         category = "lsp",
       }, {
         description = "Show document symbols",
         cmd = "<CMD>Telescope lsp_document_symbols<CR>",
         keybindings = {
-          { "n", "<leader>ss", utils.keymap.noremap },
-          { "n", "<leader>ssd", utils.keymap.noremap },
+          { "n", "<leader>ss", keymap.noremap },
+          { "n", "<leader>ssd", keymap.noremap },
         },
         category = "lsp",
       }, {
         description = "show workspace symbols",
         cmd = "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
-        keybindings = { "n", "<leader>ssw", utils.keymap.noremap },
+        keybindings = { "n", "<leader>ssw", keymap.noremap },
         category = "lsp",
       }
     }

@@ -3,12 +3,11 @@ return {
 
   config = function()
     local mason = require("mason")
-    local utils = require("utils")
 
     mason.setup({
       ui = {
         -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-        border = utils.constants.border.rounded,
+        border = Utils.constants.border.rounded,
 
         icons = {
           -- The list icon to use for installed packages.
@@ -42,7 +41,7 @@ return {
       },
 
       -- The directory in which to install packages.
-      install_root_dir = utils.path.concat(vim.fn.stdpath "data", "mason"),
+      install_root_dir = Utils.fn.path.concat(vim.fn.stdpath "data", "mason"),
 
       pip = {
         -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior

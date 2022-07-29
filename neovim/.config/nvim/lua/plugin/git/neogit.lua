@@ -9,8 +9,7 @@ return {
   config = function()
     local neogit = require("neogit")
 
-    local utils = require("utils")
-    local icons = utils.constants.icons
+    local icons = Utils.constants.icons
 
     neogit.setup {
       disable_signs = false,

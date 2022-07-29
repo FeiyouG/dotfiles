@@ -27,19 +27,15 @@ return {
     }
   end,
 
-  commands = function()
-    local utils = require("utils")
-
-    return {
+  commands = {
       {
         cmd = "<CMD>OSCYank<CR>",
-        keybindings = {"v", "<leader>y", utils.keymap.noremap},
-        mode = utils.keymap.cc_mode.registger_only,
+        keys = {"v", "<leader>y", Utils.constants.keymap.noremap},
+        mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
       }, {
         cmd = "<plug>OSCYank",
-        keybindings = {"v", "<leader>y", {}},
-        mode = utils.keymap.cc_mode.registger_only,
+        keys = {"v", "<leader>y", Utils.constants.keymap.noremap},
+        mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
       }
-    }
-  end
+  }
 }

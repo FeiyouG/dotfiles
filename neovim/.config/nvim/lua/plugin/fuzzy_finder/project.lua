@@ -42,9 +42,9 @@ return {
 
   commands = {
     {
-      description = "Show recent projects",
+      desc = "Show recent projects",
       cmd = "<CMD>Telescope projects<CR>",
-      keybindings = { "n", "<leader>fp", require("utils").keymap.noremap },
+      keys = { "n", "<leader>fp", Utils.constants.keymap.noremap },
     }
   }
 }

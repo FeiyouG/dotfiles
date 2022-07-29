@@ -1,9 +1,9 @@
 -- Load impatient as the first thing
-local has_impatient, impatient = pcall(require, 'impatient')
+local has_impatient, impatient = pcall(require, "impatient")
+if has_impatient then impatient.enable_profile() end
 
-if has_impatient then
-  impatient.enable_profile()
-end
+-- global utility functions and constants
+require("utils")
 
 -- All non plugin related options
 require("options")
@@ -14,8 +14,6 @@ require("mappings")
 -- Neovim Autocommands
 require("autocommands")
 
--- Custom lua functions and variables
-require("custom.globals")
-
 -- Plugin management via Packer
 require("plugin")
+

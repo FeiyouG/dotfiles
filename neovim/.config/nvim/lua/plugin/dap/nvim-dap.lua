@@ -31,48 +31,48 @@ return {
 
   commands = function()
     local dap = require("dap")
-    local utils = require("utils")
+    local keymap = Utils.constants.keymap
 
     return {
       {
         descriptionL = "Search all debugger",
         cmd = "<CMD>Telescope command_center category=dap<CR>",
-        keybindings = { "n", "<leader>d", utils.keymap.noremap },
-        mode = utils.keymap.cc_mode.REGISTER_ONLY,
+        keybindings = { "n", "<leader>d", keymap.noremap },
+        mode = keymap.cc_mode.REGISTER_ONLY,
       }, {
         description = "Toggle Breakpoint",
         cmd = dap.toggle_breakpoint,
-        keybindings = { "n", "<leader>db", utils.keymap.noremap },
+        keybindings = { "n", "<leader>db", keymap.noremap },
         category = "dap",
       }, {
         description = "Start debuging",
         cmd = dap.continue,
-        keybindings = { "n", "<leader>ds", utils.keymap.noremap },
+        keybindings = { "n", "<leader>ds", keymap.noremap },
         category = "dap",
       }, {
         description = "End debuging",
         cmd = dap.terminate,
-        keybindings = { "n", "<leader>dc", utils.keymap.noremap },
+        keybindings = { "n", "<leader>dc", keymap.noremap },
         category = "dap",
       }, {
         description = "Step over",
         cmd = dap.step_over,
-        keybindings = { "n", "<leader>dn", utils.keymap.noremap },
+        keybindings = { "n", "<leader>dn", keymap.noremap },
         category = "dap",
       }, {
         description = "Step into",
         cmd = dap.step_into,
-        keybindings = { "n", "<leader>di", utils.keymap.noremap },
+        keybindings = { "n", "<leader>di", keymap.noremap },
         category = "dap",
       }, {
         description = "Step back",
         cmd = dap.step_back,
-        keybindings = { "n", "<leader>dp", utils.keymap.noremap },
+        keybindings = { "n", "<leader>dp", keymap.noremap },
         category = "dap",
       }, {
         description = "Step out",
         cmd = dap.step_out,
-        keybindings = { "n", "<leader>do", utils.keymap.noremap },
+        keybindings = { "n", "<leader>do", keymap.noremap },
         category = "dap",
       }
     }

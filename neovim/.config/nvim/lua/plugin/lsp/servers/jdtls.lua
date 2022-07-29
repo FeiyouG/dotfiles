@@ -1,13 +1,11 @@
-local utils = require("utils")
-
 -- Patterns of root folder
 local root_dir = require('jdtls.setup').find_root({ "packageInfo" }, "Config") -- Project root directory
 
 local jdtls_home = '$XDG_DATA_HOME/nvim/lsp_servers/jdtls'
-local jdtls_workspace = utils.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim.fn.fnamemodify(root_dir, ":p:h:t"))
+local jdtls_workspace = Utils.fn.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim.fn.fnamemodify(root_dir, ":p:h:t"))
 
 -- Create jdtls_workspace if it doesn't exist
-utils.path.safe_path(jdtls_workspace)
+Utils.fn.path.safe_path(jdtls_workspace)
 jdtls_workspace = vim.fn.glob(jdtls_workspace);
 
 
@@ -27,8 +25,8 @@ end
 local jdtls_bundles = {}
 
 -- Setup debugger
-vim.list_extend(jdtls_bundles, utils.path.java.java_debug_jars)
-vim.list_extend(jdtls_bundles, utils.path.java.vscode_java_test_jars)
+vim.list_extend(jdtls_bundles, Utils.fn.path.java.java_debug_jars)
+vim.list_extend(jdtls_bundles, Utils.fn.path.java.vscode_java_test_jars)
 
 -- MARK: Setup Commands
 local jdtls_cmd = {
@@ -45,16 +43,16 @@ local jdtls_cmd = {
 }
 
 -- Setup Lombok support; must in front of `-jar`
-if utils.path.java.lombok_jars then
+if Utils.fn.path.java.lombok_jars then
   vim.list_extend(jdtls_cmd, {
-    "-javaagent:" .. utils.path.java.lombok_jars[1],
-    -- "-Xbootclasspath/a:" .. utils.path.java.lombok_jars[1],
+    "-javaagent:" .. Utils.fn.path.java.lombok_jars[1],
+    -- "-Xbootclasspath/a:" .. Utils.fn.path.java.lombok_jars[1],
   })
 end
 
 vim.list_extend(jdtls_cmd, {
-  '-jar', vim.fn.glob(utils.path.concat(jdtls_home, 'plugins/org.eclipse.equinox.launcher_*.jar')),
-  '-configuration', vim.fn.glob(utils.path.concat(jdtls_home, '/config_' .. utils.system.os_name())),
+  '-jar', vim.fn.glob(Utils.fn.path.concat(jdtls_home, 'plugins/org.eclipse.equinox.launcher_*.jar')),
+  '-configuration', vim.fn.glob(Utils.fn.path.concat(jdtls_home, '/config_' .. Utils.fn.system.os_name())),
   '-data', vim.fn.glob(jdtls_workspace),
 })
 

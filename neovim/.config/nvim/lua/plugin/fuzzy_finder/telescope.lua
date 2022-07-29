@@ -50,89 +50,89 @@ local M = {
 
   commands = function()
     -- MARK: Register and add to command_center
-    local utils = require("utils")
+    local keymap = Utils.constants.keymap
 
     return {
       -- File Pickers
       {
-        description = "Find files",
+        desc = "Find files",
         cmd = "<CMD>Telescope find_files<CR>",
-        keybindings = { "n", "<leader>ff", utils.keymap.noremap },
+        keys = { "n", "<leader>ff", keymap.noremap },
       }, {
-        description = "Find hidden files",
+        desc = "Find hidden files",
         cmd = "<CMD>Telescope find_files hidden=true<CR>",
       }, {
-        description = "Find string in workspace (Live grep)",
+        desc = "Find string in workspace (Live grep)",
         cmd = "<CMD>Telescope live_grep<CR>",
-        keybindings = { "n", "<leader>fg", utils.keymap.noremap },
+        keys = { "n", "<leader>fg", keymap.noremap },
       },
 
       -- File Pickers
       {
-        description = "Find help documentations",
+        desc = "Find help documentations",
         cmd = "<CMD>Telescope help_tags<CR>",
-        keybindings = { "n", "<leader>fh", utils.keymap.noremap },
+        keys = { "n", "<leader>fh", keymap.noremap },
       }, {
-        description = "Show opened buffers",
+        desc = "Show opened buffers",
         cmd = "<CMD>Telescope buffers<CR>",
-        keybindings = { "n", "<leader>fb", utils.keymap.noremap },
+        keys = { "n", "<leader>fb", keymap.noremap },
       }, {
-        description = "Find man pages",
+        desc = "Find man pages",
         cmd = "<CMD>Telescope man_pages<CR>",
-        keybindings = { "n", "<leader>fm", utils.keymap.noremap },
+        keys = { "n", "<leader>fm", keymap.noremap },
       }, {
-        description = "Find key maps",
+        desc = "Find key maps",
         cmd = "<CMD>Telescope keymaps<CR>",
-        keybindings = { "n", "<leader>fk", utils.keymap.noremap },
+        keys = { "n", "<leader>fk", keymap.noremap },
       }, {
-        description = "Find string in current buffer",
+        desc = "Find string in current buffer",
         cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
-        keybindings = { "n", "<leader>fl", utils.keymap.noremap },
+        keys = { "n", "<leader>fl", keymap.noremap },
       }, {
-        description = "Show registers",
+        desc = "Show registers",
         cmd = "<CMD>Telescope registers<CR>",
-        keybindings = { "n", "<leader>fr", utils.keymap.noremap },
+        keys = { "n", "<leader>fr", keymap.noremap },
       }, {
-        description = "Show recent files",
+        desc = "Show recent files",
         cmd = "<CMD>Telescope oldfiles<CR>",
       }, {
-        description = "Show all commands",
+        desc = "Show all commands",
         cmd = "<CMD>Telescope commands<CR>",
       }, {
-        description = "Show command history",
+        desc = "Show command history",
         cmd = "<CMD>Telescope command_history<CR>",
       }, {
-        description = "Show search history (vimgrep)",
+        desc = "Show search history (vimgrep)",
         cmd = "<CMD>Telescope search_history<CR>",
       }, {
-        description = "Show marks",
+        desc = "Show marks",
         cmd = "<CMD>Telescope marks<CR>",
       }, {
-        description = "Switch colorschemes",
+        desc = "Switch colorschemes",
         cmd = "<CMD>Telescope colorscheme<CR>",
       }, {
-        description = "Show jumplist",
+        desc = "Show jumplist",
         cmd = "<CMD>Telescope jumplist<CR>",
       }, {
-        description = "Edit vim options",
+        desc = "Edit vim options",
         cmd = "<CMD>Telescope vim_options<CR>",
       }, {
-        description = "Show autocommands",
+        desc = "Show autocommands",
         cmd = "<CMD>Telescope autocommands<CR>",
       }, {
-        description = "Show telescope builtin commands",
+        desc = "Show telescope builtin commands",
         cmd = "<CMD>Telescope builtin<CR>",
       },
 
       -- Git Pickers
       {
-        description = "Show workspace git commits",
+        desc = "Show workspace git commits",
         cmd = "<CMD>Telescope git_commits<CR>",
       }, {
-        description = "Show git branches",
+        desc = "Show git branches",
         cmd = "<CMD>Telescope <CR>",
       }, {
-        description = "Show git stash",
+        desc = "Show git stash",
         cmd = "<CMD>Telescope git_stash<CR>",
       }
     }

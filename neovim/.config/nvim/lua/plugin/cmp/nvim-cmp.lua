@@ -7,7 +7,6 @@ return {
   config = function()
     local has_luasnip, luasnip = pcall(require, "luasnip")
     local cmp = require("cmp")
-    local utils = require("utils")
 
     local kind_icons = {
       -- Text = "",
@@ -90,11 +89,11 @@ return {
 
       window = {
         documentation = {
-          border = utils.constants.border.rounded,
+          border = Utils.constants.border.rounded,
           winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
         },
         completion = {
-          border = utils.constants.border.rounded,
+          border = Utils.constants.border.rounded,
           winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
         }
       },

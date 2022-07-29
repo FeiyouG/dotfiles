@@ -3,9 +3,8 @@ return {
 
   config = function()
     local trouble = require("trouble")
-    local utils = require("utils")
 
-    local icons = utils.constants.icons
+    local icons = Utils.constants.icons
 
     trouble.setup({
       position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -58,37 +57,37 @@ return {
 
   commands = function()
     local trouble = require("trouble")
-    local utils = require("utils")
+    local keymap = Utils.constants.keymap
 
     return {
       {
-        description = "Toggle trouble",
+        desc = "Toggle trouble",
         cmd = "<CMD>TroubleToggle<CR>",
-        keybindings = { "n", "<leader>xx", utils.keymap.noremap },
+        keys = { "n", "<leader>xx", keymap.noremap },
       }, {
-        description = "Toggle trouble (worksapce diagnostic)",
+        desc = "Toggle trouble (worksapce diagnostic)",
         cmd = "<CMD>TroubleToggle workspace_diagnostics<CR>",
-        keybindings = { "n", "<leader>xw", utils.keymap.noremap },
+        keys = { "n", "<leader>xw", keymap.noremap },
       }, {
-        description = "Toggle trouble (document diagnostic)",
+        desc = "Toggle trouble (document diagnostic)",
         cmd = "<CMD>TroubleToggle document_diagnostics<CR>",
-        keybindings = { "n", "<leader>xd", utils.keymap.noremap },
+        keys = { "n", "<leader>xd", keymap.noremap },
       }, {
-        description = "Toggle trouble (quickfix list)",
+        desc = "Toggle trouble (quickfix list)",
         cmd = "<CMD>TroubleToggle quickfix<CR>",
-        keybindings = { "n", "<leader>xq", utils.keymap.noremap },
+        keys = { "n", "<leader>xq", keymap.noremap },
       }, {
-        description = "Toggle trouble (location list)",
+        desc = "Toggle trouble (location list)",
         cmd = "<CMD>TroubleToggle loclist <CR>",
-        keybindings = { "n", "<leader>xl", utils.keymap.noremap },
+        keys = { "n", "<leader>xl", keymap.noremap },
       }, {
-        description = "Next item in Trouble",
+        desc = "Next item in Trouble",
         cmd = function() trouble.next({ skip_groups = true, jump = true }) end,
-        keybindings = { "n", "<leader>xn", utils.keymap.noremap },
+        keys = { "n", "<leader>xn", keymap.noremap },
       }, {
-        description = "Previous item in Trouble",
+        desc = "Previous item in Trouble",
         cmd = function() trouble.previous({ skip_groups = true, jump = true }) end,
-        keybindings = { "n", "<leader>xp", utils.keymap.noremap },
+        keys = { "n", "<leader>xp", keymap.noremap },
       }
     }
   end

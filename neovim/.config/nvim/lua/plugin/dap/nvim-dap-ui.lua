@@ -53,17 +53,12 @@ return {
     })
   end,
 
-  commands = function()
-    local dapui = require("dapui")
-    local utils = require("utils")
-
-    return {
-      {
-        description = "Open floating window for dap",
-        cmd = dapui.float_element,
-        keybindings = { "n", "<leader>D", utils.keymap.noremap },
-        category = "dap"
-      }
+  commands = {
+    {
+      description = "Open floating window for dap",
+      cmd = require("dapui").float_element,
+      keybindings = { "n", "<leader>D", Utils.constants.keymap.noremap },
+      category = "dap"
     }
-  end
+  }
 }

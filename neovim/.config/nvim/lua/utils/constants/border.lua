@@ -1,3 +1,12 @@
 return {
-  rounded = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
+  rounded = {
+    { "╭", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╮", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "╯", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╰", "FloatBorder" },
+    { "│", "FloatBorder" },
+  },
 }

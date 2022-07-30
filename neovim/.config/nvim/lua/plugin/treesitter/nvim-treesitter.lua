@@ -67,11 +67,13 @@ return {
     vim.cmd "set foldexpr=nvim_treesitter#foldexpr()"
   end,
 
-  commands = {
-    {
-      description = "Show treesitter symbols",
-      cmd = "<CMD>Telescope treesitter<CR>",
-      keybindings = { "n", "<leader>sts", Utils.constants.keymap.noremap }
+  commands = function()
+    return {
+      {
+        description = "Show treesitter symbols",
+        cmd = "<CMD>Telescope treesitter<CR>",
+        keybindings = { "n", "<leader>sts", Utils.constants.keymap.noremap }
+      }
     }
-  }
+  end
 }

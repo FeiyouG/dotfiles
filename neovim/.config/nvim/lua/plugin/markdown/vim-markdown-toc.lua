@@ -10,10 +10,12 @@ return {
     vim.cmd "let g:vmt_include_headings_before = 0"
   end,
 
-  commands = {
-    {
-      description = "Generate table of contents (GFM)",
-      cmd = "<CMD>GenTocGFM<CR>",
+  commands = function()
+    return {
+      {
+        description = "Generate table of contents (GFM)",
+        cmd = "<CMD>GenTocGFM<CR>",
+      }
     }
-  }
+  end
 }

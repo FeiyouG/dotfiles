@@ -2,9 +2,6 @@
 local has_impatient, impatient = pcall(require, "impatient")
 if has_impatient then impatient.enable_profile() end
 
--- global utility functions and constants
-require("utils")
-
 -- All non plugin related options
 require("options")
 
@@ -14,6 +11,8 @@ require("mappings")
 -- Neovim Autocommands
 require("autocommands")
 
+-- global utility functions and constants
+require("utils")
+
 -- Plugin management via Packer
 require("plugin")
-

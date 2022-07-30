@@ -70,10 +70,12 @@ return {
     })
   end,
 
-  commands = {
-    {
-      description = "Open mason",
-      cmd = "<CMD>Mason<CR>",
+  commands = function()
+    return {
+      {
+        description = "Open mason",
+        cmd = "<CMD>Mason<CR>",
+      }
     }
-  },
+  end
 }

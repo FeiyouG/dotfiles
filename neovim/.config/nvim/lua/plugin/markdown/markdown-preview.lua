@@ -62,10 +62,12 @@ return {
     vim.cmd "let g:mkdp_filetypes = ['markdown']"
   end,
 
-  commands = {
-    {
-      description = "Toggle markdown preview",
-      cmd = "<CMD>MarkdownPreviewToggle<CR>",
+  commands = function()
+    return {
+      {
+        description = "Toggle markdown preview",
+        cmd = "<CMD>MarkdownPreviewToggle<CR>",
+      }
     }
-  }
+  end
 }

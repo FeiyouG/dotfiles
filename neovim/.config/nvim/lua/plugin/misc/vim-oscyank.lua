@@ -27,15 +27,17 @@ return {
     }
   end,
 
-  commands = {
+  commands = function()
+    return {
       {
         cmd = "<CMD>OSCYank<CR>",
-        keys = {"v", "<leader>y", Utils.constants.keymap.noremap},
+        keys = { "v", "<leader>y", Utils.constants.keymap.noremap },
         mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
       }, {
         cmd = "<plug>OSCYank",
-        keys = {"v", "<leader>y", Utils.constants.keymap.noremap},
+        keys = { "v", "<leader>y", Utils.constants.keymap.noremap },
         mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
       }
-  }
+    }
+  end
 }

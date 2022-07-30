@@ -40,11 +40,13 @@ return {
     require('telescope').load_extension('projects')
   end,
 
-  commands = {
-    {
-      desc = "Show recent projects",
-      cmd = "<CMD>Telescope projects<CR>",
-      keys = { "n", "<leader>fp", Utils.constants.keymap.noremap },
+  commands = function()
+    return {
+      {
+        desc = "Show recent projects",
+        cmd = "<CMD>Telescope projects<CR>",
+        keys = { "n", "<leader>fp", Utils.constants.keymap.noremap },
+      }
     }
-  }
+  end
 }

@@ -66,6 +66,23 @@ M.error_once = function(title, message, ...)
   M.auto(title, vim.log.levels.ERROR, { once = true }, message, ...)
 end
 
+
+---Send an error notification
+---@param title string?: the title of the error; if nil, then a minimal style notificaiton will be sent
+---@param message string: the body of the error
+---@param ... any?: additional informaiton to be included in the error; each item will be displayed in a new line
+M.warn = function(title, message, ...)
+  M.auto(title, vim.log.levels.WARN, nil, message, ...)
+end
+
+--Send an one-time error notification
+---@param title string?: the title of the error; if nil, then a minimal style notificaiton will be sent
+---@param message string: the body of the error
+---@param ... any?: additional informaiton to be included in the error; each item will be displayed in a new line
+M.warn_once = function(title, message, ...)
+  M.auto(title, vim.log.levels.WARN, { once = true }, message, ...)
+end
+
 ---Send an info notification
 ---@param title string?: the title of the info; if nil, then a minimal style notificaiton will be sent
 ---@param message string: the body of the info

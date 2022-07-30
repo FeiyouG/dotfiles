@@ -53,12 +53,14 @@ return {
     })
   end,
 
-  commands = {
-    {
-      description = "Open floating window for dap",
-      cmd = require("dapui").float_element,
-      keybindings = { "n", "<leader>D", Utils.constants.keymap.noremap },
-      category = "dap"
+  commands = function()
+    return {
+      {
+        description = "Open floating window for dap",
+        cmd = require("dapui").float_element,
+        keybindings = { "n", "<leader>D", Utils.constants.keymap.noremap },
+        category = "dap"
+      }
     }
-  }
+  end
 }

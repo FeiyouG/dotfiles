@@ -38,6 +38,68 @@ M.require = function(name, ...)
   return res
 end
 
+local validate_plugin_specification = function(plugin, module_name)
+  if type(plugin) ~= "table" or vim.tbl_isempty(plugin) or not plugin[1] then
+    M.notify.failed_to_load("a plugin in " .. module_name,
+      "Invalid plugin declaration:",
+      "  expecting a non-empty table with the first argument being a Github repo.")
+    return false
+  end
+
+  if type(plugin[1]) ~= "string" or #M.str.split(plugin[1], "/") ~= 2 then
+    M.notify.failed_to_load("a plugin in " .. module_name,
+      "Invalid plugin declaration:",
+      "  expecting first argument to be Github repo name ('user_name/repo_name')",
+      "  but was '" .. plugin[1] .. "'.")
+    return false
+  end
+
+  return true
+end
+
+local process_plugin_defer = function(plugin, plugin_name)
+  if not plugin.defer then return end
+
+  if not M.is_callable(plugin.defer) then
+    M.notify.warn_once(plugin_name, "`plugin.defer` is not callable and will be ignored")
+    return
+  end
+
+  -- Execute funcitons in plugin.defer after all plugins are configured
+  vim.schedule(function()
+    local defer_ok, defer_error = pcall(plugin.defer)
+    if not defer_ok then
+      M.notify.error(plugin_name, "`plugin.defer()` executated with an error:", defer_error)
+    end
+  end)
+end
+
+-- Add plugin.commands to command_center after all plugins are configured
+local process_plugin_command = function(plugin, plugin_name)
+  if not plugin.commands then return end
+
+  if not M.is_callable(plugin.commands) then
+    M.notify.warn_once(plugin_name, "`plugin.commands` is not callable and will be ignored")
+    return
+  end
+
+  -- Get commands
+  local commands_ok, commands = pcall(plugin.commands)
+  if not commands_ok then
+    M.notify.error(plugin_name, "`plugin.commands()` executated with an error:", commands)
+    return
+  end
+
+  -- Valid commands
+  if type(commands) ~= "table" then
+    M.notify.error(plugin_name, "Expecting `plugin.commands()` to return a table, but got a " .. type(commands))
+    return
+  end
+
+  -- Add commands to command_center
+  M.add_commands(commands)
+end
+
 ---Safely load and configure plugins using packer;
 ---Send a one-time notification if anything went wrong and stop immediately.
 ---The plugin follows pack plugin-specification convetion with two additional fields: defer and commands
@@ -47,21 +109,7 @@ local load_plugin = function(plugin, module_name)
   local packer = M.require("packer", "Can't use or config any modules.")
   if not packer then return end
 
-  -- Skip invalid plugin declarations
-  if type(plugin) ~= "table" or vim.tbl_isempty(plugin) or not plugin[1] then
-    M.notify.failed_to_load("a plugin in " .. module_name,
-      "Invalid plugin declaration:",
-      "  expecting a non-empty table with the first argument being a Github repo.")
-    return
-  end
-
-  if type(plugin[1]) ~= "string" or #M.str.split(plugin[1], "/") ~= 2 then
-    M.notify.failed_to_load("a plugin in " .. module_name,
-      "Invalid plugin declaration:",
-      "  expecting first argument to be Github repo name ('user_name/repo_name')",
-      "  but was '" .. plugin[1] .. "'.")
-    return
-  end
+  if not validate_plugin_specification(plugin, module_name) then return end
 
   -- use and config plugin through packer
   local plugin_name = M.str.split(plugin[1], "/")[2]
@@ -71,39 +119,9 @@ local load_plugin = function(plugin, module_name)
     return
   end
 
-  -- Execute funcitons in plugin.defer after all plugins are configured
-  if plugin.defer and M.is_callable(plugin.defer) then
-    vim.schedule(function()
-      local defer_ok, defer_error = pcall(plugin.defer)
-      if not defer_ok then
-        M.notify.error(plugin_name, "The function `plugin.defer()` executated with an error:", defer_error)
-      end
-    end)
-  end
+  process_plugin_defer(plugin, plugin_name)
+  process_plugin_command(plugin, plugin_name)
 
-  -- Add plugin.commands to command_center after all plugins are configured
-  if plugin.commands then
-
-    local commands = plugin.commands
-    -- Evaluate plugin.commands if it is a function
-    if M.is_callable(commands) then
-      local commands_ok, commands_res = pcall(plugin.commands)
-      if not commands_ok then
-        M.notify.error(plugin_name, "The function `plugin.commands()` executated with an error:", commands_res)
-        return
-      end
-      commands = commands_res
-    end
-
-    -- Make sure final commands is a table
-    if type(commands) ~= "table" then
-      M.notify.error(plugin_name, "Expect a table returned by `plugin.commands`, but got a " .. type(commands))
-      return
-    end
-
-    -- Add commands to command_center
-    M.add_commands(commands)
-  end
 end
 
 ---Safely load and configure plugins defined in a module using `packer.nvim`;

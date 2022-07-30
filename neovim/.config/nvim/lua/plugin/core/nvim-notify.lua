@@ -24,24 +24,16 @@ return {
     Utils.states.filetype.quit_on_q:add("notify")
   end,
 
-  commands = {
+  commands = function()
+    return {
     {
       desc = "Show notification history",
       cmd = "<CMD>Telescope notify<CR>"
     }, {
       desc = "Dismiss notifcations",
       cmd = require("notify").dismiss
-    -- }, {
-    --   desc = "Quit notify",
-    --   cmd = function()
-    --     local bf = vim.api.nvim_get_current_buf()
-    --     local filetype = vim.api.nvim_buf_get_option(bf, "filetype")
-    --     if filetype == "notify" then
-    --       vim.cmd("quit!")
-    --     end
-    --   end,
-    --   keys = { "n", "q" },
-    --   -- mode = Utils.constants.keymap.cc_mode.SET
     }
   }
+
+  end
 }

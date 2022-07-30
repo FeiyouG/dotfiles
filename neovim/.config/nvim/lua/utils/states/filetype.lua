@@ -13,7 +13,7 @@ require("utils.fn").add_commands({
   {
     desc = "Quit file on q",
     cmd = function()
-      require("Utils.fn").P(M.quit_on_q)
+      require("utils.fn").P(M.quit_on_q)
       local bf = vim.api.nvim_get_current_buf()
       local filetype = vim.api.nvim_buf_get_option(bf, "filetype")
       if vim.tbl_contains(M.quit_on_q.ft, filetype) then

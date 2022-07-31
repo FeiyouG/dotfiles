@@ -89,11 +89,11 @@ return {
 
       window = {
         documentation = {
-          border = Utils.constants.border.rounded,
+          border = Utils.const.border.rounded,
           winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
         },
         completion = {
-          border = Utils.constants.border.rounded,
+          border = Utils.const.border.rounded,
           winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None"
         }
       },

@@ -7,7 +7,7 @@ return {
     mason.setup({
       ui = {
         -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-        border = Utils.constants.border.rounded,
+        border = Utils.const.border.rounded,
 
         icons = {
           -- The list icon to use for installed packages.

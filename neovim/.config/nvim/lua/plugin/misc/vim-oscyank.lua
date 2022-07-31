@@ -31,12 +31,12 @@ return {
     return {
       {
         cmd = "<CMD>OSCYank<CR>",
-        keys = { "v", "<leader>y", Utils.constants.keymap.noremap },
-        mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
+        keys = { "v", "<leader>y", Utils.const.keymap.noremap },
+        mode = Utils.const.keymap.cc_mode.REGISTER_ONLY,
       }, {
         cmd = "<plug>OSCYank",
-        keys = { "v", "<leader>y", Utils.constants.keymap.noremap },
-        mode = Utils.constants.keymap.cc_mode.REGISTER_ONLY,
+        keys = { "v", "<leader>y", Utils.const.keymap.noremap },
+        mode = Utils.const.keymap.cc_mode.REGISTER_ONLY,
       }
     }
   end

@@ -3,7 +3,7 @@ return function()
   local command_center = Utils.fn.require("command_center")
 
   local git_mode_name = "Git"
-  local git_mode_icon = Utils.constants.icons.git.git
+  local git_mode_icon = Utils.const.icons.git.git
   local git_mode_key = "<leader>g"
 
   local gitsigns = Utils.fn.require('gitsigns')
@@ -16,11 +16,11 @@ return function()
       {
         description = "show all commands in git mode",
         cmd = "<CMD>Telescope command_center category=" .. git_mode_name .. "<CR>",
-        keybindings = { "n", "?", Utils.constants.keymap.noremap },
+        keybindings = { "n", "?", Utils.const.keymap.noremap },
       }, {
         description = "Exit git mode",
         cmd = git_mode_key,
-        keybindings = { "n", git_mode_key, Utils.constants.keymap.nowait },
+        keybindings = { "n", git_mode_key, Utils.const.keymap.nowait },
         hydra_head_args = { exit = true },
       }, {
         description = "Next hunk",
@@ -30,7 +30,7 @@ return function()
           return "<Ignore>"
         end,
 
-        keybindings = { "n", "<C-n>", Utils.constants.keymap.noremap_expr },
+        keybindings = { "n", "<C-n>", Utils.const.keymap.noremap_expr },
       }, {
         description = "Previous hunk",
         cmd = function()
@@ -39,7 +39,7 @@ return function()
           return "<Ignore>"
         end,
 
-        keybindings = { "n", "<C-p>", Utils.constants.keymap.noremap_expr },
+        keybindings = { "n", "<C-p>", Utils.const.keymap.noremap_expr },
       }, {
         description = "Stage hunk",
         cmd = gitsigns.stage_hunk,

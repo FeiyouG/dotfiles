@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require("utils.constants.icons")
+local icons = require("utils.const.icons")
 
 local notified = {}
 

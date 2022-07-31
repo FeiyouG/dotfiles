@@ -32,7 +32,7 @@ return {
 
   commands = function()
     local dap = require("dap")
-    local keymap = Utils.constants.keymap
+    local keymap = Utils.const.keymap
 
     return {
       {

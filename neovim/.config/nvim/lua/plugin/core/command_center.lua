@@ -32,7 +32,7 @@ return {
   end,
 
   commands = function()
-    local keymap = Utils.constants.keymap
+    local keymap = Utils.const.keymap
 
     return {
       {

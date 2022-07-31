@@ -21,7 +21,7 @@ return {
     end
 
     -- Quit notify when pressing q
-    Utils.states.filetype.quit_on_q:add("notify")
+    Utils.state.filetype.quit_on_q:add("notify")
   end,
 
   commands = function()

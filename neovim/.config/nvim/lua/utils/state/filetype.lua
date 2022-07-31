@@ -20,7 +20,7 @@ require("utils.fn").add_commands({
       end
     end,
     keys = { "n", "q" },
-    mode = require("utils.constants").keymap.cc_mode.SET
+    mode = require("utils.const").keymap.cc_mode.SET
   }
 })
 

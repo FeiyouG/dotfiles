@@ -50,7 +50,7 @@ local M = {
 
   commands = function()
     -- MARK: Register and add to command_center
-    local keymap = Utils.constants.keymap
+    local keymap = Utils.const.keymap
 
     return {
       -- File Pickers

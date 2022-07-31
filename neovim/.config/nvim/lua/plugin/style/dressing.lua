@@ -23,7 +23,7 @@ return {
 
         -- These are passed to nvim_open_win
         anchor = "SW",
-        border = Utils.constants.border.rounded,
+        border = Utils.const.border.rounded,
 
         -- 'editor' and 'win' will default to being centered
         relative = "cursor",
@@ -86,7 +86,7 @@ return {
         builtin = {
           -- These are passed to nvim_open_win
           anchor = "NW",
-          border = Utils.constants.border.rounded,
+          border = Utils.const.border.rounded,
 
           -- 'editor' and 'win' will default to being centered
           relative = "editor",

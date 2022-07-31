@@ -10,7 +10,7 @@ return {
     local diffview = require("diffview")
     local actions = require("diffview.actions")
 
-    local icons = Utils.constants.icons
+    local icons = Utils.const.icons
 
     diffview.setup({
       diff_binaries = false, -- Show diffs for binaries

@@ -25,8 +25,8 @@ end
 local jdtls_bundles = {}
 
 -- Setup debugger
-vim.list_extend(jdtls_bundles, Utils.fn.path.java.java_debug_jars)
-vim.list_extend(jdtls_bundles, Utils.fn.path.java.vscode_java_test_jars)
+vim.list_extend(jdtls_bundles, Utils.const.path.java.java_debug_jars)
+vim.list_extend(jdtls_bundles, Utils.const.path.java.vscode_java_test_jars)
 
 -- MARK: Setup Commands
 local jdtls_cmd = {
@@ -43,10 +43,9 @@ local jdtls_cmd = {
 }
 
 -- Setup Lombok support; must in front of `-jar`
-if Utils.fn.path.java.lombok_jars then
+if Utils.const.path.java.lombok_jars then
   vim.list_extend(jdtls_cmd, {
-    "-javaagent:" .. Utils.fn.path.java.lombok_jars[1],
-    -- "-Xbootclasspath/a:" .. Utils.fn.path.java.lombok_jars[1],
+    "-javaagent:" .. Utils.fn.constants.java.lombok_jars[1],
   })
 end
 

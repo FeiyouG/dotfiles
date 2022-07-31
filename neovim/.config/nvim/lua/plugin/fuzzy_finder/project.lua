@@ -45,7 +45,7 @@ return {
       {
         desc = "Show recent projects",
         cmd = "<CMD>Telescope projects<CR>",
-        keys = { "n", "<leader>fp", Utils.constants.keymap.noremap },
+        keys = { "n", "<leader>fp", Utils.const.keymap.noremap },
       }
     }
   end

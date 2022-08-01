@@ -41,10 +41,10 @@ end
 
 -- MARK: Packer related path
 M.packer = {
-  installed_path = vim.fn.glob(M.join(
+  installed_path = M.join(
     vim.fn.stdpath('data'),
     'site/pack/packer/start/packer.nvim'
-  )),
+  ),
 }
 
 -- MARK: Java related path

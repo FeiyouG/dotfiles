@@ -1,6 +1,4 @@
-local M = require("utils.fn")
-
-return vim.tbl_extend("force", M, {
+local M = {
   system = require("utils.system"),
   path = require("utils.path"),
   notify = require("utils.notify"),
@@ -9,5 +7,11 @@ return vim.tbl_extend("force", M, {
 
   states = require("utils.states"),
   icons = require("utils.icons"),
-  keymap = require("utils.keymap")
-})
+  keymap = require("utils.keymap"),
+
+  require = require("utils.fn").require,
+  load = require("utils.fn").load,
+  add_commands = require("utils.fn").add_commands,
+}
+
+return M

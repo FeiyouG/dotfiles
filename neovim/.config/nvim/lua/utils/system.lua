@@ -1,8 +1,8 @@
 local M = {}
 
 ---Get current OS name
----@return string os_name one of "mac", "win", and "linux"
-M.os_name = function()
+---@return string|nil: one of "mac", "win", and "linux"
+local get_os_name = function()
   local os_list = {
     mac = "mac",
     win32 = "win",
@@ -14,6 +14,10 @@ M.os_name = function()
       return os_name
     end
   end
+  return nil
 end
+
+--- string|nil: one of "mac", "win", and "linux"
+M.os_name = get_os_name()
 
 return M

@@ -8,7 +8,7 @@ return {
   config = function()
 
     local nvim_tree = require("nvim-tree")
-    local icons = Utils.const.icons
+    local icons = Utils.icons
 
     -- a list of groups can be found at `:help nvim_tree_highlight`
     -- vim.cmd "highlight NvimTreeFolderIcon guibg=blue"
@@ -201,7 +201,7 @@ return {
   end,
 
   commands = function()
-    local keymap = Utils.const.keymap
+    local keymap = Utils.keymap
     return {
       {
         desc = "Toggle nvim-tree",

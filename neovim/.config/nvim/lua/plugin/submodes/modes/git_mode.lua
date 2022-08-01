@@ -1,12 +1,12 @@
 return function()
   local hydra = require("hydra")
-  local command_center = Utils.fn.require("command_center")
+  local command_center = Utils.require("command_center")
 
   local git_mode_name = "Git"
-  local git_mode_icon = Utils.const.icons.git.git
+  local git_mode_icon = Utils.icons.git.git
   local git_mode_key = "<leader>g"
 
-  local gitsigns = Utils.fn.require('gitsigns')
+  local gitsigns = Utils.require('gitsigns')
 
   -- MARK: Keybindings
   local git_mode_commands = {}
@@ -16,11 +16,11 @@ return function()
       {
         description = "show all commands in git mode",
         cmd = "<CMD>Telescope command_center category=" .. git_mode_name .. "<CR>",
-        keybindings = { "n", "?", Utils.const.keymap.noremap },
+        keybindings = { "n", "?", Utils.keymap.noremap },
       }, {
         description = "Exit git mode",
         cmd = git_mode_key,
-        keybindings = { "n", git_mode_key, Utils.const.keymap.nowait },
+        keybindings = { "n", git_mode_key, Utils.keymap.nowait },
         hydra_head_args = { exit = true },
       }, {
         description = "Next hunk",
@@ -30,7 +30,7 @@ return function()
           return "<Ignore>"
         end,
 
-        keybindings = { "n", "<C-n>", Utils.const.keymap.noremap_expr },
+        keybindings = { "n", "<C-n>", Utils.keymap.noremap_expr },
       }, {
         description = "Previous hunk",
         cmd = function()
@@ -39,7 +39,7 @@ return function()
           return "<Ignore>"
         end,
 
-        keybindings = { "n", "<C-p>", Utils.const.keymap.noremap_expr },
+        keybindings = { "n", "<C-p>", Utils.keymap.noremap_expr },
       }, {
         description = "Stage hunk",
         cmd = gitsigns.stage_hunk,
@@ -86,7 +86,7 @@ return function()
     )
   end
 
-  if Utils.fn.require("neogit") then
+  if Utils.require("neogit") then
     vim.list_extend(git_mode_commands, {
       {
         description = "Open neogit",
@@ -96,7 +96,7 @@ return function()
     })
   end
 
-  if Utils.fn.require("diffview") then
+  if Utils.require("diffview") then
     vim.list_extend(git_mode_commands, {
       {
         description = "Open diffview",
@@ -139,7 +139,7 @@ return function()
             category = git_mode_name,
           })
         end
-        Utils.fn.notify.enter_submode(Utils.fn.str.separate_snake_case(git_mode_name), git_mode_icon)
+        Utils.notify.enter_submode(git_mode_name, git_mode_icon)
       end,
       on_exit = function()
         if gitsigns then
@@ -154,7 +154,7 @@ return function()
             category = git_mode_name,
           })
         end
-        Utils.fn.notify.exit_submode(Utils.fn.str.separate_snake_case(git_mode_name), git_mode_icon)
+        Utils.notify.exit_submode(git_mode_name, git_mode_icon)
       end,
     },
     mode = { "n", "x" },

@@ -10,7 +10,7 @@ return {
     local diffview = require("diffview")
     local actions = require("diffview.actions")
 
-    local icons = Utils.const.icons
+    local icons = Utils.icons
 
     diffview.setup({
       diff_binaries = false, -- Show diffs for binaries
@@ -21,8 +21,8 @@ return {
         folder_open = "",
       },
       signs = {
-        fold_closed = icons.folder.indicator_closed,
-        fold_open = icons.folder.indicator_open,
+        fold_closed = icons.folder.closed_indicator,
+        fold_open = icons.folder.open_indictor,
       },
       file_panel = {
         win_config = {

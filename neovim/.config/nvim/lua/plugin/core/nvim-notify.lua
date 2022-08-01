@@ -15,13 +15,13 @@ return {
   end,
 
   defer = function()
-    local telescope = Utils.fn.require("telescope", "Tries to load nvim-notify as telescope extension")
+    local telescope = Utils.require("telescope", "Tries to load nvim-notify as telescope extension")
     if telescope then
       telescope.load_extension("notify")
     end
 
     -- Quit notify when pressing q
-    Utils.state.filetype.quit_on_q:add("notify")
+    Utils.states.ft.quit_on_q.add("notify")
   end,
 
   commands = function()

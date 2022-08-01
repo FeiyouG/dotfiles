@@ -17,7 +17,7 @@ return {
     end
 
 
-    local dapui = Utils.fn.require("dapui", "nvim-dap can still work")
+    local dapui = Utils.require("dapui", "nvim-dap can still work")
     dap.listeners.after.event_initialized["dapui_config"] = function()
       if dapui then dapui.open() end
     end
@@ -32,7 +32,7 @@ return {
 
   commands = function()
     local dap = require("dap")
-    local keymap = Utils.const.keymap
+    local keymap = Utils.keymap
 
     return {
       {

@@ -9,7 +9,7 @@ return {
   config = function()
     local neogit = require("neogit")
 
-    local icons = Utils.const.icons
+    local icons = Utils.icons
 
     neogit.setup {
       disable_signs = false,
@@ -29,9 +29,9 @@ return {
       },
       signs = {
         -- { CLOSED, OPENED }
-        section = {icons.folder.indicator_closed, icons.folder.indicator_open},
-        item = {icons.folder.indicator_closed, icons.folder.indicator_open},
-        hunk = {icons.folder.indicator_closed, icons.folder.indicator_open},
+        section = {icons.folder.closed_indicator, icons.folder.open_indictor},
+        item = {icons.folder.closed_indicator, icons.folder.open_indictor},
+        hunk = {icons.folder.closed_indicator, icons.folder.open_indictor},
       },
       integrations = {
         diffview = true

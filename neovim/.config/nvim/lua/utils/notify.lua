@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = require("utils.const.icons")
+local icons = require("utils.icons")
 
 local notified = {}
 
@@ -9,7 +9,7 @@ local notified = {}
 ---Try to use nvim-notify to notify the message
 ---Fallback to vim.notify if nvim-notify is not installed
 local send_notify = function(message, level, opts)
-  local nvim_notify = require("utils.fn").require("notify",
+  local nvim_notify = Utils.require("notify",
     "All notification will be sent using default vim.notify instead.")
 
   if nvim_notify then
@@ -27,7 +27,7 @@ end
 ---@param name string: the name of the submode that are entered
 ---@param icon string: the icon for the submode
 M.enter_submode = function(name, icon)
-  local message = icons.misc.entet .. " " .. icon .. " Entered " .. name .. " submode"
+  local message = icons.enter .. " " .. icon .. " Entered " .. name .. " submode"
   M.minimal(message, vim.log.levels.INFO, {
     hide_from_history = true,
   })
@@ -37,7 +37,7 @@ end
 ---@param name string: the name of the submode that are exited
 ---@param icon string: the icon for the submode
 M.exit_submode = function(name, icon)
-  local message = icons.misc.exit .. " " .. icon .. " Exited " .. name .. " submode"
+  local message = icons.exit .. " " .. icon .. " Exited " .. name .. " submode"
   M.minimal(message, vim.log.levels.INFO, {
     hide_from_history = true,
   })

@@ -1,32 +1,12 @@
 -- Patterns of root folder
-local root_dir = require('jdtls.setup').find_root({ "packageInfo" }, "Config") -- Project root directory
-
-local jdtls_home = '$XDG_DATA_HOME/nvim/lsp_servers/jdtls'
-local jdtls_workspace = Utils.fn.path.concat('$XDG_CACHE_HOME/jdtls-workspace', vim.fn.fnamemodify(root_dir, ":p:h:t"))
-
--- Create jdtls_workspace if it doesn't exist
-Utils.fn.path.safe_path(jdtls_workspace)
-jdtls_workspace = vim.fn.glob(jdtls_workspace);
-
-
--- MARK: Amazon + Bemol
-local ws_folders_jdtls = {}
-if root_dir then
-  local file = io.open(root_dir .. "/.bemol/ws_root_folders", "r");
-  if file then
-    for line in file:lines() do
-      table.insert(ws_folders_jdtls, string.format("file://%s", line))
-    end
-    file:close()
-  end
-end
+local root_dir = Utils.path.java.project_root
+local jdtls_home = Utils.path.java.jdtls_home
 
 --- MARK: Setup bundles
-local jdtls_bundles = {}
-
--- Setup debugger
-vim.list_extend(jdtls_bundles, Utils.const.path.java.java_debug_jars)
-vim.list_extend(jdtls_bundles, Utils.const.path.java.vscode_java_test_jars)
+local jdtls_bundles = vim.tbl_flatten({
+  Utils.path.java.java_debug_jars,
+  Utils.path.java.vscode_java_test_jars,
+})
 
 -- MARK: Setup Commands
 local jdtls_cmd = {
@@ -43,16 +23,22 @@ local jdtls_cmd = {
 }
 
 -- Setup Lombok support; must in front of `-jar`
-if Utils.const.path.java.lombok_jars then
+if Utils.path.java.lombok_jars then
   vim.list_extend(jdtls_cmd, {
     "-javaagent:" .. Utils.fn.constants.java.lombok_jars[1],
   })
 end
 
 vim.list_extend(jdtls_cmd, {
-  '-jar', vim.fn.glob(Utils.fn.path.concat(jdtls_home, 'plugins/org.eclipse.equinox.launcher_*.jar')),
-  '-configuration', vim.fn.glob(Utils.fn.path.concat(jdtls_home, '/config_' .. Utils.fn.system.os_name())),
-  '-data', vim.fn.glob(jdtls_workspace),
+  '-jar', vim.fn.glob(Utils.path.join(
+    jdtls_home,
+    'plugins/org.eclipse.equinox.launcher_*.jar')
+  ),
+  '-configuration', vim.fn.glob(Utils.path.join(
+    jdtls_home,
+    '/config_' .. Utils.system.os_name)
+  ),
+  '-data', Utils.path.java.jdtls_workspace,
 })
 
 
@@ -98,6 +84,5 @@ return {
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
     bundles = jdtls_bundles,
-    workspaceFolders = ws_folders_jdtls,
   },
 }

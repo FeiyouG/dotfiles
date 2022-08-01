@@ -4,7 +4,7 @@ return {
   config = function()
     local trouble = require("trouble")
 
-    local icons = Utils.const.icons
+    local icons = Utils.icons
 
     trouble.setup({
       position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -57,7 +57,7 @@ return {
 
   commands = function()
     local trouble = require("trouble")
-    local keymap = Utils.const.keymap
+    local keymap = Utils.keymap
 
     return {
       {

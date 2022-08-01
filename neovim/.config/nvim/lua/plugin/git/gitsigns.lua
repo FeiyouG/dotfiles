@@ -36,7 +36,7 @@ return {
       max_file_length              = 40000,
       preview_config               = {
         -- Options passed to nvim_open_win
-        border = Utils.const.border.rounded,
+        border = Utils.icons.border.rounded,
         style = 'minimal',
         relative = 'cursor',
         row = 0,

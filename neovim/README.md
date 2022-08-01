@@ -2,22 +2,51 @@
 
 <!-- TOC GFM -->
 
-- [Plugins](#plugins)
+- [On your first use](#on-your-first-use)
+- [Further configure nvim](#further-configure-nvim)
 - [Treesitters](#treesitters)
 - [LSP](#lsp)
 - [Debuggers](#debuggers)
   - [Python](#python)
   - [Java](#java)
-- [Misc](#misc)
-  - [Lombok's support for Java](#lomboks-support-for-java)
 
 <!-- /TOC -->
 
-## Plugins
+## On your first use
+
+1.  On your first start of nvim (>= 0.7),
+    you may see some errors.
+    Ignore the all errors by pressing `q`.
+    Then, wait a few seconds,
+    all plugins will be automatically installed.
+1.  When all plugins are installed,
+    quit and restart nvim.
+    on your second start,
+    treesitters and LSPs will be automatically installed.
+1.  Then,
+    you can start using nvim as usual
+
+## Further configure nvim
 
 ## Treesitters
 
+To add/remove treesitters parsers:
+1. Go to `.config/nvim/lua/plugin/treesitter/nvim-treesitter.lua`
+1. Add/remove parsers in `ensure_installed` table
+1. Restart nvim and run `:PackerCompile`
+
 ## LSP
+
+To add/remove lsp:
+1. Go to `.config/nvim/lua/plugin/lsp/servers/init.lua`
+1. Add/remove servers
+1. If you want to configure a server,
+   put the configuration inside a new file
+   inside the folder `servers/`
+   and require it in `servers/init.lua`.
+   The configure file should return a table
+   that
+1. Restart nvim and run `:PackerCompile`
 
 ## Debuggers
 
@@ -48,15 +77,6 @@ debugpy/bin/python -m pip install debugpy
       inside `vscode-java-test` repository
     - Run `npm run build-plugin`
       inside `vscode-java-test` repository
-
-## Misc
-
-### Lombok's support for Java
-1. `lombok`:
-    - Download [lombok.jar]()
-      into `$XDG_DATR_HOME/java`
-      if you are gonna work with `lombok`.
-
 
 *References*:
 - [nvim-jdtls#Debugger](https://github.com/mfussenegger/nvim-jdtls#debugger-via-nvim-dap)

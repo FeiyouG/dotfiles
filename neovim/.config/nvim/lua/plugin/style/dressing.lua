@@ -2,7 +2,7 @@ return {
   'stevearc/dressing.nvim',
 
   config = function()
-    local telescope = Utils.fn.require("telescope.themes", "Dressing.nvim will use builtin UI instead")
+    local telescope = Utils.require("telescope.themes", "Dressing.nvim will use builtin UI instead")
 
     require('dressing').setup({
       input = {
@@ -23,7 +23,7 @@ return {
 
         -- These are passed to nvim_open_win
         anchor = "SW",
-        border = Utils.const.border.rounded,
+        border = Utils.icons.border.rounded,
 
         -- 'editor' and 'win' will default to being centered
         relative = "cursor",
@@ -86,7 +86,7 @@ return {
         builtin = {
           -- These are passed to nvim_open_win
           anchor = "NW",
-          border = Utils.const.border.rounded,
+          border = Utils.icons.border.rounded,
 
           -- 'editor' and 'win' will default to being centered
           relative = "editor",

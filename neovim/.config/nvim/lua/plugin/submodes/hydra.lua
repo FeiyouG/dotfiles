@@ -12,13 +12,9 @@ return {
   defer = function()
     local modes = require("plugin/submodes/modes")
 
-    local hydra = require("hydra")
-    local command_center = Utils.fn.require("command_center",
-      "submode requires command_center to register keybindings")
-
     -- Create all submodes
     for _, submode in ipairs(modes) do
-      submode(hydra, command_center)
+      submode()
     end
   end
 }

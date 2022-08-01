@@ -20,7 +20,7 @@ return {
     local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
       opts = opts or {}
-      opts.border = opts.border or Utils.const.border.rounded
+      opts.border = opts.border or Utils.icons.border.rounded
       return orig_util_open_floating_preview(contents, syntax, opts, ...)
     end
 
@@ -40,7 +40,7 @@ return {
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
       -- Setup common server configs
-      server_config.capabilities = Utils.fn.lsp.capabilities()
+      server_config.capabilities = Utils.lsp.capabilities()
       lspconfig[server].setup(server_config)
     end
 
@@ -48,7 +48,7 @@ return {
 
 
   commands = function()
-    local keymap = Utils.const.keymap
+    local keymap = Utils.keymap
 
     return {
       {

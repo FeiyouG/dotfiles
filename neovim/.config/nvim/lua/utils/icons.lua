@@ -1,20 +1,22 @@
-local M = {}
+local M = {
+  exit = "",
+  enter = "",
+}
 
 M.file = {
-  buffer = "",
-  default = '',
+  default = '',
   symlink = '',
 }
 
 M.folder = {
-  indicator_open = "−",
-  indicator_closed = "+",
-  closed = "",
+  open_indictor = "−",
+  closed_indicator = "+",
   open = "",
-  empty_closed = "",
+  closed = "",
   empty_open = "",
-  symlink_closed = "",
+  empty_closed = "",
   symlink_open = "",
+  symlink_closed = "",
 }
 
 M.git = {
@@ -40,9 +42,18 @@ M.diagnostic = {
   -- error = "",
 }
 
-M.misc = {
-  exit = "",
-  entet = "",
+M.border = {
+  rounded = {
+    { "╭", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╮", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "╯", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╰", "FloatBorder" },
+    { "│", "FloatBorder" },
+  },
+
 }
 
 return M

@@ -1,5 +1,4 @@
 return function()
-  local hydra = require("hydra")
   local command_center = Utils.require("command_center")
 
   local git_mode_name = "Git"
@@ -117,7 +116,7 @@ return function()
 
 
   -- MARK: Create hydra
-  hydra({
+  return {
     name = git_mode_name,
     config = {
       buffer = bufnr,
@@ -160,5 +159,5 @@ return function()
     mode = { "n", "x" },
     body = git_mode_key,
     heads = command_center and command_center.converter.to_hydra_heads(git_mode_commands) or {},
-  })
+  }
 end

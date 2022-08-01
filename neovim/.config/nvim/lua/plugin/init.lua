@@ -33,6 +33,7 @@ packer.init({
 -- MARK: Load Modules
 Utils.load("plugin/core")
 Utils.load("plugin/cmp")
+Utils.load("plugin/buffer")
 Utils.load("plugin/dap")
 Utils.load("plugin/fuzzy_finder")
 Utils.load("plugin/git")

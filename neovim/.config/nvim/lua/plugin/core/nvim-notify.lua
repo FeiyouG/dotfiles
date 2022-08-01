@@ -21,7 +21,8 @@ return {
     end
 
     -- Quit notify when pressing q
-    Utils.states.ft.quit_on_q.add("notify")
+    Utils.ft.add_quit_on_q("notify")
+    Utils.ft.add_special_buf("notify")
   end,
 
   commands = function()

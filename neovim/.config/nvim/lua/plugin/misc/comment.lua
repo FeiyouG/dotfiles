@@ -11,7 +11,7 @@ return {
         ---Line-comment toggle keymap
         line = '<leader>cc',
         ---Block-comment toggle keymap
-        block = '<leader>bc',
+        block = '<leader>/',
       },
       ---LHS of operator-pending mappings in NORMAL + VISUAL mode
       ---@type table
@@ -19,7 +19,7 @@ return {
         ---Line-comment keymap
         line = '<leader>c',
         ---Block-comment keymap
-        block = '<leader>b',
+        block = '<leader>/',
       },
 
       ---LHS of extra mappings

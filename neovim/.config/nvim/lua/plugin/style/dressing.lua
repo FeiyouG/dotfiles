@@ -130,5 +130,6 @@ return {
       },
     })
 
+    Utils.ft.add_special_buf("DressoingInput", "DressoingSelect")
   end,
 }

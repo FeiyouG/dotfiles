@@ -1,6 +1,7 @@
 local M = {
   exit = "",
   enter = "",
+  layout = "◧",
 }
 
 M.file = {

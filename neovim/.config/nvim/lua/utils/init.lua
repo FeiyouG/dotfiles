@@ -13,4 +13,5 @@ return {
   require = require("utils.fn").require,
   load = require("utils.fn").load,
   add_commands = require("utils.fn").add_commands,
+  is_callable = require("utils.fn").is_callable,
 }

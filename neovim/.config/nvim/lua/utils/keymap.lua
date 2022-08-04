@@ -6,6 +6,7 @@ end
 
 return {
   noremap = { noremap = true },
+  remap = { noremap = false },
   silent = { silent = true },
   nowait = { nowait = true },
   expr = { expr = true },

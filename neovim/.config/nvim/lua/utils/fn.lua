@@ -37,31 +37,26 @@ M.require = function(name, ...)
 end
 
 local validate_plugin_specification = function(plugin, module_name)
-  if type(plugin) ~= "table" or vim.tbl_isempty(plugin) or not plugin[1] then
-    notify.failed_to_load("a plugin in " .. module_name,
-      "Invalid plugin declaration:",
-      "  expecting a non-empty table with the first argument being a Github repo.")
-    return false
+  local result, error = pcall(vim.validate, {
+    name = { plugin[1], function(name)
+      return type(name) == "string" and #vim.split(name, "/") == 2
+    end, "Github repo name" },
+    config = { plugin.config, "function", true },
+    defer = { plugin.defer, "function", true },
+    commands = { plugin.commands, "function", true },
+  })
+
+  if not result then
+    notify.error_once((plugin[1] or "A plugin") .. " in " .. module_name,
+      "Invalid plugin specification;",
+      "plugin." .. error)
   end
 
-  if type(plugin[1]) ~= "string" or #str.split(plugin[1], "/") ~= 2 then
-    notify.failed_to_load("a plugin in " .. module_name,
-      "Invalid plugin declaration:",
-      "  expecting first argument to be Github repo name ('user_name/repo_name')",
-      "  but was '" .. plugin[1] .. "'.")
-    return false
-  end
-
-  return true
+  return result
 end
 
 local process_plugin_defer = function(plugin, plugin_name)
   if not plugin.defer then return end
-
-  if not M.is_callable(plugin.defer) then
-    notify.warn_once(plugin_name, "`plugin.defer` is not callable and will be ignored")
-    return
-  end
 
   -- Execute funcitons in plugin.defer after all plugins are configured
   vim.schedule(function()
@@ -76,22 +71,19 @@ end
 local process_plugin_commands = function(plugin, plugin_name)
   if not plugin.commands then return end
 
-  if not M.is_callable(plugin.commands) then
-    notify.warn_once(plugin_name, "`plugin.commands` is not callable and will be ignored")
-    return
-  end
-
   -- Get commands
   local commands_ok, commands = pcall(plugin.commands)
   if not commands_ok then
-    notify.error(plugin_name, "`plugin.commands()` executated with an error:", commands)
+    notify.error(plugin_name, "plugin.commands() executated with an error:", commands)
     return
   end
 
-  -- Valid commands
-  if type(commands) ~= "table" then
-    notify.error(plugin_name, "Expecting `plugin.commands()` to return a table, but got a " .. type(commands))
-    return
+  local result, _ = pcall(vim.validate, {
+    commands = { commands, "table", true }
+  })
+
+  if not result then
+    notify.error(plugin_name, "plugin.commands: expected to return a table, but got a " .. type(commands))
   end
 
   -- Add commands to command_center

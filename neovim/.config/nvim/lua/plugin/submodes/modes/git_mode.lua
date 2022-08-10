@@ -35,58 +35,58 @@ return {
     if gitsigns then
       vim.list_extend(commands, {
         {
-          description = "Next hunk",
+          desc = "Next hunk",
           cmd = function()
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gitsigns.next_hunk() end)
             return "<Ignore>"
           end,
 
-          keybindings = { "n", "<C-n>", Utils.keymap.noremap_expr },
+          keys = { "n", "<C-n>", Utils.keymap.noremap_expr },
         }, {
-          description = "Previous hunk",
+          desc = "Previous hunk",
           cmd = function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gitsigns.prev_hunk() end)
             return "<Ignore>"
           end,
 
-          keybindings = { "n", "<C-p>", Utils.keymap.noremap_expr },
+          keys = { "n", "<C-p>", Utils.keymap.noremap_expr },
         }, {
-          description = "Stage hunk",
+          desc = "Stage hunk",
           cmd = gitsigns.stage_hunk,
-          keybindings = { "n", "s", },
+          keys = { "n", "s", },
         }, {
-          description = "Undo stage hunk",
+          desc = "Undo stage hunk",
           cmd = gitsigns.undo_stage_hunk,
-          keybindings = { "n", "u", },
+          keys = { "n", "u", },
         }, {
-          description = "reset hunk",
+          desc = "reset hunk",
           cmd = function()
             vim.bo.modifiable = true
             gitsigns.reset_hunk()
             vim.bo.modifiable = false
           end,
         }, {
-          description = "Stage buffer",
+          desc = "Stage buffer",
           cmd = gitsigns.stage_buffer,
-          keybindings = { "n", "S" },
+          keys = { "n", "S" },
         }, {
-          description = "Preview hunk",
+          desc = "Preview hunk",
           cmd = gitsigns.preview_hunk,
-          keybindings = { "n", "K" },
+          keys = { "n", "K" },
         }, {
-          description = "View line blame",
+          desc = "View line blame",
           cmd = gitsigns.blame_line,
-          keybindings = { "n", "b" },
+          keys = { "n", "b" },
         }, {
-          description = "Toggle deleted",
+          desc = "Toggle deleted",
           cmd = gitsigns.toggle_deleted,
-          keybindings = { "n", "<leader>d" },
+          keys = { "n", "<leader>d" },
         }, {
-          description = "View line blame (full)",
+          desc = "View line blame (full)",
           cmd = function() gitsigns.blame_line({ full = true }) end,
-          keybindings = { "n", "B", },
+          keys = { "n", "B", },
         }, {
           desc = "send git hunks to location list",
           cmd = gitsigns.setloclist,
@@ -101,9 +101,9 @@ return {
     if Utils.require("neogit") then
       vim.list_extend(commands, {
         {
-          description = "Open neogit",
+          desc = "Open neogit",
           cmd = "<CMD>Neogit<CR>",
-          keybindings = { "n", "c", },
+          keys = { "n", "c", },
         }
       })
     end
@@ -111,17 +111,17 @@ return {
     if Utils.require("diffview") then
       vim.list_extend(commands, {
         {
-          description = "Open diffview",
+          desc = "Open diffview",
           cmd = "<CMD>DiffviewOpen<CR>",
-          keybindings = { "n", "dv", },
+          keys = { "n", "dv", },
         }, {
-          description = "Open file commit history panel",
+          desc = "Open file commit history panel",
           cmd = "<CMD>DiffviewFileHistory<CR>",
-          keybindings = { "n", "df", },
+          keys = { "n", "df", },
         }, {
-          description = "Close diffview/file commit history panel",
+          desc = "Close diffview/file commit history panel",
           cmd = "<CMD>DiffviewClose<CR>",
-          keybindings = { "n", "q", },
+          keys = { "n", "q", },
         },
 
       })

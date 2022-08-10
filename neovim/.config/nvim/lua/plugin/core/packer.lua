@@ -12,7 +12,7 @@ return {
         cmd = packer.compile
       }, {
         description = "Show plugins startup time",
-        cmd = packer.profile
+        cmd = packer.profile_output
       }, {
         description = "Show plugins status",
         cmd = packer.status

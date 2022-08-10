@@ -5,7 +5,7 @@ M.sep = require("utils.system").os_name == "win" and "\\" or "/"
 
 ---Concatenate paths||
 M.join = function(...)
-  return table.concat(vim.tbl_flatten {...}, M.sep)
+  return table.concat(vim.tbl_flatten { ... }, M.sep)
 end
 
 ---Check whether directory exist on path
@@ -63,7 +63,7 @@ end
 
 local get_lombok_jars = function()
   local path = vim.fn.glob("$XDG_DATA_HOME/nvim/mason/packages/jdtls/lombok.jar")
-  return path ~= "" and path or nil
+  return path ~= "" and { path } or {}
 end
 
 local get_project_root = function()

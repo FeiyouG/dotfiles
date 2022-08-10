@@ -29,17 +29,18 @@ return {
 
       vim.list_extend(submode_cmd, {
         {
-          desc = "show all commands in buffer mode",
+          desc = "show all commands in " .. submode.name .. " mode",
           cmd = "<CMD>Telescope command_center category=" .. submode.name .. "<CR>",
           keys = { "n", "?", Utils.keymap.noremap },
-          mode = Utils.keymap.cc_mode.SET
         }, {
-          desc = "Exit buffer mode",
+          desc = "Exit " .. submode.name .. " mode",
           cmd = submode.key,
           keys = { "n", submode.key, Utils.keymap.nowait },
           hydra_head_args = { exit = true }
         }
       })
+
+      local hydra_heads = command_center and command_center.converter.to_hydra_heads(submode_cmd) or {}
 
       hydra({
         name = submode.name,
@@ -51,7 +52,6 @@ return {
           on_enter = function()
             if Utils.is_callable(submode.on_enter) then
               submode.on_enter()
-              Utils.P(vim.bo.modifiable)
             end
 
             if command_center then
@@ -78,7 +78,7 @@ return {
         },
         mode = { "n", "x" },
         body = submode.key,
-        heads = command_center and command_center.converter.to_hydra_heads(submode_cmd) or {},
+        heads = hydra_heads,
       })
       ::continue::
     end

@@ -162,5 +162,4 @@ M.default = function(title, message, level, opts)
   end)
 end
 
-
 return M

@@ -9,6 +9,10 @@ export VISUAL="nvim"                                                # Default ed
 alias rm="rm -i"                                                      # Confirmation on remving
 alias ls="ls --color"                                                  # Enable color for ls
 
+# ---- GO ----
+export GOPATH="$XDG_DATA_HOME/go"
+export GOBIN="$XDG_DATA_HOME/go/bin"
+
 # ---- nodejs and npm ----
 export NPM_CONFIG_USERCONFIG="$(safe_path $XDG_CONFIG_HOME/npm)/npmrc"
 
@@ -41,7 +45,7 @@ export DOTFILES="$HOME/.dotfiles"
 # alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/"
 
 # ---- VAULT ----
-export ZK_NOTEBOOK_DIR="$HOME/vault"                                  # Env for vault home
+export ZK_NOTEBOOK_DIR="$HOME/Vault/ZK"                                  # Env for vault home
 export ZK_EDITOR="nvim"                                               # Default editor for zk
 alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
 alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file

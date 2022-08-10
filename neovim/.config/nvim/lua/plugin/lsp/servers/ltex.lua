@@ -45,7 +45,7 @@ local function add_to_config(type, lang, value)
   update_config()
 end
 
--- Write new wwords/diabledRules/hiddenFalsePositive to customdictionary
+---Write new words/diabledRules/hiddenFalsePositive to customdictionary
 local function populate_config(type, data)
   for k, vv in pairs(data) do
     for _, v in pairs(vv) do

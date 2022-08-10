@@ -40,7 +40,7 @@ return {
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
       -- Setup common server configs
-      server_config.capabilities = Utils.lsp.capabilities()
+      server_config.capabilities = Utils.lsp.capabilities
       lspconfig[server].setup(server_config)
     end
 
@@ -90,8 +90,8 @@ return {
         description = "Show code actions",
         cmd = vim.lsp.buf.code_action,
         keybindings = {
-          {"n", "<leader>sa", keymap.noremap },
-          {"v", "<leader>sa", keymap.noremap },
+          { "n", "<leader>sa", keymap.noremap },
+          { "v", "<leader>sa", keymap.noremap },
         },
       }, {
         description = "Go to definitions",

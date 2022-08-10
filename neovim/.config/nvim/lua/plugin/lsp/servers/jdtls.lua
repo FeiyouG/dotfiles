@@ -23,9 +23,9 @@ local jdtls_cmd = {
 }
 
 -- Setup Lombok support; must in front of `-jar`
-if Utils.path.java.lombok_jars then
+if not vim.tbl_isempty(Utils.path.java.lombok_jars) then
   vim.list_extend(jdtls_cmd, {
-    "-javaagent:" .. Utils.fn.constants.java.lombok_jars[1],
+    "-javaagent:" .. Utils.path.java.lombok_jars[1],
   })
 end
 

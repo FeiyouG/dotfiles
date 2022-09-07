@@ -5,7 +5,8 @@
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
 # Zsh specific fzf settings
-[ -f $XDG_CONFIG_HOME/fzf/fzf.zsh ] && source $XDG_CONFIG_HOME/fzf/fzf.zsh
+source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
 # ---- Import extra aliases and env variables from dotfiles repo ----
 [ -f $ZDOTDIR/.rc.general ] && source $ZDOTDIR/.rc.general
@@ -28,14 +29,6 @@ ZINIT[ZCOMPDUMP_PATH]="$(safe_path $XDG_CACHE_HOME/zsh)/zcompdump-$ZSH_VERSION"
 # -- Init ZINIT
 source "$ZINIT_HOME/zinit.zsh"
 
-# -- ZSH PROMPT
-# zinit snippet "https://github.com/arcticicestudio/igloo/blob/master/snowblocks/zsh/lib/themes/igloo.zsh"
-# source $XDG_CONFIG_HOME/zsh//config/prompt.zsh
-# ZSH_PROMPT_ALWAYS_SHOW_USER=${IGLOO_ZSH_PROMPT_THEME_ALWAYS_SHOW_USER:-false}
-# zinit snippet "https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh"
-# # GIT_PS1_SHOWCOLORHINTS=1                                              # Show color
-# GIT_PS1_SHOWUPSTREAM="auto verbose"
-
 # Add and config spaceship
 source $XDG_CONFIG_HOME/zsh/config/spaceship.zsh
 
@@ -53,4 +46,3 @@ zinit ice atclone"dircolors -b src/dir_colors > clrs.zsh" \
   atload'zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}'
 zinit light arcticicestudio/nord-dircolors                            # Nord color theme for dircolors
 zinit light zsh-users/zsh-syntax-highlighting                         # This must be sourced at the end of the file
-

@@ -1,3 +1,5 @@
+# Configuration for spaceship ZSH prompt
+
 # Install spaceship
 zinit light spaceship-prompt/spaceship-prompt
 

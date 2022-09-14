@@ -1,6 +1,11 @@
-autoload -U compinit
-compinit -d "$(safe_path $XDG_CACHE_HOME/zsh)/zcompdum-$ZSH_VERSION"  # Conform to XDG Base Directory (cache file)
-zinit ice blockf
-zinit light zsh-users/zsh-completions                                 # zsh completion
-zinit light zsh-users/zsh-autosuggestions                             # Autosuggestion based on history
-zinit light Aloxaf/fzf-tab                                            # Completion with fzf interface
+zinit light-mode for \
+    blockf \
+  zsh-users/zsh-autosuggestions \
+    atload"zicompinit; zicdreplay"  \
+  zsh-users/zsh-completions \
+    wait"1b" lucid lucid atload"
+      bindkey '^[[A' history-substring-search-up
+      bindkey '^[[B' history-substring-search-down
+    " \
+  zsh-users/zsh-history-substring-search
+

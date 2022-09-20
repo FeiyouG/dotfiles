@@ -12,10 +12,8 @@ zinit light-mode wait lucid for \
       export FZF_DEFAULT_COMMAND="fd -t f"
       export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
       export FZF_ALT_C_COMMA
+      bindkey -s "^p" "tmux-sessionizer\n"
     ' from"gh-r" sbin"fzf" \
   junegunn/fzf \
   https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh \
   Aloxaf/fzf-tab
-
-
-

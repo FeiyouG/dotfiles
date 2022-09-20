@@ -30,6 +30,7 @@ source "$ZINIT_HOME/zinit.zsh"
 
 # Install zinit extensions
 zinit light zdharma-continuum/zinit-annex-bin-gem-node
+zinit light NICHOLAS85/z-a-eval
 
 # MARK: Source all configuration files
 setopt extendedglob  #  Use negation (~/^) in file pattern

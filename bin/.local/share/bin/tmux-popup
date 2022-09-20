@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Create a new tmux session named "popup"
+# Then toggle this tmux session as a tmux popup
+
 if [ "$(tmux display-message -p -F "#{session_name}")" = "popup" ];then
     tmux detach-client
 else

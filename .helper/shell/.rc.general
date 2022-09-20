@@ -1,88 +1,79 @@
 # vim:ft=zsh
 
-# ---- BASIC ----
+# MARK: MSIC
 export LANG=en_US.UTF-8
-export EDITOR="nvim"                                                # Default editor
-export VISUAL="nvim"                                                # Default editor
+export EDITOR="nvim"                                                          #  Default editor
+export VISUAL="nvim"                                                          #  Default editor
 
-# ---- UTILITIES ----
-alias rm="rm -i"                                                      # Confirmation on remving
-alias ls="ls --color"                                                  # Enable color for ls
+# MARK: UTILITIES
+alias rm="rm -i"                                                              #  Confirmation on remving
+alias ls="ls --color"                                                         #  Enable color for ls
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
 
-# ---- GO ----
+# MARK: HOMEBREW
+export HOMEBREW_NO_AUTO_UPDATE=true
+
+alias config_zsh="nvim $XDG_CONFIG_HOME/zsh/.zshrc"                           #  Fast access to configuration file
+
+# MARK: TMUX
+alias config_tmux="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"                      #  Conform to XDG Base Directory (configuration file)
+
+
+# MARK: KITTY
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"                       #  Conform to XDG Base Directory (configuration file)
+alias config_kitty="nvim $XDG_CONFIG_HOME/kitty/kitty.conf"                   #  Fast access to configuration file
+
+# MARK: WEZTERM
+alias config_wezterm="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"              #  Fast access to configuration file
+alias config_wez="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"                  #  Fast access to configuration file
+
+# MARK: DOTFILES
+export DOTFILES="$HOME/.dotfiles"
+
+# MARK: zk
+export ZK_NOTEBOOK_DIR="$HOME/Vault/ZK"                                       #  Env for vault home
+export ZK_EDITOR="nvim"                                                       #  Default editor for zk
+alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"                    #  Fast access to valut configuration file
+alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"                       #  Fast access to valut configuration file
+
+
+# MARK: GNUPG
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                                    #  Conform to XDG Base Directory (all files)
+
+# MARK: LESS
+export LESSKEY="$XDG_CONFIG_HOME/less/keys"                                   #  Conform to XDG Base Directory (configuration file)
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"                            #  Conform to XDG Base Directory (history file)
+
+# MARK: WGET
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"                                       #  Conform to XDG Base Directory (configuration file)
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"                     #  Conform to XDG Base Directory (history file)
+
+# MARK: GO
 export GOPATH="$XDG_DATA_HOME/go"
 export GOBIN="$XDG_DATA_HOME/go/bin"
 
-# ---- nodejs and npm ----
-export NPM_CONFIG_USERCONFIG="$(safe_path $XDG_CONFIG_HOME/npm)/npmrc"
+# MARK: Rust
+export RUSTUP_HOME="$XDG_DATA_HOME/rust/Rustup"
+export CARGO_HOME="$XDG_DATA_HOME/rust/cargo"
+source "$CARGO_HOME/env"
 
-# ---- HOMEBREW ----
-export HOMEBREW_NO_AUTO_UPDATE=true
+# MARK: Ruby
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/ruby/bundle                      #  Conform to XDG Base Directory (configuration file)
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/ruby/bundle                        #  Conform to XDG Base Directory (cache)
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle                             #  Conform to XDG Base Directory (data)
+export GEM_HOME="$XDG_DATA_HOME"/ruby/gem                                     #  Conform to XDG Base Directory (data)
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/ruby/gem                              #  Conform to XDG Base Directory (cache)
 
-# ---- ZSH ----
-export HISTFILE="$(safe_path $XDG_STATE_HOME/zsh)/history"          # Conform to XDG Base Directory (history file)
-export HISTSIZE=20000                                               # Max events for internal history
-export SAVEHIST=10000                                               # Max events in history file
+# MARK: Python
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"                          #  Conform to XDG Base Directory (configuration file)
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                               #  Conform to XDG Base Directory (data)
 
-alias config_zsh="nvim $XDG_CONFIG_HOME/zsh/.zshrc"                 # Fast access to configuration file
+# MARK: nodejs and npm
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"                     #  Conform to XDG Base Directory (configuration file)
 
-# ---- TMUX ----
-alias config_tmux="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"            # Conform to XDG Base Directory (configuration file)
-
-# ---- NEOVIM ----
-alias config_nvim="nvim $XDG_CONFIG_HOME/nvim/init.lua"             # Fast access to configuration file
-alias plugins_nvim="cd $XDG_DATA_HOME/nvim/site/pack/packer/start"
-alias nvimdiff="nvim -d"                                            # Use nvim for diff
-
-# ---- KITTY ----
-export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"               # Conform to XDG Base Directory (configuration file)
-alias config_kitty="nvim $XDG_CONFIG_HOME/kitty/kitty.conf"           # Fast access to configuration file
-
-# ---- DOTFILES ----
-export DOTFILES="$HOME/.dotfiles"
-
-# git used to version control dot files
-# alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/"
-
-# ---- VAULT ----
-export ZK_NOTEBOOK_DIR="$HOME/Vault/ZK"                                  # Env for vault home
-export ZK_EDITOR="nvim"                                               # Default editor for zk
-alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
-alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"            # Fast access to valut configuration file
-
-# ---- FZF ----
-# .fzf.zsh or .fzf.bash should be source in .bashrc/.zshrc first
-export FZF_DEFAULT_COMMAND="fd -t f"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d"
-
-# ---- GNUPG ----
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                            # Conform to XDG Base Directory (all files)
-
-# ---- LESS ----
-export LESSKEY="$XDG_CONFIG_HOME/less/keys"                           # Conform to XDG Base Directory (configuration file)
-export LESSHISTFILE="$(safe_path $XDG_STATE_HOME/less)/history"        # Conform to XDG Base Directory (history file)
-
-# ---- WGET ----
-export WGETRC="$(safe_path $XDG_CONFIG_HOME/wget)/wgetrc"              # Conform to XDG Base Directory (configuration file)
-# alias wget="wget --hsts-file=$(safe_path $XDG_CACHE_HOME/wget)/wget-hsts"   # Conform to XDG Base Directory (history file)
-
-# ---- Python ----
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
-
-
-# ---- Import private shell settings if present----
-[ -f $ZDOTDIR/.rc.private ] && source $ZDOTDIR/.rc.private
-
-# ---- Import all MacOS Specific shell settings if on MacOS ----
-[ $(check_OS) = "MacOS" ] && [ -f $ZDOTDIR/.rc.macos ] && source $ZDOTDIR/.rc.macos
-
-# # ---- Import all Linus Specific shell settings if on Lionux ----
-[ $(check_OS) = "Linux" ] && [ -f $ZDOTDIR/.rc.linux ] && source $ZDOTDIR/.rc.linux
-
-# # ---- Import all Linus Specific shell settings if on Window 32 ----
-[ $(check_OS) = "Win32" ] && [ -f $ZDOTDIR/.rc.win32 ] && source $ZDOTDIR/.rc.win32
-
-# # ---- Import all Linus Specific shell settings if on window 64 ----
-[ $(check_OS) = "Win64" ] && [ -f $ZDOTDIR/.rc.win64 ] && source $ZDOTDIR/.rc.win64
+# MARK: Custom
+export VAULT="$HOME/vault"
+export FIN_HOME="$VAULT/Fin"

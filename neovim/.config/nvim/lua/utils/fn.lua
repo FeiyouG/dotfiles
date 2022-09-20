@@ -29,7 +29,7 @@ end
 ---@return nil|table
 M.require = function(name, ...)
   local ok, res = pcall(require, name)
-  if not ok then
+  if not ok and select("#", ...) > 0 then
     notify.failed_to_load(name, ..., res)
     return nil
   end

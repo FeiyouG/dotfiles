@@ -16,6 +16,10 @@ return {
 
     })
 
+    -- MARK: Config `lspInfo` floating window
+    local windows = require('lspconfig.ui.windows')
+    windows.default_options.border = Utils.icons.border.rounded
+
     -- MARK: Add boarder to hover --
     local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

@@ -88,6 +88,10 @@ return {
 
     }
 
+    -- MARK: Make bash treesitter also work for zsh
+    local ft_to_parser = require "nvim-treesitter.parsers".filetype_to_parsername
+    ft_to_parser.zsh = "bash"
+
     -- MARK: Setup folding
     vim.cmd "set foldmethod=expr"
     vim.cmd "set foldexpr=nvim_treesitter#foldexpr()"

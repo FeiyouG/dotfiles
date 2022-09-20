@@ -90,10 +90,10 @@ return {
         enable = true,
         show_on_dirs = true,
         icons = {
-          hint = icons.git.hint,
-          info = icons.git.info,
-          warning = icons.git.warning,
-          error = icons.git.error,
+          hint = icons.diagnostic.hint,
+          info = icons.diagnostic.info,
+          warning = icons.diagnostic.warning,
+          error = icons.diagnostic.error,
         }
       },
       on_attach                          = "disabled",
@@ -105,7 +105,7 @@ return {
         side = 'left',
         preserve_window_proportions = true,
         number = false,
-        relativenumber = false,
+        relativenumber = true,
         signcolumn = "yes",
         mappings = {
           list = custom_mapping
@@ -128,9 +128,9 @@ return {
         },
         icons = {
           webdev_colors = true,
-          git_placement = "before",
+          git_placement = "after",
           padding = " ",
-          symlink_arrow = " ➛ ",
+          symlink_arrow = Utils.icons.symbolic_arrow,
           show = {
             file = true,
             folder = true,

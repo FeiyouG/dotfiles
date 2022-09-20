@@ -9,4 +9,7 @@ return {
   html = {},
   clangd = {},
   jsonls = {},
+  beancount = require("plugin.lsp.servers.beancount"),
+
+  test = {}
 }

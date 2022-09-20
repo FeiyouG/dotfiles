@@ -17,6 +17,9 @@ vim.cmd "set t_ZR=^[[23mt=menu,menuone,noselect"
 ---- MARK: PANE MANAGEMENT
 vim.opt.splitbelow = true                         --  Always add new pane below
 vim.opt.splitright = true                         --  Always add new pane on right
+vim.o.winwidth = 10                               --  Minimal number of columns for the current window.
+vim.o.winminwidth = 10                            --  The minimal width of a window, when it's not the current window.
+vim.o.equalalways = false
 
 
 ---- MARK: SEARCH AND REPLACE

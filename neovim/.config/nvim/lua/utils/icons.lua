@@ -1,46 +1,52 @@
 local M = {
-  exit = "",
-  enter = "",
-  layout = "◧",
+  exit = " ",
+  enter = " ",
+  layout = " ",
+  symbolic_arrow = " ﰣ "
 }
 
 M.file = {
-  default = '',
-  symlink = '',
+  default = ' ',
+  symlink = ' ',
 }
 
 M.folder = {
   open_indictor = "−",
   closed_indicator = "+",
-  open = "",
-  closed = "",
-  empty_open = "",
-  empty_closed = "",
-  symlink_open = "",
-  symlink_closed = "",
+  folders = " ",
+  open = " ",
+  closed = " ",
+  empty_open = " ",
+  empty_closed = " ",
+  symlink_open = " ",
+  symlink_closed = " ",
 }
 
 M.git = {
-  git = "",
-  unstaged = "✗",
-  staged = "✓",
-  unmerged = "",
-  renamed = "",
-  untracked = "",
-  deleted = "",
-  ignored = "◌"
+  git = " ",
+  unstaged = " ",
+  staged = " ",
+  unmerged = " ",
+  renamed = " ",
+  untracked = " ",
+  deleted = " ",
+  ignored = " ",
+  modified = " ",
+  added = " "
 }
 
 M.diagnostic = {
-  error = "",
-  warning = "",
-  hint = "",
-  info = "",
-  other = "﫠"
-  -- hint = "",
-  -- info = "",
-  -- warning = "",
-  -- error = "",
+  diagnostics = " ",
+  -- error = " ",
+  -- warning = " ",
+  -- hint = " ",
+  -- info = " ",
+  -- other = "﫠"
+  error = " ",
+  warning = " ",
+  info = " ",
+  hint = " ",
+  other = " "
 }
 
 M.border = {

@@ -25,16 +25,15 @@ map("i", "ii", "<Esc>", noremap)
 map("i", "jk", "<Esc>", noremap)
 map("i", "kj", "<Esc>", noremap)
 
-
 -- filepath and pwd to clipboar by yf and yd respectivley
 map("n", "yf", "<cmd>let @+=expand('%:p')<CR>", silent_noremap)
 map("n", "yd", "<cmd>let @+=expand('%:p:h')<CR>", silent_noremap)
 
--- Shortcur for refresh nvim without restarting
-map("n", "<leader>r", "<cmd>source $MYVIMRC<CR>", noremap)
+-- MISC
+map("n", "<leader>r", "<cmd>source $MYVIMRC<CR>", noremap) -- Shortcur for refresh nvim without restarting
+map("n", "<leader>w", "<cmd>w<CR>", noremap)               -- Shortcut for save
+map("n", "<leader>p", "\"_DP", noremap)                    -- Paste without yank delted text
 
--- Shortcut for save
-map("n", "<leader>w", "<cmd>w<CR>", noremap)
 
 
 ---- MARK: NAVIGATING ----

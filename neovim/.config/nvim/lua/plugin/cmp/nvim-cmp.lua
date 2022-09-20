@@ -5,7 +5,7 @@ return {
   },
 
   config = function()
-    local has_luasnip, luasnip = pcall(require, "luasnip")
+    local luasnip = Utils.require("luasnip")
     local cmp = require("cmp")
 
     local kind_icons = {
@@ -39,7 +39,9 @@ return {
 
     local mapping = {
       ["<C-n>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
+        if luasnip and luasnip.choice_active() then
+          require("luasnip.extras.select_choice")()
+        elseif cmp.visible() then
           cmp.select_next_item()
         else
           fallback()
@@ -47,7 +49,9 @@ return {
       end, { "i", "s" }),
 
       ["<C-p>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
+        if luasnip and luasnip.choice_active() then
+          require("luasnip.extras.select_choice")()
+        elseif cmp.visible() then
           cmp.select_prev_item()
         else
           fallback()
@@ -55,8 +59,7 @@ return {
       end, { "i", "s" }),
 
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if not has_luasnip then return end
-        if luasnip.jumpable(1) then
+        if luasnip and luasnip.locally_jumpable(1) then
           luasnip.jump(1)
         else
           fallback()
@@ -64,8 +67,7 @@ return {
       end, { "i", "s" }),
 
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if not has_luasnip then return end
-        if luasnip.jumpable(-1) then
+        if luasnip and luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()

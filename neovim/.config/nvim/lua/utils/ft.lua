@@ -20,23 +20,31 @@ M.add_quit_on_q = function(...)
   vim.list_extend(M.quit_on_q, { ... })
 end
 
+local QuitOnQ = vim.api.nvim_create_augroup("QuitOnQ", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*" },
+  callback = function()
+    local ft = vim.api.nvim_buf_get_option(0, "filetype")
 
-require("utils.fn").add_commands({
-  {
-    desc = "Quit file on q",
-    cmd = function()
-      local bf = vim.api.nvim_get_current_buf()
-      local filetype = vim.api.nvim_buf_get_option(bf, "filetype")
-      if vim.tbl_contains(M.quit_on_q, filetype) then
-        vim.cmd("quit!")
-      end
-    end,
-    keys = {
-      { "n", "q" },
-      { "v", "q" },
-    },
-    mode = require("utils.keymap").cc_mode.SET
-  }
+    if vim.tbl_contains(M.quit_on_q, ft) then
+      require("utils.fn").add_commands({
+        {
+          desc = "Quit " .. ft .. " buffer on q",
+          cmd = function()
+            vim.cmd("quit!")
+          end,
+          keys = {
+            { "n", "q" },
+            { "v", "q" },
+          },
+          mode = require("utils.keymap").cc_mode.SET
+        }
+      }, {
+        keys_opts = { buffer = true }
+      })
+    end
+  end,
+  group = QuitOnQ
 })
 
 return M

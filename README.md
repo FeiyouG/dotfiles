@@ -93,9 +93,10 @@ with `homebrew` or `linuxbrew`:
     ```
     to your `.zshrc.local` or `.bashrc.local` file
 - fzf
-  - `fzf` is used for both
-    zsh completion and
-    neovim telescope (file and string search)
+  - `fzf` is used in a few places:
+    - zsh completion
+    - neovim telescope (file and string search)
+    - tmux session/window/pane selection
 
 ### zsh
 

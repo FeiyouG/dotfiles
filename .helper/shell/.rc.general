@@ -58,6 +58,7 @@ export GOBIN="$XDG_DATA_HOME/go/bin"
 # MARK: Rust
 export RUSTUP_HOME="$XDG_DATA_HOME/rust/Rustup"
 export CARGO_HOME="$XDG_DATA_HOME/rust/cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
 source "$CARGO_HOME/env"
 
 # MARK: Ruby

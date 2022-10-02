@@ -4,4 +4,5 @@ return {
   require("plugin.misc.open-browser"),
   { "moll/vim-bbye" },
   { "tpope/vim-repeat" },
+  { "ThePrimeagen/vim-be-good" },
 }

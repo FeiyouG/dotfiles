@@ -5,7 +5,7 @@ vim.opt.hidden = true                             --  Hide unused buffers
 vim.cmd "set cc=80"                               --  Set an 80 column boarder for good coding style
 vim.opt.ttyfast = true                            --  Speed up scrolling in neovim
 vim.opt.clipboard = "unnamedplus"                 --  Use same clipboard between neovim and system
-vim.cmd "set nospell"                             --  Disable spelling checking
+-- vim.cmd "set nospell"                             --  Disable spelling checking
 vim.wo.scrolloff = 0                              --  minimal # of lines to keep above/below the cursor
 
 

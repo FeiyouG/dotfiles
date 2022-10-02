@@ -121,6 +121,22 @@ end
 -- @param message string: the body of the notification; can't be nil nor empty
 -- @param level number?: the logging level of this notification
 -- @param opts table?: additional nvim-notify options for this notification
+M.simple = function(title, message, level, opts)
+  opts = opts or {}
+
+  opts = vim.tbl_deep_extend("force", {
+    timeout = 500,
+    render = "simple",
+  }, opts or {})
+
+  M.default(title, message, level, opts)
+end
+
+-- Send quick notification with minial style
+-- Also add padding on both sides of messages to make it look nicer
+-- @param message string: the body of the notification; can't be nil nor empty
+-- @param level number?: the logging level of this notification
+-- @param opts table?: additional nvim-notify options for this notification
 M.minimal = function(message, level, opts)
   opts = opts or {}
 

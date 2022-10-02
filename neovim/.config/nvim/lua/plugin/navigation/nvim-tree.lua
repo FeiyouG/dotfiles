@@ -101,7 +101,6 @@ return {
       view                               = {
         hide_root_folder = false,
         width = 30,
-        height = 30,
         side = 'left',
         preserve_window_proportions = true,
         number = false,

@@ -40,9 +40,21 @@ return {
   commands = function()
     return {
       {
-        desc = "Maximize/restore current buffer",
+        desc = "Maximize current buffer with animation",
         cmd = "<CMD>WindowsMaximize<CR>",
         keys = { "n", "<C-w>z" },
+      }, {
+        desc = "Maximize current buffer horizontally with animation",
+        cmd = "<CMD>WindowsMaximizeHorizontally<CR>",
+        keys = { "n", "<C-w>|" },
+      }, {
+        desc = "Maximize current buffer Vertically with animation",
+        cmd = "<CMD>WindowsMaximizeVertically<CR>",
+        keys = { "n", "<C-w>_" },
+      }, {
+        desc = "Equalize all buffers with animation",
+        cmd = "<CMD>WindowsEqualize<CR>",
+        keys = { "n", "<C-w>=" },
       }, {
         desc = "Toggle Sliding buffer width",
         cmd = "<CMD>WindowsToggleAutowidth<CR>",

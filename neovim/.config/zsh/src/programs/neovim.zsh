@@ -1,7 +1,7 @@
 # MARK: Install neovim
 zinit light-mode wait lucid from'gh-r' for \
     sbin'**/nvim -> nvim' \
-    ver'v0.7.2' \
+    ver'v0.8.0' \
   @neovim/neovim \
 
 # MARK: Useful alias for neovim

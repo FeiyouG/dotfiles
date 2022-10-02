@@ -14,6 +14,31 @@ return {
 
     diffview.setup({
       diff_binaries = false, -- Show diffs for binaries
+      view = {
+        -- Configure the layout and behavior of different types of views.
+        -- Available layouts:
+        --  'diff1_plain'
+        --    |'diff2_horizontal'
+        --    |'diff2_vertical'
+        --    |'diff3_horizontal'
+        --    |'diff3_vertical'
+        --    |'diff3_mixed'
+        --    |'diff4_mixed'
+        -- For more info, see |diffview-config-view.x.layout|.
+        default = {
+          -- Config for changed files, and staged files in diff views.
+          layout = "diff2_horizontal",
+        },
+        merge_tool = {
+          -- Config for conflicted files in diff views during a merge or rebase.
+          layout = "diff3_mixed",
+          disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
+        },
+        file_history = {
+          -- Config for changed files in file history views.
+          layout = "diff2_horizontal",
+        },
+      },
       enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
       use_icons = true, -- Requires nvim-web-devicons
       icons = { -- Only applies when use_icons is true.
@@ -71,6 +96,15 @@ return {
           ["<C-w>gf"]    = actions.goto_file_tab, -- Open the file in a new tabpage
           ["<leader>e"]  = actions.focus_files, -- Bring focus to the files panel
           ["<leader>b"]  = actions.toggle_files, -- Toggle the files panel.
+
+          ["<C-2><space>"] = actions.cycle_layout, -- Cycle through available layouts.
+          ["[x"]           = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
+          ["]x"]           = actions.next_conflict, -- In the merge_tool: jump to the next conflict
+          ["<leader>co"]   = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
+          ["<leader>ct"]   = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
+          ["<leader>cb"]   = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
+          ["<leader>ca"]   = actions.conflict_choose("all"), -- Choose all the versions of a conflict
+          ["dx"]           = actions.conflict_choose("none"), -- Delete the conflict region
         },
         file_panel = {
           ["j"]             = actions.next_entry, -- Bring the cursor to the next file entry
@@ -97,9 +131,13 @@ return {
           ["f"]             = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
           ["<leader>e"]     = actions.focus_files,
           ["<leader>b"]     = actions.toggle_files,
+
+          ["<C-w><space>"] = actions.cycle_layout,
+          ["[x"]           = actions.prev_conflict,
+          ["]x"]           = actions.next_conflict,
         },
         file_history_panel = {
-          ["g!"]            = actions.options, -- Open the option panel
+          ["?"]            = actions.options, -- Open the option panel
           ["<C-A-d>"]       = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
           ["y"]             = actions.copy_hash, -- Copy the commit hash of the entry under the cursor
           ["L"]             = actions.open_commit_log,
@@ -121,6 +159,26 @@ return {
           ["<C-w>gf"]       = actions.goto_file_tab,
           ["<leader>e"]     = actions.focus_files,
           ["<leader>b"]     = actions.toggle_files,
+
+          ["<C-w><space>"] = actions.cycle_layout,
+        },
+        diff1 = {
+          ["<C-w><space>"] = actions.cycle_layout,
+        },
+        diff2 = {
+          ["<C-w><space>"] = actions.cycle_layout,
+        },
+        diff3 = {
+          ["<C-w><space>"] = actions.cycle_layout,
+          { { "n", "x" }, "2do", actions.diffget("ours") }, -- Obtain the diff hunk from the OURS version of the file
+          { { "n", "x" }, "3do", actions.diffget("theirs") }, -- Obtain the diff hunk from the THEIRS version of the file
+        },
+        diff4 = {
+          ["<C-w><space>"] = actions.cycle_layout,
+          -- Mappings in 4-way diff layouts
+          { { "n", "x" }, "1do", actions.diffget("base") }, -- Obtain the diff hunk from the BASE version of the file
+          { { "n", "x" }, "2do", actions.diffget("ours") }, -- Obtain the diff hunk from the OURS version of the file
+          { { "n", "x" }, "3do", actions.diffget("theirs") }, -- Obtain the diff hunk from the THEIRS version of the file
         },
         option_panel = {
           ["<tab>"] = actions.select_entry,

@@ -12,15 +12,13 @@ return {
       autowidth = {
         enable = true,
         winwidth = 8,
-        -- filetype = {
-        --   help = 2,
-        -- },
+        filetype = {
+          NvimTree = 2,
+        },
       },
       ignore = {
         buftype = { "quickfix" },
         filetype = {
-          "NvimTree",
-          "neo-tree",
           "undotree",
           "gundo",
           "notify",

@@ -8,6 +8,8 @@ local M = {
 M.file = {
   default = ' ',
   symlink = ' ',
+  modified = " ",
+  readonly = " ",
 }
 
 M.folder = {
@@ -32,7 +34,10 @@ M.git = {
   deleted = " ",
   ignored = " ",
   modified = " ",
-  added = " "
+  added = " ",
+  added_line = "+",
+  deleted_line = "-",
+  modified_line = "~"
 }
 
 M.diagnostic = {

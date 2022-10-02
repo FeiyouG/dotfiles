@@ -37,36 +37,75 @@ return {
 
     lualine.setup {
       options = {
-        icons_enabled = true,
         theme = "onenord",
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = {},
+        ignore_focus = {},
         always_divide_middle = true,
         globalstatus = false,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000
+        }
       },
       sections = {
         lualine_a = {
-          { "mode" },
+          "mode",
+        },
+        lualine_b = {
           {
-            custom_mode.name,
-            cond = custom_mode.is_active,
+            'filename',
+            file_status = false,
+            newfile_status = true,
+            path = 0,
+            symbols = {
+              modified = "[" .. Utils.icons.file.modified .. "]",
+              readonly = "[" .. Utils.icons.file.readonly .. "]",
+              unnamed = "[No Name]",
+              newfile = "[New]",
+            }
           }
         },
-        lualine_b = { 'filename' },
         lualine_c = {
           { 'branch' },
-          { 'diff', source = diff_source },
+          {
+            'diff',
+            source = diff_source,
+            symbols = {
+              added = Utils.icons.git.added_line,
+              modified = Utils.icons.git.modified_line,
+              removed = Utils.icons.git.deleted_line,
+            },
+            diff_color = Utils.highlight.lualine.diff
+          },
         },
         lualine_x = {
-          { 'diagnostics',
+          {
+            'diagnostics',
             sources = { "nvim_lsp" },
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
+            symbols = {
+              error = Utils.icons.diagnostic.error,
+              warn = Utils.icons.diagnostic.warning,
+              info = Utils.icons.diagnostic.info,
+              hint = Utils.icons.diagnostic.hint,
+            }
+          },
           'encoding',
-          'filetype'
+          {
+            'filetype',
+            colored = true,
+            icon_only = false,
+            icon = { align = "left" }
+          }
         },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_y = {
+          { 'progress' },
+        },
+        lualine_z = {
+          { 'location' }
+        }
       },
       inactive_sections = {
         lualine_a = {
@@ -76,9 +115,15 @@ return {
         lualine_b = {},
         lualine_c = {},
         lualine_x = {
-          { 'diagnostics',
+          {
+            'diagnostics',
             sources = { "nvim_lsp" },
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' }
+            symbols = {
+              error = Utils.icons.diagnostic.error,
+              warn = Utils.icons.diagnostic.warning,
+              info = Utils.icons.diagnostic.info,
+              hint = Utils.icons.diagnostic.hint,
+            }
           },
           --'filetype',
           --'location'

@@ -7,6 +7,7 @@ return {
 
   ft = require("utils.ft"),
   icons = require("utils.icons"),
+  highlight = require("utils.highlight"),
   keymap = require("utils.keymap"),
 
   P = require("utils.fn").P,

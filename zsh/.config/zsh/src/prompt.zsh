@@ -12,7 +12,6 @@ SPACESHIP_PROMPT_ORDER=(
   hg            # Mercurial section (hg_branch  + hg_status)
 
   jobs          # Background jobs indicator
-  async         # Async jobs indicator
   exec_time     # Execution time
   exit_code     # Exit code section
   time          # Time stamps section
@@ -53,6 +52,7 @@ spaceship remove dotnet        # .NET section
 spaceship remove kubectl       # Kubectl context section
 spaceship remove terraform     # Terraform workspace section
 spaceship remove ibmcloud      # IBM Cloud section
+spaceship remove async         # Async jobs indicator
 
 # MARK: User
 SPACESHIP_USER_SHOW=true
@@ -128,14 +128,6 @@ SPACESHIP_JOBS_SYMBOL=" "
 SPACESHIP_JOBS_AMOUNT_PREFIX="-"
 SPACESHIP_JOBS_AMOUNT_SUFFIX="-"
 SPACESHIP_JOBS_AMOUNT_THRESHOLD=0
-
-# MARK: Async Jobs
-SPACESHIP_ASYNC_SHOW=true
-SPACESHIP_ASYNC_SHOW_COUNT=true
-SPACESHIP_ASYNC_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
-SPACESHIP_ASYNC_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
-SPACESHIP_ASYNC_SYMBOL=" "
-SPACESHIP_ASYNC_COLOR="grey"
 
 # MARK: exec_time
 SPACESHIP_EXEC_TIME_SHOW=true

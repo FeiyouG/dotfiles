@@ -39,12 +39,26 @@ return {
 
     -- MARK: Setup Servers
     local lspconfig = require("lspconfig")
+    local navic = Utils.require("nvim-navic")
 
     -- initialize servers
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
       -- Setup common server configs
       server_config.capabilities = Utils.lsp.capabilities
+
+      local old_on_attach = server_config.on_attach
+      server_config.on_attach = function(client, bufnr)
+        -- Init navic
+        if navic and client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+
+        -- Execute old_on_attach iff it is defined
+        if Utils.is_callable(old_on_attach) then
+          old_on_attach(client, bufnr)
+        end
+      end
       lspconfig[server].setup(server_config)
     end
 
@@ -85,7 +99,9 @@ return {
         keybindings = { "n", "<leader>sn", keymap.silent_noremap },
       }, {
         description = "Format code (lint)",
-        cmd = vim.lsp.buf.formatting,
+        cmd = function()
+          vim.lsp.buf.format({ async = true })
+        end,
         keybindings = { "n", "<leader>sf", keymap.silent_noremap },
       },
 

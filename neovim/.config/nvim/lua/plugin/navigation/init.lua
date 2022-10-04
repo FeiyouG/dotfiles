@@ -4,4 +4,5 @@ return {
   require("plugin.navigation.lightspeed"),
   require("plugin.navigation.trouble"),
   require("plugin.navigation.windows"),
+  require("plugin.navigation.navic"),
 }

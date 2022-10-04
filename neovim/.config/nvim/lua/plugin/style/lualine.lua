@@ -3,7 +3,6 @@ return {
 
   require = {
     'kyazdani42/nvim-web-devicons',
-    'anuvyklack/hydra.nvim',
   },
 
   config = function()
@@ -23,7 +22,6 @@ return {
       return hydra.get_name() .. " submode"
     end
 
-    -- Get diff source from gitsigns
     local diff_source = function()
       local gitsigns = vim.b.gitsigns_status_dict
       if gitsigns then
@@ -33,6 +31,86 @@ return {
           removed = gitsigns.removed
         }
       end
+      return nil
+    end
+
+    -- Get diff source from gitsigns
+    local function filename_comp()
+      return {
+        'filename',
+        file_status = false,
+        newfile_status = true,
+        path = 0,
+        symbols = {
+          modified = "[" .. Utils.icons.file.modified .. "]",
+          readonly = "[" .. Utils.icons.file.readonly .. "]",
+          unnamed = "[No Name]",
+          newfile = "[New]",
+        }
+      }
+    end
+
+    local function diagnostic_comp()
+      return {
+        'diagnostics',
+        sources = { "nvim_lsp" },
+        symbols = {
+          error = Utils.icons.diagnostic.error,
+          warn = Utils.icons.diagnostic.warning,
+          info = Utils.icons.diagnostic.info,
+          hint = Utils.icons.diagnostic.hint,
+        }
+      }
+    end
+
+    local function diff_comp()
+      local gitsigns = vim.b.gitsigns_status_dict
+      return {
+        'diff',
+        source = diff_source,
+        symbols = {
+          added = Utils.icons.git.added_line,
+          modified = Utils.icons.git.modified_line,
+          removed = Utils.icons.git.deleted_line,
+        },
+        diff_color = Utils.highlight.lualine.diff
+      }
+    end
+
+    local function filetype_comp()
+      return {
+        'filetype',
+        colored = true,
+        icon_only = false,
+        icon = { align = "left" }
+      }
+    end
+
+    local function tabs_comp()
+      return {
+        'tabs',
+        mode = 0,
+        cond = function()
+          return #vim.api.nvim_list_tabpages() > 1
+        end
+      }
+    end
+
+    local function buffers_comp()
+      return {
+        "buffers",
+        cond = {}
+      }
+    end
+
+    local function navic_comp()
+      local navic = Utils.require("nvim-navic")
+      if not navic then return {} end
+
+      return {
+        navic.get_location,
+        cond = navic.is_available,
+      }
     end
 
     lualine.setup {
@@ -40,10 +118,15 @@ return {
         theme = "onenord",
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
-        disabled_filetypes = {},
+        disabled_filetypes = {
+          winbar = {
+            "NvimTree",
+            "DiffviewFiles"
+          }
+        },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
@@ -51,88 +134,79 @@ return {
         }
       },
       sections = {
-        lualine_a = {
-          "mode",
-        },
-        lualine_b = {
-          {
-            'filename',
-            file_status = false,
-            newfile_status = true,
-            path = 0,
-            symbols = {
-              modified = "[" .. Utils.icons.file.modified .. "]",
-              readonly = "[" .. Utils.icons.file.readonly .. "]",
-              unnamed = "[No Name]",
-              newfile = "[New]",
-            }
-          }
-        },
-        lualine_c = {
-          { 'branch' },
-          {
-            'diff',
-            source = diff_source,
-            symbols = {
-              added = Utils.icons.git.added_line,
-              modified = Utils.icons.git.modified_line,
-              removed = Utils.icons.git.deleted_line,
-            },
-            diff_color = Utils.highlight.lualine.diff
-          },
-        },
-        lualine_x = {
-          {
-            'diagnostics',
-            sources = { "nvim_lsp" },
-            symbols = {
-              error = Utils.icons.diagnostic.error,
-              warn = Utils.icons.diagnostic.warning,
-              info = Utils.icons.diagnostic.info,
-              hint = Utils.icons.diagnostic.hint,
-            }
-          },
-          'encoding',
-          {
-            'filetype',
-            colored = true,
-            icon_only = false,
-            icon = { align = "left" }
-          }
-        },
-        lualine_y = {
-          { 'progress' },
-        },
-        lualine_z = {
-          { 'location' }
-        }
-      },
-      inactive_sections = {
-        lualine_a = {
-          'filename',
-          'branch'
-        },
+        lualine_a = { "mode" },
         lualine_b = {},
-        lualine_c = {},
-        lualine_x = {
-          {
-            'diagnostics',
-            sources = { "nvim_lsp" },
-            symbols = {
-              error = Utils.icons.diagnostic.error,
-              warn = Utils.icons.diagnostic.warning,
-              info = Utils.icons.diagnostic.info,
-              hint = Utils.icons.diagnostic.hint,
-            }
-          },
-          --'filetype',
-          --'location'
-        },
-        lualine_y = {},
-        lualine_z = {}
+        lualine_c = { tabs_comp(), "buffers" },
+        lualine_x = { diff_comp(), 'branch' },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+      -- inactive_sections = {
+      --   lualine_a = { 'filename', 'branch' },
+      --   lualine_b = {},
+      --   lualine_c = {},
+      --   lualine_x = { diagnostic_comp() },
+      --   lualine_y = {},
+      --   lualine_z = {}
+      -- },
+      winbar = {
+        lualine_b = { filename_comp(), },
+        lualine_c = { navic_comp() },
+        lualine_x = { "encoding", },
+        lualine_y = { filetype_comp() }
+        -- lualine_y = { "progress", "location" },
+      },
+      inactive_winbar = {
+        lualine_c = { filename_comp(), },
       },
       tabline = {},
-      extensions = { 'nvim-tree' }
+      -- extensions = { 'nvim-tree' }
     }
-  end
+  end,
+
+  -- commands = function()
+  --   return {
+  --     {
+  --       desc = "Go to previous buffer",
+  --       cmd = "<CMD>bp<CR>",
+  --       keys = { "n", "<C-b>h", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Got to next buffer",
+  --       cmd = "<CMD>bn<CR>",
+  --       keys = { "n", "<C-b>n", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Move previous buffer",
+  --       cmd = "<CMD><CR>",
+  --       keys = { "n", "H", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Move next buffer",
+  --       cmd = "<CMD>BufferMoveNext<CR>",
+  --       keys = { "n", "L", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Pin buffer",
+  --       cmd = "<CMD>BufferPin<CR>",
+  --       keys = { "n", "p", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Chose buffer",
+  --       cmd = "<CMD>BufferPick<CR>",
+  --       keMoveys = { "n", "s", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Close buffer",
+  --       cmd = "<CMD>BufferClose<CR>",
+  --       keys = { "n", "c", Utils.keymap.noremap }
+  --     }, {
+  --       desc = "Order buffer by number",
+  --       cmd = "<CMD>BufferOrderByBufferNumber<CR>",
+  --     }, {
+  --       desc = "Order buffer by directory",
+  --       cmd = "<CMD>BufferOrderByBufferDirectory<CR>",
+  --     }, {
+  --       desc = "Order buffer by language",
+  --       cmd = "<CMD>BufferOrderByBufferLanguage<CR>",
+  --     }, {
+  --       desc = "Order buffer by window number",
+  --       cmd = "<CMD>BufferOrderByBufferWindowNumber<CR>",
+  --     }
+  --   }
+  -- end
 }

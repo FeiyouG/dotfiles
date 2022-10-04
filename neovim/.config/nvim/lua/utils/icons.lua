@@ -54,6 +54,44 @@ M.diagnostic = {
   other = " "
 }
 
+M.lsp = {
+  Text = " ",
+  Method = " ",
+  Function = " ",
+  Constructor = " ",
+  Field = " ",
+  Variable = " ",
+  Class = " ",
+  Interface = " ",
+  Module = " ",
+  Property = " ",
+  Unit = "塞",
+  Value = " ",
+  Enum = " ",
+  Keyword = " ",
+  Snippet = " ",
+  Color = " ",
+  File = " ",
+  Reference = " ",
+  Folder = " ",
+  EnumMember = " ",
+  Constant = " ",
+  Struct = " ",
+  Event = " ",
+  Operator = " ",
+  TypeParameter = " ",
+
+  Namespace = " ",
+  Package   = " ",
+  String    = " ",
+  Number    = " ",
+  Boolean   = " ",
+  Array     = " ",
+  Object    = " ",
+  Key       = " ",
+  Null      = " ",
+}
+
 M.border = {
   rounded = {
     { "╭", "FloatBorder" },

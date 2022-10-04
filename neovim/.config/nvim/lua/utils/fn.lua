@@ -154,4 +154,9 @@ M.add_commands = function(commands, opts)
   end)
 end
 
+M.find_root = function(patterns)
+  patterns = patterns or { ".git" }
+  return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
+end
+
 return M

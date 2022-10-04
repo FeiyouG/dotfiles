@@ -15,4 +15,5 @@ return {
   load = require("utils.fn").load,
   add_commands = require("utils.fn").add_commands,
   is_callable = require("utils.fn").is_callable,
+  find_root = require("utils.fn").find_root,
 }

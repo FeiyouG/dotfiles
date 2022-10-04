@@ -21,16 +21,20 @@ return {
     windows.default_options.border = Utils.icons.border.rounded
 
     -- MARK: Add boarder to hover --
-    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    local lsp_util_open_floating_preview = vim.lsp.util.open_floating_preview
     function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
       opts = opts or {}
       opts.border = opts.border or Utils.icons.border.rounded
-      return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      return lsp_util_open_floating_preview(contents, syntax, opts, ...)
     end
 
     -- MARK: Change diagnostic symbol in signl column
-    -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    local signs = {
+      Error = Utils.icons.diagnostic.error,
+      Warn = Utils.icons.diagnostic.warning,
+      Hint = Utils.icons.diagnostic.hint,
+      Info = Utils.icons.diagnostic.info
+    }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -39,26 +43,28 @@ return {
 
     -- MARK: Setup Servers
     local lspconfig = require("lspconfig")
-    local navic = Utils.require("nvim-navic")
 
     -- initialize servers
     local servers = require("plugin/lsp/servers")
     for server, server_config in pairs(servers) do
-      -- Setup common server configs
-      server_config.capabilities = Utils.lsp.capabilities
 
+      -- Setup common server configs
+      server_config.capabilities = vim.tbl_extend("force",
+        Utils.lsp.capabilities, server_config.capabilities or {})
+
+      -- Add common logics to on_attach functions
       local old_on_attach = server_config.on_attach
       server_config.on_attach = function(client, bufnr)
-        -- Init navic
-        if navic and client.server_capabilities.documentSymbolProvider then
-          navic.attach(client, bufnr)
-        end
+        -- Inject common on_attach logic
+        Utils.lsp.on_attach(client, bufnr)
 
         -- Execute old_on_attach iff it is defined
         if Utils.is_callable(old_on_attach) then
           old_on_attach(client, bufnr)
         end
       end
+
+      -- Setup
       lspconfig[server].setup(server_config)
     end
 

@@ -10,6 +10,8 @@ return {
   highlight = require("utils.highlight"),
   keymap = require("utils.keymap"),
 
+  state = require("utils.state"),
+
   P = require("utils.fn").P,
   require = require("utils.fn").require,
   load = require("utils.fn").load,

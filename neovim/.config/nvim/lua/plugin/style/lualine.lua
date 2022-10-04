@@ -34,6 +34,16 @@ return {
       return nil
     end
 
+    local function submode_comp()
+      local hydra = Utils.require("hydra.statusline")
+      if not hydra then return nil end
+
+      return {
+        hydra.get_name,
+        cond = hydra.is_active
+      }
+    end
+
     -- Get diff source from gitsigns
     local function filename_comp()
       return {
@@ -90,6 +100,7 @@ return {
       return {
         'tabs',
         mode = 0,
+        separator = "",
         cond = function()
           return #vim.api.nvim_list_tabpages() > 1
         end
@@ -99,7 +110,15 @@ return {
     local function buffers_comp()
       return {
         "buffers",
-        cond = {}
+        separator = "",
+        symbols = {
+          modified = "[" .. Utils.icons.file.modified .. "]", -- Text to show when the buffer is modified
+          alternate_file = "", -- Text to show to identify the alternate file
+          directory = Utils.icons.folder.open, -- Text to show when the buffer is a directory
+        },
+        cond = function()
+          return Utils.state.statusline.show_tabs
+        end
       }
     end
 
@@ -135,8 +154,8 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = {},
-        lualine_c = { tabs_comp(), "buffers" },
+        lualine_b = { submode_comp() },
+        lualine_c = { tabs_comp(), buffers_comp() },
         lualine_x = { diff_comp(), 'branch' },
         lualine_y = { "progress" },
         lualine_z = { "location" },

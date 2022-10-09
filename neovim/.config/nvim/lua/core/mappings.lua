@@ -67,6 +67,9 @@ map("n", "dH", "d^", noremap)
 map("n", "dL", "d$", noremap)
 
 
+---- MARK: Buffer Management ----
+map("n", "<c-w>d", "<CMD>bdelete<CR>", noremap)
+
 ---- MAKR: PANE & TAB MANAGEMENT ----
 -- Move split panes to left/bottom/top/right
 map("n", "<leader><C-h>", "<C-W>H", noremap)

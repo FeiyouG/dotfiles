@@ -160,14 +160,14 @@ return {
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
-      -- inactive_sections = {
-      --   lualine_a = { 'filename', 'branch' },
-      --   lualine_b = {},
-      --   lualine_c = {},
-      --   lualine_x = { diagnostic_comp() },
-      --   lualine_y = {},
-      --   lualine_z = {}
-      -- },
+      inactive_sections = {
+        lualine_a = { 'filename', 'branch' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = { diagnostic_comp() },
+        lualine_y = {},
+        lualine_z = {}
+      },
       winbar = {
         lualine_b = { filename_comp(), },
         lualine_c = { navic_comp() },
@@ -182,50 +182,4 @@ return {
       -- extensions = { 'nvim-tree' }
     }
   end,
-
-  -- commands = function()
-  --   return {
-  --     {
-  --       desc = "Go to previous buffer",
-  --       cmd = "<CMD>bp<CR>",
-  --       keys = { "n", "<C-b>h", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Got to next buffer",
-  --       cmd = "<CMD>bn<CR>",
-  --       keys = { "n", "<C-b>n", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Move previous buffer",
-  --       cmd = "<CMD><CR>",
-  --       keys = { "n", "H", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Move next buffer",
-  --       cmd = "<CMD>BufferMoveNext<CR>",
-  --       keys = { "n", "L", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Pin buffer",
-  --       cmd = "<CMD>BufferPin<CR>",
-  --       keys = { "n", "p", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Chose buffer",
-  --       cmd = "<CMD>BufferPick<CR>",
-  --       keMoveys = { "n", "s", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Close buffer",
-  --       cmd = "<CMD>BufferClose<CR>",
-  --       keys = { "n", "c", Utils.keymap.noremap }
-  --     }, {
-  --       desc = "Order buffer by number",
-  --       cmd = "<CMD>BufferOrderByBufferNumber<CR>",
-  --     }, {
-  --       desc = "Order buffer by directory",
-  --       cmd = "<CMD>BufferOrderByBufferDirectory<CR>",
-  --     }, {
-  --       desc = "Order buffer by language",
-  --       cmd = "<CMD>BufferOrderByBufferLanguage<CR>",
-  --     }, {
-  --       desc = "Order buffer by window number",
-  --       cmd = "<CMD>BufferOrderByBufferWindowNumber<CR>",
-  --     }
-  --   }
-  -- end
 }

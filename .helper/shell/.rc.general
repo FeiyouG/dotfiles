@@ -2,12 +2,12 @@
 
 # MARK: MSIC
 export LANG=en_US.UTF-8
-export EDITOR="nvim"                                                          #  Default editor
-export VISUAL="nvim"                                                          #  Default editor
+export EDITOR="nvim"                                              # Default editor
+export VISUAL="nvim"                                              # Default editor
 
 # MARK: UTILITIES
-alias rm="rm -i"                                                              #  Confirmation on remving
-alias ls="ls --color"                                                         #  Enable color for ls
+alias rm="rm -i"                                                  # Confirmation on remving
+alias ls="ls --color"                                             # Enable color for ls
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -16,40 +16,40 @@ alias -g ......='../../../../..'
 # MARK: HOMEBREW
 export HOMEBREW_NO_AUTO_UPDATE=true
 
-alias config_zsh="nvim $XDG_CONFIG_HOME/zsh/.zshrc"                           #  Fast access to configuration file
+alias config_zsh="nvim $XDG_CONFIG_HOME/zsh/.zshrc"               # Fast access to configuration file
 
 # MARK: TMUX
-alias config_tmux="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"                      #  Conform to XDG Base Directory (configuration file)
+alias config_tmux="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"          # Conform to XDG Base Directory (configuration file)
 
 
 # MARK: KITTY
-export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"                       #  Conform to XDG Base Directory (configuration file)
-alias config_kitty="nvim $XDG_CONFIG_HOME/kitty/kitty.conf"                   #  Fast access to configuration file
+export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty/"           # Conform to XDG Base Directory (configuration file)
+alias config_kitty="nvim $XDG_CONFIG_HOME/kitty/kitty.conf"       # Fast access to configuration file
 
 # MARK: WEZTERM
-alias config_wezterm="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"              #  Fast access to configuration file
-alias config_wez="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"                  #  Fast access to configuration file
+alias config_wezterm="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"  # Fast access to configuration file
+alias config_wez="nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"      # Fast access to configuration file
 
 # MARK: DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
 # MARK: zk
-export ZK_NOTEBOOK_DIR="$HOME/Vault/ZK"                                       #  Env for vault home
-export ZK_EDITOR="nvim"                                                       #  Default editor for zk
-alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"                    #  Fast access to valut configuration file
-alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"                       #  Fast access to valut configuration file
+export ZK_NOTEBOOK_DIR="$HOME/Vault/ZK"                           # Env for vault home
+export ZK_EDITOR="nvim"                                           # Default editor for zk
+alias config_vault="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"        # Fast access to valut configuration file
+alias config_zk="nvim $ZK_NOTEBOOK_DIR/.zk/config.toml"           # Fast access to valut configuration file
 
 
 # MARK: GNUPG
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                                    #  Conform to XDG Base Directory (all files)
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"                        # Conform to XDG Base Directory (all files)
 
 # MARK: LESS
-export LESSKEY="$XDG_CONFIG_HOME/less/keys"                                   #  Conform to XDG Base Directory (configuration file)
-export LESSHISTFILE="$XDG_STATE_HOME/less/history"                            #  Conform to XDG Base Directory (history file)
+export LESSKEY="$XDG_CONFIG_HOME/less/keys"                       # Conform to XDG Base Directory (configuration file)
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"                # Conform to XDG Base Directory (history file)
 
 # MARK: WGET
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"                                       #  Conform to XDG Base Directory (configuration file)
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"                     #  Conform to XDG Base Directory (history file)
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"                           # Conform to XDG Base Directory (configuration file)
+alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"         # Conform to XDG Base Directory (history file)
 
 # MARK: GO
 export GOPATH="$XDG_DATA_HOME/go"
@@ -62,18 +62,21 @@ export PATH="$CARGO_HOME/bin:$PATH"
 source "$CARGO_HOME/env"
 
 # MARK: Ruby
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/ruby/bundle                      #  Conform to XDG Base Directory (configuration file)
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/ruby/bundle                        #  Conform to XDG Base Directory (cache)
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle                             #  Conform to XDG Base Directory (data)
-export GEM_HOME="$XDG_DATA_HOME"/ruby/gem                                     #  Conform to XDG Base Directory (data)
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/ruby/gem                              #  Conform to XDG Base Directory (cache)
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/ruby/bundle          # Conform to XDG Base Directory (configuration file)
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/ruby/bundle            # Conform to XDG Base Directory (cache)
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle                 # Conform to XDG Base Directory (data)
+export GEM_HOME="$XDG_DATA_HOME"/ruby/gem                         # Conform to XDG Base Directory (data)
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/ruby/gem                  # Conform to XDG Base Directory (cache)
 
 # MARK: Python
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"                          #  Conform to XDG Base Directory (configuration file)
-export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                               #  Conform to XDG Base Directory (data)
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"              # Conform to XDG Base Directory (configuration file)
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                   # Conform to XDG Base Directory (data)
 
 # MARK: nodejs and npm
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"                     #  Conform to XDG Base Directory (configuration file)
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"         # Conform to XDG Base Directory (configuration file)
+export npm_config_cache="$XDG_CACHE_HOME/npm"                     # Conform to XDG Base Directory (cache)
+export npm_config_prefix=$XDG_DATA_HOME/npm                       # Conform to XDG Base Directory (data)
+export PATH=$PATH:$XDG_DATA_HOME/npm/bin                          # Add global npm execuatble to PATH
 
 # MARK: Custom
 export VAULT="$HOME/vault"

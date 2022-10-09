@@ -3,9 +3,20 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~ ~/Vault ~/Vault/ZK ~/Vault/Fin ~/Desktop/proj ~/Desktop/test ~/Documents ~/Documents/Mine ~/Documents/Mine/UW/Current_Quarter ~/.dotfiles -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~ \
+                    ~/Vault \
+                    ~/Vault/ZK \
+                    ~/Vault/Fin \
+                    ~/vault2 \
+                    ~/Desktop/proj \
+                    ~/Desktop/test \
+                    ~/Documents/Mine/UW/Past_Quarters \
+                    ~/Documents/Mine/UW/Current_Quarter \
+                    ~/.dotfiles \
+                    -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
+# Nothing is selected
 if [[ -z $selected ]]; then
     exit 0
 fi
@@ -13,20 +24,26 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# Tmux is not runnning
+# Then start tmux and attach to this session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
 
+# Tmux is ruinning and doesn NOT have this session
+# Then create a new session
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-# Attach to tmux if it is not in tmux
-# or switch to target session if it is in tmux
 if [ -z "${TMUX}" ]; then
+  # Tmux is NOT running has this session
+  # Then attach to this session
   tmux attach -t $selected_name
 else
+  # Tmux is running and has this session
+  # Then switch to this session
   tmux switch-client -t $selected_name
 fi
 

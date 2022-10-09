@@ -4,8 +4,7 @@ return {
   require("plugin.style.pretty-fold"),
   require("plugin.style.dressing"),
   require("plugin.style.tabular"),
-  -- require("plugin.style.bufferline"),
-  -- require("plugin.style.cokeline"),
+  require("plugin.style.neoscroll"),
   { 'fladson/vim-kitty' }, -- Syntax highlight for kitty config files
   {'lukas-reineke/indent-blankline.nvim'},
 }

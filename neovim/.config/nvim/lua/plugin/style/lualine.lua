@@ -100,7 +100,6 @@ return {
       return {
         'tabs',
         mode = 0,
-        separator = "",
         cond = function()
           return #vim.api.nvim_list_tabpages() > 1
         end

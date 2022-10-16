@@ -8,6 +8,7 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   host          # Hostname section
   dir           # Current directory section
+  venv          # virtualenv section
   git           # Git section (git_branch + git_status)
   hg            # Mercurial section (hg_branch  + hg_status)
 
@@ -46,7 +47,6 @@ spaceship remove julia         # Julia section
 spaceship remove docker        # Docker section
 spaceship remove aws           # Amazon Web Services section
 spaceship remove gcloud        # Google Cloud Platform section
-spaceship remove venv          # virtualenv section
 spaceship remove conda         # conda virtualenv section
 spaceship remove dotnet        # .NET section
 spaceship remove kubectl       # Kubectl context section
@@ -79,6 +79,15 @@ SPACESHIP_DIR_TRUNC_REPO=false
 SPACESHIP_DIR_COLOR="blue"
 SPACESHIP_DIR_LOCK_SYMBOL=" "
 SPACESHIP_DIR_LOCK_COLOR="red"
+
+# MARK: Virtualenv (venv)
+SPACESHIP_VENV_SHOW=true
+SPACESHIP_VENV_ASYNC=false
+SPACESHIP_VENV_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_VENV_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_VENV_SYMBOL=" "
+SPACESHIP_VENV_GENERIC_NAMES=(virtualenv venv .venv)
+SPACESHIP_VENV_COLOR="yellow"
 
 # MARK: Git
 SPACESHIP_GIT_SHOW=true

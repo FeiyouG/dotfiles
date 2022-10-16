@@ -4,5 +4,4 @@ return {
   require("plugin/core/packer"),
   require("plugin/core/nvim-notify"),
   require("plugin/core/command_center"),
-  require("plugin/core/mason"),
 }

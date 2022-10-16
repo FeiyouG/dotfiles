@@ -19,7 +19,8 @@ local packer_util = require("packer.util")
 
 packer.reset()
 packer.init({
-  profile = {
+  ensure_dependencies = true, -- Should packer install plugin dependencies?
+  profile             = {
     enable = true,
     threshold = 0,
   },
@@ -46,6 +47,7 @@ Utils.load("plugin/style")
 Utils.load("plugin/tmux")
 Utils.load("plugin/treesitter")
 Utils.load("plugin/submodes")
+Utils.load("plugin/installer")
 
 -- MARK: Sync config automatically if we just installed packer
 if packer_bootstrap then packer.sync() end

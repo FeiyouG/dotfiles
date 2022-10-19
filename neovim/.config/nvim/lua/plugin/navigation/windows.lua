@@ -42,7 +42,10 @@ return {
       {
         desc = "Maximize current buffer with animation",
         cmd = "<CMD>WindowsMaximize<CR>",
-        keys = { "n", "<C-w>z" },
+        keys = {
+          { "n", "<c-w>z" },
+          { "n", "<c-w><c-z>" },
+        }
       }, {
         desc = "Maximize current buffer horizontally with animation",
         cmd = "<CMD>WindowsMaximizeHorizontally<CR>",

@@ -1,7 +1,7 @@
 return {
   name = "git",
   icon = Utils.icons.git.git,
-  key = "<leader>g",
+  key = "<c-g><c-g>",
   color = "pink",
   mode = { "n", "x" },
 
@@ -9,7 +9,6 @@ return {
     local gitsigns = Utils.require("gitsigns")
 
     vim.cmd("silent! %foldopen!")
-    vim.bo.modifiable = false
     if gitsigns then
       gitsigns.toggle_signs(true)
       gitsigns.toggle_linehl(true)
@@ -20,7 +19,6 @@ return {
   on_exit = function()
     local gitsigns = Utils.require("gitsigns")
 
-    vim.bo.modifiable = true
     if gitsigns then
       gitsigns.toggle_signs(false)
       gitsigns.toggle_linehl(false)
@@ -103,7 +101,7 @@ return {
         {
           desc = "Open neogit",
           cmd = "<CMD>Neogit<CR>",
-          keys = { "n", "c", },
+          keys = { "n", "ng", },
         }
       })
     end
@@ -118,6 +116,10 @@ return {
           desc = "Open file commit history panel",
           cmd = "<CMD>DiffviewFileHistory<CR>",
           keys = { "n", "df", },
+        }, {
+          desc = "Open file commit history panel",
+          cmd = "<CMD>DiffviewFileHistory %<CR>",
+          keys = { "n", "d%", },
         }, {
           desc = "Close diffview/file commit history panel",
           cmd = "<CMD>DiffviewClose<CR>",

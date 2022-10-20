@@ -1,27 +1,27 @@
 return {
   adapters = {
     type = "executable",
-    command = vim.fn.glob "$XDG_DATA_HOME/virtualenvs/debugpy/bin/python",
-    -- command = ".config/virtualenvs/debugpy".
+    command = Utils.path.python.debugby_exec,
     args = { "-m", "debugpy.adapter" }
   },
+
   configurations = {
     {
-      type = "python",
-      request = "launch",
+      -- The first three options are required by nvim-dap
+      type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+      request = 'launch',
       name = "Launch file",
 
-      program = "${file}",
-      -- pythonPath = function()
-      --   local cwd = vim.fn.getcwd()
-      --   if vim.fn.executable(cwd .. "/usr/bin/python3.9") == 1 then
-      --     return cwd .. "/usr/bin/python3.9"
-      --   elseif vim.fn.executable(cwd .. "/usr/bin/python3.9") == 1 then
-      --     return cwd .. "/usr/bin/python3.9"
-      --   else
-      --     return "/usr/bin/python3.9"
-      --   end
-      -- end
-    }
+      -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+      program = "${file}", -- This configuration will launch the current file if used.
+      pythonPath = function()
+        local executable = os.getenv("VIRTUAL_ENV") or os.getenv("VIRTUALENVWRAPPER_PYTHON")
+        if not executable then
+          Utils.notify.info("nvim-dap", "python executable not found")
+        end
+        return executable
+      end
+    },
   }
 }

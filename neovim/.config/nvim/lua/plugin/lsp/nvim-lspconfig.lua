@@ -45,7 +45,7 @@ return {
     local lspconfig = require("lspconfig")
 
     -- initialize servers
-    local servers = require("plugin/lsp/servers")
+    local servers = require("plugin/lsp/servers").nvim_lspconfig
     for server, server_config in pairs(servers) do
 
       -- Setup common server configs

@@ -1,4 +1,5 @@
 return {
+  nvim_lspconfig = {
   ltex = require("plugin.lsp.servers.ltex"),
   sumneko_lua = require("plugin.lsp.servers.sumneko_lua"),
   gopls = require("plugin.lsp.servers.gopls"),
@@ -12,4 +13,7 @@ return {
   jsonls = {},
 
   test = {}
+  },
+
+  jdtls =  require("plugin.lsp.servers.jdtls")
 }

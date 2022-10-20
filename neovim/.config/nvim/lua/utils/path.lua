@@ -39,62 +39,78 @@ M.get_root = function(markers, bufname)
   end
 end
 
--- MARK: Packer related path
+M.get_project_root = function(patterns)
+  return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
+end
+
+local function get_path(...)
+  local path = vim.fn.glob(M.join(...))
+  return path ~= "" and vim.fn.split(path, "\n") or {}
+end
+
+-- MARK: Plugin related Paths
 M.packer = {
-  installed_path = M.join(
+  install_path = M.join(
     vim.fn.stdpath('data'),
     'site/pack/packer/start/packer.nvim'
   ),
 }
 
--- MARK: Java related path
-local get_java_debug_jars = function()
-  local path = vim.fn.glob(M.join(
-    "$XDG_DATA_HOME/java/java-debug",
-    "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-  ))
-  return path ~= "" and { path } or {}
-end
+M.mason = {
+  install_dir = get_path(
+    vim.fn.stdpath('data'),
+    "mason"
+  )[1],
 
-local get_vscode_java_test_jars = function()
-  local path = vim.fn.glob("$XDG_DATA_HOME/java/vscode-java-test/server/*jar")
-  return path ~= "" and vim.fn.split(path, "\n") or {}
-end
+  package_dir = get_path(
+    vim.fn.stdpath('data'),
+    "mason/packages"
+  )[1]
+}
 
-local get_lombok_jars = function()
-  local path = vim.fn.glob("$XDG_DATA_HOME/nvim/mason/packages/jdtls/lombok.jar")
-  return path ~= "" and { path } or {}
-end
-
-local get_project_root = function()
-  return M.get_root({ ".git", "mvnw", "gradlew" })
-end
-
-local get_jdtls_home = function()
-  local path = "$XDG_DATA_HOME/nvim/mason/packages/jdtls"
-  if not M.dir_exists(path) then vim.loop.fs_mkdir(path, 493) end
-  return vim.fn.glob(path)
-end
-
-local get_jdtls_workspace = function()
-  local path = M.join(
-    "$XDG_CACHE_HOME/jdtls-workspace",
-    vim.fn.fnamemodify(get_project_root(), ":p:h:t")
-  )
-  return vim.fn.glob(path)
-end
-
+-- MARK: Java
 M.java = {
-  project_root = get_project_root(),
+  project_root = M.get_project_root({ '.git', 'mvnw', 'gradlew' }),
 
-  java_debug_jars = get_java_debug_jars(),
-  vscode_java_test_jars = get_vscode_java_test_jars(),
-  lombok_jars = get_lombok_jars(),
+  java_debug_jar = get_path(
+    M.mason.package_dir,
+    "java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
+  )[1],
 
-  jdtls_home = get_jdtls_home(),
-  jdtls_workspace = get_jdtls_home(),
-  get_home = get_jdtls_home(),
-  get_workspace = get_jdtls_workspace(),
+  java_test_jars = get_path(
+    M.mason.package_dir,
+    "vscode-java-test/server/*jar"
+  ),
+
+  lombok_jar = get_path(
+    M.mason.package_dir,
+    "jdtls/lombok.jar"
+  )[1],
+
+  jdtls_jar = get_path(
+    M.mason.package_dir,
+    'jdtls/plugins/org.eclipse.equinox.launcher_*.jar'
+  )[1],
+
+  jdtls_config = get_path(
+    M.mason.package_dir,
+    'jdtls/config_' .. require("Utils.system").os_name
+  )[1],
+
+  jdtls_worksapce = M.join(
+    vim.fn.glob("$XDG_CACHE_HOME/jdtls-workspace"),
+    vim.fn.fnamemodify(
+      M.get_project_root({ '.git', 'mvnw', 'gradlew' }),
+      ":p:h:t")
+  )
+}
+
+-- MARK: Python
+M.python = {
+  debugby_exec = get_path(
+    M.mason.install_dir,
+    "packages/debugpy/venv/bin/python"
+  )[1],
 }
 
 return M

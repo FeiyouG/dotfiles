@@ -1,4 +1,3 @@
 return {
-  python = require("plugin/dap/debuggers/python"),
-  java = require("plugin/dap/debuggers/java"),
+  python = require("plugin.dap.debuggers.python"),
 }

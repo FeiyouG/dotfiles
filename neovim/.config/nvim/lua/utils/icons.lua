@@ -92,6 +92,15 @@ M.lsp = {
   Null      = " ",
 }
 
+M.debug = {
+  debug = " ",
+  breakpoint = " ",
+  breakpoint_conditional = " ",
+  breakpoint_rejected = " ",
+  logpoint = " ",
+  stopped = " ",
+}
+
 M.border = {
   rounded = {
     { "╭", "FloatBorder" },

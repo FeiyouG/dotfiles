@@ -1,7 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim',
 
-  require = {
+  requires = {
     'kyazdani42/nvim-web-devicons',
   },
 
@@ -139,10 +139,17 @@ return {
         disabled_filetypes = {
           winbar = {
             "NvimTree",
-            "DiffviewFiles"
+            "DiffviewFiles",
           }
         },
-        ignore_focus = {},
+        ignore_focus = {
+          "dapui_watches",
+          "dapui_scopes",
+          "dapui_breakpoints",
+          "dapui_stacks",
+          "dapui_console",
+          "dap-repl",
+        },
         always_divide_middle = true,
         globalstatus = true,
         refresh = {

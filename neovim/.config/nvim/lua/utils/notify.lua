@@ -27,7 +27,7 @@ end
 ---@param name string: the name of the submode that are entered
 ---@param icon string: the icon for the submode
 M.enter_submode = function(name, icon)
-  local message = icons.enter .. " " .. icon .. " Entered " .. name .. " submode"
+  local message = icons.enter .. " " .. icon .. name .. " submode"
   M.minimal(message, vim.log.levels.INFO, {
     hide_from_history = true,
   })

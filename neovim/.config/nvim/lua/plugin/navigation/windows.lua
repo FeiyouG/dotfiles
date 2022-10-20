@@ -28,7 +28,7 @@ return {
       },
       animation = {
         enable = true,
-        duration = 100,
+        duration = 50,
         fps = 30,
         easing = "in_out_sine"
       }
@@ -61,7 +61,7 @@ return {
       }, {
         desc = "Toggle Sliding buffer width",
         cmd = "<CMD>WindowsToggleAutowidth<CR>",
-        keys = { "n", "<C-w>w" },
+        keys = { "n", "<C-w>!" },
       },
     }
   end

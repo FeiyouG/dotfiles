@@ -72,10 +72,11 @@ map("n", "<c-w>d", "<CMD>bdelete<CR>", noremap)
 
 ---- MAKR: PANE & TAB MANAGEMENT ----
 -- Move split panes to left/bottom/top/right
-map("n", "<leader><C-h>", "<C-W>H", noremap)
-map("n", "<leader><C-j>", "<C-W>J", noremap)
-map("n", "<leader><C-k>", "<C-W>K", noremap)
-map("n", "<leader><C-l>", "<C-W>L", noremap)
+-- map("n", "<leader><C-h>", "<C-W>H", noremap)
+-- map("n", "<leader><C-j>", "<C-W>J", noremap)
+-- map("n", "<leader><C-k>", "<C-W>K", noremap)
+-- map("n", "<leader><C-l>", "<C-W>L", noremap)
+map("n", "<c-w><c-c>", "<c-w>c", noremap)
 
 -- Go to tab
 map("n", "<leader>1", "1gt", noremap)

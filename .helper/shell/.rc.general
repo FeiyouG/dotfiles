@@ -70,6 +70,7 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/ruby/gem                  # Conform to X
 
 # MARK: Python
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"              # Conform to XDG Base Directory (configuration file)
+export PYTHON
 
 # MARK: virtualenvs
 export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                   # Conform to XDG Base Directory (data)
@@ -78,6 +79,11 @@ if [ -f  $VIRTUALENVWRAPPER_SCRIPT ]; then                       # Setup virtual
   export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
   source $VIRTUALENVWRAPPER_WRAPPER
 fi
+
+# MARK: Java
+export JAVA_HOME="/usr/libexec/java_home -v 19"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # MARK: nodejs and npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"         # Conform to XDG Base Directory (configuration file)

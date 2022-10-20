@@ -8,6 +8,7 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   host          # Hostname section
   dir           # Current directory section
+  java          # Java section
   venv          # virtualenv section
   git           # Git section (git_branch + git_status)
   hg            # Mercurial section (hg_branch  + hg_status)
@@ -42,7 +43,7 @@ spaceship remove golang        # Go section
 spaceship remove php           # PHP section
 spaceship remove rust          # Rust section
 spaceship remove haskell       # Haskell Stack section
-spaceship remove java          # Java section
+# spaceship remove java          # Java section
 spaceship remove julia         # Julia section
 spaceship remove docker        # Docker section
 spaceship remove aws           # Amazon Web Services section
@@ -80,12 +81,20 @@ SPACESHIP_DIR_COLOR="blue"
 SPACESHIP_DIR_LOCK_SYMBOL=" "
 SPACESHIP_DIR_LOCK_COLOR="red"
 
+# MARK: Java
+SPACESHIP_JAVA_SHOW=true
+SPACESHIP_JAVA_ASYNC=true
+SPACESHIP_JAVA_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_JAVA_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_JAVA_SYMBOL=" "
+SPACESHIP_JAVA_COLOR=yellow
+
 # MARK: Virtualenv (venv)
 SPACESHIP_VENV_SHOW=true
 SPACESHIP_VENV_ASYNC=false
 SPACESHIP_VENV_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
 SPACESHIP_VENV_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
-SPACESHIP_VENV_SYMBOL=" "
+SPACESHIP_VENV_SYMBOL=" "
 SPACESHIP_VENV_GENERIC_NAMES=(virtualenv venv .venv)
 SPACESHIP_VENV_COLOR="yellow"
 

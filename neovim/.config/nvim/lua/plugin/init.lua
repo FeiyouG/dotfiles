@@ -12,6 +12,7 @@ if vim.fn.empty(Utils.path.packer.install_path) > 0 then
   })
   vim.cmd [[packadd packer.nvim]]
 end
+
 -- MARK: setup packer
 local packer = require("packer")
 local packer_util = require("packer.util")

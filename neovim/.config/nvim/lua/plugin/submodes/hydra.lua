@@ -9,11 +9,13 @@ return {
       "submodes requires command_center to register keybindings")
 
     if not command_center then return end
+    local key_prefix = "<leader><leader>"
 
     -- Create all submodes
     for _, submode in ipairs(modes) do
 
       local submode_cmd = {}
+      local submode_key = key_prefix .. submode.key
 
       if Utils.is_callable(submode.commands) then
         submode_cmd = submode.commands()
@@ -35,9 +37,9 @@ return {
           keys = { "n", "?", Utils.keymap.noremap },
         }, {
           desc = "Exit " .. submode.name .. " mode",
-          cmd = submode.key,
+          cmd = submode_key,
           keys = {
-            { { "n", "x" }, submode.key, Utils.keymap.nowait },
+            { { "n", "x" }, submode_key, Utils.keymap.nowait },
             { { "n", "x" }, "<ESC>", Utils.keymap.nowait }
           },
           hydra_head_args = { exit = true }
@@ -48,6 +50,9 @@ return {
 
       hydra({
         name = submode.name,
+        mode = submode.mode,
+        body = submode_key,
+        heads = hydra_heads,
         config = {
           buffer = bufnr,
           color = submode.color,
@@ -64,7 +69,8 @@ return {
                 category = submode.name,
               })
             end
-            Utils.notify.enter_submode(submode.name, submode.icon)
+            local message = submode.icon .. " " .. submode.name .. " submode"
+            Utils.notify.minimal(message, vim.log.levels.INFO, { hide_from_history = true, })
           end,
           on_exit = function()
             if Utils.is_callable(submode.on_exit) then
@@ -77,12 +83,8 @@ return {
                 category = submode.name,
               })
             end
-            Utils.notify.exit_submode(submode.name, submode.icon)
           end,
         },
-        mode = { "n", "x" },
-        body = submode.key,
-        heads = hydra_heads,
       })
       ::continue::
     end

@@ -3,7 +3,7 @@ return {
 
   run = ':TSUpdate',
 
-  require = {
+  requires = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/playground',
     'JoosepAlviste/nvim-ts-context-commentstring',

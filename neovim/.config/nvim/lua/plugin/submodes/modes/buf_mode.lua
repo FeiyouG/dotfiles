@@ -1,7 +1,7 @@
 return {
   name = "buffer",
   icon = Utils.icons.file.default,
-  key = "<leader>b",
+  key = "b",
   color = "pink",
   mode = { "n", "x" },
 

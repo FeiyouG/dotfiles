@@ -1,14 +1,13 @@
 return {
   name = "git",
   icon = Utils.icons.git.git,
-  key = "<c-g><c-g>",
+  key = "g",
   color = "pink",
   mode = { "n", "x" },
 
   on_enter = function()
     local gitsigns = Utils.require("gitsigns")
 
-    vim.cmd("silent! %foldopen!")
     if gitsigns then
       gitsigns.toggle_signs(true)
       gitsigns.toggle_linehl(true)

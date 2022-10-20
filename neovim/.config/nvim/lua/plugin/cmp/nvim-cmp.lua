@@ -1,7 +1,17 @@
 return {
   'hrsh7th/nvim-cmp',
   requires = {
-    'nvim-lua/plenary.nvim'
+    'nvim-lua/plenary.nvim',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'petertriho/cmp-git',
+    'rcarriga/cmp-dap',
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+
   },
 
   config = function()

@@ -1,7 +1,7 @@
 local M = {
   'nvim-telescope/telescope.nvim',
 
-  require = {
+  requires = {
     'folke/trouble.nvim',
   },
 

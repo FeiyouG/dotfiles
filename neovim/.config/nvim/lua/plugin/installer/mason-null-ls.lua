@@ -1,6 +1,11 @@
 return {
   "jayp0521/mason-null-ls.nvim",
 
+  requires = {
+    "williamboman/mason.nvim",
+    'jose-elias-alvarez/null-ls.nvim',
+  },
+
   config = function()
     require("mason-null-ls").setup({
       -- A list of sources to install if they're not already installed.

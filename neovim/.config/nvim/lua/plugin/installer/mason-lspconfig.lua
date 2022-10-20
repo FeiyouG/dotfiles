@@ -1,6 +1,11 @@
 return {
   "williamboman/mason-lspconfig.nvim",
 
+  requires = {
+    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
+  },
+
   config = function()
     local mason_lspconfig = require("mason-lspconfig")
     mason_lspconfig.setup({

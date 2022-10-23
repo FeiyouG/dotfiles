@@ -1,5 +1,6 @@
 # .zshrc is sourced for every interactive zsh shell
 # All env vars that subshell and external commands don't need go here
+zmodload zsh/zprof
 
 # MAKR: Install and configure zinit
 # Configure zinit paths
@@ -33,17 +34,26 @@ zinit light zdharma-continuum/zinit-annex-bin-gem-node
 zinit light NICHOLAS85/z-a-eval
 
 # MARK: Source all configuration files
-setopt extendedglob  #  Use negation (~/^) in file pattern
-setopt nullglob      #  Ignore error if no match is found
 
-for file in $ZDOTDIR/src/**/*.zsh; do
-  source "$file"
-done
+source_zsh() {
+  setopt extendedglob  #  Use negation (~/^) in file pattern
+  setopt nullglob      #  Ignore error if no match is found
 
-unsetopt extendedglob
-unsetopt nullglob
+  cwd="${1:A:h}"
+  for file in $cwd/*.zsh~$cwd/init.zsh; do
+    source $file
+  done
 
-# Source local configurations
-source $HOME/.zshrc.local
+  for file in $cwd/*/init.zsh; do
+    source $file
+  done
+  unsetopt extendedglob
+  unsetopt nullglob
+}
+
+source $ZDOTDIR/src/init.zsh    # Source src folder
+source $HOME/.zshrc.local       # Source local configurations
+
+# unset -f init
 
 bindkey -e                     # Resotre default keybidning

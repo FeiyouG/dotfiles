@@ -1,4 +1,4 @@
-if which jenv > /dev/null; then
+if which jenv > /dev/null 2>&1; then
   export JENV_ROOT="$XDG_DATA_HOME/java/jenv"                       # Conform to XDG Base Directory (data)
   eval "$(jenv init -)"
 fi

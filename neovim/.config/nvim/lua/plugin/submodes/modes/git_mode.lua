@@ -52,11 +52,11 @@ return {
         }, {
           desc = "Stage hunk",
           cmd = gitsigns.stage_hunk,
-          keys = { "n", "s", },
+          keys = { "n", "<c-s>", },
         }, {
           desc = "Undo stage hunk",
           cmd = gitsigns.undo_stage_hunk,
-          keys = { "n", "u", },
+          keys = { "n", "<c-u>", },
         }, {
           desc = "reset hunk",
           cmd = function()
@@ -67,7 +67,7 @@ return {
         }, {
           desc = "Stage buffer",
           cmd = gitsigns.stage_buffer,
-          keys = { "n", "S" },
+          keys = { "n", "<s-S>" },
         }, {
           desc = "Preview hunk",
           cmd = gitsigns.preview_hunk,
@@ -75,15 +75,15 @@ return {
         }, {
           desc = "View line blame",
           cmd = gitsigns.blame_line,
-          keys = { "n", "b" },
+          keys = { "n", "B" },
         }, {
           desc = "Toggle deleted",
           cmd = gitsigns.toggle_deleted,
-          keys = { "n", "<leader>d" },
+          keys = { "n", "<c-d>" },
         }, {
           desc = "View line blame (full)",
           cmd = function() gitsigns.blame_line({ full = true }) end,
-          keys = { "n", "B", },
+          keys = { "n", "<c-b>", },
         }, {
           desc = "send git hunks to location list",
           cmd = gitsigns.setloclist,

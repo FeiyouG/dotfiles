@@ -69,27 +69,6 @@ return {
       },
     })
 
-    if Utils.require("winshift") then
-      vim.list_extend(commands, {
-        {
-          desc = "Move window to left",
-          cmd = "<CMD>WinShift left<CR>",
-          keys = { "n", "H" }
-        }, {
-          desc = "Move window to right",
-          cmd = "<CMD>WinShift right<CR>",
-          keys = { "n", "L" }
-        }, {
-          desc = "Move window up",
-          cmd = "<CMD>WinShift up<CR>",
-          keys = { "n", "K" }
-        }, {
-          desc = "Move window down",
-          cmd = "<CMD>WinShift down<CR>",
-          keys = { "n", "J" }
-        }
-      })
-    end
 
     return commands
   end

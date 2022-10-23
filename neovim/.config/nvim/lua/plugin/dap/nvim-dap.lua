@@ -12,19 +12,6 @@ return {
     end
 
 
-    -- Automatically open and close dapui, if installed
-    local dapui = Utils.require("dapui", "nvim-dap can still work")
-    dap.listeners.after.event_initialized["dapui_config"] = function()
-      if dapui then dapui.open() end
-    end
-
-    dap.listeners.before.event_terminated["dapui_config"] = function()
-      if dapui then dapui.close() end
-    end
-    dap.listeners.before.event_exited["dapui_config"] = function()
-      if dapui then dapui.close() end
-    end
-
     -- Customize nvim-dap
     vim.fn.sign_define(
       "DapBreakpoint", {

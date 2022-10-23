@@ -22,11 +22,11 @@ return {
       {
         desc = "Delete current buffer and maintain layout",
         cmd = "<CMD>bdelete<CR>",
-        keys = { "n", "d" }
+        keys = { "n", "<c-d>" }
       }, {
-        desc = "Remove current pane",
+        desc = "Remove current window",
         cmd = "<CMD>close<CR>",
-        keys = { "n", "c" }
+        keys = { "n", "<c-c>" }
       }, {
         desc = "Go to 1st tabpage",
         cmd = "1gt",
@@ -66,11 +66,11 @@ return {
       }, {
         desc = "Go to previous tabpage",
         cmd = "<CMD>tabprevious<CR>",
-        keys = { "n", "h" }
+        keys = { "n", "<Left>" }
       }, {
         desc = "Go to next tabpage",
         cmd = "<CMD>tabnext<CR>",
-        keys = { "n", "l" }
+        keys = { "n", "<Right>" }
       },
     }
 
@@ -79,7 +79,7 @@ return {
         {
           desc = "Maximize current buffer with animation",
           cmd = "<CMD>WindowsMaximize<CR>",
-          keys = { "n", "z" },
+          keys = { "n", "<c-z>" },
         }, {
           desc = "Maximize current buffer horizontally with animation",
           cmd = "<CMD>WindowsMaximizeHorizontally<CR>",
@@ -95,7 +95,7 @@ return {
         }, {
           desc = "Toggle Sliding buffer width",
           cmd = "<CMD>WindowsToggleAutowidth<CR>",
-          keys = { "n", "w" },
+          keys = { "n", "<c-w>" },
         },
       })
     end
@@ -106,72 +106,39 @@ return {
           desc = "Select previous buffer",
           cmd = "<Plug>(CybuPrev)",
           keys = {
-            { "n", "k", Utils.keymap.remap }
+            { "n", "<Up>", Utils.keymap.remap }
           },
         }, {
           desc = "Select previous buffer",
           cmd = "<Plug>(CybuNext)",
           keys = {
-            { "n", "j", Utils.keymap.remap }
+            { "n", "<Down>", Utils.keymap.remap }
           },
         },
       })
     end
 
-    -- if Utils.require("bufferline") then
-    --   vim.list_extend(commands, {
-    --     {
-    --       desc = "Go to previous buffer",
-    --       cmd = "<CMD>BufferPrevious<CR>",
-    --       keys = { "n", "h", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Got to next buffer",
-    --       cmd = "<CMD>BufferNext<CR>",
-    --       keys = { "n", "l", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Move previous buffer",
-    --       cmd = "<CMD>BufferMovePrevious<CR>",
-    --       keys = { "n", "H", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Move next buffer",
-    --       cmd = "<CMD>BufferMoveNext<CR>",
-    --       keys = { "n", "L", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Pin buffer",
-    --       cmd = "<CMD>BufferPin<CR>",
-    --       keys = { "n", "p", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Chose buffer",
-    --       cmd = "<CMD>BufferPick<CR>",
-    --       keMoveys = { "n", "s", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Close buffer",
-    --       cmd = "<CMD>BufferClose<CR>",
-    --       keys = { "n", "c", Utils.keymap.noremap }
-    --     }, {
-    --       desc = "Order buffer by number",
-    --       cmd = "<CMD>BufferOrderByBufferNumber<CR>",
-    --     }, {
-    --       desc = "Order buffer by directory",
-    --       cmd = "<CMD>BufferOrderByBufferDirectory<CR>",
-    --     }, {
-    --       desc = "Order buffer by language",
-    --       cmd = "<CMD>BufferOrderByBufferLanguage<CR>",
-    --     }, {
-    --       desc = "Order buffer by window number",
-    --       cmd = "<CMD>BufferOrderByBufferWindowNumber<CR>",
-    --     }
-    --   })
-    -- end
-
-    -- Maximizer
-    -- vim.list_extend(commands, {
-    --   {
-    --     desc = "Zoom in/out current buffer",
-    --     cmd = "<CMD>MaximizerToggle!<CR>",
-    --     keys = { "n", "z" }
-    --   }
-    -- })
+    if Utils.require("winshift") then
+      vim.list_extend(commands, {
+        {
+          desc = "Move window to left",
+          cmd = "<CMD>WinShift left<CR>",
+          keys = { "n", "H" }
+        }, {
+          desc = "Move window to right",
+          cmd = "<CMD>WinShift right<CR>",
+          keys = { "n", "L" }
+        }, {
+          desc = "Move window up",
+          cmd = "<CMD>WinShift up<CR>",
+          keys = { "n", "K" }
+        }, {
+          desc = "Move window down",
+          cmd = "<CMD>WinShift down<CR>",
+          keys = { "n", "J" }
+        }
+      })
+    end
 
     return commands
   end

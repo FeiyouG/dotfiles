@@ -16,35 +16,29 @@ return {
         {
           desc = "Toggle Breakpoint",
           cmd = nvim_dap.toggle_breakpoint,
-          keys = { "n", "b", keymap.noremap },
-          cat = "dap",
+          keys = { "n", "<leader>b", keymap.noremap },
         }, {
           desc = "Toggle Breakpoint with condition",
           cmd = function()
             nvim_dap.continue(vim.fn.input('Breakpoint condition: '))
           end,
           keys = { "n", "<leader>B", keymap.noremap },
-          cat = "dap",
         }, {
           desc = "Start/continue debuging",
           cmd = nvim_dap.continue,
           keys = { "n", "<leader>c", keymap.noremap },
-          cat = "dap",
         }, {
           desc = "End debuging",
           cmd = nvim_dap.terminate,
           keys = { "n", "<leader>d", keymap.noremap },
-          cat = "dap",
         }, {
           desc = "Step into",
           cmd = nvim_dap.step_into,
           keys = { "n", "<c-i>", keymap.noremap },
-          cat = "dap",
         }, {
           desc = "Step over",
           cmd = nvim_dap.step_over,
           keys = { "n", "<c-n>", keymap.noremap },
-          cat = "dap",
         }, {
           desc = "Step back",
           cmd = nvim_dap.step_back,
@@ -54,7 +48,6 @@ return {
           desc = "Step out",
           cmd = nvim_dap.step_out,
           keys = { "n", "<c-o>", keymap.noremap },
-          cat = "dap",
         },
       })
     end
@@ -66,16 +59,19 @@ return {
           desc = "Evaluate word under cursor",
           cmd = dap_ui.eval,
           keys = { "n", "K", keymap.noremap },
-          cat = "dap",
         }
       })
     end
 
-    --   descL = "Search all debugger",
-    --   cmd = "<CMD>Telescope command_center cat=dap<CR>",
-    --   keys = { "n", "<leader>d", keymap.noremap },
-    --   mode = keymap.cc_mode.REGISTER_ONLY,
-    -- }, {
+    if Utils.require("telescope.dap") then
+      vim.list_extend(commands, {
+        {
+          desc = "List all breakpoints",
+          cmd = "<CMD>Telescope dap list_breakpoints",
+          keys = { "n", "<leader>fb", keymap.noremap }
+        }
+      })
+    end
 
     return commands
   end

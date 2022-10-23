@@ -40,9 +40,6 @@ return {
         description = "Open command_center",
         cmd = "<CMD>Telescope command_center<CR>",
         keybindings = {
-          { "n", "?", keymap.noremap },
-          { "x", "?", keymap.noremap },
-
           -- If ever hesitate when using telescope start with <leader>f,
           -- also open command center
           { "n", "<Leader>f", keymap.noremap },

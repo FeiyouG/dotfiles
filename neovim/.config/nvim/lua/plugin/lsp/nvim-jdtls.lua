@@ -21,7 +21,6 @@ local jdtls_config = function()
       file:close()
     end
   end
-  Utils.notify.warn("jdtls", "HELLO")
 
   -- MARK: Override java style
   -- vim.opt_local.tabstop = 4 -- Bumber of columns occupied by a tab character
@@ -36,7 +35,6 @@ local jdtls_config = function()
     {
       description = "Jdtls Organize Imports",
       cmd = jdtls.organize_imports,
-      keys = { "n", "<leader>joi" },
     }, {
       description = "Jdtls Extract Variable",
       cmd = jdtls.extract_variable,

@@ -32,7 +32,6 @@ local commands = {
   {
     description = "Jdtls Organize Imports",
     cmd = jdtls.organize_imports,
-    keys = { "n", "<leader>joi" },
   }, {
     description = "Jdtls Extract Variable",
     cmd = jdtls.extract_variable,

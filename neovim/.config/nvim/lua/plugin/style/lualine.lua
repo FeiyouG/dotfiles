@@ -8,20 +8,6 @@ return {
   config = function()
     local lualine = require("lualine")
 
-    local custom_mode = {}
-
-    -- Custom component for custom modes
-    custom_mode.is_active = function()
-      local has_hydra, hydra = pcall(require, "hydra.statusline")
-      return has_hydra and hydra.is_active()
-    end
-
-    custom_mode.name = function()
-      if not custom_mode.is_active() then return nil end
-      local hydra = require("hydra.statusline")
-      return hydra.get_name() .. " submode"
-    end
-
     local diff_source = function()
       local gitsigns = vim.b.gitsigns_status_dict
       if gitsigns then
@@ -74,7 +60,6 @@ return {
     end
 
     local function diff_comp()
-      local gitsigns = vim.b.gitsigns_status_dict
       return {
         'diff',
         source = diff_source,
@@ -140,15 +125,15 @@ return {
           winbar = {
             "NvimTree",
             "DiffviewFiles",
+            "dapui_watches",
+            "dapui_scopes",
+            "dapui_breakpoints",
+            "dapui_stacks",
+            "dapui_console",
+            "dap-repl",
           }
         },
         ignore_focus = {
-          "dapui_watches",
-          "dapui_scopes",
-          "dapui_breakpoints",
-          "dapui_stacks",
-          "dapui_console",
-          "dap-repl",
         },
         always_divide_middle = true,
         globalstatus = true,
@@ -165,14 +150,6 @@ return {
         lualine_x = { diff_comp(), 'branch' },
         lualine_y = { "progress" },
         lualine_z = { "location" },
-      },
-      inactive_sections = {
-        lualine_a = { 'filename', 'branch' },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = { diagnostic_comp() },
-        lualine_y = {},
-        lualine_z = {}
       },
       winbar = {
         lualine_b = { filename_comp(), },

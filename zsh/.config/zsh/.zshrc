@@ -35,6 +35,8 @@ zinit light NICHOLAS85/z-a-eval
 
 # MARK: Source all configuration files
 
+# Source *.zsh files with the same directory (exclude ./init.zsh)
+# and init.zsh in child directories, if any
 source_zsh() {
   setopt extendedglob  #  Use negation (~/^) in file pattern
   setopt nullglob      #  Ignore error if no match is found
@@ -53,7 +55,5 @@ source_zsh() {
 
 source $ZDOTDIR/src/init.zsh    # Source src folder
 source $HOME/.zshrc.local       # Source local configurations
-
-# unset -f init
 
 bindkey -e                     # Resotre default keybidning

@@ -14,15 +14,6 @@ zi light-mode wait lucid for \
 # MARK: Homebrew
 export HOMEBREW_NO_AUTO_UPDATE=true
 
-# MARK: GNUPG
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg/"  # Conform to XDG Base Directory (all files)
-
-# MARK: GO
-export GOPATH="$XDG_DATA_HOME/go"           # Conform to XDG Base Directory
-export GOBIN="$XDG_DATA_HOME/go/bin"        # Conform to XDG Base Directory
-export PATH="$XDG_DATA_HOME/go/bin:$PATH"   # Path to go executables
-
-
 # MARK: Ruby
 # if brew ls --versions ruby > /dev/null; then
 #   PATH="$HOMEBREW_PREFIX/Cellar/ruby/bin:$PATH"             # Path to ruby executabe

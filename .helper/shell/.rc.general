@@ -31,7 +31,9 @@ alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"         # Conform to X
 export RUSTUP_HOME="$XDG_DATA_HOME/rust/Rustup"
 export CARGO_HOME="$XDG_DATA_HOME/rust/cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
-source "$CARGO_HOME/env"
+if which rustc > /dev/null; then
+  source "$CARGO_HOME/env"
+fi
 
 
 # MARK: Python
@@ -40,7 +42,7 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"              # Conform to X
 # MARK: python virtualenvs
 export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                   # Conform to XDG Base Directory (data)
 export VIRTUALENVWRAPPER_WRAPPER=/Library/Frameworks/Python.framework/Versions/3.10/bin/virtualenvwrapper.sh
-if [ -f  $VIRTUALENVWRAPPER_SCRIPT ]; then                       # Setup virtualevnwrappers
+if which virtualenvwrapper > /dev/null; then                       # Setup virtualevnwrappers
   export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
   source $VIRTUALENVWRAPPER_WRAPPER
 fi

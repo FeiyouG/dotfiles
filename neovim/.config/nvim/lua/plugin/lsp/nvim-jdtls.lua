@@ -1,7 +1,7 @@
 local jdtls_config = function()
   print("HERE1")
   local jdtls = require("jdtls")
-  local jdtls_config = require("plugin.lsp.servers").jdtls
+  local jdtls_config = require("plugin.lsp.servers").jdtls.java
 
   Utils.notify.warn("jdtls", "HELLO")
   -- MARK: Set common server configs

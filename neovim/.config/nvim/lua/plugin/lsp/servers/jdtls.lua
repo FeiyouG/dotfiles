@@ -3,7 +3,7 @@ return {
   -- The command that starts the lanjuage server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
-    'java',
+    Utils.path.java.executable,
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -51,8 +51,8 @@ return {
   -- if you want to use additional eclipse.jdt.ls plugins.
   init_options = {
     bundles = vim.tbl_flatten({
-      Utils.path.java.java_debug_jar,
-      Utils.path.java.java_test_jars,
+      Utils.path.java.debug_adapter_jar,
+      Utils.path.java.test_jars,
     }),
   },
 

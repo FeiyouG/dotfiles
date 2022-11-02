@@ -1,5 +1,5 @@
 local jdtls = require("jdtls")
-local jdtls_config = require("plugin.lsp.servers.jdtls")
+local jdtls_config = require("plugin.lsp.servers").jdtls.java
 
 -- Set common server configs
 jdtls_config.capabilities = Utils.lsp.capabilities

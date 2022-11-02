@@ -69,15 +69,18 @@ M.mason = {
 }
 
 -- MARK: Java
+local JAVA_HOME = os.getenv("JAVA_HOME")
 M.java = {
+  -- executable = JAVA_HOME and M.join(JAVA_HOME, "bin/java") or "java",
+  executable = "java",
   project_root = M.get_project_root({ '.git', 'mvnw', 'gradlew' }),
 
-  java_debug_jar = get_path(
+  debug_adapter_jar = get_path(
     M.mason.package_dir,
     "java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
   )[1],
 
-  java_test_jars = get_path(
+  test_jars = get_path(
     M.mason.package_dir,
     "vscode-java-test/server/*jar"
   ),

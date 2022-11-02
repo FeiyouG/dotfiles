@@ -20,7 +20,7 @@ return {
         }, {
           desc = "Toggle Breakpoint with condition",
           cmd = function()
-            nvim_dap.continue(vim.fn.input('Breakpoint condition: '))
+            nvim_dap.toggle_breakpoint(vim.fn.input('Breakpoint condition: '))
           end,
           keys = { "n", "<leader>B", keymap.noremap },
         }, {

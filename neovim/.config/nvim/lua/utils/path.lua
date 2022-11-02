@@ -69,7 +69,6 @@ M.mason = {
 }
 
 -- MARK: Java
-local JAVA_HOME = os.getenv("JAVA_HOME")
 M.java = {
   -- executable = JAVA_HOME and M.join(JAVA_HOME, "bin/java") or "java",
   executable = "java",

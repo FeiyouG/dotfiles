@@ -59,6 +59,9 @@ source_zsh() {
 }
 
 source $ZDOTDIR/src/init.zsh    # Source src folder
-source $HOME/.zshrc.local       # Source local configurations
+
+if [ -f $HOME/.zshrc.local ]; then
+  source $HOME/.zshrc.local       # Source local configurations
+fi
 
 bindkey -e                     # Resotre default keybidning

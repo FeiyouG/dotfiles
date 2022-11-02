@@ -41,12 +41,17 @@ source_zsh() {
   setopt extendedglob  #  Use negation (~/^) in file pattern
   setopt nullglob      #  Ignore error if no match is found
 
-  cwd="${1:A:h}"
+  cwd=${1:A:h}
+  dotfileDir="$HOME/.dotfiles/zsh/.config/zsh"
+  cwd=${cwd//${dotfileDir}/$ZDOTDIR}
+
   for file in $cwd/*.zsh~$cwd/init.zsh; do
+    # echo $file
     source $file
   done
 
   for file in $cwd/*/init.zsh; do
+    # echo $file
     source $file
   done
   unsetopt extendedglob

@@ -1,1 +1,0 @@
-/Users/feiyouguo/.dotfiles/.helper/shell/.rc.general

@@ -8,8 +8,15 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   host          # Hostname section
   dir           # Current directory section
-  java          # Java section
+
+  package
   venv          # virtualenv section
+  java          # Java section
+  python        # Python section
+  node
+  golang        # Go section
+  rust          # Rust section
+
   git           # Git section (git_branch + git_status)
   hg            # Mercurial section (hg_branch  + hg_status)
 
@@ -34,14 +41,11 @@ SPACESHIP_PROMPT_DEFAULT_SUFFIX=""
 
 # MARK: Remove unused sectiosn
 spaceship remove ruby          # Ruby section
-spaceship remove python        # Python section
 spaceship remove elm           # Elm section
 spaceship remove elixir        # Elixir section
 spaceship remove xcode         # Xcode section
 spaceship remove swift         # Swift section
-spaceship remove golang        # Go section
 spaceship remove php           # PHP section
-spaceship remove rust          # Rust section
 spaceship remove haskell       # Haskell Stack section
 # spaceship remove java          # Java section
 spaceship remove julia         # Julia section
@@ -89,14 +93,65 @@ SPACESHIP_JAVA_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
 SPACESHIP_JAVA_SYMBOL=" "
 SPACESHIP_JAVA_COLOR=yellow
 
+# MARK: Python
+SPACESHIP_PYTHON_SHOW=true
+SPACESHIP_PYTHON_ASYNC=true
+SPACESHIP_PYTHON_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_PYTHON_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_PYTHON_SYMBOL=" "
+SPACESHIP_PYTHON_COLOR="yellow"
+
+# MARK: node.js
+SPACESHIP_NODE_SHOW=true
+SPACESHIP_NODE_ASYNC=true
+SPACESHIP_NODE_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_NODE_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_NODE_SYMBOL=" "
+SPACESHIP_NODE_COLOR="yellow"
+# SPACESHIP_NODE_DEFAULT_VERSION=
+
+# MARK: golang
+SPACESHIP_GOLANG_SHOW=true
+SPACESHIP_GOLANG_ASYNC=true
+SPACESHIP_GOLANG_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_GOLANG_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_GOLANG_SYMBOL=" "
+SPACESHIP_GOLANG_COLOR="yellow"
+
+# MARK: rust
+SPACESHIP_RUST_SHOW=true
+SPACESHIP_RUST_ASYNC=true
+SPACESHIP_RUST_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_RUST_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_RUST_SYMBOL=" "
+SPACESHIP_RUST_COLOR="yellow"
+SPACESHIP_RUST_VERBOSE_VERSION=false
+
+# MARK: Lua
+SPACESHIP_LUA_SHOW=true
+SPACESHIP_LUA_ASYNC=true
+SPACESHIP_LUA_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_LUA_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_LUA_SYMBOL=" "
+SPACESHIP_LUA_COLOR="yellow"
+
 # MARK: Virtualenv (venv)
 SPACESHIP_VENV_SHOW=true
 SPACESHIP_VENV_ASYNC=false
 SPACESHIP_VENV_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
 SPACESHIP_VENV_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
-SPACESHIP_VENV_SYMBOL=" "
+SPACESHIP_VENV_SYMBOL=" "
 SPACESHIP_VENV_GENERIC_NAMES=(virtualenv venv .venv)
 SPACESHIP_VENV_COLOR="yellow"
+
+# MARK: Package
+SPACESHIP_PACKAGE_SHOW=true
+SPACESHIP_PACKAGE_ASYNC=true
+SPACESHIP_PACKAGE_SHOW_PRIVATE=true
+SPACESHIP_PACKAGE_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_PACKAGE_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_PACKAGE_SYMBOL=" "
+SPACESHIP_PACKAGE_COLOR="magenta"
 
 # MARK: Git
 SPACESHIP_GIT_SHOW=true

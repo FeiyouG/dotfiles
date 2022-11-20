@@ -43,7 +43,7 @@ vim.opt.cursorline = true                        -- Highlight current cursorline
 
 ---- MARK: LINE NUMBER
 vim.opt.relativenumber = true                    -- Show relative line number (hybrid)
-vim.opt.number = true                            -- Show absolute line number (hybtif)
+vim.opt.number = true                            -- Show absolute line number (hybrid)
 
 
 ---- MAARK: FILETYPE SETTING

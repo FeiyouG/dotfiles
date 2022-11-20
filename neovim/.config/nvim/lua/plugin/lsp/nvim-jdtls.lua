@@ -6,8 +6,6 @@ return {
     local jdtls_config = require("plugin.lsp.servers").jdtls.java
 
     local function setup_and_start_jdtls()
-      Utils.notify.info("jdtls", "STARTING")
-
       -- MARK: Starts a new client & server,
       jdtls_config.capabilities = Utils.lsp.capabilities
       jdtls.start_or_attach(jdtls_config)

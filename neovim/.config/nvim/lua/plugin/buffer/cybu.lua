@@ -65,14 +65,14 @@ return {
   commands = function()
     return {
       {
-        desc = "",
+        desc = "Go to previous buffer",
         cmd = "<Plug>(CybuPrev)",
         keys = {
           { "n", "<C-b>h", Utils.keymap.remap },
           { "n", "<C-b>k", Utils.keymap.remap }
         }
       }, {
-        desc = "",
+        desc = "Go to next buffer",
         cmd = "<Plug>(CybuNext)",
         keys = {
           { "n", "<C-b>l", Utils.keymap.remap },

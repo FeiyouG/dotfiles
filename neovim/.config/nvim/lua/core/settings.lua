@@ -18,7 +18,7 @@ vim.opt.splitbelow = true                        -- Always add new pane below
 vim.opt.splitright = true                        -- Always add new pane on right
 vim.o.winwidth = 10                              -- Minimal number of columns for the current window.
 vim.o.winminwidth = 10                           -- The minimal width of a window, when it's not the current window.
-vim.o.equalalways = false
+vim.o.equalalways = false                        -- Width of windows shouldn't be automatically equalized
 
 
 ---- MARK: SEARCH AND REPLACE
@@ -45,10 +45,6 @@ vim.opt.cursorline = true                        -- Highlight current cursorline
 vim.opt.relativenumber = true                    -- Show relative line number (hybrid)
 vim.opt.number = true                            -- Show absolute line number (hybrid)
 
-
----- MAARK: FILETYPE SETTING
-vim.g.do_filetype_lua = 1                        -- Use filetype.lua for faster filetype dection
--- vim.g.did_load_filetypes = 0                  -- disable filetype.vim (Don't do it now since filtype.la is not yet comprehesive)
 
 ---- MARK: TERM SETTINGS
 vim.o.termguicolors = true                       -- Enable true colors if avaliable

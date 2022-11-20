@@ -6,7 +6,8 @@ vim.cmd "set cc=80"                              -- Set an 80 column boarder for
 vim.opt.ttyfast = true                           -- Speed up scrolling in neovim
 vim.opt.clipboard = "unnamedplus"                -- Use same clipboard between neovim and system
 -- vim.cmd "set nospell"                         -- Disable spelling checking
-vim.wo.scrolloff = 0                             -- minimal # of lines to keep above/below the cursor
+vim.wo.scrolloff = 3                             -- minimal # of lines to keep above/below the cursor
+vim.wo.sidescrolloff = 0                         -- minimal # of lines to keep on left/right of the window (when set to nowrap)
 -- vim.opt.cmdheight = 0                         -- Set command line height to 0
 vim.opt.laststatus = 3                           -- Use global status line
 vim.o.showtabline = 0                            -- Hide tabline

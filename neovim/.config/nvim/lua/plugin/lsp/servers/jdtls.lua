@@ -4,19 +4,24 @@ return {
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
     Utils.path.java.executable,
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.protocol=true',
-    '-Dlog.level=ALL',
-    '-Xms1g',
-    '--add-modules=ALL-SYSTEM',
-    '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-    '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+    "-Dosgi.bundles.defaultStartLevel=4",
+    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+    "-Dlog.protocol=true",
+    "-Dlog.level=ALL",
+    "-Xms1g",
+    "--add-modules=ALL-SYSTEM",
+    "--add-opens",
+    "java.base/java.util=ALL-UNNAMED",
+    "--add-opens",
+    "java.base/java.lang=ALL-UNNAMED",
     "-javaagent:" .. Utils.path.java.lombok_jar, -- Setup Lombok support; must in front of `-jar`
-    '-jar', Utils.path.java.jdtls_jar,
-    '-configuration', Utils.path.java.jdtls_config,
-    '-data', Utils.path.java.jdtls_worksapce
+    "-jar",
+    Utils.path.java.jdtls_jar,
+    "-configuration",
+    Utils.path.java.jdtls_config,
+    "-data",
+    Utils.path.java.jdtls_worksapce,
   },
 
   root_dir = Utils.path.java.project_root,
@@ -27,8 +32,8 @@ return {
   settings = {
     java = {
       signatureHelp = {
-        enabled = true
-      };
+        enabled = true,
+      },
 
       codeGeneration = {
         toString = {
@@ -45,7 +50,6 @@ return {
     },
   },
 
-
   -- Language server `initializationOptions`
   -- You need to extend the `bundles` with paths to jar files
   -- if you want to use additional eclipse.jdt.ls plugins.
@@ -57,6 +61,13 @@ return {
   },
 
   on_attach = function(client, bufnr)
-    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    require("jdtls").setup_dap({
+      hotcodereplace = "auto",
+      config_overrides = {
+        args = function()
+          return vim.fn.input("args: ", "")
+        end,
+      },
+    })
   end,
 }

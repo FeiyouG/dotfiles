@@ -1,6 +1,5 @@
 local M = {}
 local icons = require("utils.icons")
-local fn = require("utils.fn")
 
 
 -- MARK: Private local functions
@@ -9,7 +8,7 @@ local notified = {}
 ---Try to use nvim-notify to notify the message
 ---Fallback to vim.notify if nvim-notify is not installed
 local function send_notify(message, level, opts)
-	local nvim_notify = fn.require("notify", "All notification will be sent using default vim.notify instead.")
+	local nvim_notify = Utils.require("notify", "All notification will be sent using default vim.notify instead.")
 
 	local notify_fn = nvim_notify and nvim_notify or vim.notify
 	notify_fn(message, level, opts)

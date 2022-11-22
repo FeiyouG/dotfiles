@@ -10,7 +10,7 @@ local M = vim.tbl_extend("keep", require("utils.fn"), {
 	highlight = require("utils.highlight"),
 	keymap = require("utils.keymap"),
 
-	state = require("utils.state"),
+  state = require("utils.state")
 })
 
 return M

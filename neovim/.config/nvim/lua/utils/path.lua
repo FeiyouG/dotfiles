@@ -1,118 +1,137 @@
 -- Path related utils
 local M = {}
+local system = require("utils.system")
 
-M.sep = require("utils.system").os_name == "win" and "\\" or "/"
+M.sep = system.os_name == "win" and "\\" or "/"
 
 ---Concatenate paths||
 M.join = function(...)
-  return table.concat(vim.tbl_flatten { ... }, M.sep)
+  return table.concat(vim.tbl_flatten({ ... }), M.sep)
 end
 
 ---Check whether directory exist on path
-M.dir_exists = function(path)
+M.is_dir = function(path)
   return vim.fn.isdirectory(vim.fn.glob(path)) == 1
 end
 
 ---Check whether file exists on path
-M.file_exists = function(path)
+M.is_file = function(path)
   return vim.fn.filereadable(vim.fn.glob(path)) == 1
 end
 
----Create path recursively if path doesn't exit
-M.safe_path = function(path)
-  vim.api.nvim_exec("!safe_path " .. path, false)
+M.exists = function(path)
+  return vim.fn.glob(path) ~= ""
 end
 
-M.get_root = function(markers, bufname)
-  bufname = bufname or vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-  local dirname = vim.fn.fnamemodify(bufname, ':p:h')
-  local getparent = function(p)
-    return vim.fn.fnamemodify(p, ':h')
-  end
-  while getparent(dirname) ~= dirname do
-    for _, marker in ipairs(markers) do
-      if vim.loop.fs_stat(M.join(dirname, marker)) then
-        return dirname
-      end
-    end
-    dirname = getparent(dirname)
-  end
+---Create dir recursively if dir doesn't exit
+M.create_dir = function(path)
+  vim.api.nvim_exec("silent !mkdir -p " .. path, false)
+  return path
 end
 
+---Return the root dir of project based on patterns
 M.get_project_root = function(patterns)
   return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
 end
 
-local function get_path(...)
-  local path = vim.fn.glob(M.join(...))
-  return path ~= "" and vim.fn.split(path, "\n") or {}
+---The only difference between this function and vim.fn.glob
+---is that this function will return a list of paths that matches the pattern
+function M.glob(...)
+  local paths = vim.fn.glob(M.join(...))
+  if paths == "" then
+    return ""
+  end
+
+  paths = vim.fn.split(paths, "\n")
+  return #paths == 1 and paths[1] or paths
 end
+
+---The only difference between this function and vim.fn.expand
+---is that this function will return a list of paths that matches the pattern
+---The only difference between this function and glob
+---Is that this function will return the expanded version of path even though it may not exist in file system
+function M.expand(...)
+  local paths = vim.fn.expand(M.join(...))
+  paths = vim.fn.split(paths, "\n")
+  return #paths == 1 and paths[1] or paths
+end
+
+---If path is not found, then default is returned
+function M.glob_with_default(default, ...)
+  local paths = M.glob(...)
+  if paths == "" then
+    return M.glob(default)
+  end
+  return paths
+end
+
+-- If the directory is not found, then create it
+function M.expand_and_create(...)
+  local paths = M.glob(...)
+  if paths == "" then
+    paths = M.expand(...)
+    vim.api.nvim_exec("silent !mkdir -p " .. paths, false)
+    return paths
+  end
+
+  return paths
+end
+
+-- MARK: System
+M.XDG_DIR = {
+  CONFIG = M.glob_with_default("$HOME/.config", "$XDG_CONFIG_HOME"),
+  CACHE = M.glob_with_default("$HOME/.cache", "$XDG_CACHE_HOME"),
+  DATA = M.glob_with_default("$HOME/.local/share", "$XDG_DATA_HOME"),
+  STATE = M.glob_with_default("$HOME/.local/state", "$XDG_STATE_HOME"),
+}
 
 -- MARK: Plugin related Paths
 M.packer = {
-  install_path = M.join(
-    vim.fn.stdpath('data'),
-    'site/pack/packer/start/packer.nvim'
-  ),
+  install_path = M.glob(vim.fn.stdpath("data"), "site/pack/packer/start/packer.nvim"),
 }
 
 M.mason = {
-  install_dir = get_path(
-    vim.fn.stdpath('data'),
-    "mason"
-  )[1],
+  install_dir = M.glob(vim.fn.stdpath("data"), "mason"),
 
-  package_dir = get_path(
-    vim.fn.stdpath('data'),
-    "mason/packages"
-  )[1]
+  package_dir = M.glob(vim.fn.stdpath("data"), "mason/packages"),
 }
 
 -- MARK: Java
 M.java = {
   -- executable = JAVA_HOME and M.join(JAVA_HOME, "bin/java") or "java",
   executable = "java",
-  project_root = M.get_project_root({ '.git', 'mvnw', 'gradlew' }),
+  project_root = M.get_project_root({
+    ".git",
+    "build.xm", -- Ant
+    "pom.xml", -- Maven
+    "mvnw", -- Maven
+    "gradlew", -- Gradle
+    "settings.gradle", -- Gradle
+  }),
 
-  debug_adapter_jar = get_path(
+  debug_adapter_jar = M.glob(
     M.mason.package_dir,
     "java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
-  )[1],
-
-  test_jars = get_path(
-    M.mason.package_dir,
-    "vscode-java-test/server/*jar"
   ),
 
-  lombok_jar = get_path(
-    M.mason.package_dir,
-    "jdtls/lombok.jar"
-  )[1],
+  test_jars = M.glob(M.mason.package_dir, "vscode-java-test/server/*jar"),
 
-  jdtls_jar = get_path(
-    M.mason.package_dir,
-    'jdtls/plugins/org.eclipse.equinox.launcher_*.jar'
-  )[1],
+  lombok_jar = M.glob(M.mason.package_dir, "jdtls/lombok.jar"),
 
-  jdtls_config = get_path(
-    M.mason.package_dir,
-    'jdtls/config_' .. require("Utils.system").os_name
-  )[1],
+  jdtls_jar = M.glob(M.mason.package_dir, "jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 
-  jdtls_worksapce = M.join(
-    vim.fn.glob("$XDG_CACHE_HOME/jdtls-workspace"),
-    vim.fn.fnamemodify(
-      M.get_project_root({ '.git', 'mvnw', 'gradlew' }),
-      ":p:h:t")
-  )
+  jdtls_config = M.glob(M.mason.package_dir, "jdtls/config_" .. require("Utils.system").os_name),
 }
+
+M.java.jdtls_worksapce = M.expand(M.XDG_DIR.CACHE, vim.fn.fnamemodify(M.java.project_root, ":p:h:t"))
 
 -- MARK: Python
 M.python = {
-  debugby_exec = get_path(
-    M.mason.install_dir,
-    "packages/debugpy/venv/bin/python"
-  )[1],
+  debugby_exec = M.glob(M.mason.install_dir, "packages/debugpy/venv/bin/python"),
+}
+
+M.xml = {
+  lemminx_cache = M.expand(M.XDG_DIR.CACHE, "lemminx")
 }
 
 return M

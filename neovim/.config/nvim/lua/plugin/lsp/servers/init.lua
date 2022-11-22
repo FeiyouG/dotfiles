@@ -6,16 +6,16 @@ return {
     beancount = require("plugin.lsp.servers.beancount"),
     tsserver = {},
     vimls = {},
-    -- jdtls = {},    -- setup through nvim-jdtls
     pyright = {},
     html = {},
     clangd = {},
     jsonls = {},
+    lemminx = require("plugin.lsp.servers.lemminx"),
 
-    test = {}
+    test = {},
   },
 
   jdtls = {
     java = require("plugin.lsp.servers.jdtls"),
-  }
+  },
 }

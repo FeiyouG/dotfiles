@@ -7,14 +7,19 @@ return {
     local null_ls = require("null-ls")
     null_ls.setup({
       sources = {
-        -- MARK: diagnostics
-        -- null_ls.builtins.diagnostics.revive, -- Go
+        -- MARK: Golang
+        -- null_ls.builtins.diagnostics.revive,
+        null_ls.builtins.formatting.gofumpt,
 
-        -- MARK: Formatter
-        null_ls.builtins.formatting.isort,   -- Python
-        null_ls.builtins.formatting.black,   -- Python
-        null_ls.builtins.formatting.stylua,  -- Lua
-        null_ls.builtins.formatting.gofumpt, -- Go
+        -- MARK: Lua
+        null_ls.builtins.formatting.stylua,
+
+        -- MARK: Python
+        -- null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+
+        -- MARK: Javascript
         null_ls.builtins.formatting.prettier.with({
           filetype = {
             "javascript",

@@ -27,8 +27,8 @@ return {
 
         black = { enabled = true },
         isort = { enabled = true },
-        rope_autoimport = { enabled = true, memory = false },
-        rope_completion = { enabled = true, eager = false },
+        -- rope_autoimport = { enabled = true, memory = false },
+        -- rope_completion = { enabled = true, eager = false },
       },
     },
   },

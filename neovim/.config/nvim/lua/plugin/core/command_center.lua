@@ -17,14 +17,17 @@ return {
             components = {
               command_center.component.DESC,
               command_center.component.KEYS,
+              command_center.component.CAT,
             },
             sort_by = {
               command_center.component.DESC,
+              command_center.component.CAT,
               command_center.component.KEYS,
               command_center.component.CMD,
             },
             auto_replace_desc_with_cmd = true,
-          }
+          },
+          themes = require("telescope").command_center
         }
       }
 

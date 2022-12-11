@@ -6,6 +6,9 @@ return {
 
     mason.setup({
       ui = {
+        -- Whether to automatically check for new versions when opening the :Mason window.
+        check_outdated_packages_on_open = true,
+
         -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
         border = Utils.icons.border.rounded,
 
@@ -44,6 +47,8 @@ return {
       install_root_dir = Utils.path.join(vim.fn.stdpath "data", "mason"),
 
       pip = {
+        -- Whether to upgrade pip to the latest version in the virtual environment before installing packages.
+        upgrade_pip = false,
         -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
         -- and is not recommended.
         --

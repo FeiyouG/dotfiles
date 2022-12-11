@@ -1,3 +1,5 @@
+require("utils.datastructures")
+
 local M = vim.tbl_extend("keep", require("utils.fn"), {
 	system = require("utils.system"),
 	path = require("utils.path"),

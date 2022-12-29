@@ -24,15 +24,15 @@ export LESSKEY="$XDG_CONFIG_HOME/less/keys"                       # Conform to X
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"                # Conform to XDG Base Directory (history file)
 
 # MARK: WGET
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"                           # Conform to XDG Base Directory (configuration file)
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"         # Conform to XDG Base Directory (history file)
+# export WGETRC="$XDG_CONFIG_HOME/wgetrc"                           # Conform to XDG Base Directory (configuration file)
+# alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"         # Conform to XDG Base Directory (history file)
 
 # MARK: Rust
 export RUSTUP_HOME="$XDG_DATA_HOME/rust/Rustup"
 export CARGO_HOME="$XDG_DATA_HOME/rust/cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
 if which rustc > /dev/null 2>&1; then
-  source "$CARGO_HOME/env"
+  zsh-defer source "$CARGO_HOME/env"
 fi
 
 
@@ -44,8 +44,11 @@ export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                   # Conform to X
 export VIRTUALENVWRAPPER_WRAPPER=/Library/Frameworks/Python.framework/Versions/3.10/bin/virtualenvwrapper.sh
 if [ -f $VIRTUALENVWRAPPER_WRAPPER ]; then                       # Setup virtualevnwrappers
   export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
-  source $VIRTUALENVWRAPPER_WRAPPER
+  zsh-defer source $VIRTUALENVWRAPPER_WRAPPER
 fi
+
+# MARK: Java
+export M2_HOME="$XDG_DATA_HOME/maven2"
 
 # MARK: GO
 export GOPATH="$XDG_DATA_HOME/go"           # Conform to XDG Base Directory
@@ -61,5 +64,3 @@ export PATH=$PATH:$XDG_DATA_HOME/npm/bin                          # Add global n
 # MARK: Custom
 export VAULT="$HOME/vault"
 export FIN_HOME="$VAULT/Fin"
-
-source_zsh $0

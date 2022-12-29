@@ -18,7 +18,7 @@ SPACESHIP_PROMPT_ORDER=(
   rust          # Rust section
 
   git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
 
   jobs          # Background jobs indicator
   exec_time     # Execution time

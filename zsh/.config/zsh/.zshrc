@@ -32,36 +32,30 @@ source "$ZINIT_HOME/zinit.zsh"
 # Install zinit extensions
 zinit light zdharma-continuum/zinit-annex-bin-gem-node
 zinit light NICHOLAS85/z-a-eval
+zinit light romkatv/zsh-defer
 
 # MARK: Source all configuration files
 
-# Source *.zsh files with the same directory (exclude ./init.zsh)
-# and init.zsh in child directories, if any
-source_zsh() {
-  setopt extendedglob  #  Use negation (~/^) in file pattern
-  setopt nullglob      #  Ignore error if no match is found
-
-  cwd=${1:A:h}
-  dotfileDir="$HOME/.dotfiles/zsh/.config/zsh"
-  cwd=${cwd//${dotfileDir}/$ZDOTDIR}
-
-  for file in $cwd/*.zsh~$cwd/init.zsh; do
-    # echo $file
-    source $file
-  done
-
-  for file in $cwd/*/init.zsh; do
-    # echo $file
-    source $file
-  done
-  unsetopt extendedglob
-  unsetopt nullglob
-}
-
-source $ZDOTDIR/src/init.zsh    # Source src folder
-
-if [ -f $HOME/.zshrc.local ]; then
-  source $HOME/.zshrc.local       # Source local configurations
-fi
+# note: checkout global quantifiers and recursive globbing (https://linux.die.net/man/1/zshexpn)
+# N - sets the NULL_GLOB option for the pattern (ignore error if no match)
+# on - specifies the files are sorted by name (ascending)
+config_dirs=( $ZDOTDIR/src/***/(N) )
+for dir in $config_dirs; do
+  if [[ ! -f "${dir}init.zsh" ]]; then
+    files=( ${dir}*.zsh(N) )
+    for f in $files; do
+      source $f
+    done
+  else
+    source ${dir}init.zsh
+  fi
+done
+# config_files=( $ZDOTDIR/src/*.zsh(N) )        # source all .zsh files
+# config_files+=( $ZDOTDIR/src/***/init.zsh(N) ) # surce init.zsh in dirs; extra * for symbolic linked dirs
+# config_files+=( $HOME/.zshrc.local(N) )       # Source local configurations
+# for file in $config_files; do
+#   source $file
+# done
 
 bindkey -e                     # Resotre default keybidning
+# zprof

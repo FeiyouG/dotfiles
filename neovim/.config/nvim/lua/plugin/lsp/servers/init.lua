@@ -6,6 +6,7 @@ return {
     beancount = require("plugin.lsp.servers.beancount"),
     tsserver = {},
     vimls = {},
+    bashls = {},
     -- pyright = {},
     pylsp = require("plugin.lsp.servers.pylsp"),
     html = {},

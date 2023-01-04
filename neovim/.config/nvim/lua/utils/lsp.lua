@@ -6,11 +6,12 @@ local M = {}
 local default_capabilities = function()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-	-- update capability for nvim-cmp
+	-- update capability if nvim-cmp is present
 	local nvim_cmp = require("utils.fn").require("cmp_nvim_lsp", "Can't update lsp capabilities for nvim-cmp")
 	if nvim_cmp then
-		capabilities = nvim_cmp.default_capabilities(capabilities)
+		capabilities = nvim_cmp.default_capabilities()
 	end
+
 	return capabilities
 end
 

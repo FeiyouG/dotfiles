@@ -14,17 +14,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 ---- MARK: Trim Trailling Whitespaces ----
-local trimWhiteSpace = vim.api.nvim_create_augroup("TrimWhiteSpace", { clear = true })
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*" },
-	callback = function()
-		if not vim.o.binary and vim.o.filetype ~= "diff" and vim.bo.modifiable then
-			vim.cmd([[%s/\s\+$//e]])
-		end
-	end,
-	group = trimWhiteSpace,
-})
+-- local trimWhiteSpace = vim.api.nvim_create_augroup("TrimWhiteSpace", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = { "*" },
+-- 	callback = function()
+-- 		if not vim.o.binary and vim.o.filetype ~= "diff" and vim.bo.modifiable then
+-- 			vim.cmd([[%s/\s\+$//e]])
+-- 		end
+-- 	end,
+-- 	group = trimWhiteSpace,
+-- })
 
 ---- MARK: Automatically Switch Between Relative and Asbolute Line Number ----
 local toggleLineNumberOnInsert = vim.api.nvim_create_augroup("ToggleLineNumberOnInsert", { clear = true })

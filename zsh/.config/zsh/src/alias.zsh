@@ -49,11 +49,22 @@ fi
 
 # MARK: Java
 export M2_HOME="$XDG_DATA_HOME/maven2"
+if which jenv > /dev/null 2>&1; then
+  export JENV_ROOT="$XDG_DATA_HOME/java/jenv"                       # Conform to XDG Base Directory (data)
+  zsh-defer eval "$(jenv init -)"
+fi
+
+
 
 # MARK: GO
 export GOPATH="$XDG_DATA_HOME/go"           # Conform to XDG Base Directory
 export GOBIN="$XDG_DATA_HOME/go/bin"        # Conform to XDG Base Directory
 export PATH="$XDG_DATA_HOME/go/bin:$PATH"   # Path to go executables
+
+# MARK: Ocaml and Opam
+export OPAMROOT="$XDG_DATA_HOME/opam"       # Conform to XDG Base Directory
+[[ ! -r /Users/feiyouguo/.local/share/opam/opam-init/init.zsh ]] || source /Users/feiyouguo/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
 
 # MARK: nodejs and npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"         # Conform to XDG Base Directory (configuration file)

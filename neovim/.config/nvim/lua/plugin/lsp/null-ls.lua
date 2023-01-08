@@ -33,6 +33,9 @@ return {
             "yaml",
           },
         }),
+
+        -- MARK: Ocaml
+        null_ls.builtins.formatting.ocamlformat,
       },
     })
   end,

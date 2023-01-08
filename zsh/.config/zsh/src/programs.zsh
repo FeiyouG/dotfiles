@@ -18,18 +18,6 @@ zinit light-mode wait lucid for \
   https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh \
   Aloxaf/fzf-tab
 
-# Mark: Homebrew
-zi light-mode wait lucid for \
-    as'null' \
-    atclone'%atpull' \
-    atpull'
-         ./bin/brew update --preinstall \
-      && ln -sf $PWD/completions/zsh/_brew $ZINIT[COMPLETIONS_DIR]' \
-    depth'3' \
-    nocompletions \
-    sbin'bin/brew' \
-    eval"./bin/brew shellenv" \
-  homebrew/brew
 
 # MARK: MISC
 zinit wait lucid from"gh-r" for \
@@ -43,4 +31,17 @@ zinit wait lucid from"gh-r" for \
 zinit wait lucid as"completion" for \
   OMZP::fd/_fd \
   OMZP::ripgrep/_ripgrep \
+
+# Mark: Homebrew
+zi light-mode wait lucid for \
+    as'null' \
+    atclone'%atpull' \
+    atpull'
+         ./bin/brew update --preinstall \
+      && ln -sf $PWD/completions/zsh/_brew $ZINIT[COMPLETIONS_DIR]' \
+    depth'3' \
+    nocompletions \
+    sbin'bin/brew' \
+    eval"./bin/brew shellenv" \
+  homebrew/brew
 

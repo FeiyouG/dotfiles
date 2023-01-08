@@ -3,12 +3,14 @@ return {
 
   config = function()
     local jdtls = require("jdtls")
+    local jdtls_setup = require("jdtls.setup")
     local jdtls_config = require("plugin.lsp.servers").jdtls.java
 
     local function setup_and_start_jdtls()
       -- MARK: Starts a new client & server,
       jdtls_config.capabilities = Utils.lsp.capabilities
       jdtls.start_or_attach(jdtls_config)
+      jdtls_setup.add_commands()
 
       -- MARK: Amazon + Bemol
       -- local root_dir = require("jdtls.setup").find_root({ "packageInfo" }, "Config") -- Project root directory

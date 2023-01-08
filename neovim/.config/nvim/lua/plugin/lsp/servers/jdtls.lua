@@ -15,7 +15,8 @@ return {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-    "-javaagent:" .. Utils.path.java.lombok_jar, -- Setup Lombok support; must in front of `-jar`
+    Utils.path.java.lombok_jar and "-javaagent:" .. Utils.path.java.lombok_jar or "", -- Setup Lombok support; must in front of `-jar`
+    "-Xbootclasspath/a:" .. Utils.path.java.lombok_jar,
     "-jar",
     Utils.path.java.jdtls_jar,
     "-configuration",
@@ -56,7 +57,7 @@ return {
   init_options = {
     bundles = vim.tbl_flatten({
       Utils.path.java.debug_adapter_jar,
-      Utils.path.java.test_jars,
+      -- Utils.path.java.test_jars,
     }),
   },
 

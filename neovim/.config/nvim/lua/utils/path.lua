@@ -117,14 +117,14 @@ M.java = {
 
   test_jars = M.glob(M.mason.package_dir, "java-test/extension/server/*jar"),
 
-  lombok_jar = M.glob(M.mason.package_dir, "jdtls/lombok.jar"):first(""),
+  lombok_jar = M.glob(M.mason.package_dir, "jdtls/lombok.jar"):first(),
 
   jdtls_jar = M.glob(M.mason.package_dir, "jdtls/plugins/org.eclipse.equinox.launcher_*.jar"):first(""),
 
-  jdtls_config = M.glob(M.mason.package_dir, "jdtls/config_" .. require("Utils.system").os_name):first(""),
+  jdtls_config = M.glob(M.mason.package_dir, "jdtls/config_" .. require("utils.system").os_name):first(""),
 }
 
-M.java.jdtls_worksapce = M.expand(M.XDG_DIR.CACHE, vim.fn.fnamemodify(M.java.project_root, ":p:h:t")):first("")
+M.java.jdtls_worksapce = M.expand(M.XDG_DIR.CACHE, "java/jdtls", vim.fn.fnamemodify(M.java.project_root, ":p:h:t")):first("")
 
 -- MARK: Python
 M.python = {

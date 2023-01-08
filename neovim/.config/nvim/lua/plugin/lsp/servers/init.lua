@@ -15,7 +15,7 @@ return {
     clangd = {},
     jsonls = {},
 
-    test = {},
+    -- test = {},
   },
 
   jdtls = {

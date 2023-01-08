@@ -1,7 +1,7 @@
 ---- MARK: Automatically download packer if missing ----
 local packer_bootstrap = nil
 
-if vim.fn.empty(Utils.path.packer.install_path) > 0 then
+if not Utils.path.is_dir(Utils.path.packer.install_path) then
 	packer_bootstrap = vim.fn.system({
 		"git",
 		"clone",

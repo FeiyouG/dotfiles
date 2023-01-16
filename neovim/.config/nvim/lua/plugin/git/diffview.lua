@@ -2,8 +2,8 @@ return {
   "sindrets/diffview.nvim",
 
   requires = {
-    'nvim-lua/plenary.nvim',
-    'kyazdani42/nvim-web-devicons',
+    "nvim-lua/plenary.nvim",
+    "kyazdani42/nvim-web-devicons",
   },
 
   config = function()
@@ -68,14 +68,16 @@ return {
           height = 10,
         },
         log_options = {
-          single_file = {
-            max_count = 256, -- Limit the number of commits
-            follow = false, -- Follow renames (only for single file)
-            diff_merges = "combined",
-          },
-          mutli_file = {
-            max_count = 128, -- Limit the number of commits
-            diff_merges = "first-parent",
+          git = {
+            single_file = {
+              max_count = 256, -- Limit the number of commits
+              follow = false, -- Follow renames (only for single file)
+              diff_merges = "combined",
+            },
+            mutli_file = {
+              max_count = 128, -- Limit the number of commits
+              diff_merges = "first-parent",
+            },
           },
         },
       },
@@ -89,76 +91,76 @@ return {
         -- The `view` bindings are active in the diff buffers, only when the current
         -- tabpage is a Diffview.
         view = {
-          ["<tab>"]      = actions.select_next_entry, -- Open the diff for the next file
-          ["<s-tab>"]    = actions.select_prev_entry, -- Open the diff for the previous file
-          ["gf"]         = actions.goto_file, -- Open the file in a new split in previous tabpage
+          ["<tab>"] = actions.select_next_entry, -- Open the diff for the next file
+          ["<s-tab>"] = actions.select_prev_entry, -- Open the diff for the previous file
+          ["gf"] = actions.goto_file, -- Open the file in a new split in previous tabpage
           ["<C-w><C-f>"] = actions.goto_file_split, -- Open the file in a new split
-          ["<C-w>gf"]    = actions.goto_file_tab, -- Open the file in a new tabpage
-          ["<leader>e"]  = actions.focus_files, -- Bring focus to the files panel
-          ["<leader>b"]  = actions.toggle_files, -- Toggle the files panel.
+          ["<C-w>gf"] = actions.goto_file_tab, -- Open the file in a new tabpage
+          ["<leader>e"] = actions.focus_files, -- Bring focus to the files panel
+          ["<leader>b"] = actions.toggle_files, -- Toggle the files panel.
 
           ["<C-2><space>"] = actions.cycle_layout, -- Cycle through available layouts.
-          ["[x"]           = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
-          ["]x"]           = actions.next_conflict, -- In the merge_tool: jump to the next conflict
-          ["<leader>co"]   = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
-          ["<leader>ct"]   = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
-          ["<leader>cb"]   = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
-          ["<leader>ca"]   = actions.conflict_choose("all"), -- Choose all the versions of a conflict
-          ["dx"]           = actions.conflict_choose("none"), -- Delete the conflict region
+          ["[x"] = actions.prev_conflict, -- In the merge_tool: jump to the previous conflict
+          ["]x"] = actions.next_conflict, -- In the merge_tool: jump to the next conflict
+          ["<leader>co"] = actions.conflict_choose("ours"), -- Choose the OURS version of a conflict
+          ["<leader>ct"] = actions.conflict_choose("theirs"), -- Choose the THEIRS version of a conflict
+          ["<leader>cb"] = actions.conflict_choose("base"), -- Choose the BASE version of a conflict
+          ["<leader>ca"] = actions.conflict_choose("all"), -- Choose all the versions of a conflict
+          ["dx"] = actions.conflict_choose("none"), -- Delete the conflict region
         },
         file_panel = {
-          ["j"]             = actions.next_entry, -- Bring the cursor to the next file entry
-          ["<down>"]        = actions.next_entry,
-          ["k"]             = actions.prev_entry, -- Bring the cursor to the previous file entry.
-          ["<up>"]          = actions.prev_entry,
-          ["<cr>"]          = actions.select_entry, -- Open the diff for the selected entry.
-          ["o"]             = actions.select_entry,
+          ["j"] = actions.next_entry, -- Bring the cursor to the next file entry
+          ["<down>"] = actions.next_entry,
+          ["k"] = actions.prev_entry, -- Bring the cursor to the previous file entry.
+          ["<up>"] = actions.prev_entry,
+          ["<cr>"] = actions.select_entry, -- Open the diff for the selected entry.
+          ["o"] = actions.select_entry,
           ["<2-LeftMouse>"] = actions.select_entry,
-          ["-"]             = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
-          ["S"]             = actions.stage_all, -- Stage all entries.
-          ["U"]             = actions.unstage_all, -- Unstage all entries.
-          ["X"]             = actions.restore_entry, -- Restore entry to the state on the left side.
-          ["L"]             = actions.open_commit_log, -- Open the commit log panel.
-          ["<c-b>"]         = actions.scroll_view(-0.25), -- Scroll the view up
-          ["<c-f>"]         = actions.scroll_view(0.25), -- Scroll the view down
-          ["R"]             = actions.refresh_files, -- Update stats and entries in the file list.
-          ["<tab>"]         = actions.select_next_entry,
-          ["<s-tab>"]       = actions.select_prev_entry,
-          ["gf"]            = actions.goto_file,
-          ["<C-w><C-f>"]    = actions.goto_file_split,
-          ["<C-w>gf"]       = actions.goto_file_tab,
-          ["i"]             = actions.listing_style, -- Toggle between 'list' and 'tree' views
-          ["f"]             = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
-          ["<leader>e"]     = actions.focus_files,
-          ["<leader>b"]     = actions.toggle_files,
+          ["-"] = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
+          ["S"] = actions.stage_all, -- Stage all entries.
+          ["U"] = actions.unstage_all, -- Unstage all entries.
+          ["X"] = actions.restore_entry, -- Restore entry to the state on the left side.
+          ["L"] = actions.open_commit_log, -- Open the commit log panel.
+          ["<c-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
+          ["<c-f>"] = actions.scroll_view(0.25), -- Scroll the view down
+          ["R"] = actions.refresh_files, -- Update stats and entries in the file list.
+          ["<tab>"] = actions.select_next_entry,
+          ["<s-tab>"] = actions.select_prev_entry,
+          ["gf"] = actions.goto_file,
+          ["<C-w><C-f>"] = actions.goto_file_split,
+          ["<C-w>gf"] = actions.goto_file_tab,
+          ["i"] = actions.listing_style, -- Toggle between 'list' and 'tree' views
+          ["f"] = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
+          ["<leader>e"] = actions.focus_files,
+          ["<leader>b"] = actions.toggle_files,
 
           ["<C-w><space>"] = actions.cycle_layout,
-          ["[x"]           = actions.prev_conflict,
-          ["]x"]           = actions.next_conflict,
+          ["[x"] = actions.prev_conflict,
+          ["]x"] = actions.next_conflict,
         },
         file_history_panel = {
-          ["?"]            = actions.options, -- Open the option panel
-          ["<C-A-d>"]       = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
-          ["y"]             = actions.copy_hash, -- Copy the commit hash of the entry under the cursor
-          ["L"]             = actions.open_commit_log,
-          ["zR"]            = actions.open_all_folds,
-          ["zM"]            = actions.close_all_folds,
-          ["j"]             = actions.next_entry,
-          ["<down>"]        = actions.next_entry,
-          ["k"]             = actions.prev_entry,
-          ["<up>"]          = actions.prev_entry,
-          ["<cr>"]          = actions.select_entry,
-          ["o"]             = actions.select_entry,
+          ["?"] = actions.options, -- Open the option panel
+          ["<C-A-d>"] = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
+          ["y"] = actions.copy_hash, -- Copy the commit hash of the entry under the cursor
+          ["L"] = actions.open_commit_log,
+          ["zR"] = actions.open_all_folds,
+          ["zM"] = actions.close_all_folds,
+          ["j"] = actions.next_entry,
+          ["<down>"] = actions.next_entry,
+          ["k"] = actions.prev_entry,
+          ["<up>"] = actions.prev_entry,
+          ["<cr>"] = actions.select_entry,
+          ["o"] = actions.select_entry,
           ["<2-LeftMouse>"] = actions.select_entry,
-          ["<c-b>"]         = actions.scroll_view(-0.25),
-          ["<c-f>"]         = actions.scroll_view(0.25),
-          ["<tab>"]         = actions.select_next_entry,
-          ["<s-tab>"]       = actions.select_prev_entry,
-          ["gf"]            = actions.goto_file,
-          ["<C-w><C-f>"]    = actions.goto_file_split,
-          ["<C-w>gf"]       = actions.goto_file_tab,
-          ["<leader>e"]     = actions.focus_files,
-          ["<leader>b"]     = actions.toggle_files,
+          ["<c-b>"] = actions.scroll_view(-0.25),
+          ["<c-f>"] = actions.scroll_view(0.25),
+          ["<tab>"] = actions.select_next_entry,
+          ["<s-tab>"] = actions.select_prev_entry,
+          ["gf"] = actions.goto_file,
+          ["<C-w><C-f>"] = actions.goto_file_split,
+          ["<C-w>gf"] = actions.goto_file_tab,
+          ["<leader>e"] = actions.focus_files,
+          ["<leader>b"] = actions.toggle_files,
 
           ["<C-w><space>"] = actions.cycle_layout,
         },
@@ -182,10 +184,9 @@ return {
         },
         option_panel = {
           ["<tab>"] = actions.select_entry,
-          ["q"]     = actions.close,
+          ["q"] = actions.close,
         },
       },
     })
-
   end,
 }

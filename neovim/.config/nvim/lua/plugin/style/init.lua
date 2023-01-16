@@ -3,8 +3,8 @@ return {
   require("plugin.style.lualine"),
   require("plugin.style.pretty-fold"),
   require("plugin.style.dressing"),
-  require("plugin.style.tabular"),
   require("plugin.style.neoscroll"),
-  { 'fladson/vim-kitty' }, -- Syntax highlight for kitty config files
-  {'lukas-reineke/indent-blankline.nvim'},
+  { "fladson/vim-kitty" }, -- Syntax highlight for kitty config files
+  { "lukas-reineke/indent-blankline.nvim" },
+  { "godlygeek/tabular" },
 }

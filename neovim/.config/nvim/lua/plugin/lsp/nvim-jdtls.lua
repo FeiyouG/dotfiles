@@ -53,9 +53,9 @@ return {
         },
       }
 
-      local command_center = Utils.require("command_center")
-      if command_center then
-        command_center.add(commands, {
+      local commander = Utils.require("commander")
+      if commander then
+        commander.add(commands, {
           category = "lsp",
           keys_opts = { buffer = true },
         })

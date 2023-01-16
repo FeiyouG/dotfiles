@@ -5,10 +5,10 @@ return {
     local modes = require("plugin.submodes.modes")
     local hydra = require("hydra")
 
-    local command_center = Utils.require("command_center",
-      "submodes requires command_center to register keybindings")
+    local commander = Utils.require("commander",
+      "submodes requires commander to register keybindings")
 
-    if not command_center then return end
+    if not commander then return end
     local key_prefix = "<leader><leader>"
 
     -- Create all submodes
@@ -46,7 +46,7 @@ return {
         }
       })
 
-      local hydra_heads = command_center and command_center.converter.to_hydra_heads(submode_cmd) or {}
+      local hydra_heads = commander and commander.converter.to_hydra_heads(submode_cmd) or {}
 
       hydra({
         name = submode.name,
@@ -63,9 +63,9 @@ return {
               submode.on_enter()
             end
 
-            if command_center then
-              command_center.add(submode_cmd, {
-                mode = command_center.mode.ADD,
+            if commander then
+              commander.add(submode_cmd, {
+                mode = commander.mode.ADD,
                 category = submode.name,
               })
             end
@@ -77,9 +77,9 @@ return {
               submode.on_exit()
             end
 
-            if command_center then
-              command_center.remove(submode_cmd, {
-                mode = command_center.mode.ADD,
+            if commander then
+              commander.remove(submode_cmd, {
+                mode = commander.mode.ADD,
                 category = submode.name,
               })
             end

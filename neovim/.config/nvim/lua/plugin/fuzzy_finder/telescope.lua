@@ -51,7 +51,6 @@ local M = {
   end,
 
   commands = function()
-    -- MARK: Register and add to command_center
     local keymap = Utils.keymap
 
     return {

@@ -150,12 +150,12 @@ end
 M.add_commands = function(commands, opts)
 	vim.schedule(function()
 		-- Check if comamnd_center is installed
-		local command_center = M.require(
-			"command_center",
+		local commander = M.require(
+			"commander",
 			"command_center is required to register keybindings",
 			"Some keybindings may not be set."
 		)
-		if not command_center then
+		if not commander then
 			return
 		end
 
@@ -165,7 +165,7 @@ M.add_commands = function(commands, opts)
 			"Without telescope, keybindings registered by command_center can't be displayed nor searched"
 		)
 
-		local add_ok, add_error = pcall(command_center.add, commands, opts)
+		local add_ok, add_error = pcall(commander.add, commands, opts)
 		if not add_ok then
 			notify.error_once("command_center", "The function `add()` executated with an error:", add_error)
 		end
@@ -175,6 +175,9 @@ end
 M.find_root = function(patterns)
 	patterns = patterns or { ".git" }
 	return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
+end
+
+M.source_local_nvimrc = function()
 end
 
 

@@ -6,5 +6,6 @@ return {
   require("plugin.misc.dial"),
   { "moll/vim-bbye" },
   { "tpope/vim-repeat" },
+  { "tpope/vim-unimpaired" },
   { "ThePrimeagen/vim-be-good" },
 }

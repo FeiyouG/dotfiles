@@ -1,7 +1,7 @@
 -- SECTION: Load core settings
 require("core")
 
----- SECTION: Plugins
+-- SECTION: Plugins
 local style = require("settings.style")
 local fn = require("settings.fn")
 

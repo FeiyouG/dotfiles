@@ -1,3 +1,3 @@
 return {
-  { "lervag/vimtex", ft = { "latex" } },
+	{ "lervag/vimtex", ft = { "latex", "tex" } },
 }

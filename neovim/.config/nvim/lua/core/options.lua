@@ -34,8 +34,9 @@ vim.wo.sidescrolloff = 0 --  minimal # of lines to keep on left/right of the win
 
 vim.opt.wrap = false --  nowrap
 vim.opt.linebreak = true --  do not break up full words on wrap
-vim.opt.textwidth = 80
-vim.opt.colorcolumn = "+1" --  relative to textwidth
+-- vim.opt.textwidth = 80
+-- vim.opt.colorcolumn = "+1" --  relative to textwidth
+vim.opt.colorcolumn = "80" --  relative to textwidth
 vim.opt.signcolumn = "yes:1" --  for lsp diagnostics
 
 vim.opt.conceallevel = 0 --  disable conceal

@@ -1,11 +1,11 @@
 ---- MARK: Add user diciontary for ltex0ls ----
 local util = require "lspconfig.util"
 local handlers = require "vim.lsp.handlers"
-local dictionary_name = vim.fn.stdpath('config') .. "/dictionary/ltex_config.json"
+local dictionary_file = require("settings.lang").spell.ltex_dict_file
 
 -- Load custom dictionary with words/diabledRules/hiddenFalsePositives as json
 local function load_config()
-  local file = io.open(dictionary_name, "r")
+  local file = io.open(dictionary_file, "r")
   if file then
     local config = vim.json.decode(file:read "a")
     file:close()
@@ -37,7 +37,7 @@ local function add_to_config(type, lang, value)
     config[type][lang] = { value }
   end
 
-  local file = io.open(dictionary_name, "w")
+  local file = io.open(dictionary_file, "w")
   if file then
     file:write(vim.json.encode(config))
     file:close()

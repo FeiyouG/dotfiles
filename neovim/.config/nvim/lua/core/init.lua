@@ -1,5 +1,4 @@
-return {
-  autocmds = require("core.autocmds"),
-  mappings = require("core.mappings"),
-  settings = require("core.settings"),
-}
+require("core.options")
+require("core.autocmds")
+require("core.keymaps")
+require("core.envs")

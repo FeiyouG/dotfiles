@@ -1,13 +1,27 @@
---Load impatient as the first thing
-local has_impatient, impatient = pcall(require, "impatient")
-if has_impatient then impatient.enable_profile() end
-
--- Core settings, options, and keymaps
+-- SECTION: Load core settings
 require("core")
 
--- Utility with helper functions and constants
--- Make it a global variable
-Utils = require("utils")
+---- SECTION: Plugins
+local style = require("settings.style")
+local fn = require("settings.fn")
 
--- Plugin managed via Packer
-require("plugin")
+fn.bootstrap(vim.env.PLUGIN_MANAGER_PATH, "https://github.com/folke/lazy.nvim.git", "stable")
+vim.opt.rtp:prepend(vim.env.PLUGIN_MANAGER_PATH)
+
+-- Setup plugins through lazy.nvim
+require("lazy").setup("plugins", {
+	root = vim.env.PLUGIN_HOME,
+
+	dev = {
+		path = vim.env.DEV_HOME,
+	},
+
+	install = {
+		missing = true,
+		colorscheme = { "onenord" },
+	},
+
+	ui = {
+		border = style.border.rounded,
+	},
+})

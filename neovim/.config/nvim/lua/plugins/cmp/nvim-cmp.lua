@@ -1,176 +1,223 @@
-local fn = require("settings.fn")
-local style = require("settings.style")
 return {
-  "hrsh7th/nvim-cmp",
+	"hrsh7th/nvim-cmp",
 
-  event = { "InsertEnter", "CmdLineEnter" },
+	event = { "InsertEnter", "CmdLineEnter" },
 
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "petertriho/cmp-git",
-    "rcarriga/cmp-dap",
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-  },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
 
-  config = function()
-    local luasnip = fn.require("luasnip")
-    local cmp = require("cmp")
+		-- MISC
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-calc",
+		"andersevenrud/cmp-tmux",
+		"chrisgrieser/cmp-nerdfont",
+		"ray-x/cmp-treesitter",
 
-    local kind_icons = style.icons.lsp
+		-- Snippet
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 
-    local mapping = {
-      ["<C-n>"] = cmp.mapping(function(fallback)
-        if luasnip and luasnip.choice_active() then
-          require("luasnip.extras.select_choice")()
-        elseif cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+		-- Dap
+		{
+			"rcarriga/cmp-dap",
+			config = function()
+				require("cmp").setup({
+					enabled = function()
+						return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+							or require("cmp_dap").is_dap_buffer()
+					end,
+				})
+			end,
+		},
 
-      ["<C-p>"] = cmp.mapping(function(fallback)
-        if luasnip and luasnip.choice_active() then
-          require("luasnip.extras.select_choice")()
-        elseif cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+		-- LSP
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-document-symbol",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if luasnip and luasnip.locally_jumpable(1) then
-          luasnip.jump(1)
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+		-- Git
+		{ "petertriho/cmp-git", config = true },
+		"davidsierradz/cmp-conventionalcommits",
+	},
 
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if luasnip and luasnip.locally_jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+	config = function()
+		local luasnip = require("luasnip")
+		local cmp = require("cmp")
+		local style = require("settings.style")
 
-      -- Select the completion item, excluding preselected
-      ["<CR>"] = cmp.mapping.confirm({ select = false }),
+		local mapping = {
+			["<C-n>"] = cmp.mapping(function(fallback)
+				if luasnip.choice_active() then
+					require("luasnip.extras.select_choice")()
+				elseif cmp.visible() then
+					cmp.select_next_item()
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    }
+			["<C-p>"] = cmp.mapping(function(fallback)
+				if luasnip.choice_active() then
+					require("luasnip.extras.select_choice")()
+				elseif cmp.visible() then
+					cmp.select_prev_item()
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 
-    cmp.setup({
-      -- Don't preselect item
-      preselect = cmp.PreselectMode.Item,
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if luasnip.locally_jumpable(1) then
+					luasnip.jump(1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 
-      -- mapping = cmp.mapping.preset.insert(mapping),
-      mapping = mapping,
+			["<S-Tab>"] = cmp.mapping(function(fallback)
+				if luasnip.locally_jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 
-      window = {
-        documentation = {
-          border = style.border.rounded,
-          winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None",
-        },
-        completion = {
-          border = style.border.rounded,
-          winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None",
-        },
-      },
+			-- Select the completion item, excluding preselected
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "path" },
-      }, {
-        { name = "buffer" },
-        { name = "nvim_lsp_signature_help" },
-      }),
+			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		}
 
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
+		cmp.setup({
+			preselect = cmp.PreselectMode.None, -- Don't preselect item
 
-      formatting = {
-        format = function(entry, vim_item)
-          -- Show kind icons
-          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+			window = {
+				documentation = {
+					border = style.border.rounded,
+					winhighlight = style.border.winhighlight,
+				},
+				completion = {
+					border = style.border.rounded,
+					winhighlight = style.border.winhighlight,
+				},
+			},
 
-          -- Show source
-          vim_item.menu = ({
-            buffer = "[BUFFER]",
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[API]",
-            path = "[PATH]",
-            luasnip = "[SNIPPET]",
-            -- dictionary = "[DICTIONARY]",
-            nvim_lsp_document_symbol = "[SYMBOL]",
-          })[entry.source.name]
+			-- view = {
+			--   entries = {name = 'custom', selection_order = 'near_cursor' }
+			-- },
 
-          -- Show lsp client name
-          -- if entry.source.name == "nvim_lsp" then
-          -- 	vim_item.menu = vim_item.menu .. " " .. entry.source.source.client.name
-          -- end
+			-- mapping = cmp.mapping.preset.insert(mapping),
+			mapping = mapping,
 
-          -- Custumize padding
-          vim_item.abbr = " " .. vim_item.abbr
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{ name = "path" },
+				{ name = "calc" },
+				{ name = "tmux" },
+				{ name = "nerdfont" },
+				{ name = "treesitter" },
+			}, {
+				{ name = "buffer" },
+				{ name = "nvim_lsp_signature_help" },
+			}),
 
-          return vim_item
-        end,
-      },
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
 
-      experimental = {
-        native_menu = false,
-        ghost_text = true,
-      },
-    })
+			formatting = {
+				format = function(entry, vim_item)
+					-- Show kind icons
+					local kind = ({
+						calc = "Result",
+						nerdfont = "Icon",
+						tmux = "Tmux",
+						git = "Git",
+						conventionalcommits = "Git",
+						dap = "Dap",
+						treesitter = "Treesitter",
+					})[entry.source.name] or vim_item.kind
+					local icon = style.icons.cmp[kind] or style.icons.lsp[kind]
 
-    cmp.setup.filetype("gitcommit", {
-      sources = cmp.config.sources({
-        { name = "git" },
-      }, {
-        { name = "buffer" },
-        { name = "path" },
-      }),
-    })
+					vim_item.kind = string.format("%s %s", icon, kind)
 
-    cmp.setup.filetype("dap-repl", {
+					-- Show source
+					vim_item.menu = ({
+						cmdline = "[CMDLINE]",
+						buffer = "[BUFFER]",
+						nvim_lsp = "[LSP]",
+						nvim_lua = "[API]",
+						path = "[PATH]",
+						luasnip = "[SNIPPET]",
+						nvim_lsp_document_symbol = "[SYMBOL]",
+						tmux = "[TMUX]",
+						calc = "[CALC]",
+						nerdfont = "[NERDFONT]",
+						dap = "[DAP]",
+						git = "[GIT]",
+						conventionalcommits = "[GIT]",
+						treesitter = "[TS]",
+					})[entry.source.name]
 
-      enabled = function()
-        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-      end,
+					-- Show lsp client name
+					-- if entry.source.name == "nvim_lsp" then
+					-- 	vim_item.menu = vim_item.menu .. " " .. entry.source.source.client.name
+					-- end
 
-      sources = {
-        { name = "dap" },
-      },
-    })
+					-- Custumize padding
+					vim_item.abbr = " " .. vim_item.abbr
 
-    cmp.setup.cmdline("/", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp_document_symbol" }, -- trigger by "/@"
-      }, {
-        { name = "buffer" },
-      }),
-    })
+					return vim_item
+				end,
+			},
 
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-    })
-  end,
+			experimental = {
+				native_menu = false,
+				ghost_text = true,
+			},
+		})
+
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp_document_symbol" }, -- trigger by "/@"
+			}, {
+				{ name = "buffer" },
+			}),
+		})
+
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
+		})
+
+		cmp.setup.filetype("gitcommit", {
+			sources = cmp.config.sources({
+				{ name = "git" },
+				{ name = "conventionalcommits" },
+			}, {
+				{ name = "buffer" },
+				{ name = "path" },
+			}),
+		})
+
+		cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+			sources = cmp.config.sources({
+				{ name = "dap" },
+			}, {
+				{ name = "buffer" },
+				{ name = "path" },
+			}),
+		})
+	end,
 }

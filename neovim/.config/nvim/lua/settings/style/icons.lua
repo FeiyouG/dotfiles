@@ -16,8 +16,8 @@ M.folder = {
 	open_indictor = "−",
 	closed_indicator = "+",
 	folders = " ",
-	open = " ",
-	closed = " ",
+	open = " ",
+	closed = "  ",
 	empty_open = " ",
 	empty_closed = " ",
 	symlink_open = " ",
@@ -54,8 +54,32 @@ M.diagnostic = {
 	other = " ",
 }
 
+M.debug = {
+	debug = " ",
+	bug = " ",
+	breakpoint = " ",
+	breakpoint_conditional = " ",
+	breakpoint_rejected = " ",
+	logpoint = " ",
+	stopped = " ",
+}
+
+M.test = {
+	test = " ",
+	fix = " ",
+}
+
+M.cmp = {
+	Icon = " ",
+	Tmux = " ",
+	Git = M.git.git,
+	Dap = M.debug.debug,
+	Treesitter = " ",
+	Result = " ",
+}
+
 M.lsp = {
-	Text = " ",
+	Text = " ",
 	Method = " ",
 	Function = " ",
 	Constructor = " ",
@@ -71,9 +95,9 @@ M.lsp = {
 	Keyword = " ",
 	Snippet = " ",
 	Color = " ",
-	File = " ",
+	File = M.file.default,
 	Reference = " ",
-	Folder = " ",
+	Folder = M.folder.closed,
 	EnumMember = " ",
 	Constant = " ",
 	Struct = " ",
@@ -92,27 +116,12 @@ M.lsp = {
 	Null = " ",
 }
 
-M.debug = {
-	debug = " ",
-  bug = " ",
-	breakpoint = " ",
-	breakpoint_conditional = " ",
-	breakpoint_rejected = " ",
-	logpoint = " ",
-	stopped = " ",
-}
-
-M.test = {
-	test = " ",
-	fix = " ",
-}
-
 M.comment = {
-  note = " ",
+	note = " ",
 	hack = " ",
-  todo = " ",
-  optimized = " ",
-  bookmark = " "
+	todo = " ",
+	optimized = " ",
+	bookmark = " ",
 }
 
 return M

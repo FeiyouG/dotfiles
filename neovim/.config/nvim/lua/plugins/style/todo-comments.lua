@@ -18,7 +18,7 @@ return {
 			HACK = { icon = style.icons.comment.hack, color = "warning" },
 			WARN = { icon = style.icons.diagnostic.warning, color = "warning", alt = { "WARNING", "XXX" } },
 			PERF = { icon = style.icons.comment.optimized, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-			NOTE = { icon = style.icons.comment.note, color = "info", alt = { "INFO" } },
+			NOTE = { icon = style.icons.comment.note, color = "info", alt = { "NOTES", "INFO" } },
 			TEST = { icon = style.icons.test.test, color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 			SEC = { icon = style.icons.comment.bookmark, color = "default", alt = { "MARK", "SECTION" } },
 		}
@@ -34,7 +34,7 @@ return {
 				bg = "BOLD", -- The gui style to use for the bg highlight group.
 			},
 
-			merge_keywords = true, -- when true, custom keywords will be merged with the defaults
+			merge_keywords = false, -- when true, custom keywords will be merged with the defaults
 			-- highlighting of the line containing the todo comment
 			-- * before: highlights before the keyword (typically comment characters)
 			-- * keyword: highlights of the keyword

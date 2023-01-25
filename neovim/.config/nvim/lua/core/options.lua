@@ -1,5 +1,4 @@
---------------------------------------------------------------------------------
--- Editor
+-- SECTION: Editor
 vim.opt.compatible = false --  Disable compatibility to old-time vi (default)
 vim.opt.clipboard = "unnamedplus" --  Use same clipboard between neovim and system
 vim.opt.completeopt = { "menuone", "noselect" }
@@ -13,8 +12,7 @@ vim.opt.hidden = true --  Hide unused buffers
 
 vim.cmd("syntax enable") --  Enable syntax (default)
 
---------------------------------------------------------------------------------
--- Style and View
+-- SECTION: Style and View
 vim.opt.laststatus = 3 --  use global status line
 vim.opt.showtabline = 0 --  hide tabline
 
@@ -43,13 +41,11 @@ vim.opt.conceallevel = 0 --  disable conceal
 
 vim.o.foldlevel = 99 --  open all folds by default
 
---------------------------------------------------------------------------------
--- Undo
+-- SECTION: Undo
 vim.opt.undofile = true --  enable persistent undo history
 vim.opt.undolevels = 500 --  less undos saved for quicker loading of undo history
 
---------------------------------------------------------------------------------
--- Search
+-- SECTION: Search
 vim.opt.ignorecase = true --  Case insensitive matching
 vim.opt.smartcase = true --  Override 'ignorecase' iff the search contains upper case character
 vim.opt.hlsearch = true --  Highlight search results (default)
@@ -59,25 +55,24 @@ if vim.fn.executable("rg") then
 end
 
 --------------------------------------------------------------------------------
--- Spell
+-- SECTION: Spell
 vim.opt.spell = false --  Disable spelling checking (default)
 vim.opt.spelllang = "en_us"
 vim.opt.spelloptions = { "camel", "noplainbuffer" }
 -- TODO: Add more languages & add spell file
 
---------------------------------------------------------------------------------
--- Tab, Whitespace, and Indentation
+-- SECTION: Tab, Whitespace, and Indentation
 vim.opt.tabstop = 2 --  Bumber of columns occupied by a tab character
 vim.opt.shiftwidth = 2 --  Width for autoidnents
 vim.opt.shiftround = true --  Round indent to multiple of 'shiftwidth'
 vim.opt.softtabstop = 2 --  How far cursor travels by pressing tab
 vim.opt.expandtab = true --  Converts tab to whitespace
+-- NOTE: abc
 
 vim.opt.autoindent = true --  Indent a new line the same amound as the line before it
 vim.opt.breakindent = true -- wrapped line will have the same indent
 
---------------------------------------------------------------------------------
--- Invisible characters
+-- SECTION: Invisible characters
 vim.opt.list = false
 vim.opt.listchars = {
 	tab = "  ",
@@ -94,16 +89,14 @@ vim.opt.fillchars = {
 }
 vim.opt.showbreak = "↪ " --  precedes wrapped lines
 
---------------------------------------------------------------------------------
--- Window and Split
+-- SECTION: Window and Split
 vim.opt.splitbelow = true --  Always add new pane below
 vim.opt.splitright = true --  Always add new pane on right
 vim.opt.winwidth = 10 --  Minimal number of columns for the current window.
 vim.opt.winminwidth = 10 --  The minimal width of a window, when it's not the current window.
 vim.o.equalalways = true --  Width of windows are automatically equalized (default)
 
---------------------------------------------------------------------------------
--- For external apps
+-- SECTION: For external apps
 vim.opt.title = true --  show titlestring as title
 vim.opt.titlelen = 0 --  do not shorten title
 vim.opt.titlestring = '%{expand("%:p")}'

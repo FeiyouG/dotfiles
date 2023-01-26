@@ -14,7 +14,26 @@ return {
 		"andersevenrud/cmp-tmux",
 		"chrisgrieser/cmp-nerdfont",
 		"ray-x/cmp-treesitter",
+		{
+			"uga-rosa/cmp-dictionary",
+			config = function()
+				require("cmp_dictionary").setup({
+					dic = {
+						["*"] = { "/usr/share/dict/words" },
+						spelllang = {
+							en = require("settings.lang").spell.spellfile,
+						},
+					},
+					exact = 2,
+					max_items = 5,
+					first_case_insensitive = true,
+					async = true,
+				})
 
+				-- Force load dictionary on InsertEnter
+				require("cmp_dictionary").update()
+			end,
+		},
 		-- Snippet
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
@@ -120,6 +139,7 @@ return {
 				{ name = "tmux" },
 				{ name = "nerdfont" },
 				{ name = "treesitter" },
+				{ name = "dictionary" },
 			}, {
 				{ name = "buffer" },
 				{ name = "nvim_lsp_signature_help" },
@@ -142,6 +162,7 @@ return {
 						conventionalcommits = "Git",
 						dap = "Dap",
 						treesitter = "Treesitter",
+						dictionary = "Word",
 					})[entry.source.name] or vim_item.kind
 					local icon = style.icons.cmp[kind] or style.icons.lsp[kind]
 
@@ -163,6 +184,7 @@ return {
 						git = "[GIT]",
 						conventionalcommits = "[GIT]",
 						treesitter = "[TS]",
+						dictionary = "[DICT]",
 					})[entry.source.name]
 
 					-- Show lsp client name

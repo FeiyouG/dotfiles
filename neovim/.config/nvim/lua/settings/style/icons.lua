@@ -17,7 +17,7 @@ M.folder = {
 	closed_indicator = "+",
 	folders = " ",
 	open = " ",
-	closed = "  ",
+	closed = " ",
 	empty_open = " ",
 	empty_closed = " ",
 	symlink_open = " ",
@@ -76,6 +76,7 @@ M.cmp = {
 	Dap = M.debug.debug,
 	Treesitter = " ",
 	Result = " ",
+	Word = " ",
 }
 
 M.lsp = {

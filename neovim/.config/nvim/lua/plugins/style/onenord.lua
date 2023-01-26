@@ -18,6 +18,9 @@ return {
         match_paren = false,
       },
       custom_highlights = {
+        -- Editor
+        WinSeparator = { fg = colors.blue, bg = colors.active },
+
         -- Override for nvim-cmp
         CmpItemAbbrMatch = { fg = colors.yellow, style = "bold" },
         CmpItemAbbrMatchFuzzy = { fg = colors.yellow, underline = true },

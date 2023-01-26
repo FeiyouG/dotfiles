@@ -24,6 +24,7 @@ return {
         local sufWidth = vim.fn.strdisplaywidth(suffix)
         local targetWidth = width - sufWidth
         local curWidth = 0
+
         for _, chunk in ipairs(virtText) do
           local chunkText = chunk[1]
           local chunkWidth = vim.fn.strdisplaywidth(chunkText)
@@ -42,7 +43,7 @@ return {
           end
           curWidth = curWidth + chunkWidth
         end
-        table.insert(newVirtText, { suffix, "MoreMsg" })
+        table.insert(newVirtText, { suffix, "Folded" })
         return newVirtText
       end,
 
@@ -86,7 +87,7 @@ return {
 
     -- Setup sign column for folding
     -- TODO: Use statuscolumn once nvim 0.9 is released
-    -- vim.o.foldcolumn = "1"
+    -- vim.o.foldcolumn = "0"
     -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
   end,
 }

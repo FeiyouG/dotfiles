@@ -18,7 +18,7 @@ local M = {
 	},
 
 	spell = {
-		ltex_dict_file = vim.fn.stdpath("config") .. "/dictionary/ltex_config.json",
+    spellfile = vim.env.XDG_CONFIG_HOME .. "/nvim/spell/en.utf-8.add",
 	},
 }
 

@@ -56,9 +56,10 @@ end
 
 --------------------------------------------------------------------------------
 -- SECTION: Spell
-vim.opt.spell = false --  Disable spelling checking (default)
-vim.opt.spelllang = "en_us"
+vim.opt.spell = true --  enable spelling checking
+vim.opt.spelllang = { "en", "cjk" }
 vim.opt.spelloptions = { "camel", "noplainbuffer" }
+vim.opt.spellfile = require("settings.lang").spell.spellfile
 -- TODO: Add more languages & add spell file
 
 -- SECTION: Tab, Whitespace, and Indentation

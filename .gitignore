@@ -11,3 +11,4 @@ neovim/.config/nvim/plugin/
 # ignore re-generable files
 **/.DS_Store
 **.log
+.luarc.json

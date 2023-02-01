@@ -13,7 +13,6 @@ return {
 		"hrsh7th/cmp-calc",
 		"andersevenrud/cmp-tmux",
 		"chrisgrieser/cmp-nerdfont",
-		"ray-x/cmp-treesitter",
 		{
 			"uga-rosa/cmp-dictionary",
 			config = function()
@@ -138,8 +137,7 @@ return {
 				{ name = "calc" },
 				{ name = "tmux" },
 				{ name = "nerdfont" },
-				{ name = "treesitter" },
-				{ name = "dictionary" },
+				{ name = "dictionary", max_item_count = 3 },
 			}, {
 				{ name = "buffer" },
 				{ name = "nvim_lsp_signature_help" },

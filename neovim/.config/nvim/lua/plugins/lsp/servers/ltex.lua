@@ -61,7 +61,8 @@ local function on_workspace_executecommand(err, content, ctx)
 			end
 		end
 	elseif ctx.params.command == "_ltex.disableRules" then
-	-- local data = ctx.params.arguments[1].ruleIds
+		local data = ctx.params.arguments[1].ruleIds
+		print(vim.inspect(data))
 	-- populate_config("disabledRules", data)
 	elseif ctx.params.command == "_ltex.hideFalsePositives" then
 	-- local data = ctx.params.arguments[1].falsePositives
@@ -76,6 +77,12 @@ return {
 		ltex = {
 			dictionary = {
 				["en-US"] = get_words(spell.spellfile),
+			},
+			disabledRules = {
+				["en-US"] = {
+					"ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+					"UPPERCASE_SENTENCE_START",
+				},
 			},
 		},
 	},

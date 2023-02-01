@@ -30,7 +30,6 @@ NixOS
 oh-my-zsh
 subkeys
 feiyouguo
-encourted
 pinentry
 homedir
 attu
@@ -48,7 +47,6 @@ Junjin
 xk
 virtualenv
 filesystem
-KNET
 Bootcamp
 Umair
 DeeSDK
@@ -80,3 +78,12 @@ Eval
 distinguisher
 pirmary-backup
 async
+#xacly
+FEIYOU
+GUO
+Ubicomp
+distinguishers
+Pseudorandom
+SendPingTimer
+VSCode
+utop

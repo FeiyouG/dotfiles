@@ -87,12 +87,18 @@ return {
 			{
 				description = "Go to the next diagnostic item",
 				cmd = vim.diagnostic.goto_next,
-				keybindings = { "n", "<leader>sen" },
+				keybindings = {
+					{ "n", "<leader>sen" },
+					{ "n", "]d" },
+				},
 			},
 			{
 				description = "Go to the previous diagnostic item",
 				cmd = vim.diagnostic.goto_prev,
-				keybindings = { "n", "<leader>sep" },
+				keybindings = {
+					{ "n", "<leader>sep" },
+					{ "n", "[d" },
+				},
 			},
 			{
 				description = "Show function signature",

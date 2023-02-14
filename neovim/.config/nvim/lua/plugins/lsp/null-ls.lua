@@ -39,6 +39,9 @@ return {
 				-- SECTION: Ocaml
 				null_ls.builtins.formatting.ocamlformat,
 
+				-- SECTION: Racket
+				null_ls.builtins.formatting.raco_fmt,
+
 				-- SECTION: Latex
 				-- null_ls.builtins.diagnostics.chktex,
 				null_ls.builtins.formatting.latexindent,

@@ -135,11 +135,11 @@ return {
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "calc" },
-				{ name = "tmux" },
 				{ name = "nerdfont" },
 				{ name = "dictionary", max_item_count = 3 },
 			}, {
 				{ name = "buffer" },
+				{ name = "tmux" },
 				{ name = "nvim_lsp_signature_help" },
 			}),
 

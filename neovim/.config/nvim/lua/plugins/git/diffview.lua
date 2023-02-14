@@ -43,8 +43,8 @@ return {
       enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
       use_icons = true, -- Requires nvim-web-devicons
       icons = { -- Only applies when use_icons is true.
-        folder_closed = "",
-        folder_open = "",
+        folder_closed = style.icons.folder.closed,
+        folder_open = style.icons.folder.open,
       },
       signs = {
         fold_closed = style.icons.folder.closed_indicator,

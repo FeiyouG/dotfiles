@@ -2,7 +2,7 @@ local M = {
 	exit = " ",
 	enter = " ",
 	layout = " ",
-	symbolic_arrow = " ﰣ ",
+	symbolic_arrow = " 壟 ",
 }
 
 M.file = {

@@ -1,23 +1,24 @@
 return {
-  nvim_lspconfig = {
-    sumneko_lua = require("plugins.lsp.servers.sumneko_lua"),
-    gopls = require("plugins.lsp.servers.gopls"),
-    beancount = require("plugins.lsp.servers.beancount"),
-    lemminx = require("plugins.lsp.servers.lemminx"),
-    pylsp = require("plugins.lsp.servers.pylsp"),
-    ltex = require("plugins.lsp.servers.ltex"),
+	nvim_lspconfig = {
+		lua_ls = require("plugins.lsp.servers.lua_ls"),
+		gopls = require("plugins.lsp.servers.gopls"),
+		beancount = require("plugins.lsp.servers.beancount"),
+		lemminx = require("plugins.lsp.servers.lemminx"),
+		pylsp = require("plugins.lsp.servers.pylsp"),
+		ltex = require("plugins.lsp.servers.ltex"),
 
-    texlab = {},
-    ocamllsp = {},
-    tsserver = {},
-    vimls = {},
-    bashls = {},
-    html = {},
-    clangd = {},
-    jsonls = {},
+		texlab = {},
+		ocamllsp = {},
+		tsserver = {},
+		vimls = {},
+		bashls = {},
+		html = {},
+		clangd = {},
+		jsonls = {},
+		racket_langserver = {},
 
-    -- test = {},
-  },
+		-- test = {},
+	},
 
-  jdtls = require("plugins.lsp.servers.jdtls"),
+	jdtls = require("plugins.lsp.servers.jdtls"),
 }

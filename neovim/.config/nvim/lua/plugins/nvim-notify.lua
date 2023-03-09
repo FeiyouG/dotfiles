@@ -2,9 +2,10 @@ local fn = require("settings.fn")
 local state = require("settings.state")
 return {
 	"rcarriga/nvim-notify",
-
 	lazy = false,
-
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
 	config = function()
 		local notify = require("notify")
 		notify.setup({

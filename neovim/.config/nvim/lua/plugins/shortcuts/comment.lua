@@ -1,6 +1,5 @@
 return {
 	"numToStr/Comment.nvim",
-
 	config = function()
 		local comment = require("Comment")
 
@@ -21,7 +20,6 @@ return {
 				---Block-comment keymap
 				block = "<leader>/",
 			},
-
 			---LHS of extra mappings
 			---@type table
 			extra = {
@@ -32,7 +30,6 @@ return {
 				---Add comment at the end of line
 				eol = "<leader>cA",
 			},
-
 			---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
 			---@type table
 			mappings = {
@@ -54,5 +51,6 @@ return {
 		ft.javascript = { "//%s", "/**%s*/" }
 		ft.beancount = { ";%s" }
 		ft.ocaml = { "(* %s *)", "(** %s **)" }
+		ft.racket = { "; %s" }
 	end,
 }

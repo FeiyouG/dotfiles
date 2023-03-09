@@ -14,10 +14,14 @@ return {
 		-- SECTION: Diagnostic Settings: diable virtual text
 		vim.diagnostic.config({
 			virtual_text = false,
+      underline = true;
+      sign = true,
 			float = {
 				scope = "line", -- "buffer", "line", or "cursor"
 				source = true, -- true, "if_mnay", or false
 			},
+      update_in_insert = false,
+      severity_sort = true,
 		})
 
 		-- SECTION: Config `lspInfo` floating window
@@ -36,10 +40,10 @@ return {
 
 		-- SECTION: Change diagnostic symbol in signl column
 		for type, icon in pairs({
-			Error = style.icons.diagnostic.error,
-			Warn = style.icons.diagnostic.warning,
-			Hint = style.icons.diagnostic.hint,
-			Info = style.icons.diagnostic.info,
+			Error = style.icons.diagnostic.error_filled,
+			Warn = style.icons.diagnostic.warning_filled,
+			Hint = style.icons.diagnostic.hint_filled,
+			Info = style.icons.diagnostic.info_filled,
 		}) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

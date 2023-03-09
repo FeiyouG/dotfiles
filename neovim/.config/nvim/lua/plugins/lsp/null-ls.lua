@@ -1,10 +1,7 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
-
 	event = { "BufReadPre" },
-
 	dependencies = { "nvim-lua/plenary.nvim" },
-
 	config = function()
 		local null_ls = require("null-ls")
 		null_ls.setup({
@@ -23,7 +20,7 @@ return {
 
 				-- SECTION: Javascript
 				null_ls.builtins.formatting.prettier.with({
-					filetype = {
+					filetypes = {
 						"javascript",
 						"javascriptreact",
 						"typescript",
@@ -45,6 +42,14 @@ return {
 				-- SECTION: Latex
 				-- null_ls.builtins.diagnostics.chktex,
 				null_ls.builtins.formatting.latexindent,
+
+				-- SECTION: Markup Languages
+				-- null_ls.builtins.formatting.xmlformat.with({
+				-- 	filetypes = {
+				-- 		"xml",
+				-- 		"ant",
+				-- 	},
+				-- }),
 			},
 		})
 	end,

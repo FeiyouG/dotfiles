@@ -14,7 +14,6 @@ return {
 			{ "│", "FloatBorder" },
 		},
 		winblend = 0,
-		-- winhighlight = "FloatBorder:TelescopePromptBorder,CursorLine:TelescopeSelection,Search:None",
 		winhighlight = "FloatBorder:FloatBorder,CursorLine:TelescopeSelection,Search:None",
 	},
 }

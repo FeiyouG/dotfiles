@@ -4,14 +4,13 @@ local state = require("settings.state")
 
 return {
 	"nvim-lualine/lualine.nvim",
-
 	lazy = false,
 	priority = 500,
-
 	dependencies = {
 		"kyazdani42/nvim-web-devicons",
+		"lewis6991/gitsigns.nvim",
+		"SmiteshP/nvim-navic",
 	},
-
 	config = function()
 		local lualine = require("lualine")
 
@@ -128,6 +127,49 @@ return {
 			}
 		end
 
+		-- local function line_blame_comp()
+		-- 	local gs = require("gitsigns")
+		-- 	return {
+		-- 		gs.blame_line({ full = true }),
+		-- 	}
+		-- end
+
+		local function visual_selection_line_cnt_comp()
+			return {
+				function()
+					local starts = vim.fn.line("v")
+					local ends = vim.fn.line(".")
+					local count = starts <= ends and ends - starts + 1 or starts - ends + 1
+					return count .. "V"
+				end,
+				cond = function()
+					return vim.fn.mode():find("[Vv]") ~= nil
+				end,
+			}
+		end
+
+		local function attached_lsp_comp()
+			return {
+				function()
+					local lsp_names = ""
+          local cnt = 1
+					for _, client in pairs(vim.lsp.buf_get_clients()) do
+						if client.name then
+							if cnt > 1 then
+								lsp_names = lsp_names .. "|"
+							end
+							lsp_names = lsp_names .. client.name
+						end
+            cnt = cnt + 1
+					end
+					return lsp_names
+				end,
+				cond = function()
+					return vim.lsp.buf_get_clients() ~= nil
+				end,
+			}
+		end
+
 		lualine.setup({
 			options = {
 				theme = "onenord",
@@ -156,8 +198,8 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { submode_comp() },
-				lualine_c = { tabs_comp(), buffers_comp() },
+				lualine_b = {},
+				lualine_c = { "filetype", attached_lsp_comp(), diagnostic_comp() },
 				lualine_x = { diff_comp(), "branch" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
@@ -167,7 +209,6 @@ return {
 				lualine_c = { navic_comp() },
 				lualine_x = { "encoding" },
 				lualine_y = { filetype_comp() },
-				-- lualine_y = { "progress", "location" },
 			},
 			inactive_winbar = {
 				lualine_c = { filename_comp() },

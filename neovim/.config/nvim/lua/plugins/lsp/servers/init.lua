@@ -6,8 +6,8 @@ return {
 		lemminx = require("plugins.lsp.servers.lemminx"),
 		pylsp = require("plugins.lsp.servers.pylsp"),
 		ltex = require("plugins.lsp.servers.ltex"),
+		texlab = require("plugins.lsp.servers.texlab"),
 
-		texlab = {},
 		ocamllsp = {},
 		tsserver = {},
 		vimls = {},
@@ -19,6 +19,5 @@ return {
 
 		-- test = {},
 	},
-
 	jdtls = require("plugins.lsp.servers.jdtls"),
 }

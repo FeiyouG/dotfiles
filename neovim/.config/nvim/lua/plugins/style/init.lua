@@ -6,7 +6,6 @@ return {
 	require("plugins.style.neoscroll"),
 	require("plugins.style.colorizer"),
 	require("plugins.style.todo-comments"),
-	require("plugins.style.zen-mode"),
 	{ "fladson/vim-kitty", ft = { "conf" } }, -- Syntax highlight for kitty config files
 	{ "lukas-reineke/indent-blankline.nvim" },
 	{ "godlygeek/tabular" },

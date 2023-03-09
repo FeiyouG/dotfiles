@@ -42,16 +42,16 @@ M.git = {
 
 M.diagnostic = {
 	diagnostics = " ",
-	-- error = " ",
-	-- warning = " ",
-	-- hint = " ",
-	-- info = " ",
-	-- other = "﫠"
-	error = " ",
-	warning = " ",
-	info = " ",
-	hint = " ",
-	other = " ",
+	error = " ",
+	warning = " ",
+	hint = " ",
+	info = " ",
+	other = "﫠",
+	error_filled = " ",
+	warning_filled = " ",
+	info_filled = " ",
+	hint_filled = " ",
+	other_filled = " ",
 }
 
 M.debug = {
@@ -105,7 +105,6 @@ M.lsp = {
 	Event = " ",
 	Operator = " ",
 	TypeParameter = " ",
-
 	Namespace = " ",
 	Package = " ",
 	String = " ",
@@ -123,6 +122,10 @@ M.comment = {
 	todo = " ",
 	optimized = " ",
 	bookmark = " ",
+}
+
+M.system = {
+  servers = "歷"
 }
 
 return M

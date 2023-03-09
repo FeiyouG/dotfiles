@@ -2,6 +2,7 @@
 vim.opt.compatible = false --  Disable compatibility to old-time vi (default)
 vim.opt.clipboard = "unnamedplus" --  Use same clipboard between neovim and system
 vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.jumpoptions = { "view" }
 
 vim.opt.mouse = "a" --  Enable mouse click
 vim.opt.cursorline = true --  Highlight current cursorline

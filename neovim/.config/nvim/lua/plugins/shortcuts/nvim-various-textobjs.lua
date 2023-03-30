@@ -23,7 +23,7 @@ return {
         elseif vim.fn.has("win64") or vim.fn.has("win32") then
           opener = "start"
         end
-        os.execute(opener .. "'" .. url .. "'")
+        os.execute(opener .. " '" .. url .. "'")
       else
         -- if not found in proximity, search whole buffer via urlview.nvim instead
         vim.cmd.UrlView("buffer")

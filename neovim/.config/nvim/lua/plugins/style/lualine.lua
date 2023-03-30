@@ -152,7 +152,7 @@ return {
 			return {
 				function()
 					local lsp_names = ""
-          local cnt = 1
+					local cnt = 1
 					for _, client in pairs(vim.lsp.buf_get_clients()) do
 						if client.name then
 							if cnt > 1 then
@@ -160,7 +160,7 @@ return {
 							end
 							lsp_names = lsp_names .. client.name
 						end
-            cnt = cnt + 1
+						cnt = cnt + 1
 					end
 					return lsp_names
 				end,
@@ -198,7 +198,7 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = {},
+				lualine_b = { tabs_comp() },
 				lualine_c = { "filetype", attached_lsp_comp(), diagnostic_comp() },
 				lualine_x = { diff_comp(), "branch" },
 				lualine_y = { "progress" },

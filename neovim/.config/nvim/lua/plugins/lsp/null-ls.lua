@@ -6,6 +6,9 @@ return {
 		local null_ls = require("null-ls")
 		null_ls.setup({
 			sources = {
+        -- SECTION: Rust
+        null_ls.builtins.formatting.rustfmt,
+
 				-- SECTION: Golang
 				-- null_ls.builtins.diagnostics.revive,
 				null_ls.builtins.formatting.gofumpt,

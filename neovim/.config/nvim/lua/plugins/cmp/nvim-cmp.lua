@@ -1,8 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
-
 	event = { "InsertEnter", "CmdLineEnter" },
-
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 
@@ -59,7 +57,6 @@ return {
 		{ "petertriho/cmp-git", config = true },
 		"davidsierradz/cmp-conventionalcommits",
 	},
-
 	config = function()
 		local luasnip = require("luasnip")
 		local cmp = require("cmp")
@@ -75,7 +72,6 @@ return {
 					fallback()
 				end
 			end, { "i", "s" }),
-
 			["<C-p>"] = cmp.mapping(function(fallback)
 				if luasnip.choice_active() then
 					require("luasnip.extras.select_choice")()
@@ -85,7 +81,6 @@ return {
 					fallback()
 				end
 			end, { "i", "s" }),
-
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if luasnip.locally_jumpable(1) then
 					luasnip.jump(1)
@@ -93,7 +88,6 @@ return {
 					fallback()
 				end
 			end, { "i", "s" }),
-
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if luasnip.locally_jumpable(-1) then
 					luasnip.jump(-1)
@@ -101,17 +95,14 @@ return {
 					fallback()
 				end
 			end, { "i", "s" }),
-
 			-- Select the completion item, excluding preselected
 			["<CR>"] = cmp.mapping.confirm({ select = false }),
-
 			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		}
 
 		cmp.setup({
 			preselect = cmp.PreselectMode.None, -- Don't preselect item
-
 			window = {
 				documentation = {
 					border = style.border.rounded,
@@ -122,14 +113,12 @@ return {
 					winhighlight = style.border.winhighlight,
 				},
 			},
-
 			-- view = {
 			--   entries = {name = 'custom', selection_order = 'near_cursor' }
 			-- },
 
 			-- mapping = cmp.mapping.preset.insert(mapping),
 			mapping = mapping,
-
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
@@ -142,13 +131,11 @@ return {
 				{ name = "tmux" },
 				{ name = "nvim_lsp_signature_help" },
 			}),
-
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-
 			formatting = {
 				format = function(entry, vim_item)
 					-- Show kind icons
@@ -196,7 +183,6 @@ return {
 					return vim_item
 				end,
 			},
-
 			experimental = {
 				native_menu = false,
 				ghost_text = true,

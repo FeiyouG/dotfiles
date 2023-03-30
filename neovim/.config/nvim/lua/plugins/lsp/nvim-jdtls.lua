@@ -1,10 +1,11 @@
 return {
 	"mfussenegger/nvim-jdtls",
-
+	dependencies = {
+		"neovim/nvim-lspconfig",
+		"mfussenegger/nvim-dap",
+	},
 	ft = { "java" },
-
 	event = { "BufReadPre" },
-
 	config = function()
 		local jdtls = require("jdtls")
 		local jdtls_setup = require("jdtls.setup")
@@ -12,6 +13,7 @@ return {
 		local fn = require("settings.fn")
 
 		local function setup_and_start_jdtls()
+      
 			-- SECTION: Starts a new client & server,
 			server_config.capabilities =
 				vim.tbl_extend("force", fn.lsp.get_capabilities(), server_config.capabilities or {})

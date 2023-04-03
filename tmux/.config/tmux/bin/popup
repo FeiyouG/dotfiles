@@ -1,0 +1,31 @@
+#!/bin/sh
+
+function scrach_popup() {
+
+  # Run program in temporary popu
+  if ! [ -z $1 ]; then
+    program=$( basename "$1" )
+    name="popup-$program"
+    tmux popup -E $1
+    exit 0
+  fi
+
+  # create/attach/detach a tmux session as popup
+  name="scratch"
+  if [ "$(tmux display-message -p "#{session_name}")" = $name ];then
+    tmux detach-client
+  else
+    tmux popup -E "tmux attach -t $name || tmux new -s $name"
+  fi
+}
+
+# Tmux is not runnning
+# Then start tmux and attach to this session
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    if ! [ -z $1 ]; then
+      $1
+    fi
+else 
+    scrach_popup $1
+fi
+

@@ -51,7 +51,7 @@ return {
         "WinEnter",
       },
       -- enable or disable the tmux integration
-      tmux_integration = true,
+      multiplexer_integration = "tmux",
     })
 
     local commander = require("settings.fn").require("commander")

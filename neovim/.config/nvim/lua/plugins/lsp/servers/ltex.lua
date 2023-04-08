@@ -86,11 +86,22 @@ return {
 			},
 		},
 	},
-
+	filetypes = {
+		"bib",
+		"gitcommit",
+		"markdown",
+		"org",
+		"plaintex",
+		"rst",
+		"rnoweb",
+		"tex",
+		"pandoc",
+		"norg",
+		"org",
+	},
 	handlers = {
 		["workspace/executeCommand"] = on_workspace_executecommand,
 	},
-
 	on_attach = function()
 		-- ltex-ls will take over spell and grammar checks
 		vim.opt_local.spell = false

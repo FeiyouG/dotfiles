@@ -40,10 +40,10 @@ return {
 
 		-- SECTION: Change diagnostic symbol in signl column
 		for type, icon in pairs({
-			Error = style.icons.diagnostic.error_filled,
-			Warn = style.icons.diagnostic.warning_filled,
-			Hint = style.icons.diagnostic.hint_filled,
-			Info = style.icons.diagnostic.info_filled,
+			Error = style.icons.diagnostic.error,
+			Warn = style.icons.diagnostic.warning,
+			Hint = style.icons.diagnostic.hint,
+			Info = style.icons.diagnostic.info,
 		}) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

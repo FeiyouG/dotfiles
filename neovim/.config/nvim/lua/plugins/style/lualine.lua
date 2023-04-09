@@ -7,7 +7,7 @@ return {
 	lazy = false,
 	priority = 500,
 	dependencies = {
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		"lewis6991/gitsigns.nvim",
 		"SmiteshP/nvim-navic",
 	},

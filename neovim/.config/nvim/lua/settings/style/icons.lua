@@ -26,6 +26,7 @@ M.folder = {
 
 M.git = {
 	git = " ",
+  branch = "",
 	unstaged = " ",
 	staged = " ",
 	unmerged = " ",
@@ -57,7 +58,7 @@ M.diagnostic = {
 M.debug = {
 	debug = " ",
 	bug = " ",
-	breakpoint = " ",
+	breakpoint = " ",
 	breakpoint_conditional = " ",
 	breakpoint_rejected = " ",
 	logpoint = " ",

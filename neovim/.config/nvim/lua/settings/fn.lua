@@ -146,11 +146,17 @@ M.lsp = {
 	end,
 	---on_attach method shared by all language servers
 	on_attach = function(client, bufnr)
-		-- Setup navic
-		local navic = M.require("nvim-navic")
-		if navic and client.server_capabilities.documentSymbolProvider then
-			navic.attach(client, bufnr)
-		end
+		-- -- Setup navic
+		-- local navic = M.require("nvim-navic")
+		-- if navic and client.server_capabilities.documentSymbolProvider then
+		-- 	navic.attach(client, bufnr)
+		-- end
+		--
+  --   -- Setup navBuddy
+  --   local navbuddy = M.require("nvim-navbuddy")
+  --   if navbuddy then
+  --     navbuddy.attach(client, bufnr)
+  --   end
 	end,
 }
 

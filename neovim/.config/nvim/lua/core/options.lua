@@ -52,7 +52,7 @@ vim.opt.smartcase = true --  Override 'ignorecase' iff the search contains upper
 vim.opt.hlsearch = true --  Highlight search results (default)
 vim.opt.inccommand = "split" --  Show replace result in a split screen before applying
 if vim.fn.executable("rg") then
-	vim.opt.grepprg = "rg --vimgrep" --  use rg for :grep
+  vim.opt.grepprg = "rg --vimgrep" --  use rg for :grep
 end
 
 --------------------------------------------------------------------------------
@@ -77,17 +77,17 @@ vim.opt.breakindent = true -- wrapped line will have the same indent
 -- SECTION: Invisible characters
 vim.opt.list = false
 vim.opt.listchars = {
-	tab = "  ",
-	multispace = "·", --  multiple consecutive spaces
-	lead = "·", --  leading spaces
-	nbsp = "ﮊ", --  non-breakable space character
-	leadmultispace = "·",
-	--  precedes = "…",
-	--  extends = "…",
+  tab = "  ",
+  multispace = "·", --  multiple consecutive spaces
+  lead = "·", --  leading spaces
+  nbsp = "ﮊ", --  non-breakable space character
+  leadmultispace = "·",
+  --  precedes = "…",
+  --  extends = "…",
 }
 vim.opt.fillchars = {
-	eob = " ", --  no ~ for the eof
-	fold = " ", --  no dots for folds
+  eob = " ", --  no ~ for the eof
+  fold = " ", --  no dots for folds
 }
 vim.opt.showbreak = "↪ " --  precedes wrapped lines
 

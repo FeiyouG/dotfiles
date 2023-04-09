@@ -1,7 +1,6 @@
 return {
 	icons = require("settings.style.icons"),
-	colors = require("settings.style.colors"),
-
+	colors = {},
 	border = {
 		rounded = {
 			{ "╭", "FloatBorder" },

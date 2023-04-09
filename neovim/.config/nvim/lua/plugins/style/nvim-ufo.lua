@@ -86,8 +86,7 @@ return {
     vim.o.foldenable = true
 
     -- Setup sign column for folding
-    -- TODO: Use statuscolumn once nvim 0.9 is released
-    -- vim.o.foldcolumn = "0"
+    -- vim.o.foldcolumn = "1"
     -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
   end,
 }

@@ -1,6 +1,5 @@
 return {
 	require("plugins.style.onenord"),
-	-- require("plugins.style.lualine"),
   require("plugins.style.heirline"),
 	require("plugins.style.nvim-ufo"),
 	require("plugins.style.dressing"),

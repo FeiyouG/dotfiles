@@ -40,14 +40,14 @@ local mode = {
 		end,
 		hl = function(self)
 			local mode = self.mode:sub(1, 1) -- get only the first mode character
-			return { fg = colors.statusline.trd_bg, bg = self.mode_colors[mode], bold = true }
+			return { fg = colors.statusline.trd_bg, bg = colors.mode[mode], bold = true }
 		end,
 	},
 	{
 		provider = "",
 		hl = function(self)
 			local mode = self.mode:sub(1, 1) -- get only the first mode character
-			return { fg = self.mode_colors[mode], bg = colors.statusline.snd_bg }
+			return { fg = colors.mode[mode], bg = colors.statusline.snd_bg }
 		end,
 	},
 	update = {
@@ -201,13 +201,13 @@ local cursor_position = {
 	{
 		provider = "",
 		hl = function(self)
-			return { fg = self.mode_colors[self.mode], bg = colors.statusline.snd_bg }
+			return { fg = colors.mode[self.mode], bg = colors.statusline.snd_bg }
 		end,
 	},
 	{
 		provider = " %l:%c ",
 		hl = function(self)
-			return { bg = self.mode_colors[self.mode], fg = colors.statusline.snd_bg }
+			return { bg = colors.mode[self.mode], fg = colors.statusline.snd_bg }
 		end,
 	},
 	update = { "ModeChanged" },
@@ -226,7 +226,7 @@ local progress = {
 			return " " .. progress .. "%% "
 		end,
 		hl = function(self)
-			return { fg = self.mode_colors[self.mode], bg = colors.statusline.snd_bg }
+			return { fg = colors.mode[self.mode], bg = colors.statusline.snd_bg }
 		end,
 	},
 }
@@ -274,7 +274,7 @@ local git_branch = {
 	end,
 	{
 		provider = function(self)
-			return " " .. icons.git.branch .. self.status_dict.head .. " "
+			return " " .. icons.git.branch .. " " .. self.status_dict.head .. " "
 		end,
 		hl = { fg = colors.none, bg = colors.statusline.trd_bg },
 	},
@@ -290,21 +290,4 @@ return {
 	git_branch,
 	progress,
 	cursor_position,
-	static = {
-		mode_colors = {
-			n = colors.blue,
-			i = colors.green,
-			v = colors.cyan,
-			V = colors.cyan,
-			["\22"] = colors.cyan,
-			c = colors.orangne,
-			s = colors.pink,
-			S = colors.pink,
-			["\19"] = colors.pink,
-			R = colors.yellow,
-			r = colors.yellow,
-			["!"] = colors.red,
-			t = colors.purple,
-		},
-	},
 }

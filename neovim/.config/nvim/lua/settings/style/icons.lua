@@ -58,10 +58,10 @@ M.diagnostic = {
 M.debug = {
 	debug = " ",
 	bug = " ",
-	breakpoint = " ",
-	breakpoint_conditional = " ",
-	breakpoint_rejected = " ",
-	logpoint = " ",
+	breakpoint = " ",
+	breakpoint_conditional = "ﯷ ",
+	breakpoint_rejected = " ",
+	logpoint = " ",
 	stopped = " ",
 }
 

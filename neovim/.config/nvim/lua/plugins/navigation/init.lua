@@ -3,5 +3,6 @@ return {
   require("plugins.navigation.trouble"),
   require("plugins.navigation.windows"),
   require("plugins.navigation.navic"),
+  require("plugins.navigation.navbuddy"),
   { "wellle/targets.vim" }
 }

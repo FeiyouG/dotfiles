@@ -46,13 +46,7 @@ return {
 			-- MARK: Make bash treesitter also work for zsh
 			vim.treesitter.language.register("bash", "zsh")
 
-			settings.fn.keymap.set({
-				{
-					description = "Show treesitter symbols",
-					cmd = "<CMD>Telescope treesitter<CR>",
-					keybindings = { "n", "<leader>sts" },
-				},
-			})
+			vim.keymap.set("n", "<leader>sts", "<CMD>Telescope treesitter<CR>", { desc = "Show treesitter symbols" })
 		end,
 	},
 	{

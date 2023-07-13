@@ -8,7 +8,6 @@ return {
 	},
 	config = function()
 		local heirline = require("heirline")
-		local conditions = require("heirline.conditions")
 
 		local statusline = require("plugins.style.heirline.statusline")
 		local statuscolumn = require("plugins.style.heirline.statuscolumn")

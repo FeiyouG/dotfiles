@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 
 return {
 	color_scheme = "nord",
+	-- color_scheme = "Catppuccin Mocha",
 	window_frame = {
 		-- The font used in the tab bar.
 		-- Roboto Bold is the default; this font is bundled

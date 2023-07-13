@@ -50,12 +50,6 @@ for dir in $config_dirs; do
     source ${dir}init.zsh
   fi
 done
-# config_files=( $ZDOTDIR/src/*.zsh(N) )        # source all .zsh files
-# config_files+=( $ZDOTDIR/src/***/init.zsh(N) ) # surce init.zsh in dirs; extra * for symbolic linked dirs
-# config_files+=( $HOME/.zshrc.local(N) )       # Source local configurations
-# for file in $config_files; do
-#   source $file
-# done
 
 bindkey -e                     # Resotre default keybidning
 # zprof

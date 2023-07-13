@@ -2,6 +2,7 @@ local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
 
 local devicons = require("nvim-web-devicons")
+local icons = require("settings.style").icons
 local colors = require("settings.style").colors
 
 local divider_secondary_left = {
@@ -13,7 +14,11 @@ local filename = {
 	init = function(self)
 		self.mode = vim.fn.mode(1) -- :h mode()
 	end,
-	hl = { bg = colors.statusline.snd_bg },
+	-- hl = { bg = colors.statusline.snd_bg },
+	hl = function(self)
+		local mode = self.mode:sub(1, 1) -- get only the first mode character
+		return { fg = colors.mode[mode], bg = colors.statusline.snd_bg }
+	end,
 	{
 		provider = " ",
 	},
@@ -21,10 +26,10 @@ local filename = {
 		provider = function()
 			return vim.fn.expand("%:t")
 		end,
-		hl = function(self)
-			local mode = self.mode:sub(1, 1) -- get only the first mode character
-			return { fg = colors.mode[mode], bg = colors.statusline.snd_bg }
-		end,
+		-- hl = function(self)
+		--   local mode = self.mode:sub(1, 1) -- get only the first mode character
+		--   return { fg = colors.mode[mode], bg = colors.statusline.snd_bg }
+		-- end,
 	},
 	-- Modifier
 	{
@@ -32,15 +37,14 @@ local filename = {
 			condition = function()
 				return vim.bo.modified
 			end,
-			provider = "[+]",
-			hl = { fg = colors.orange },
+			provider = " " .. icons.file.modified,
+			-- hl = { fg = colors.orange },
 		},
 		{
 			condition = function()
 				return not vim.bo.modifiable or vim.bo.readonly
 			end,
-			provider = "",
-			hl = { fg = colors.yellow },
+			provider = " " .. icons.file.readonly,
 		},
 	},
 	{
@@ -88,11 +92,8 @@ local navic = {
 			-- add a separator only if needed
 			if #data > 1 and i < #data then
 				table.insert(child, {
-          flexible = i * 10,
-					{
-						provider = " > ",
-						hl = { fg = colors.fg },
-					},
+					provider = " > ",
+					hl = { fg = colors.gray },
 				})
 			end
 			table.insert(children, child)
@@ -104,6 +105,19 @@ local navic = {
 	provider = function(self)
 		return " " .. self.child:eval()
 	end,
+	on_click = {
+		name = "navic-click",
+		callback = function(self, ...)
+			local navbuddy_avail, navbuddy = pcall(require, "navbuddy")
+			if not navbuddy_avail then
+				return
+			end
+
+			vim.schedule(function()
+				navbuddy.open(0)
+			end)
+		end,
+	},
 	static = {
 		-- create a type highlight map
 		type_hl = {

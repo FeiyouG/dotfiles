@@ -129,4 +129,10 @@ M.system = {
   servers = "歷"
 }
 
+M.statuscolumn = {
+  fold_open = " ▏̵",
+  fold_close = "⊖̩̍",
+  git_signs = " ▏",
+}
+
 return M

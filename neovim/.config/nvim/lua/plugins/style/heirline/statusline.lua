@@ -1,6 +1,3 @@
-local M = {}
-
-local utils = require("heirline.utils")
 local devicons = require("nvim-web-devicons")
 
 local conditions = require("heirline.conditions")

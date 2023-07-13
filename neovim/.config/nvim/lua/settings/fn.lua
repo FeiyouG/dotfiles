@@ -152,11 +152,124 @@ M.lsp = {
 		-- 	navic.attach(client, bufnr)
 		-- end
 		--
-  --   -- Setup navBuddy
-  --   local navbuddy = M.require("nvim-navbuddy")
-  --   if navbuddy then
-  --     navbuddy.attach(client, bufnr)
-  --   end
+		--   -- Setup navBuddy
+		--   local navbuddy = M.require("nvim-navbuddy")
+		--   if navbuddy then
+		--     navbuddy.attach(client, bufnr)
+		--   end
+     
+		-- if client.server_capabilities.documentFormattingProvider then
+			M.keymap.set({
+				{
+					description = "Format code (lint)",
+					cmd = function()
+						-- Trim trailing white space first
+						if not vim.o.binary and vim.o.filetype ~= "diff" and vim.bo.modifiable then
+							vim.cmd([[%s/\s\+$//e]])
+							vim.cmd("noh")
+						end
+
+						vim.lsp.buf.format({ async = true })
+					end,
+					keybindings = { "n", "<leader>sf" },
+				},
+			})
+		-- end
+
+		M.keymap.set({
+			{
+				description = "Show documentations (hover)",
+				cmd = vim.lsp.buf.hover,
+				keybindings = { "n", "K" },
+			},
+			{
+				description = "Show errors of the current line (floating window)",
+				cmd = vim.diagnostic.open_float,
+				keybindings = { "n", "E" },
+			},
+			{
+				description = "Go to the next diagnostic item",
+				cmd = vim.diagnostic.goto_next,
+				keybindings = {
+					{ "n", "<leader>sen" },
+					{ "n", "]d" },
+				},
+			},
+			{
+				description = "Go to the previous diagnostic item",
+				cmd = vim.diagnostic.goto_prev,
+				keybindings = {
+					{ "n", "<leader>sep" },
+					{ "n", "[d" },
+				},
+			},
+			{
+				description = "Show function signature",
+				cmd = vim.lsp.buf.signature_help,
+				keybindings = { "n", "<leader>sk" },
+			},
+			{
+				description = "Go to declarations",
+				cmd = vim.lsp.buf.declaration,
+				keybindings = { "n", "<leader>sD" },
+			},
+			{
+				description = "Rename symbol",
+				cmd = vim.lsp.buf.rename,
+				keybindings = { "n", "<leader>sn" },
+			},
+			-- Commands that take advantages of Telescope
+			{
+				description = "Show code actions",
+				cmd = vim.lsp.buf.code_action,
+				keybindings = {
+					{ "n", "<leader>sa" },
+					{ "v", "<leader>sa" },
+				},
+			},
+			{
+				description = "Go to definitions",
+				cmd = "<CMD>Telescope lsp_definitions<CR>",
+				keybindings = { "n", "<leader>sd" },
+			},
+			{
+				description = "Go to type definitions",
+				cmd = "<CMD>Telescope lsp_type_definitions<CR>",
+				keybindings = { "n", "<leader>st" },
+			},
+			{
+				description = "Show all references",
+				cmd = "<CMD>Telescope lsp_references<CR>",
+				keybindings = { "n", "<leader>sr" },
+			},
+			{
+				description = "Show workspace errors (diagnostic)",
+				cmd = "<CMD>Telescope diagnostics<CR>",
+				keybindings = {
+					{ "n", "<leader>se" },
+					{ "n", "<leader>sef" },
+				},
+			},
+			{
+				description = "Go to implementations",
+				cmd = "<CMD>Telescope lsp_implementations<CR>",
+				keybindings = { "n", "<leader>si" },
+				category = "lsp",
+			},
+			{
+				description = "Show document symbols",
+				cmd = "<CMD>Telescope lsp_document_symbols<CR>",
+				keybindings = {
+					{ "n", "<leader>ss" },
+					{ "n", "<leader>ssd" },
+				},
+			},
+			{
+				description = "show workspace symbols",
+				cmd = "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
+				keybindings = { "n", "<leader>ssw" },
+			},
+		})
 	end,
 }
 

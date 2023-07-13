@@ -6,6 +6,7 @@ return {
   require("plugins.shortcuts.nvim-various-textobjs"),
   require("plugins.shortcuts.smart-split"),
   require("plugins.shortcuts.hover"),
+  require("plugins.shortcuts.venn"),
   { "moll/vim-bbye" },
   { "tpope/vim-repeat" },
   { "tpope/vim-unimpaired" },

@@ -11,6 +11,8 @@ vim.opt.ttyfast = true --  Speed up scrolling in neovim
 vim.o.updatetime = 250
 vim.opt.hidden = true --  Hide unused buffers
 
+vim.g.editorconfig = true
+
 vim.cmd("syntax enable") --  Enable syntax (default)
 
 -- SECTION: Style and View
@@ -64,7 +66,7 @@ vim.opt.spellfile = require("settings.lang").spell.spellfile
 -- TODO: Add more languages & add spell file
 
 -- SECTION: Tab, Whitespace, and Indentation
-vim.opt.tabstop = 2 --  Bumber of columns occupied by a tab character
+vim.opt.tabstop = 2 --  Bumber of columns occupied by a tab haracter
 vim.opt.shiftwidth = 2 --  Width for autoidnents
 vim.opt.shiftround = true --  Round indent to multiple of 'shiftwidth'
 vim.opt.softtabstop = 2 --  How far cursor travels by pressing tab

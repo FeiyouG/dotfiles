@@ -2,6 +2,7 @@ local conditions = require("heirline.conditions")
 local gitsigns = require("gitsigns")
 
 local colors = require("settings.style").colors
+local icons = require("settings.style").icons
 
 local align = { provider = "%=" }
 local spacer = { provider = " " }
@@ -68,7 +69,7 @@ local signs = {
 				vim.diagnostic.open_float({
 					bufnr = self.bufnr,
 					scope = "line",
-          pos = lnum -1
+					pos = lnum - 1,
 				})
 			end)
 		end,
@@ -76,6 +77,9 @@ local signs = {
 }
 
 local line_numbers = {
+	init = function(self)
+		self.mode = vim.fn.mode(1):sub(1, 1)
+	end,
 	provider = function()
 		if vim.v.virtnum ~= 0 then
 			return ""
@@ -87,6 +91,12 @@ local line_numbers = {
 
 		return vim.v.relnum
 	end,
+	-- hl = function(self)
+	-- 	local linenr = vim.api.nvim_win_get_cursor(0)[1]
+	-- 	if vim.v.lnum == linenr then
+	-- 		return { fg = colors.mode[self.mode] }
+	-- 	end
+	-- end,
 	on_click = {
 		name = "line_number_click",
 		callback = function(self, ...)
@@ -105,7 +115,6 @@ local git_signs = {
 			return not conditions.is_git_repo() or vim.v.virtnum ~= 0
 		end,
 		provider = "  ",
-		hl = { fg = colors.gray },
 	},
 	{
 		condition = function()
@@ -126,12 +135,16 @@ local git_signs = {
 
 			self.has_sign = self.sign ~= nil
 		end,
-		provider = " ▏",
+		provider = function(self)
+			if self.has_sign then
+				return icons.statuscolumn.git_signs
+			end
+			return "  "
+		end,
 		hl = function(self)
 			if self.has_sign then
 				return self.sign.name
 			end
-			return { fg = colors.bg }
 		end,
 		on_click = {
 			name = "gitsigns_click",
@@ -156,7 +169,7 @@ return {
 			local lnum = mouse_pos.line
 			local curosr_pos = { lnum, 0 }
 			vim.api.nvim_win_set_cursor(mouse_pos.winid, curosr_pos)
-      return lnum
+			return lnum
 		end,
 	},
 }

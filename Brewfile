@@ -1,0 +1,6 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+brew "go"
+brew "neovim"
+brew "stow"
+brew "tmux"

@@ -59,6 +59,9 @@ return {
 			})
 
 			vim.keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find files" })
+			vim.keymap.set("n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find keymaps" })
+			vim.keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Find buffers" })
+			vim.keymap.set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Find string in workspace" })
 			-- settings.fn.keymap.set({
 			--   {
 			--     desc = "Find hidden files",

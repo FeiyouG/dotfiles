@@ -35,7 +35,6 @@ if which rustc > /dev/null 2>&1; then
   zsh-defer source "$CARGO_HOME/env"
 fi
 
-
 # MARK: Python
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"              # Conform to XDG Base Directory (configuration file)
 
@@ -53,8 +52,6 @@ if which jenv > /dev/null 2>&1; then
   export JENV_ROOT="$XDG_DATA_HOME/java/jenv"                       # Conform to XDG Base Directory (data)
   zsh-defer eval "$(jenv init -)"
 fi
-
-
 
 # MARK: GO
 export GOPATH="$XDG_DATA_HOME/go"           # Conform to XDG Base Directory

@@ -1,6 +1,7 @@
 # .zshrc is sourced for every interactive zsh shell
 # All env vars that subshell and external commands don't need go here
-zmodload zsh/zprof
+
+# zmodload zsh/zprof
 
 # MAKR: Install and configure zinit
 # Configure zinit paths
@@ -50,6 +51,11 @@ for dir in $config_dirs; do
     source ${dir}init.zsh
   fi
 done
+
+# source .zshrc on $HOME, if exists
+if [[ -f $HOME/.zshrc ]]; then
+  source $HOME/.zshrc
+fi
 
 bindkey -e                     # Resotre default keybidning
 # zprof

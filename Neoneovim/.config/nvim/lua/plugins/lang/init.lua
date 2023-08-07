@@ -5,4 +5,5 @@ return {
 	require("plugins.lang.lua"),
 	require("plugins.lang.python"),
 	require("plugins.lang.xml"),
+	require("plugins.lang.typescript"),
 }

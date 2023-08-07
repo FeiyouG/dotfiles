@@ -32,6 +32,7 @@ M.exclude_winbar = {
   filetype = {},
   buftype = {
     "help",
+    "nofile"
   },
   bufname = {},
 }

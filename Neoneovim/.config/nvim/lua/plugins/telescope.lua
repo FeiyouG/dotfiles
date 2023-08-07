@@ -62,6 +62,7 @@ return {
 			vim.keymap.set("n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find keymaps" })
 			vim.keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Find buffers" })
 			vim.keymap.set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Find string in workspace" })
+			vim.keymap.set("n", "<leader>fl", "<CMD>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find line in current buffer" })
 			-- settings.fn.keymap.set({
 			--   {
 			--     desc = "Find hidden files",

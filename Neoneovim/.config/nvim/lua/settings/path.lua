@@ -13,6 +13,7 @@ M.stdpath = {
 M.plugin = {
 	home = M.stdpath.data .. "/plugins",
 	dev = M.stdpath.data .. "/dev",
+  lockfile = M.stdpath.cache .. "plugin/lock",
 	manager = {
 		name = "lazy",
 		url = "https://github.com/folke/lazy.nvim.git",

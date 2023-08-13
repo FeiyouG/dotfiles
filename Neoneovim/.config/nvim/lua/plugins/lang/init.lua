@@ -7,4 +7,5 @@ return {
 	require("plugins.lang.xml"),
 	require("plugins.lang.typescript"),
 	require("plugins.lang.docker"),
+	require("plugins.lang.json"),
 }

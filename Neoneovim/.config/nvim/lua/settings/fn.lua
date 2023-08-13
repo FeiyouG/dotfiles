@@ -105,6 +105,11 @@ M.lsp.get_capabilities = function()
 		capabilities.textDocument.completion = cmp.default_capabilities().textDocument.completion
 	end
 
+  local snip_avail, _ = pcall(require, "luasnip")
+  if snip_avail then
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+  end
+
 	local ufo_avil, _ = pcall(require, "ufo")
 	if ufo_avil then
 		capabilities.textDocument.foldingRange = {

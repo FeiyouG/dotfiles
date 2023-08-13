@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      opts.tsserver = {}
+      opts.jsonls = {}
       return opts
     end,
   }

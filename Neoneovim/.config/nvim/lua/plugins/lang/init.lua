@@ -6,4 +6,5 @@ return {
 	require("plugins.lang.python"),
 	require("plugins.lang.xml"),
 	require("plugins.lang.typescript"),
+	require("plugins.lang.docker"),
 }

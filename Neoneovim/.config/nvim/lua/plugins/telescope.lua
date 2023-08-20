@@ -111,54 +111,7 @@ return {
       })
     end,
   },
-  {
-    "folke/trouble.nvim",
-    event = { "VeryLazy" },
-    keys = {
-      { "<leader>xx", "<CMD>TroubleToggle<CR>",                       desc = "Toggle trouble" },
-      { "<leader>xq", "<CMD>TroubleToggle quickfix<CR>",              desc = "Toggle quickfix with trouble" },
-      { "<leader>xl", "<CMD>TroubleToggle loclist<CR>",               desc = "Toggle quickfix with loclist" },
-      { "<leader>xw", "<CMD>TroubleToggle workspace_diagnostics<CR>", desc = "Toggle workspace diagnostic with loclist" },
-      { "<leader>xd", "<CMD>TroubleToggle document_diagnostics<CR>",  desc = "Toggle document diagnostic with loclist" },
-      {
-        "]x",
-        function() require("trouble").next({ skip_groups = true, jump = true }) end,
-        desc = "Go to next item in trouble"
-      },
-      {
-        "[x",
-        function() require("trouble").previous({ skip_groups = true, jump = true }) end,
-        desc = "Go to previous item in trouble"
-      },
-    },
-
-    opts = {
-      mode = "quickfix",
-      fold_open = settings.icons.fs.folder.indicator.open,
-      fold_closed = settings.icons.fs.folder.indicator.closed,
-      padding = false,
-      action_keys = {
-        refresh = "<c-r>",
-        open_split = "<c-s>",
-        jump_close = "gf",
-        switch_severity = "<c-f>",
-        toggle_preview = "P",
-        hover = "K",
-        preview = "p",
-        open_code_href = "c",
-        help = "?"
-      },
-      win_config = { border = settings.icons.editor.border.rounded },
-      auto_jump = {},
-      signs = {
-        error = settings.icons.diagnostic.error,
-        warning = settings.icons.diagnostic.warning,
-        hint = settings.icons.diagnostic.hint,
-        information = settings.icons.diagnostic.info,
-        other = settings.icons.diagnostic.other
-      },
-    }
-  }
+  
 
   -- {
   --   "git@github.com:FeiyouG/command_center.nvim.git",

@@ -18,6 +18,20 @@ return {
         end,
       },
     },
+    keys = {
+      { "<leader>ff", "<CMD>Telescope find_files<CR>", mode = "n", desc = "Find files" },
+      { "<leader>fk", "<CMD>Telescope keymaps<CR>",    mode = "n", desc = "Find keymaps" },
+      { "<leader>fb", "<CMD>Telescope buffers<CR>",    mode = "n", desc = "Find buffers" },
+      { "<leader>fg", "<CMD>Telescope live_grep<CR>",  mode = "n", desc = "Find string in workspace" },
+      { "<leader>fh", "<CMD>Telescope help_tags<CR>",  mode = "n", desc = "Search help" },
+      {
+        "<leader>fl",
+        "<CMD>Telescope current_buffer_fuzzy_find<CR>",
+        mode = "n",
+        desc = "Find line in current buffer"
+      },
+    },
+
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -56,81 +70,13 @@ return {
         },
       }
 
-      if (settings.fn.is_installed("trouble.nvim")) then
+      if (settings.fn.plugin.is_installed("trouble")) then
         local trouble = require("trouble.providers.telescope")
         telescope_config.defaults.mappings.n["<C-q>"] = trouble.open_with_trouble
         telescope_config.defaults.mappings.i["<C-q>"] = trouble.open_with_trouble
       end
 
       telescope.setup(telescope_config)
-
-      -- Setup keymaps
-      vim.keymap.set("n", "<leader>ff", "<CMD>Telescope find_files<CR>", { desc = "Find files" })
-      vim.keymap.set("n", "<leader>fk", "<CMD>Telescope keymaps<CR>", { desc = "Find keymaps" })
-      vim.keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Find buffers" })
-      vim.keymap.set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Find string in workspace" })
-      vim.keymap.set("n", "<leader>fl", "<CMD>Telescope current_buffer_fuzzy_find<CR>",
-        { desc = "Find line in current buffer" })
-      -- settings.fn.keymap.set({
-      --   {
-      --     desc = "Find hidden files",
-      --     cmd = "<CMD>Telescope find_files hidden=true<CR>",
-      --   },
-      --   {
-      --     desc = "Show recent files",
-      --     cmd = "<CMD>Telescope oldfiles<CR>",
-      --   },
-      --   {
-      --     desc = "Show all commands",
-      --     cmd = "<CMD>Telescope commands<CR>",
-      --   },
-      --   {
-      --     desc = "Show command history",
-      --     cmd = "<CMD>Telescope command_history<CR>",
-      --   },
-      --   {
-      --     desc = "Show search history (vimgrep)",
-      --     cmd = "<CMD>Telescope search_history<CR>",
-      --   },
-      --   {
-      --     desc = "Show marks",
-      --     cmd = "<CMD>Telescope marks<CR>",
-      --   },
-      --   {
-      --     desc = "Switch colorschemes",
-      --     cmd = "<CMD>Telescope colorscheme<CR>",
-      --   },
-      --   {
-      --     desc = "Show jumplist",
-      --     cmd = "<CMD>Telescope jumplist<CR>",
-      --   },
-      --   {
-      --     desc = "Edit vim options",
-      --     cmd = "<CMD>Telescope vim_options<CR>",
-      --   },
-      --   {
-      --     desc = "Show autocommands",
-      --     cmd = "<CMD>Telescope autocommands<CR>",
-      --   },
-      --   {
-      --     desc = "Show telescope builtin commands",
-      --     cmd = "<CMD>Telescope builtin<CR>",
-      --   },
-      --
-      --   -- Git Pickers
-      --   {
-      --     desc = "Show workspace git commits",
-      --     cmd = "<CMD>Telescope git_commits<CR>",
-      --   },
-      --   {
-      --     desc = "Show git branches",
-      --     cmd = "<CMD>Telescope <CR>",
-      --   },
-      --   {
-      --     desc = "Show git stash",
-      --     cmd = "<CMD>Telescope git_stash<CR>",
-      --   },
-      -- })
 
       -- Filetype update
       vim.list_extend(settings.ft.exclude_winbar.filetype, {
@@ -144,6 +90,13 @@ return {
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
+    keys = {
+      { "<leader>fu",  "<Cmd>UrlView<CR>",      mode = { "n", "v" }, desc = "Show all buffer links" },
+      { "<leader>fub", "<Cmd>UrlView<CR>",      mode = { "n", "v" }, desc = "Show all buffer links" },
+      { "<leader>fup", "<Cmd>UrlView lazy<CR>", mode = { "n", "v" }, desc = "Show all plugin links" },
+      { "[u" },
+      { "]" }
+    },
     config = function()
       require("urlview").setup({
         default_picker = "telescope",
@@ -156,17 +109,11 @@ return {
           ["next"] = "]u",
         },
       })
-
-      vim.keymap.set({ "n", "v" }, "<leader>fu", "<Cmd>UrlView<CR>", { desc = "Show all buffer links" })
-      vim.keymap.set({ "n", "v" }, "<leader>fub", "<Cmd>UrlView<CR>", { desc = "Show all buffer links" })
-      vim.keymap.set({ "n", "v" }, "<leader>fup", "<Cmd>UrlView lazy<CR>", { desc = "Show all plugin links" })
     end,
   },
   {
     "folke/trouble.nvim",
-
     event = { "VeryLazy" },
-
     keys = {
       { "<leader>xx", "<CMD>TroubleToggle<CR>",                       desc = "Toggle trouble" },
       { "<leader>xq", "<CMD>TroubleToggle quickfix<CR>",              desc = "Toggle quickfix with trouble" },

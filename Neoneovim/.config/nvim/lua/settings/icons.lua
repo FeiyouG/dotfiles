@@ -35,6 +35,7 @@ M.fs = {
 		indicator = {
 			modified = " ",
 			readonly = " ",
+      bookmark = " "
 		},
 	},
 	folder = {

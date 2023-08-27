@@ -92,6 +92,17 @@ function M.plugin.load(plugin_name)
   return require(plugin_name)
 end
 
+-- SECTION: Command
+-- M.command = {
+--   ---@param items Item
+--   ---@param opts? Config
+--   add = function(items, opts)
+--     if not M.plugin.is_installed("commander") then return end
+--     print("HERE!")
+--     M.plugin.load("commander").add(items, opts)
+--   end
+-- }
+
 -- SECTION: LSP
 M.lsp = {}
 

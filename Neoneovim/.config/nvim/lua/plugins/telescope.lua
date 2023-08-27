@@ -111,48 +111,43 @@ return {
       })
     end,
   },
-  
+  {
+    "FeiyouG/commander.nvim",
+    -- dir = "~/.local/share/nvim/dev/command_center.nvim",
+    -- dev = true,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      { "<leader>f",  "<CMD>Telescope commander<CR>", mode = "n" },
+      { "<leader>fc", "<CMD>Telescope commander<CR>", mode = "n" }
+    },
+    config = function()
+      local commander = require("commander")
+      commander.setup({
+        components = {
+          "DESC",
+          "KEYS",
+        },
+        sort_by = {
+          "DESC",
+          "KEYS",
+          "CAT",
+          "CMD"
+        },
+        auto_replace_desc_with_cmd = true,
 
-  -- {
-  --   "git@github.com:FeiyouG/command_center.nvim.git",
-  --   dev = true,
-  --   priority = settings.priority.HIGH,
-  --   dependencies = {
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  --   config = function()
-  --     local commander = require("commander")
-  --     commander.setup({
-  --       components = {
-  --         commander.component.DESC,
-  --         commander.component.KEYS,
-  --         commander.component.CAT,
-  --       },
-  --       sort_by = {
-  --         commander.component.DESC,
-  --         commander.component.CAT,
-  --         commander.component.KEYS,
-  --         commander.component.CMD,
-  --       },
-  --       auto_replace_desc_with_cmd = true,
-  --       telescope = {
-  --         integrate = true,
-  --         theme = require("telescope.themes").commander,
-  --       },
-  --     })
-  --
-  --     settings.fn.keymap.set({
-  --       {
-  --         desc = "Open Commander",
-  --         cmd = "<CMD>Telescope commander<CR>",
-  --         keys = {
-  --           -- If ever hesitate when using telescope start with <leader>f,
-  --           -- also open command center
-  --           { { "n", "x" }, "<Leader>f" },
-  --           { { "n", "x" }, "<Leader>fc" },
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
+        separator = " ",
+
+        integration = {
+          telescope = {
+            enable = true,
+          },
+          lazy = {
+            enable = true
+          }
+        }
+      })
+    end,
+  },
 }

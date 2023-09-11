@@ -19,7 +19,22 @@ return {
         desc = "Go to previous item in trouble"
       },
     },
-
+    dependencies = {
+      {
+        "nvim-telescope/telescope.nvim",
+        opts = function(_, opts)
+          local trouble_provider = require("trouble.providers.telescope")
+          return vim.tbl_deep_extend("force", opts, {
+            defaults = {
+              mappings = {
+                n = { ["<C-q>"] = trouble_provider.open_with_trouble },
+                i = { ["<C-q>"] = trouble_provider.open_with_trouble }
+              }
+            }
+          })
+        end,
+      }
+    },
     opts = {
       mode = "quickfix",
       fold_open = settings.icons.fs.folder.indicator.open,
@@ -155,5 +170,18 @@ return {
       vim.keymap.set("n", "<C-h>", require('smart-splits').move_cursor_left, { desc = "Move to window left" })
       vim.keymap.set("n", "<C-l>", require('smart-splits').move_cursor_right, { desc = "Move to window right" })
     end,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("project_nvim").setup({
+        silent_chdir = true,
+      })
+      require("telescope").load_extension("projects")
+    end
   }
+
 }

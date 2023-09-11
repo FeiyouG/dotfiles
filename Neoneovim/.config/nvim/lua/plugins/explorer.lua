@@ -126,6 +126,7 @@ return {
         hijack_unnamed_buffer_when_opening = false,
         hijack_cursor = false,
         update_cwd = true,
+        sync_root_with_cwd = true,
         respect_buf_cwd = true,
         select_prompts = true,
         view = {

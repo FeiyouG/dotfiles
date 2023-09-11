@@ -32,12 +32,12 @@ return {
       },
     },
 
-    config = function()
+    config = function(_, opts)
       local telescope = require("telescope")
       local actions = require("telescope.actions")
 
       -- Setup telescope config
-      local telescope_config = {
+      opts = vim.tbl_deep_extend("force", opts, {
         defaults = {
           layout_strategy = "flex",
           mappings = {
@@ -52,7 +52,7 @@ return {
             },
             i = {
               ["<Esc>"] = actions.close,
-              ["<C-u>"] = false, -- Clear the prompt
+              ["<C-u>"] = false,  -- Clear the prompt
               ["<C-s>"] = actions.select_horizontal,
               ["<C-t>"] = actions.select_tab,
               ["<C-f>"] = actions.preview_scrolling_up,
@@ -68,15 +68,9 @@ return {
             theme = "cursor",
           },
         },
-      }
+      })
 
-      if (settings.fn.plugin.is_installed("trouble")) then
-        local trouble = require("trouble.providers.telescope")
-        telescope_config.defaults.mappings.n["<C-q>"] = trouble.open_with_trouble
-        telescope_config.defaults.mappings.i["<C-q>"] = trouble.open_with_trouble
-      end
-
-      telescope.setup(telescope_config)
+      telescope.setup(opts)
 
       -- Filetype update
       vim.list_extend(settings.ft.exclude_winbar.filetype, {
@@ -150,4 +144,26 @@ return {
       })
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = {
+      {
+        "nvim-telescope/telescope.nvim",
+        opts = function(_, opts)
+          return vim.tbl_deep_extend("force", opts, {
+            extensions = {
+              file_browser = {
+                theme = "dropdown",
+                hijack_netrw = false,
+              }
+            }
+          })
+        end,
+      },
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("telescope").load_extension("file_browser")
+    end
+  }
 }

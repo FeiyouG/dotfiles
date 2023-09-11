@@ -52,7 +52,7 @@ return {
             },
             i = {
               ["<Esc>"] = actions.close,
-              ["<C-u>"] = false,  -- Clear the prompt
+              ["<C-u>"] = false, -- Clear the prompt
               ["<C-s>"] = actions.select_horizontal,
               ["<C-t>"] = actions.select_tab,
               ["<C-f>"] = actions.preview_scrolling_up,
@@ -107,7 +107,7 @@ return {
   },
   {
     "FeiyouG/commander.nvim",
-    -- dir = "~/.local/share/nvim/dev/command_center.nvim",
+    -- dir = "~/.local/share/nvim/dev/commander.nvim",
     -- dev = true,
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -116,33 +116,29 @@ return {
       { "<leader>f",  "<CMD>Telescope commander<CR>", mode = "n" },
       { "<leader>fc", "<CMD>Telescope commander<CR>", mode = "n" }
     },
-    config = function()
-      local commander = require("commander")
-      commander.setup({
-        components = {
-          "DESC",
-          "KEYS",
-        },
-        sort_by = {
-          "DESC",
-          "KEYS",
-          "CAT",
-          "CMD"
-        },
-        auto_replace_desc_with_cmd = true,
+    opts = {
+      components = {
+        "DESC",
+        "KEYS",
+        "CAT",
+      },
+      sort_by = {
+        "DESC",
+        "KEYS",
+        "CAT",
+        "CMD"
+      },
 
-        separator = " ",
-
-        integration = {
-          telescope = {
-            enable = true,
-          },
-          lazy = {
-            enable = true
-          }
+      integration = {
+        telescope = {
+          enable = true,
+        },
+        lazy = {
+          enable = true,
+          set_plugin_name_as_cat = true
         }
-      })
-    end,
+      }
+    }
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
@@ -161,6 +157,9 @@ return {
         end,
       },
       "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>ft", "<CMD>Telescope file_browser<CR>", desc = "Browse files with telescope" },
     },
     config = function()
       require("telescope").load_extension("file_browser")

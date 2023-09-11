@@ -173,8 +173,12 @@ return {
   },
   {
     "ahmedkhalf/project.nvim",
+    event = "BufEnter",
     dependencies = {
       "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      { "<leader>fp", "<CMD>Telescope projects<CR>", desc = "Search recent porjects" },
     },
     config = function()
       require("project_nvim").setup({

@@ -17,6 +17,28 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    keys = {
+      { "<leader>sd",  "<CMD>Telescope lsp_definitions<CR>",               mode = "n", desc = "Go to definitions" },
+      { "<leader>st",  "<CMD>Telescope lsp_type_definitions<CR>",          mode = "n", desc = "Go to type definitions" },
+      { "<leader>sr",  "<CMD>Telescope lsp_references<CR>",                mode = "n", desc = "Show all references" },
+      { "<leader>ssw", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>", mode = "n", desc = "show workspace symbols" },
+      { "<leader>si",  "<CMD>Telescope lsp_implementations<CR>",           mode = "n", desc = "Go to implementations" },
+      { "<leader>ssd", "<CMD>Telescope lsp_document_symbols<CR>",          mode = "n", desc = "Show document symbols" },
+      { "<leader>ss",  "<CMD>Telescope lsp_document_symbols<CR>",          mode = "n", desc = "Show document symbols" },
+      {
+        "<leader>se",
+        "<CMD>Telescope diagnostics<CR>",
+        mode = "n",
+        desc = "Show workspace errors (diagnostic)"
+      },
+      {
+        "<leader>sef",
+        "<CMD>Telescope diagnostics<CR>",
+        mode = "n",
+        desc = "Show workspace errors (diagnostic)"
+      },
     },
     config = function(_, opts)
       -- Config `lspInfo` floating window

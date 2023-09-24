@@ -9,4 +9,5 @@ return {
 	require("plugins.lang.docker"),
 	require("plugins.lang.json"),
 	require("plugins.lang.markdown"),
+	require("plugins.lang.c"),
 }

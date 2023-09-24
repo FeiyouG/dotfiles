@@ -51,6 +51,11 @@ return {
           -- nvim-ufo
           UfoFoldedBg                = { fg = colors.gray, bg = colors.none, style = "underline" },
           UfoFoldedEllipsis          = { fg = colors.light_gray, style = "italic" },
+          StatusColumnFoldedIcon     = { fg = colors.yellow },
+          StatusColumnUnfoldedIcon   = { fg = colors.selection },
+
+          -- Git
+          GitSignsNoChange           = { fg = colors.selection },
         },
       })
 

@@ -7,6 +7,8 @@ M.editor = {
 		-- fold_open = " ▏̵",
 		-- fold_close = "⊖̩̍",
 		gitsigns = " ▏",
+    folds_open = "",
+    folds_closed = "",
 	},
 	border = {
 		rounded = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

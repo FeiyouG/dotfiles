@@ -8,6 +8,7 @@ return {
 	require("plugins.lang.typescript"),
 	require("plugins.lang.docker"),
 	require("plugins.lang.json"),
-	require("plugins.lang.markdown"),
 	require("plugins.lang.c"),
+	require("plugins.lang.markdown"),
+	require("plugins.lang.neorg"),
 }

@@ -165,7 +165,7 @@ M.lsp = {
 
 -- MARK: TODO Comment
 M.comment = {
-	note = " ",
+	note = " ",
 	hack = " ",
 	todo = " ",
 	optimized = " ",

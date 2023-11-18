@@ -112,9 +112,15 @@ return {
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },
-    keys = {
-      { "<leader>f",  "<CMD>Telescope commander<CR>", mode = "n" },
-      { "<leader>fc", "<CMD>Telescope commander<CR>", mode = "n" }
+    commander = {
+      {
+        desc = "Open Commander",
+        cmd = "<CMD>Telescope commander<CR>",
+        keys = {
+          { "n", "<leader>f" },
+          { "n", "<leader>fc" },
+        },
+      }
     },
     opts = {
       components = {

@@ -40,9 +40,9 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"              # Conform to X
 
 # MARK: python virtualenvs
 export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"                   # Conform to XDG Base Directory (data)
-export VIRTUALENVWRAPPER_WRAPPER=/Library/Frameworks/Python.framework/Versions/3.10/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_WRAPPER="$HOMEBREW_PREFIX/bin/virtualenvwrapper.sh"
 if [ -f $VIRTUALENVWRAPPER_WRAPPER ]; then                       # Setup virtualevnwrappers
-  export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
+  export VIRTUALENVWRAPPER_PYTHON="$HOMEBREW_PREFIX/bin/python3.11"
   zsh-defer source $VIRTUALENVWRAPPER_WRAPPER
 fi
 

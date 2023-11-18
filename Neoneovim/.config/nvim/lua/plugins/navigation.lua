@@ -199,7 +199,9 @@ return {
         icons = icons.lsp,
         lsp = {
           auto_attach = true,
-          preference = nil,
+          preference = {
+            "volar",
+          },
         },
         highlight = false,
         separator = " ❯ ",

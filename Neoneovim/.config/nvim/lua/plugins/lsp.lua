@@ -47,9 +47,6 @@ return {
         -- setup
         lspconfig[server].setup(server_config)
       end
-
-      -- FIX: lua_ls has to be setup explicitly or it won't attach
-      lspconfig.lua_ls.setup(opts.lua_ls)
     end,
   },
 }

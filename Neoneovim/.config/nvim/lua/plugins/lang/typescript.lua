@@ -9,7 +9,7 @@ local function is_inside_vue_repo()
     'package.json',
   }
 
-  local root_path = vim.fn.getcwd() -- You might need to adjust this for multi-module repos or monorepos
+  local root_path = settings.fn.project_root({ "package.json" })
 
   -- Function to check if a file exists in the root directory of the project
   local function file_exists_in_root(file_name)
@@ -19,6 +19,10 @@ local function is_inside_vue_repo()
 
   -- Check each root file for indicators of a Vue project
   for _, file_name in ipairs(root_files) do
+
+    -- If not in a ts/js repository, return false
+    if not root_path then return false end
+
     if file_exists_in_root(file_name) then
       if file_name == 'package.json' then
         -- Read the package.json file and check for Vue dependencies
@@ -43,7 +47,7 @@ return {
       opts.tsserver = {
         handlers = {
           ['textDocument/publishDiagnostics'] = is_inside_vue_repo() and function()
-            print("tsserver has been disabled for this Vue project.")
+            vim.notify("tsserver diagnostics has been disabled for this Vue project.")
           end or nil
         }
       }

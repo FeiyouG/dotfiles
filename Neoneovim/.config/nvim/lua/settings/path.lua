@@ -28,9 +28,9 @@ M.installer = {
 }
 
 M.snippet = {
-  home = M.stdpath.config .. "/snippet",
-  vscode = M.stdpath.config .. "/snippet/vscode",
-  lua = M.stdpath.config .. "/snippet/lua",
+  home = M.stdpath.config .. "/snippets",
+  vscode = M.stdpath.config .. "/snippets/vscode",
+  lua = M.stdpath.config .. "/snippets/lua",
 }
 
 -- MARK: Java

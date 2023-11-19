@@ -160,7 +160,7 @@ M.lsp.on_attach = function(client, bufnr)
       if client.server_capabilities.documentFormattingProvider then
         vim.lsp.buf.format({ async = true })
       end
-    end, { desc = "Show documentations (hover)" })
+    end, { desc = "lps format" })
 
   if M.plugin.is_installed("telescope") then
     M.plugin.load("telescope")

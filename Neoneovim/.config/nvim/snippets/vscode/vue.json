@@ -1,0 +1,19 @@
+{
+  "scaffold": {
+    "prefix": "scaffold",
+    "body": [
+      "<template>",
+      "$0",
+      "</template>",
+      "",
+      "<script setup>",
+      "",
+      "</script>",
+      "",
+      "<style>",
+      "",
+      "</style>"
+    ],
+    "description": "Create skeleton for a vue component"
+  }
+}

@@ -7,9 +7,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
+
       -- For Vue
       opts.volar = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
       }
 
       -- For emmet integrations

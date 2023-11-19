@@ -7,6 +7,12 @@
           "beancount"
         ],
         "path": "./beancount.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./vue.json"
       }
     ]
   }

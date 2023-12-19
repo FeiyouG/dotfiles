@@ -107,8 +107,6 @@ return {
   },
   {
     "FeiyouG/commander.nvim",
-    -- dir = "~/.local/share/nvim/dev/commander.nvim",
-    -- dev = true,
     dependencies = {
       "nvim-telescope/telescope.nvim",
     },

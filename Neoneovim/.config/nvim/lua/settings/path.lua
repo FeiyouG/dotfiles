@@ -70,7 +70,11 @@ M.xml = {
 -- 		journal_file = fn.glob("$HOME/Vault/Fin/init.beancount"),
 -- 	},
 M.spell = {
-	spellfile = M.installer.packages .. "/nvim/spell/en.utf-8.add",
+  home = M.stdpath.config .. "/spell",
+	spellfile = M.stdpath.config .. "/spell/en.utf-8.add",
 }
+
+-- Make sure spell.home directory is created
+vim.fn.mkdir(M.spell.home, "p")
 
 return M

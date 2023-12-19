@@ -146,4 +146,27 @@ return {
       require('ts_context_commentstring').setup {}
     end
   },
+  {
+    -- Editing injected language in a flowing window
+    'AckslD/nvim-FeMaco.lua',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    commander = {
+      {
+        cmd = "<CMD>FeMaco<CR>",
+        desc = "Eidt code block in popup",
+      },
+    },
+    opts = {
+      -- what to do after opening the float
+      post_open_float = function(_)
+        vim.keymap.set({ "n", "v" }, "q", vim.cmd.close, { desc = "Close current buffer", buffer = true })
+      end,
+    },
+    config = function(_, opts)
+      require("femaco").setup(opts)
+      vim.list_extend(settings.ft.quit_on_q.buftype, { "femaco" })
+    end
+  }
 }

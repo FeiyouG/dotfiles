@@ -70,4 +70,19 @@ return {
     end,
   },
   { "lukas-reineke/indent-blankline.nvim" },
+  {
+    "rcarriga/nvim-notify",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    commander = {
+      {
+        desc = "View notification history",
+        cmd = "<CMD>Telescope notify<CR>"
+      }
+    },
+    config = function()
+      vim.notify = require("notify")
+    end
+  }
 }

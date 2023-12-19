@@ -115,7 +115,7 @@ return {
     commander = {
       {
         desc = "Open Commander",
-        cmd = "<CMD>Telescope commander<CR>",
+        cmd = function() require("commander").show() end,
         keys = {
           { "n", "<leader>f" },
           { "n", "<leader>fc" },

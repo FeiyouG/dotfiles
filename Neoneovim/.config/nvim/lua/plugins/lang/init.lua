@@ -12,5 +12,6 @@ return {
 	require("plugins.lang.markdown"),
 	require("plugins.lang.neorg"),
 	require("plugins.lang.proto"),
+	require("plugins.lang.graphql"),
 	require("plugins.lang.vue"),
 }

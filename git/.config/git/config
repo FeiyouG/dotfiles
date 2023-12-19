@@ -22,4 +22,4 @@
 [commit]
 	gpgSign = true
 [gpg]
-	program = gpg
+  program = gpg

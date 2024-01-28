@@ -24,7 +24,7 @@ return {
 		-- event = { "VeryLazy" },
 		dependencies = {
 			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
+			"nvimtools/none-ls.nvim",
 		},
 		opts = {
 			automatic_installation = true,
@@ -50,7 +50,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"java-test",
-        "java-debug-adapter",
+				"java-debug-adapter",
 			},
 			run_on_start = true,
 			start_delay = 1500, -- 1.5 second delay

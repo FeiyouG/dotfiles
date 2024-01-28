@@ -79,6 +79,14 @@ return {
       {
         desc = "View notification history",
         cmd = "<CMD>Telescope notify<CR>"
+      },
+      {
+        desc = "Dismiss currently displayed notifications",
+        cmd = function() require("notify").dismiss() end
+      },
+      {
+        desc = "Dismiss current and pending notifications",
+        cmd = function() require("notify").dismiss({ pending = true }) end
       }
     },
     config = function()

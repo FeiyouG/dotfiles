@@ -61,5 +61,12 @@ return {
       vim.cmd("let g:table_mode_corner='|'")
     end,
 
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "markdown", "markdown_inline" })
+      return opts
+    end,
   }
 }

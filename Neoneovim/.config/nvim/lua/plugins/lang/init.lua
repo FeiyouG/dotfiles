@@ -14,4 +14,5 @@ return {
 	require("plugins.lang.proto"),
 	require("plugins.lang.graphql"),
 	require("plugins.lang.vue"),
+	require("plugins.lang.rust"),
 }

@@ -1,6 +1,6 @@
 return {
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		opts = {
 			-- require("null-ls").builtins.diagnostics.flake8,
 			require("null-ls").builtins.formatting.isort,
@@ -77,12 +77,5 @@ return {
 				},
 			},
 		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = function(_, opts)
-			opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "python" })
-			return opts
-		end,
 	},
 }

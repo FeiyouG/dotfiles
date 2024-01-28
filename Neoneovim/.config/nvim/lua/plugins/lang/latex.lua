@@ -1,6 +1,6 @@
 return {
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = {
       require("null-ls").builtins.formatting.latexindent,
     },
@@ -140,13 +140,6 @@ return {
           end, { buffer = true })
         end,
       }
-      return opts
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "latex" })
       return opts
     end,
   },

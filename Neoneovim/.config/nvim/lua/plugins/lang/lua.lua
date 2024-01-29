@@ -1,11 +1,12 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
-		opts = {
-			require("null-ls").builtins.formatting.stylua,
-		},
+		opts = function(_, opts)
+			return vim.list_extend(opts, {
+				require("null-ls").builtins.formatting.stylua,
+			})
+		end
 	},
-
 	{
 		"neovim/nvim-lspconfig",
 		opts = function(_, opts)

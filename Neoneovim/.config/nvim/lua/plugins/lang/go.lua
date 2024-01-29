@@ -1,9 +1,11 @@
 return {
   {
     "nvimtools/none-ls.nvim",
-    opts = {
-      require("null-ls").builtins.formatting.gofumpt,
-    },
+    opts = function(_, opts)
+      return vim.list_extend(opts, {
+        require("null-ls").builtins.formatting.gofumpt,
+      })
+    end
   },
   {
     "neovim/nvim-lspconfig",

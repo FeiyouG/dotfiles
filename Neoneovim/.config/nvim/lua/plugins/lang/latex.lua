@@ -1,12 +1,17 @@
 return {
   {
     "nvimtools/none-ls.nvim",
-    opts = {
-      require("null-ls").builtins.formatting.latexindent,
-    },
+    ft = { "latex", "tex" },
+    opts = function(_, opts)
+      return vim.list_extend(opts, {
+        require("null-ls").builtins.formatting.latexindent,
+      })
+    end
+
   },
   {
     "neovim/nvim-lspconfig",
+    ft = { "latex", "tex", "markdown" },
     opts = function(_, opts)
       local util = require("lspconfig.util")
       local handlers = require("vim.lsp.handlers")

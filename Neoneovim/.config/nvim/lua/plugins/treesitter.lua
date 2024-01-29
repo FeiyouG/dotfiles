@@ -155,7 +155,7 @@ return {
     commander = {
       {
         cmd = "<CMD>FeMaco<CR>",
-        desc = "Eidt code block in popup",
+        desc = "Edit code block in popup",
       },
     },
     opts = {

@@ -1,5 +1,14 @@
 return {
   {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      return vim.list_extend(opts, {
+        require("null-ls").builtins.diagnostics.alex, -- Catch insensitive, inconsiderate writing.
+        require("null-ls").builtins.diagnostics.markdownlint
+      })
+    end
+  },
+  {
     "iamcco/markdown-preview.nvim",
     build = "cd app && yarn install",
     ft = { "markdown" },

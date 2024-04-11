@@ -48,6 +48,12 @@ To add/remove lsp:
    that
 1. Restart nvim and run `:PackerCompile`
 
+### Java
+
+Note jdtls only works with java17 or newer. 
+If Jdtls can't start properly, 
+please first check if you have the right version of java installed
+
 ## Debuggers
 
 ### Python

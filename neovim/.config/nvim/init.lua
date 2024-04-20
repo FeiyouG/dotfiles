@@ -1,27 +1,39 @@
--- SECTION: Load core settings
-require("core")
+require("settings")
 
--- SECTION: Plugins
-local style = require("settings.style")
-local fn = require("settings.fn")
+local function bootstrap(install_path, repo, branch)
+  if vim.loop.fs_stat(install_path) then
+    return
+  end
 
-fn.bootstrap(vim.env.PLUGIN_MANAGER_PATH, "https://github.com/folke/lazy.nvim.git", "stable")
-vim.opt.rtp:prepend(vim.env.PLUGIN_MANAGER_PATH)
+  local plugin_name = vim.fn.fnamemodify(install_path, ":p:h:y")
+  vim.notify("Boostrap " .. plugin_name .. "...")
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    repo,
+    branch and "--branch=" .. branch or "",
+    -- "--depth",
+    -- "1",
+    -- repo,
+    install_path,
+  })
+end
 
--- Setup plugins through lazy.nvim
+local manager = settings.path.plugin.manager
+bootstrap(manager.install_path, manager.url, "stable")
+vim.opt.rtp:prepend(manager.install_path)
+
 require("lazy").setup("plugins", {
-	root = vim.env.PLUGIN_HOME,
-
-	dev = {
-		path = vim.env.DEV_HOME,
-	},
-
-	install = {
-		missing = true,
-		colorscheme = { "onenord" },
-	},
-
-	ui = {
-		border = style.border.rounded,
-	},
+  root = settings.path.plugin.home,
+  dev = {
+    path = settings.path.plugin.dev,
+  },
+  install = {
+    missing = true,
+    colorscheme = { "onenord" },
+  },
+  ui = {
+    border = settings.icons.editor.border.rounded_with_hl,
+  },
 })

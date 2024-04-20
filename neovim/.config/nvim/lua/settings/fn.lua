@@ -1,276 +1,190 @@
 local M = {}
+_G.settings.fn = M
 
----Safely require a package; if failed, return nil and notify the error
----@param name string the name of the package to be requried
----@param ... any additional detail to be included in the notification in case of failure
----@return nil|table
-function M.require(name, ...)
-	local ok, res = pcall(require, name)
-	if not ok then
-		if select("#", ...) > 0 then
-			vim.notify_once(...)
-		end
-		return nil
-	end
-	return res
-end
-
----@param obj any the object to be checked
----@return boolean is_callable true if obj is callable
-function M.is_callable(obj)
-	if type(obj) == "function" then
-		return true
-	elseif type(obj) == "table" then
-		local mt = getmetatable(obj)
-		if mt then
-			return type(mt.__call) == "function"
-		end
-	end
-	return false
-end
-
----Return the root dir of project based on patterns
----@param patterns {[integer]: string} | nil files/dirs that the root dir would contain; look for ,git folder by default
----@return string path the path of the root directory
-function M.find_root(patterns)
-	patterns = patterns or { ".git" }
-	return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
-end
-
----Check whether the given path is a file
-function M.is_file(path)
-	return vim.fn.filereadable(vim.fn.glob(path)) == 1
-end
-
----Check whether the given path is a directory
-function M.is_dir(path)
-	return vim.fn.isdirectory(vim.fn.glob(path)) == 1
-end
-
----Clone repo to path if path doesn't exists
----@param install_path string
----@param repo string the link to the remote git repo
-function M.bootstrap(install_path, repo, branch)
-	if vim.loop.fs_stat(install_path) then
-		return
-	end
-
-	local plugin_name = vim.fn.fnamemodify(install_path, ":p:h:y")
-	vim.notify("Boostrap " .. plugin_name .. "...")
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		repo,
-		branch and "--branch=" .. branch or "",
-		-- "--depth",
-		-- "1",
-		-- repo,
-		install_path,
-	})
-end
-
----Set environment variables
----@param envs {[string] : string} a table of enviroment variables and their default values
----@param override boolean | nil if set to true, then then envs will be override if they are already defined
-function M.set_envs(envs, override)
-	override = override or false
-
-	for env, default in pairs(envs) do
-		if override or not vim.env[env] then
-			vim.env[env] = default
-		end
-	end
-end
+-- SECTION: Utility
 
 local os_name = nil
 
 ---Get current OS name
 ---@return string os_name one of "mac", "win", "linux", and "unkown"
 function M.os_name()
-	if os_name ~= nil then
-		return os_name
-	end
+  if os_name ~= nil then return os_name end
 
-	local os_list = {
-		mac = "mac",
-		win32 = "win",
-		linux = "linux",
-	}
+  for os, name in pairs({
+    mac = "mac",
+    win32 = "win",
+    linux = "linux",
+  }) do
+    if vim.fn.has(os) == 1 then
+      os_name = name
+      return name
+    end
+  end
 
-	for os, name in pairs(os_list) do
-		if vim.fn.has(os) == 1 then
-			os_name = name
-			return name
-		end
-	end
-
-	return "unkown"
+  os_name = "unkown"
+  return os_name
 end
 
--- TODO: TEMPORARY
-M.keymap = {
-	set = function(keymaps)
-		local commander = M.require("commander")
-		if commander then
-			commander.add(keymaps)
-		end
-	end,
-}
+---@param obj any the object to be checked
+---@return boolean is_callable true if obj is callable
+function M.is_callable(obj)
+  if type(obj) == "function" then
+    return true
+  elseif type(obj) == "table" then
+    local mt = getmetatable(obj)
+    if mt then
+      return type(mt.__call) == "function"
+    end
+  end
+  return false
+end
 
--- SECION: LSP
+---Return the name of the root directory of the current project based on patterns
+---@param patterns {[integer]: string} | nil files/dirs that the root dir would contain; look for ,git folder by default
+---@return string path the path of the root directory
+function M.project_root(patterns)
+  patterns = patterns or { ".git" }
+  return vim.fs.dirname(vim.fs.find(patterns, { upward = true })[1])
+end
+
+-- SECTION: Plugin
+M.plugin = {}
+
+---@type {string : LazyPlugin}
+local plugins = nil
+
+---Load plugin specs into memory
+local function load_plugin_spec()
+  if not plugins then
+    plugins = {}
+    for _, plugin_config in ipairs(require("lazy").plugins()) do
+      local main = require("lazy.core.loader").get_main(plugin_config) or plugin_config.name
+      plugins[main] = plugin_config
+    end
+  end
+end
+
+---Return true if plugin is installed (may not be loaded)
+---@param plugin_name string the name of the plugin to be checked
+function M.plugin.is_installed(plugin_name)
+  load_plugin_spec()
+  return plugins[plugin_name] ~= nil
+end
+
+---Return the spec of the given plugin, or nil if
+---@param plugin_name string the name of a plugin
+---@return LazyPlugin|nil
+function M.plugin.get_spec(plugin_name)
+  load_plugin_spec()
+  return plugins[plugin_name]
+end
+
+---Immediately load the plugin if it is configured and installed and return it
+---@param plugin_name string the name of the plugin
+---@return any plugin
+function M.plugin.load(plugin_name)
+  if not M.plugin.is_installed(plugin_name) then return nil end
+  require("lazy").load({
+    plugins = { plugins[plugin_name].name },
+    show = false,
+    wait = false,
+  })
+  return require(plugin_name)
+end
+
+-- SECTION: Command
+-- M.command = {
+--   ---@param items Item
+--   ---@param opts? Config
+--   add = function(items, opts)
+--     if not M.plugin.is_installed("commander") then return end
+--     print("HERE!")
+--     M.plugin.load("commander").add(items, opts)
+--   end
+-- }
+
+-- SECTION: LSP
+M.lsp = {}
+
+---@type {string: any}
 local capabilities = nil
-M.lsp = {
-	---Get the lsp client capabilities
-	---@return table capabilities
-	get_capabilities = function()
-		if capabilities then
-			return capabilities
-		end
 
-		capabilities = vim.lsp.protocol.make_client_capabilities()
+---Get the lsp client capabilities
+---@return {string: any} capabilities
+M.lsp.get_capabilities = function()
+  if capabilities then
+    return capabilities
+  end
 
-		local cmp_nvim_lsp = M.require("cmp_nvim_lsp")
-		if cmp_nvim_lsp then
-			capabilities = cmp_nvim_lsp.default_capabilities()
-		end
+  capabilities = vim.lsp.protocol.make_client_capabilities()
 
-		if M.require("ufo") then
-			capabilities.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			}
-		end
+  if M.plugin.is_installed("cmp_nvim_lsp") then
+    capabilities.textDocument.completion = M.plugin.load("cmp_nvim_lsp")
+        .default_capabilities().textDocument.completion
+  end
 
-		return capabilities
-	end,
-	---on_attach method shared by all language servers
-	on_attach = function(client, bufnr)
-		-- -- Setup navic
-		-- local navic = M.require("nvim-navic")
-		-- if navic and client.server_capabilities.documentSymbolProvider then
-		-- 	navic.attach(client, bufnr)
-		-- end
-		--
-		--   -- Setup navBuddy
-		--   local navbuddy = M.require("nvim-navbuddy")
-		--   if navbuddy then
-		--     navbuddy.attach(client, bufnr)
-		--   end
-     
-		-- if client.server_capabilities.documentFormattingProvider then
-			M.keymap.set({
-				{
-					description = "Format code (lint)",
-					cmd = function()
-						-- Trim trailing white space first
-						if not vim.o.binary and vim.o.filetype ~= "diff" and vim.bo.modifiable then
-							vim.cmd([[%s/\s\+$//e]])
-							vim.cmd("noh")
-						end
+  if M.plugin.is_installed("luasnip") then
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+  end
 
-						vim.lsp.buf.format({ async = true })
-					end,
-					keybindings = { "n", "<leader>sf" },
-				},
-			})
-		-- end
+  if M.plugin.is_installed("ufo") then
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+  end
 
-		M.keymap.set({
-			{
-				description = "Show documentations (hover)",
-				cmd = vim.lsp.buf.hover,
-				keybindings = { "n", "K" },
-			},
-			{
-				description = "Show errors of the current line (floating window)",
-				cmd = vim.diagnostic.open_float,
-				keybindings = { "n", "E" },
-			},
-			{
-				description = "Go to the next diagnostic item",
-				cmd = vim.diagnostic.goto_next,
-				keybindings = {
-					{ "n", "<leader>sen" },
-					{ "n", "]d" },
-				},
-			},
-			{
-				description = "Go to the previous diagnostic item",
-				cmd = vim.diagnostic.goto_prev,
-				keybindings = {
-					{ "n", "<leader>sep" },
-					{ "n", "[d" },
-				},
-			},
-			{
-				description = "Show function signature",
-				cmd = vim.lsp.buf.signature_help,
-				keybindings = { "n", "<leader>sk" },
-			},
-			{
-				description = "Go to declarations",
-				cmd = vim.lsp.buf.declaration,
-				keybindings = { "n", "<leader>sD" },
-			},
-			{
-				description = "Rename symbol",
-				cmd = vim.lsp.buf.rename,
-				keybindings = { "n", "<leader>sn" },
-			},
-			-- Commands that take advantages of Telescope
-			{
-				description = "Show code actions",
-				cmd = vim.lsp.buf.code_action,
-				keybindings = {
-					{ "n", "<leader>sa" },
-					{ "v", "<leader>sa" },
-				},
-			},
-			{
-				description = "Go to definitions",
-				cmd = "<CMD>Telescope lsp_definitions<CR>",
-				keybindings = { "n", "<leader>sd" },
-			},
-			{
-				description = "Go to type definitions",
-				cmd = "<CMD>Telescope lsp_type_definitions<CR>",
-				keybindings = { "n", "<leader>st" },
-			},
-			{
-				description = "Show all references",
-				cmd = "<CMD>Telescope lsp_references<CR>",
-				keybindings = { "n", "<leader>sr" },
-			},
-			{
-				description = "Show workspace errors (diagnostic)",
-				cmd = "<CMD>Telescope diagnostics<CR>",
-				keybindings = {
-					{ "n", "<leader>se" },
-					{ "n", "<leader>sef" },
-				},
-			},
-			{
-				description = "Go to implementations",
-				cmd = "<CMD>Telescope lsp_implementations<CR>",
-				keybindings = { "n", "<leader>si" },
-				category = "lsp",
-			},
-			{
-				description = "Show document symbols",
-				cmd = "<CMD>Telescope lsp_document_symbols<CR>",
-				keybindings = {
-					{ "n", "<leader>ss" },
-					{ "n", "<leader>ssd" },
-				},
-			},
-			{
-				description = "show workspace symbols",
-				cmd = "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
-				keybindings = { "n", "<leader>ssw" },
-			},
-		})
-	end,
-}
+  return capabilities
+end
 
-return setmetatable(M, { __index = vim.fn })
+---Common logic in on_attach method shared by all language servers
+M.lsp.on_attach = function(client, bufnr)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentations (hover)" })
+  vim.keymap.set("n", "E", vim.diagnostic.open_float, { desc = "Show errors of the current line (floating window)" })
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to the next diagnostic item" })
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to the previous diagnostic item" })
+  vim.keymap.set("n", "<leader>sk", vim.lsp.buf.signature_help, { desc = "Show function signature" })
+  vim.keymap.set("n", "<leader>sD", vim.lsp.buf.declaration, { desc = "Go to declarations" })
+  vim.keymap.set("n", "<leader>sn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+  vim.keymap.set("n", "<leader>sen", vim.diagnostic.goto_next, { desc = "Go to the next diagnostic item" })
+  vim.keymap.set("n", "<leader>sep", vim.diagnostic.goto_prev, { desc = "Go to the previous diagnostic item" })
+  vim.keymap.set({ "n", "v" }, "<leader>sa", vim.lsp.buf.code_action, { desc = "Show code actions" })
+  vim.keymap.set("n", "<leader>sf",
+    function()
+      -- Trim trailing white space first
+      if not vim.o.binary and vim.o.filetype ~= "diff" and vim.bo.modifiable then
+        vim.cmd([[%s/\s\+$//e]])
+        vim.cmd("noh")
+      end
+
+      if client.server_capabilities.documentFormattingProvider then
+        vim.lsp.buf.format({ async = true })
+      end
+    end, { desc = "lps format" })
+
+  if M.plugin.is_installed("telescope") then
+    M.plugin.load("telescope")
+
+    vim.keymap.set("n", "<leader>sd", "<CMD>Telescope lsp_definitions<CR>", { desc = "Go to definitions" })
+    vim.keymap.set("n", "<leader>st", "<CMD>Telescope lsp_type_definitions<CR>", { desc = "Go to type definitions" })
+    vim.keymap.set("n", "<leader>sr", "<CMD>Telescope lsp_references<CR>", { desc = "Show all references" })
+    vim.keymap.set(
+      "n",
+      "<leader>ssw",
+      "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>",
+      { desc = "show workspace symbols" }
+    )
+    vim.keymap.set("n", "<leader>si", "<CMD>Telescope lsp_implementations<CR>", { desc = "Go to implementations" })
+    vim.keymap.set("n", "<leader>se", "<CMD>Telescope diagnostics<CR>", { desc = "Show workspace errors (diagnostic)" })
+    vim.keymap.set(
+      "n",
+      "<leader>sef",
+      "<CMD>Telescope diagnostics<CR>",
+      { desc = "Show workspace errors (diagnostic)" }
+    )
+    vim.keymap.set("n", "<leader>ssd", "<CMD>Telescope lsp_document_symbols<CR>", { desc = "Show document symbols" })
+    vim.keymap.set("n", "<leader>ss", "<CMD>Telescope lsp_document_symbols<CR>", { desc = "Show document symbols" })
+  end
+end
+
+return M

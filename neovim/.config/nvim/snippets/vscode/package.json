@@ -1,13 +1,19 @@
 {
-	"name": "custom-snippets",
-	"contributes": {
-		"snippets": [
-			{
-				"language": [
-					"beancount"
-				],
-				"path": "./beancount.json"
-			}
-		]
-	}
+  "name": "custom-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "beancount"
+        ],
+        "path": "./beancount.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./vue.json"
+      }
+    ]
+  }
 }

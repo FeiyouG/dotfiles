@@ -2,15 +2,17 @@ return {
   {
     "nvimtools/none-ls.nvim",
     opts = function(_, opts)
+      local null_ls = require("null-ls")
       return vim.list_extend(opts, {
-        require("null-ls").builtins.diagnostics.alex, -- Catch insensitive, inconsiderate writing.
-        require("null-ls").builtins.diagnostics.markdownlint
+        null_ls.builtins.diagnostics.alex, -- Catch insensitive, inconsiderate writing.
+        null_ls.builtins.diagnostics.markdownlint,
+        null_ls.builtins.formatting.markdownlint,
       })
     end
   },
   {
     "iamcco/markdown-preview.nvim",
-    build = "cd app && yarn install",
+    build = function() vim.fn["mkdp#util#install"]() end,
     ft = { "markdown" },
     cmd = { "MarkdownPreviewToggle" },
     keys = {
@@ -25,6 +27,20 @@ return {
       vim.cmd("let g:mkdp_open_to_the_world = 1")
       vim.cmd("let g:mkdp_echo_preview_url = 1")
       vim.cmd("let g:mkdp_page_title = '${name}'")
+      vim.g.mkdp_preview_options = {
+          mkit = {},
+          katex = {},
+          uml = {},
+          maid = {},
+          disable_sync_scroll = 1,
+          sync_scroll_type = 'middle',
+          hide_yaml_meta = 0,
+          sequence_diagrams = {},
+          flowchart_diagrams = {},
+          content_editable = false,
+          disable_filename = 0,
+          toc = {}
+}
     end,
   },
   {
@@ -74,6 +90,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
+      -- Enable markdown parser extensions by exporting env vars
+      vim.env.EXTENSION_TAGS = 1
+      vim.env.EXTENSION_WIKI_LINK = 1
+
+      -- Force treesitter-generate to run before compiling
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.markdown.install_info.requires_generate_from_grammar = true
+      parser_config.markdown_inline.install_info.requires_generate_from_grammar = true
+
       opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "markdown", "markdown_inline" })
       return opts
     end,

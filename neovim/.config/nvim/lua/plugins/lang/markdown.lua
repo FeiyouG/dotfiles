@@ -4,9 +4,20 @@ return {
     opts = function(_, opts)
       local null_ls = require("null-ls")
       return vim.list_extend(opts, {
-        null_ls.builtins.diagnostics.alex, -- Catch insensitive, inconsiderate writing.
-        null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.formatting.markdownlint,
+        null_ls.builtins.diagnostics.markdownlint.with {
+          args = {
+            "--stdin",
+            "--disable", "MD007", -- disable ul-indent - Unordered list indentation
+          }
+        },
+        null_ls.builtins.formatting.markdownlint.with {
+          args = {
+            "--fix", "$FILENAME",
+            "--disable", "MD007", -- disable ul-indent - Unordered list indentation
+            "--disable", "MD053", -- disable Unused link or image reference definition
+          }
+        },
+
       })
     end
   },

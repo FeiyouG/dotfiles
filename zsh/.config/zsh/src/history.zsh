@@ -1,5 +1,5 @@
 # MARK: History file configuration
-export HISTFILE="$XDG_STATE_HOME/zsh/history"  #  Conform to XDG Base Directory (history file)
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"  #  Conform to XDG Base Directory (history file)
 export HISTSIZE=20000                          #  Max events for internal history
 export SAVEHIST=10000                          #  Max events in history file
 

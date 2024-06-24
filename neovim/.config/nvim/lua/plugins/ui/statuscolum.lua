@@ -32,7 +32,7 @@ return {
           self.sign = signs[1]
         end
 
-        self.has_sign = self.sign ~= nil
+        self.has_sign = self.sign ~= nil and self.sign.name ~= ""
         self.bufnr = vim.api.nvim_get_current_buf()
       end,
 

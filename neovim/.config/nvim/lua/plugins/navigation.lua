@@ -27,8 +27,8 @@ return {
           return vim.tbl_deep_extend("force", opts, {
             defaults = {
               mappings = {
-                n = { ["<C-q>"] = trouble_provider.open_with_trouble },
-                i = { ["<C-q>"] = trouble_provider.open_with_trouble }
+                n = { ["<C-q>"] = require("trouble.sources.telescope").open },
+                i = { ["<C-q>"] = require("trouble.sources.telescope").open }
               }
             }
           })

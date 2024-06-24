@@ -57,8 +57,7 @@ return {
           -- Git
           GitSignsNoChange           = { fg = colors.selection },
 
-          ["@text.tag"] = { fg = colors.green, style = "italic" },
-          ["@text.metadata"] = { fg = colors.blue },
+          ["@text.tag"] = { fg = colors.light_green, style = "italic" },
         },
       })
 

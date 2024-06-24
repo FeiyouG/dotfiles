@@ -42,7 +42,6 @@ return {
 
       -- MARK: Make bash treesitter also work for zsh
       vim.treesitter.language.register("bash", "zsh")
-
       vim.keymap.set("n", "<leader>sts", "<CMD>Telescope treesitter<CR>", { desc = "Show treesitter symbols" })
     end,
   },
@@ -133,16 +132,8 @@ return {
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      opts = function(_, opts)
-        opts.context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        }
-      end,
-    },
     config = function()
+      vim.g.skip_ts_context_commentstring_module = true
       require('ts_context_commentstring').setup {}
     end
   },

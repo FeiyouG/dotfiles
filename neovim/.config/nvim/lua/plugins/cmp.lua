@@ -205,11 +205,6 @@ return {
     config = true,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      opts = function(_, opts)
-        opts.autotag = {
-          enable = true,
-        }
-      end,
     },
   },
 }

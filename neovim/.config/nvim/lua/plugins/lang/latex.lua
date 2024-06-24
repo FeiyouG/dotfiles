@@ -1,15 +1,5 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    ft = { "latex", "tex" },
-    opts = function(_, opts)
-      return vim.list_extend(opts, {
-        require("null-ls").builtins.formatting.latexindent,
-      })
-    end
-
-  },
-  {
     "neovim/nvim-lspconfig",
     ft = { "latex", "tex", "markdown" },
     opts = function(_, opts)

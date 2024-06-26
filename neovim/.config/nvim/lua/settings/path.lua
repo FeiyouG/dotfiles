@@ -48,7 +48,7 @@ M.java = {
 	debug_adapter = vim.fn.glob(
 		M.installer.packages .. "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
 	),
-	test = vim.fn.split(vim.fn.glob(M.installer.packages .. "/java-test/extension/server/*jar"), "\n"),
+	test = vim.fn.split(vim.fn.glob(M.installer.packages .. "/java-test/extension/server/*.jar"), "\n"),
 	lombok = vim.fn.glob(M.installer.packages .. "/jdtls/lombok.jar"),
 	jdtls = vim.fn.glob(M.installer.packages .. "/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
 	jdtls_config = vim.fn.glob(M.installer.packages .. "/jdtls/config_" .. fn.os_name()),

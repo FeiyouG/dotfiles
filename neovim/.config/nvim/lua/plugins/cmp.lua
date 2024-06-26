@@ -87,6 +87,9 @@ return {
             winhighlight = settings.icons.editor.border.winhighlight,
           },
         },
+        performance = {
+          debounce = 450,
+        },
         mapping = mapping,
         sources = cmp.config.sources({
           { name = "nvim_lsp" },

@@ -22,7 +22,6 @@ return {
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
         java.lombok and "-javaagent:" .. java.lombok or "", -- Setup Lombok support; must in front of `-jar`
-        "-Xbootclasspath/a:" .. java.lombok,
         "-jar",
         java.jdtls,
         "-configuration",

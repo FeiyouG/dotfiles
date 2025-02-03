@@ -1,64 +1,106 @@
----Check if current repo is a vue project
----@return boolean
-local function is_inside_vue_repo()
-	-- Check for common Vue project files in the root directory
-	local root_files = {
-		"vite.config.ts",
-		"vue.config.js",
-		".vuerc",
-		"package.json",
-	}
-
-	local root_path = settings.fn.project_root({ "package.json" })
-
-	-- Function to check if a file exists in the root directory of the project
-	local function file_exists_in_root(file_name)
-		local full_path = root_path .. "/" .. file_name
-		return vim.fn.filereadable(full_path) == 1
-	end
-
-	-- Check each root file for indicators of a Vue project
-	for _, file_name in ipairs(root_files) do
-		-- If not in a ts/js repository, return false
-		if not root_path then
-			return false
-		end
-
-		if file_exists_in_root(file_name) then
-			if file_name == "package.json" then
-				-- Read the package.json file and check for Vue dependencies
-				local package_json = vim.fn.json_decode(vim.fn.readfile(root_path .. "/package.json"))
-				if
-					(package_json.dependencies and package_json.dependencies.vue)
-					or (package_json.devDependencies and package_json.devDependencies["@vue/compiler-sfc"])
-				then
-					return true
-				end
-			else
-				-- If it's not the package.json, its mere existence is a strong Vue project indicator
-				return true
-			end
-		end
-	end
-
-	return false
-end
-
+local emmet_ft = {
+	"css",
+	"eruby",
+	"html",
+	"javascript",
+	"javascriptreact",
+	"less",
+	"sass",
+	"scss",
+	"svelte",
+	"pug",
+	"typescriptreact",
+	"vue",
+}
 return {
 	{
 		"neovim/nvim-lspconfig",
 		opts = function(_, opts)
 			opts.ts_ls = {
+				init_options = {
+					plugins = {
+						{ -- Enable support for vue projects
+							name = "@vue/typescript-plugin",
+							location = settings.path.installer.packages
+								.. "/vue-language-server/node_modules/@vue/typescript-plugin",
+							languages = { "vue" },
+						},
+					},
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+				},
+			}
+
+			opts.volar = {
+				init_options = {
+					vue = {
+						hybridMode = true,
+					},
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							enumMemberValues = {
+								enabled = true,
+							},
+							functionLikeReturnTypes = {
+								enabled = true,
+							},
+							propertyDeclarationTypes = {
+								enabled = true,
+							},
+							parameterTypes = {
+								enabled = true,
+								suppressWhenArgumentMatchesName = true,
+							},
+							variableTypes = {
+								enabled = true,
+							},
+						},
+					},
+				},
+			}
+
+
+			opts.emmet_language_server = {
+				filetypes = emmet_ft,
 			}
 			return opts
-			-- opts.tsserver = {
-			-- 	handlers = {
-			-- 		["textDocument/publishDiagnostics"] = is_inside_vue_repo() and function()
-			-- 			vim.notify("tsserver diagnostics has been disabled for this Vue project.")
-			-- 		end or nil,
-			-- 	},
-			-- }
-			-- return opts
 		end,
 	},
+{
+		"olrtg/nvim-emmet",
+		ft = emmet_ft,
+		--   keys = {
+		--     {
+		--       "<localleader>ge",
+		--       function()
+		--         require('nvim-emmet').wrap_with_abbreviation()
+		--       end,
+		--       desc = "Wrap with emmet",
+		--       mode = { "n", "v" }
+		--     }
+		--   },
+		commander = {
+			{
+				desc = "Wrap with emmet",
+				cmd = function()
+					require("nvim-emmet").wrap_with_abbreviation()
+				end,
+				keys = { { "n", "v" }, "<localleader>ge" },
+			},
+		},
+	}
 }

@@ -120,15 +120,10 @@ return {
 	},
 	{
 		"OXY2DEV/markview.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		ft = { "md", "markdown", "rmd", "avante" },
-		opt = {
+		opts = {
 			preview = {
-				icon_provider = "devicons",
-				filetypes = { "md", "markdown", "rmd", "avante" },
+				filetypes = { "md", "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+				max_length = 99999,
 			},
 		},
 	},

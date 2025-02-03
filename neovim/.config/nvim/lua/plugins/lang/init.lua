@@ -12,9 +12,8 @@ return {
   	require("plugins.lang.markdown"),
   	require("plugins.lang.neorg"),
   	require("plugins.lang.graphql"),
-  	require("plugins.lang.vue"),
   	require("plugins.lang.rust"),
-  
+
   	-- Not technically a language, but acts as a lsp
   	require("plugins.lang.zk"),
 }

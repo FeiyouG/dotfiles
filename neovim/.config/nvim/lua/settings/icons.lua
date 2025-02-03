@@ -169,7 +169,7 @@ M.comment = {
 	hack = " ",
 	todo = " ",
 	optimized = " ",
-	bookmark = " ",
+	bookmark = "󰸖 ",
 }
 
 return M

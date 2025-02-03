@@ -62,6 +62,8 @@ export PATH="$XDG_DATA_HOME/go/bin:$PATH"   # Path to go executables
 export OPAMROOT="$XDG_DATA_HOME/opam"       # Conform to XDG Base Directory
 [[ ! -r /Users/feiyouguo/.local/share/opam/opam-init/init.zsh ]] || source /Users/feiyouguo/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
+# libpq
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # MARK: nodejs and npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"         # Conform to XDG Base Directory (configuration file)

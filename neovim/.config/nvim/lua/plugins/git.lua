@@ -43,10 +43,12 @@ return {
 					},
 				},
 			})
-
-			vim.keymap.set({ "n" }, "<leader>gd", "<CMD>DiffviewOpen<CR>", { desc = "Open Diffview" })
-			vim.keymap.set({ "n" }, "<leader>gf", "<CMD>DiffviewFileHistory<CR>", { desc = "Open File History" })
 		end,
+		keys = {
+			{ "<leader>gd", "<CMD>DiffviewOpen<CR>", mode = "n", desc = "Open Diffview" },
+			{ "<leader>gf", "<CMD>DiffviewFileHistory<CR>", mode = "n", desc = "Open File History" },
+			{ "<leader>gf", "<CMD>DiffviewFileHistory %<CR>", mode = "n", desc = "Open File History for curent file" }
+		}
 	},
 	{
 		"TimUntersberger/neogit",

@@ -60,9 +60,6 @@ M.on_attach = function(client, bufnr)
 			vim.cmd("noh")
 		end
 
-		print(vim.inspect(server_with_format))
-		print(#server_with_format)
-
 		-- If no server or 1 server, format with default
 		if #server_with_format <= 1 then
 			vim.lsp.buf.format({ async = true })

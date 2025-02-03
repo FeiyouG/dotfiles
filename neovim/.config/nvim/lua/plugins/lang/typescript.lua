@@ -48,14 +48,17 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		opts = function(_, opts)
-			opts.tsserver = {
-				handlers = {
-					["textDocument/publishDiagnostics"] = is_inside_vue_repo() and function()
-						vim.notify("tsserver diagnostics has been disabled for this Vue project.")
-					end or nil,
-				},
+			opts.ts_ls = {
 			}
 			return opts
+			-- opts.tsserver = {
+			-- 	handlers = {
+			-- 		["textDocument/publishDiagnostics"] = is_inside_vue_repo() and function()
+			-- 			vim.notify("tsserver diagnostics has been disabled for this Vue project.")
+			-- 		end or nil,
+			-- 	},
+			-- }
+			-- return opts
 		end,
 	},
 }

@@ -2,7 +2,6 @@ return {
   {
     -- Automatically set up rust-analyzer, no need for lspconfig
     'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
     ft = { 'rust' },
     config = function()
       vim.g.rustaceanvim = {

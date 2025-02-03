@@ -1,117 +1,148 @@
 return {
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local null_ls = require("null-ls")
-      return vim.list_extend(opts, {
-        null_ls.builtins.diagnostics.markdownlint.with {
-          args = {
-            "--stdin",
-            "--disable", "MD007", -- disable ul-indent - Unordered list indentation
-          }
-        },
-        null_ls.builtins.formatting.markdownlint.with {
-          args = {
-            "--fix", "$FILENAME",
-            "--disable", "MD007", -- disable ul-indent - Unordered list indentation
-            "--disable", "MD053", -- disable Unused link or image reference definition
-          }
-        },
+	{
+		"nvimtools/none-ls.nvim",
+		opts = function(_, opts)
+			local null_ls = require("null-ls")
+			return vim.list_extend(opts, {
+				null_ls.builtins.diagnostics.markdownlint.with({
+					args = {
+						"--stdin",
+						"--disable",
+						"MD007", -- disable ul-indent - Unordered list indentation
+					},
+				}),
+				null_ls.builtins.formatting.markdownlint.with({
+					args = {
+						"--fix",
+						"$FILENAME",
+						"--disable",
+						"MD007", -- disable ul-indent - Unordered list indentation
+						"--disable",
+						"MD053", -- disable Unused link or image reference definition
+					},
+				}),
+			})
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		ft = { "markdown" },
+		cmd = { "MarkdownPreviewToggle" },
+		keys = {
+			{
+				"<localleader>p",
+				"<Plug>MarkdownPreviewToggle",
+				desc = "Toggle markdown preview",
+				remap = true,
+			},
+		},
+		config = function()
+			vim.cmd("let g:mkdp_open_to_the_world = 1")
+			vim.cmd("let g:mkdp_echo_preview_url = 1")
+			vim.cmd("let g:mkdp_page_title = '${name}'")
+			vim.g.mkdp_preview_options = {
+				mkit = {},
+				katex = {},
+				uml = {},
+				maid = {},
+				disable_sync_scroll = 1,
+				sync_scroll_type = "middle",
+				hide_yaml_meta = 0,
+				sequence_diagrams = {},
+				flowchart_diagrams = {},
+				content_editable = false,
+				disable_filename = 0,
+				toc = {},
+			}
+		end,
+	},
+	{
+		"mzlogin/vim-markdown-toc",
 
-      })
-    end
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    build = function() vim.fn["mkdp#util#install"]() end,
-    ft = { "markdown" },
-    cmd = { "MarkdownPreviewToggle" },
-    keys = {
-      {
-        "<localleader>p",
-        "<Plug>MarkdownPreviewToggle",
-        desc = "Toggle markdown preview",
-        remap = true
-      }
-    },
-    config = function()
-      vim.cmd("let g:mkdp_open_to_the_world = 1")
-      vim.cmd("let g:mkdp_echo_preview_url = 1")
-      vim.cmd("let g:mkdp_page_title = '${name}'")
-      vim.g.mkdp_preview_options = {
-          mkit = {},
-          katex = {},
-          uml = {},
-          maid = {},
-          disable_sync_scroll = 1,
-          sync_scroll_type = 'middle',
-          hide_yaml_meta = 0,
-          sequence_diagrams = {},
-          flowchart_diagrams = {},
-          content_editable = false,
-          disable_filename = 0,
-          toc = {}
-}
-    end,
-  },
-  {
-    "mzlogin/vim-markdown-toc",
+		ft = { "markdown" },
 
-    ft = { "markdown" },
+		cmd = { "GenTocGFM", "GenTocRedcarpet", "GenTocGitLab", "GenTocMarked", "RemoveToc" },
 
-    cmd = { "GenTocGFM", "GenTocRedcarpet", "GenTocGitLab", "GenTocMarked", "RemoveToc" },
+		commander = {
+			{
+				cmd = "<CMD>GenTocGFM<CR>",
+				desc = "Generate table of contents (GFM)",
+			},
+		},
 
-    commander = {
-      {
-        cmd = "<CMD>GenTocGFM<CR>",
-        desc = "Generate table of contents (GFM)",
-      }
-    },
+		config = function()
+			vim.cmd("let g:vmt_fence_text='TOC'")
+			vim.cmd("let g:vmt_fence_closing_text='/TOC'")
+			vim.cmd("let g:vmt_list_item_char = '-'")
+			vim.cmd("let g:vmt_include_headings_before = 0")
+		end,
+	},
+	{
+		"dhruvasagar/vim-table-mode",
 
-    config = function()
-      vim.cmd("let g:vmt_fence_text='TOC'")
-      vim.cmd("let g:vmt_fence_closing_text='/TOC'")
-      vim.cmd("let g:vmt_list_item_char = '-'")
-      vim.cmd("let g:vmt_include_headings_before = 0")
-    end,
-  },
-  {
-    "dhruvasagar/vim-table-mode",
+		ft = { "markdown" },
 
-    ft = { "markdown" },
+		keys = { "<Leader>tm" },
 
-    keys = { "<Leader>tm", },
+		cmd = { "TableModeToggle" },
 
-    cmd = { "TableModeToggle" },
+		commander = {
+			{
+				cmd = "<CMD>TableModeToggle<CR>",
+				desc = "Toggle Markdown table mode",
+				keys = { "n", "<leader>tm" },
+				set = false,
+			},
+		},
 
-    commander = {
-      {
-        cmd = "<CMD>TableModeToggle<CR>",
-        desc = "Toggle Markdown table mode",
-        keys = { "n", "<leader>tm" },
-        set = false
-      }
-    },
+		config = function()
+			vim.cmd("let g:table_mode_corner='|'")
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = function(_, opts)
+			-- Enable markdown parser extensions by exporting env vars
+			vim.env.EXTENSION_TAGS = 1
+			vim.env.EXTENSION_WIKI_LINK = 1
 
-    config = function()
-      vim.cmd("let g:table_mode_corner='|'")
-    end,
+			-- Force treesitter-generate to run before compiling
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.markdown.install_info.requires_generate_from_grammar = true
+			parser_config.markdown_inline.install_info.requires_generate_from_grammar = true
 
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      -- Enable markdown parser extensions by exporting env vars
-      vim.env.EXTENSION_TAGS = 1
-      vim.env.EXTENSION_WIKI_LINK = 1
-
-      -- Force treesitter-generate to run before compiling
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.markdown.install_info.requires_generate_from_grammar = true
-      parser_config.markdown_inline.install_info.requires_generate_from_grammar = true
-
-      opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "markdown", "markdown_inline" })
-      return opts
-    end,
-  }
+			opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "markdown", "markdown_inline" })
+			return opts
+		end,
+	},
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		ft = { "md", "markdown", "rmd", "avante" },
+		opt = {
+			preview = {
+				icon_provider = "devicons",
+				filetypes = { "md", "markdown", "rmd", "avante" },
+			},
+		},
+	},
+	-- {
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	opts = {
+	-- 		filetypes = {
+	-- 			"markdown",
+	-- 			"avante",
+	-- 		},
+	-- 	},
+	-- },
 }

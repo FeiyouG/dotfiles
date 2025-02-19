@@ -14,17 +14,7 @@ return {
 			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
 			"nvim-tree/nvim-web-devicons",
-			-- "OXY2DEV/markview.nvim",
-
-			{
-				"OXY2DEV/markview.nvim",
-				opts = {
-					preview = {
-						filetypes = { "md", "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
-						max_length = 99999,
-					},
-				},
-			},
+			"MeanderingProgrammer/render-markdown.nvim",
 			{
 				-- support for image pasting
 				"HakonHarnes/img-clip.nvim",

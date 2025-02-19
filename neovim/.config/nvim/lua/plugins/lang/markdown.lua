@@ -120,24 +120,37 @@ return {
 	},
 	{
 		"OXY2DEV/markview.nvim",
-		opts = {
-			preview = {
-				filetypes = { "md", "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
-				max_length = 99999,
-			},
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
 		},
+		config = function()
+			local mkv = require("markview")
+			local presets = require("markview.presets")
+
+			mkv.setup({
+				preview = {
+					icon_provider = "devicons",
+					filetypes = { "md", "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+					max_length = 99999,
+				},
+				markdown = {
+					headings = presets.headings.marker,
+					tables = presets.tables.rounded,
+					horizontal_rules = presets.horizontal_rules.thick
+				},
+			})
+		end,
+		ft = { "markdown", "Avante" },
 	},
-	-- {
-	-- 	"MeanderingProgrammer/render-markdown.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"nvim-tree/nvim-web-devicons",
-	-- 	},
-	-- 	opts = {
-	-- 		filetypes = {
-	-- 			"markdown",
-	-- 			"avante",
-	-- 		},
-	-- 	},
-	-- },
+	{ -- Only used for Avante, as markview can't be loaded for Avante
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {
+			filetypes = {  "avante" },
+		},
+		ft = { "Avante" },
+	},
 }

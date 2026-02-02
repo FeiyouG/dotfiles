@@ -95,7 +95,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "render-markdown" }, -- For markdown
+					-- { name = "render-markdown" }, -- For markdown
 					{ name = "path" },
 					{ name = "dictionary", max_item_count = 3 },
 				}, {

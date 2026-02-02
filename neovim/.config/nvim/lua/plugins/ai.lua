@@ -14,7 +14,6 @@ return {
 			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
 			"nvim-tree/nvim-web-devicons",
-			"MeanderingProgrammer/render-markdown.nvim",
 			{
 				-- support for image pasting
 				"HakonHarnes/img-clip.nvim",
@@ -41,3 +40,10 @@ return {
 		},
 	},
 }
+
+-- https://github.com/olimorris/codecompanion.nvim
+	-- https://www.reddit.com/r/neovim/comments/1jw7pmm/use_lsp_as_context_provider_in_codecompanion/
+	-- https://www.reddit.com/r/neovim/comments/1jizh1s/contextfilesnvim_add_support_for_cursor_rules/
+-- https://github.com/milanglacier/minuet-ai.nvim
+	-- https://www.reddit.com/r/neovim/comments/1jfci7i/minuetainvim_v04_update_now_with_inprocess_lsp/
+-- https://www.reddit.com/r/neovim/comments/1jevayz/mcphubnvim_v350_custom_instructions_per_server/

@@ -14,7 +14,7 @@ return {
 
   {
     -- So we need to ensure rust-analyzer is installed
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = function(_, opts)
       opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, {
         "rust_analyzer"

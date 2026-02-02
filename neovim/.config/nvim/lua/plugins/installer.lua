@@ -1,6 +1,6 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		-- event = { "VeryLazy" },
 		opts = {
 			ui = {
@@ -10,10 +10,11 @@ return {
 		},
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		-- event = { "VeryLazy" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
+			"neovim/nvim-lspconfig",
 		},
 		opts = {
 			automatic_installation = true,
@@ -23,7 +24,7 @@ return {
 		"jayp0521/mason-null-ls.nvim",
 		-- event = { "VeryLazy" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			"nvimtools/none-ls.nvim",
 		},
 		opts = {
@@ -34,7 +35,7 @@ return {
 		"jayp0521/mason-nvim-dap.nvim",
 		-- event = { "VeryLazy" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 			"mfussenegger/nvim-dap",
 		},
 		opts = {
@@ -45,7 +46,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		-- event = { "VeryLazy" },
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 		},
 		opts = {
 			ensure_installed = {

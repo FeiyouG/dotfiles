@@ -134,23 +134,103 @@ return {
 					max_length = 99999,
 				},
 				markdown = {
-					headings = presets.headings.marker,
-					tables = presets.tables.rounded,
-					horizontal_rules = presets.horizontal_rules.thick
+					headings = presets.glow,
+					tables = presets.rounded,
+					horizontal_rules = presets.thick,
+					list_items = {
+						marker_dot = {
+							text = "•",
+						},
+						marker_minus = {
+							text = "•",
+						},
+						marker_star = {
+							text = "•",
+						},
+					}
 				},
+				yaml = {
+					enable = nil,
+					properties = {
+						data_types = {
+							["text"] = {
+								text = " ", hl = "MarkviewIcon4"
+							},
+							["list"] = {
+								text = "󰝖 ", hl = "MarkviewIcon5"
+							},
+							["number"] = {
+								text = " ", hl = "MarkviewIcon6"
+							},
+							["checkbox"] = {
+								---@diagnostic disable
+								text = function (_, item)
+									return item.value == "true" and "⤬ " or "⤬ "
+								end,
+								---@diagnostic enable
+								hl = "MarkviewIcon6"
+							},
+							["date"] = {
+								text = "󰃭 ", hl = "MarkviewIcon2"
+							},
+							["date_&_time"] = {
+								text = "󰥔 ", hl = "MarkviewIcon3"
+							}
+						},
+
+						default = {
+							use_types = true,
+
+							border_top = nil,
+							border_middle = nil,
+							border_bottom = nil,
+
+							border_hl = nil,
+						},
+
+						["^description$"] = {
+							match_string = "^description$",
+							use_types = false,
+
+							text = "󰦨 ",
+							hl = "MarkviewIcon0"
+						},
+						["^tools$"] = {
+							match_string = "^tools$",
+							use_types = false,
+
+							text = " ",
+							hl = "MarkviewIcon0"
+						},
+						["^model"] = {
+							match_string = "^tools$",
+							use_types = false,
+
+							text = "󰚩 ",
+							hl = "MarkviewIcon3"
+						}
+					},
+					}
+
 			})
 		end,
+    commander = {
+      {
+        cmd = "<CMD>Markview<CR>",
+        desc = "Toggles `markview` previews globally.",
+      },
+    },
 		ft = { "markdown", "Avante" },
 	},
-	{ -- Only used for Avante, as markview can't be loaded for Avante
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {
-			filetypes = {  "avante" },
-		},
-		ft = { "Avante" },
-	},
+	-- { -- Only used for Avante, as markview can't be loaded for Avante
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	opts = {
+	-- 		filetypes = {  "avante" },
+	-- 	},
+	-- 	ft = { "Avante" },
+	-- },
 }

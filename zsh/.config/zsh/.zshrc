@@ -60,3 +60,11 @@ fi
 
 bindkey -e                     # Resotre default keybidning
 # zprof
+
+# pnpm
+export PNPM_HOME="/Users/feiyouguo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

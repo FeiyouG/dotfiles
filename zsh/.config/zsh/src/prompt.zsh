@@ -11,8 +11,9 @@ SPACESHIP_PROMPT_ORDER=(
 
   package
   venv          # virtualenv section
-  java          # Java section
   python        # Python section
+  uv
+  java          # Java section
   node
   golang        # Go section
   rust          # Rust section
@@ -100,6 +101,14 @@ SPACESHIP_PYTHON_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
 SPACESHIP_PYTHON_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
 SPACESHIP_PYTHON_SYMBOL=" "
 SPACESHIP_PYTHON_COLOR="yellow"
+
+SPACESHIP_UV_SHOW=true
+SPACESHIP_UV_SYNC=true
+SPACESHIP_UV_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+SPACESHIP_UV_SUFFIX=$SPACESHIP_PROMPT_DEFAULT_SUFFIX
+SPACESHIP_UV_SYMBOL=" (uv)"
+SPACESHIP_UV_COLOR="yellow"
+
 
 # MARK: node.js
 SPACESHIP_NODE_SHOW=true

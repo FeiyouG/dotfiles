@@ -32,39 +32,39 @@ return {
 			})
 		end,
 	},
-	{
-		"hrsh7th/nvim-cmp",
-		depedencies = {
-			"PaterJason/cmp-conjure",
-		},
-		opts = function(_, opts)
-      -- settings.fn.safe_access(opts, "setup", "filetype")
-			opts.setup = opts.setup or {}
-      opts.setup.filetype = opts.setup.filetype or {}
-			for _, ft in ipairs({ "racket", "scheme", "fennel" }) do
-				opts.setup[ft] = opts.setup[ft] or {}
-				opts.setup[ft][1] = vim.list_extend(opts.setup[ft][1] or {}, {
-					"conjure",
-				})
-			end
-			return opts
-
-			-- local cmp = require("cmp")
-			-- cmp.setup.filetype({ "racket", "scheme", "fennel" }, {
-			-- 	sources = cmp.config.sources({
-			-- 		{ name = "nvim_lsp" },
-			-- 		{ name = "conjure" },
-			-- 		{ name = "luasnip" },
-			-- 		{ name = "path" },
-			-- 		{ name = "calc" },
-			-- 		{ name = "nerdfont" },
-			-- 		{ name = "dictionary", max_item_count = 3 },
-			-- 	}, {
-			-- 		{ name = "buffer" },
-			-- 		{ name = "tmux" },
-			-- 		{ name = "nvim_lsp_signature_help" },
-			-- 	}),
-			-- })
-		end,
-	},
+	-- {
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	depedencies = {
+	-- 		"PaterJason/cmp-conjure",
+	-- 	},
+	-- 	opts = function(_, opts)
+ --      -- settings.fn.safe_access(opts, "setup", "filetype")
+	-- 		opts.setup = opts.setup or {}
+ --      opts.setup.filetype = opts.setup.filetype or {}
+	-- 		for _, ft in ipairs({ "racket", "scheme", "fennel" }) do
+	-- 			opts.setup[ft] = opts.setup[ft] or {}
+	-- 			opts.setup[ft][1] = vim.list_extend(opts.setup[ft][1] or {}, {
+	-- 				"conjure",
+	-- 			})
+	-- 		end
+	-- 		return opts
+	--
+	-- 		-- local cmp = require("cmp")
+	-- 		-- cmp.setup.filetype({ "racket", "scheme", "fennel" }, {
+	-- 		-- 	sources = cmp.config.sources({
+	-- 		-- 		{ name = "nvim_lsp" },
+	-- 		-- 		{ name = "conjure" },
+	-- 		-- 		{ name = "luasnip" },
+	-- 		-- 		{ name = "path" },
+	-- 		-- 		{ name = "calc" },
+	-- 		-- 		{ name = "nerdfont" },
+	-- 		-- 		{ name = "dictionary", max_item_count = 3 },
+	-- 		-- 	}, {
+	-- 		-- 		{ name = "buffer" },
+	-- 		-- 		{ name = "tmux" },
+	-- 		-- 		{ name = "nvim_lsp_signature_help" },
+	-- 		-- 	}),
+	-- 		-- })
+	-- 	end,
+	-- },
 }

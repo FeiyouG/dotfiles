@@ -156,26 +156,14 @@ return {
 							["text"] = {
 								text = " ", hl = "MarkviewIcon4"
 							},
-							["list"] = {
-								text = "󰝖 ", hl = "MarkviewIcon5"
-							},
-							["number"] = {
-								text = " ", hl = "MarkviewIcon6"
-							},
 							["checkbox"] = {
 								---@diagnostic disable
 								text = function (_, item)
-									return item.value == "true" and "⤬ " or "⤬ "
+									return item.value == "true" and "⊙ " or "⤬ "
 								end,
 								---@diagnostic enable
 								hl = "MarkviewIcon6"
 							},
-							["date"] = {
-								text = "󰃭 ", hl = "MarkviewIcon2"
-							},
-							["date_&_time"] = {
-								text = "󰥔 ", hl = "MarkviewIcon3"
-							}
 						},
 
 						default = {
@@ -201,6 +189,13 @@ return {
 
 							text = " ",
 							hl = "MarkviewIcon0"
+						},
+						["^prompt"] = {
+							match_string = "^prompt$",
+							use_types = false,
+
+							text = "󰍩 ",
+							hl = "MarkviewIcon3"
 						},
 						["^model"] = {
 							match_string = "^tools$",

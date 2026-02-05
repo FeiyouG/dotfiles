@@ -17,8 +17,13 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = function(_, opts)
 			opts.ts_ls = {
-				root_dir = require("lspconfig").util.root_pattern("tsconfig.json", "jsconfig.json", "package.json"),
-				single_file_support = false,
+				vim.lsp.config('lua_ls', {
+					root_marks = {
+						"tsconfig.json", "jsconfig.json", "package.json"
+					},
+				}),
+
+				single_file_support = true,
 				init_options = {
 					plugins = {
 						{ -- Enable support for vue projects
@@ -75,9 +80,7 @@ return {
 				},
 			}
 
-			opts.denols = {
-				root_dir = require("lspconfig").util.root_pattern("deno.json", "deno.jsonc"),
-			}
+			opts.denols = { }
 
 			opts.emmet_language_server = {
 				filetypes = emmet_ft,

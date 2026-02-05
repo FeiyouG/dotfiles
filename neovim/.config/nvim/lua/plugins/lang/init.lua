@@ -10,7 +10,6 @@ return {
   	require("plugins.lang.json"),
   	require("plugins.lang.c"),
   	require("plugins.lang.markdown"),
-  	require("plugins.lang.neorg"),
   	require("plugins.lang.graphql"),
   	require("plugins.lang.rust"),
 

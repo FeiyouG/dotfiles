@@ -43,6 +43,10 @@ M.on_attach = function(client, bufnr)
 		end
 	end
 
+	if client:supports_method("textDocument/inlayHints") then
+		vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+	end
+
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show documentations (hover)" })
 	vim.keymap.set("n", "E", vim.diagnostic.open_float, { desc = "Show errors of the current line (floating window)" })
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to the next diagnostic item" })
@@ -70,12 +74,12 @@ M.on_attach = function(client, bufnr)
 		vim.ui.select(server_with_format, {
 			prompt = "Select a server to format with",
 		}, function(choice)
-			print(choice)
-			vim.lsp.buf.format({
-				async = true,
-				name = choice,
-			})
-		end)
+				print(choice)
+				vim.lsp.buf.format({
+					async = true,
+					name = choice,
+				})
+			end)
 
 		-- if client.server_capabilities.documentFormattingProvider then
 		-- 	vim.lsp.buf.format({ async = true })

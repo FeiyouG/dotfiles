@@ -9,17 +9,18 @@ return {
 			install_root_dir = settings.path.installer.home,
 		},
 	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		-- event = { "VeryLazy" },
-		dependencies = {
-			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		opts = {
-			automatic_installation = true,
-		},
-	},
+	-- {
+	-- 	"mason-org/mason-lspconfig.nvim",
+	-- 	-- event = { "VeryLazy" },
+	-- 	dependencies = {
+	-- 		"mason-org/mason.nvim",
+	-- 		"neovim/nvim-lspconfig",
+	-- 	},
+	-- 	opts = {
+	-- 		automatic_enable = true,
+	-- 		automatic_installation = true,
+	-- 	},
+	-- },
 	{
 		"jayp0521/mason-null-ls.nvim",
 		-- event = { "VeryLazy" },

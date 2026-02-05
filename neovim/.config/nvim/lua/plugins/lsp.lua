@@ -10,7 +10,7 @@ return {
 			local null_ls = require("null-ls")
 			null_ls.setup({
 				sources = sources,
-				on_attach = settings.fn.lsp.on_attach
+				on_attach = settings.fn.lsp.on_attach,
 			})
 		end,
 	},
@@ -21,6 +21,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		config = function(_, opts)
+			vim.lsp.set_log_level("debug")
 			-- Config `lspInfo` floating window
 			local windows = require("lspconfig.ui.windows")
 			windows.default_options.border = settings.icons.editor.border.rounded_with_hl
@@ -46,10 +47,19 @@ return {
 				end
 
 				-- setup
-				-- lspconfig[server].setup(server_config)
-				vim.lsp.enable(server)
 				vim.lsp.config(server, server_config)
+				vim.lsp.enable(server)
 			end
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					local buf = args.buf
+					if client then
+						settings.fn.lsp.on_attach(client, buf)
+					end
+				end,
+			})
 		end,
 	},
 }

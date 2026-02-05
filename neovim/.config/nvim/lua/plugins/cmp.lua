@@ -99,11 +99,11 @@ return {
 					{ name = "path" },
 					{ name = "dictionary", max_item_count = 3 },
 				}, {
-					{ name = "buffer" },
-					{ name = "tmux" },
-					{ name = "calc" },
-					{ name = "nerdfont" },
-				}),
+						{ name = "buffer" },
+						{ name = "tmux" },
+						{ name = "calc" },
+						{ name = "nerdfont" },
+					}),
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
@@ -162,8 +162,8 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp_document_symbol" }, -- trigger by "/@"
 				}, {
-					{ name = "buffer" },
-				}),
+						{ name = "buffer" },
+					}),
 			})
 
 			cmp.setup.cmdline(":", {
@@ -171,8 +171,8 @@ return {
 				sources = cmp.config.sources({
 					{ name = "path" },
 				}, {
-					{ name = "cmdline" },
-				}),
+						{ name = "cmdline" },
+					}),
 			})
 
 			cmp.setup.filetype("gitcommit", {
@@ -180,22 +180,21 @@ return {
 					{ name = "git" },
 					{ name = "conventionalcommits" },
 				}, {
-					{ name = "buffer" },
-					{ name = "path" },
-				}),
+						{ name = "buffer" },
+						{ name = "path" },
+					}),
 			})
 
 			cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
 				sources = cmp.config.sources({
 					{ name = "dap" },
 				}, {
-					{ name = "buffer" },
-					{ name = "path" },
-				}),
+						{ name = "buffer" },
+						{ name = "path" },
+					}),
 			})
 		end,
 	},
-
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",

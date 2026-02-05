@@ -19,6 +19,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd("syntax enable") --  Enable syntax (default)
 
 -- SECTION: Style and View
+vim.o.winborder="rounded"
+
 vim.opt.laststatus = 3        --  use global status line
 vim.opt.showtabline = 0       --  hide tabline
 

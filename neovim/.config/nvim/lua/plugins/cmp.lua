@@ -28,6 +28,9 @@ return {
 			-- Git
 			{ "petertriho/cmp-git", config = true },
 			"davidsierradz/cmp-conventionalcommits",
+
+			-- LLMs
+			'milanglacier/minuet-ai.nvim'
 		},
 		config = function(_, opts)
 			local luasnip = require("luasnip")
@@ -88,10 +91,15 @@ return {
 					},
 				},
 				performance = {
-					debounce = 450,
+					-- It is recommended to increase the timeout duration due to
+					-- the typically slower response speed of LLMs compared to
+					-- other completion sources. This is not needed when you only
+					-- need manual completion.
+					fetching_timeout = 2000,
 				},
 				mapping = mapping,
 				sources = cmp.config.sources({
+					{ name = "minuet" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },
@@ -121,6 +129,7 @@ return {
 							dap = "Dap",
 							treesitter = "Treesitter",
 							dictionary = "Word",
+							minuet = "LLM"
 						})[entry.source.name] or vim_item.kind
 						local icon = settings.icons.cmp[kind] or settings.icons.lsp[kind]
 
@@ -132,6 +141,7 @@ return {
 							buffer = "[BUFFER]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[API]",
+							minuet = "[LLM]",
 							path = "[PATH]",
 							luasnip = "[SNIPPET]",
 							nvim_lsp_document_symbol = "[SYMBOL]",

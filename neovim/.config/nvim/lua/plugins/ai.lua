@@ -1,44 +1,4 @@
 return {
-  -- {
-  -- 	"yetone/avante.nvim",
-  -- 	-- event = "VeryLazy",
-  -- 	lazy = false,
-  -- 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  -- 	build = "make",
-  -- 	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-  -- 	dependencies = {
-  -- 		"stevearc/dressing.nvim",
-  -- 		"nvim-lua/plenary.nvim",
-  -- 		"MunifTanjim/nui.nvim",
-  -- 		--- The below dependencies are optional,
-  -- 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-  -- 		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-  -- 		"nvim-tree/nvim-web-devicons",
-  -- 		{
-  -- 			-- support for image pasting
-  -- 			"HakonHarnes/img-clip.nvim",
-  -- 			event = "VeryLazy",
-  -- 			opts = {
-  -- 				-- recommended settings
-  -- 				default = {
-  -- 					embed_image_as_base64 = false,
-  -- 					prompt_for_file_name = false,
-  -- 					drag_and_drop = {
-  -- 						insert_mode = true,
-  -- 					},
-  -- 					-- required for Windows users
-  -- 					use_absolute_path = true,
-  -- 				},
-  -- 			},
-  -- 		},
-  -- 	},
-  -- 	opts = {
-  -- 		file_selector = {
-  -- 			provider = "telescope",
-  -- 		},
-  -- 		-- add any opts here
-  -- 	},
-  -- },
   {
     "NickvanDyke/opencode.nvim",
     dependencies = {
@@ -92,24 +52,79 @@ return {
       vim.o.autoread = true
 
       -- Handle `opencode` events
-      -- vim.api.nvim_create_autocmd("User", {
-      --   pattern = "OpencodeEvent:*", -- Optionally filter event types
-      --   callback = function(args)
-      --     ---@type opencode.cli.client.Event
-      --     local event = args.data.event
-      --     ---@type number
-      --     local port = args.data.port
-      --
-      --     -- See the available event types and their properties
-      --     vim.notify(vim.inspect(event))
-      --     -- Do something useful
-      --     if event.type == "session.idle" then
-      --       vim.notify("`opencode` finished responding")
-      --     end
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "OpencodeEvent:*", -- Optionally filter event types
+        callback = function(args)
+          ---@type opencode.cli.client.Event
+          local event = args.data.event
+          ---@type number
+          local port = args.datport
+
+          local notification_opts = {
+            title = "Opencode",
+            render = "compact"
+          }
+
+          -- See the available event types and their properties
+          -- vim.notify(vim.inspect(event))
+          -- Do something useful
+          if event.type == "session.idle" then
+            vim.notify("Finshed responding", "info", notification_opts)
+          end
+
+          if event.type == "server.connected" then
+            vim.notify( "Server connected", "info", notification_opts)
+          end
+        end,
+      })
     end,
-  }
+  },
+  {
+    'milanglacier/minuet-ai.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('minuet').setup {
+        provider = 'openai_compatible',
+        request_timeout = 2.5,
+        throttle = 1500, -- Increase to reduce costs and avoid rate limits
+        debounce = 600, -- Increase to reduce costs and avoid rate limits
+        provider_options = {
+          openai_compatible = {
+            api_key = "OPENROUTER_API_KEY",
+            end_point = 'https://openrouter.ai/api/v1/chat/completions',
+            model = 'moonshotai/kimi-k2',
+            name = 'Openrouter',
+            optional = {
+              max_tokens = 56,
+              top_p = 0.9,
+              provider = {
+                -- Prioritize throughput for faster completion
+                sort = 'throughput',
+              },
+            },
+          },
+        },
+        -- virtualtext = {
+        --   keymap = {
+        --     -- accept whole completion
+        --     accept = '<A-A>',
+        --     -- accept one line
+        --     accept_line = '<A-a>',
+        --     -- accept n lines (prompts for number)
+        --     -- e.g. "A-z 2 CR" will accept 2 lines
+        --     accept_n_lines = '<A-z>',
+        --     -- Cycle to prev completion item, or manually invoke completion
+        --     prev = '<A-[>',
+        --     -- Cycle to next completion item, or manually invoke completion
+        --     next = '<A-]>',
+        --     dismiss = '<A-e>',
+        --   },
+        -- },
+      }
+    end,
+  },
 }
 
 -- https://github.com/olimorris/codecompanion.nvim

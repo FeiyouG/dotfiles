@@ -123,6 +123,8 @@ M.cmp = {
 	Treesitter = " ",
 	Result = " ",
 	Word = " ",
+  LLM = "󰚩 ",
+  Snippet = " ",
 }
 
 -- MARK: Language Server Protocol

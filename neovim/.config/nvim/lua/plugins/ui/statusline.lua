@@ -281,6 +281,15 @@ return {
 			},
 		}
 
+		-- local tabpages = {
+		-- 	{
+		-- 		provider = provider.tabnr(),
+		-- 		hl = function(self)
+		-- 			return hl.get_attributes(heirline.tab_type(self, "tab"), true)
+		-- 		end,
+		-- 	}
+		-- }
+
 		opts.statusline = {
 			mode,
 			filetype,

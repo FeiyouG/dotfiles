@@ -111,6 +111,18 @@ return {
 			},
 		},
 		config = function()
+			vim.notify = require("notify").setup({
+				render = "default",
+				stages = "slide",
+				icons = {
+					DEBUG = settings.icons.debug.debug,
+					ERROR = settings.icons.diagnostic.error,
+					INFO = settings.icons.diagnostic.info,
+					TRACE =settings.icons.diagnostic.diagnostics,
+					WARN = settings.icons.diagnostic.warning,
+				},
+			})
+
 			vim.notify = require("notify")
 		end,
 	},

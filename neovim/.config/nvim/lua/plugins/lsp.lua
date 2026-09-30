@@ -50,6 +50,7 @@ return {
 				vim.lsp.config(server, server_config)
 				vim.lsp.enable(server)
 			end
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
 				callback = function(args)

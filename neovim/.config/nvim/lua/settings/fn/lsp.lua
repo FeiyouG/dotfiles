@@ -16,7 +16,7 @@ M.get_capabilities = function()
 
 	if plugin.is_installed("cmp_nvim_lsp") then
 		capabilities.textDocument.completion =
-			plugin.load("cmp_nvim_lsp").default_capabilities().textDocument.completion
+				plugin.load("cmp_nvim_lsp").default_capabilities().textDocument.completion
 	end
 
 	if plugin.is_installed("luasnip") then
@@ -74,12 +74,12 @@ M.on_attach = function(client, bufnr)
 		vim.ui.select(server_with_format, {
 			prompt = "Select a server to format with",
 		}, function(choice)
-				print(choice)
-				vim.lsp.buf.format({
-					async = true,
-					name = choice,
-				})
-			end)
+			print(choice)
+			vim.lsp.buf.format({
+				async = true,
+				name = choice,
+			})
+		end)
 
 		-- if client.server_capabilities.documentFormattingProvider then
 		-- 	vim.lsp.buf.format({ async = true })
@@ -89,7 +89,11 @@ M.on_attach = function(client, bufnr)
 	if plugin.is_installed("telescope") then
 		plugin.load("telescope")
 
-		vim.keymap.set("n", "<leader>sd", "<CMD>Telescope lsp_definitions<CR>", { desc = "Go to definitions" })
+		vim.keymap.set("n",
+			"<leader>sd",
+			"<CMD>Telescope lsp_definitions<CR>",
+			{ desc = "Go to definitions" }
+		)
 		vim.keymap.set(
 			"n",
 			"<leader>st",

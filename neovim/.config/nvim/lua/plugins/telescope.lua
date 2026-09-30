@@ -24,6 +24,17 @@ return {
 			{ "<leader>fb", "<CMD>Telescope buffers<CR>", mode = "n", desc = "Find buffers" },
 			{ "<leader>fg", "<CMD>Telescope live_grep<CR>", mode = "n", desc = "Find string in workspace" },
 			{
+				"<leader>fF",
+				function()
+					require("telescope.builtin").find_files({
+						hidden = true,
+						no_ignore = true,
+					})
+				end,
+				mode = "n",
+				desc = "Find files in workspace, including hidden files",
+			},
+			{
 				"<leader>fG",
 				function()
 					require("telescope.builtin").live_grep({

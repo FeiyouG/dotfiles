@@ -37,6 +37,7 @@ return {
 			local cmp = require("cmp")
 
 			local mapping = {
+				 ["<A-y>"] = require('minuet').make_cmp_map(),
 				["<C-n>"] = cmp.mapping(function(fallback)
 					if luasnip.choice_active() then
 						require("luasnip.extras.select_choice")()
@@ -95,11 +96,11 @@ return {
 					-- the typically slower response speed of LLMs compared to
 					-- other completion sources. This is not needed when you only
 					-- need manual completion.
-					fetching_timeout = 2000,
+					fetching_timeout = 5000,
 				},
 				mapping = mapping,
 				sources = cmp.config.sources({
-					{ name = "minuet" },
+					{ name = 'minuet',  priority = 100 },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "nvim_lsp_signature_help" },

@@ -12,3 +12,6 @@ neovim/.config/nvim/plugin/
 **/.DS_Store
 **.log
 .luarc.json
+
+# third-party binaries (not part of dotfiles)
+bin/.local/share/bin/plannotator

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "investor-sourcing": {
+      "source": "monid-ai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/investor-sourcing/SKILL.md",
+      "computedHash": "9bd7e841561338b282e67da3806ca33414d7f55eff7f7505e91f9183d0680b13"
+    }
+  }
+}

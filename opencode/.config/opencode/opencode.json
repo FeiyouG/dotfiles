@@ -1,0 +1,89 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "model": "anthropic/claude-opus-5",
+  "plugin": [
+    "@plannotator/opencode@0.27.17",
+    "/Users/feiyouguo/.local/share/npm/lib/node_modules/@rynfar/meridian/plugin/meridian.ts",
+    "@ex-machina/opencode-anthropic-auth@1.8.5"
+  ],
+  "mcp": {
+    "grafana": {
+      "type": "remote",
+      "url": "https://mcp.grafana.com/mcp",
+      "headers": {
+        "X-Grafana-URL": "https://sunnypigeon3181.grafana.net"
+      },
+      "enabled": true
+    },
+    "n8n": {
+      "type": "remote",
+      "url": "https://monid.app.n8n.cloud/mcp-server/http",
+      "enabled": false
+    }, 
+    "posthog": {
+      "type": "remote",
+      "url": "https://mcp.posthog.com/mcp",
+      "enabled": true
+    },
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true
+    },
+    "stripe": {
+      "type": "remote",
+      "url": "https://mcp.stripe.com",
+      "enabled": true
+    },
+    "gitlab": {
+      "type": "remote",
+      "url": "https://gitlab.com/api/v4/mcp",
+      "enabled": true
+    },
+    "clerk": {
+      "type": "remote",
+      "url": "https://mcp.clerk.com/mcp",
+      "enabled": true
+    },
+    "atlassian": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "enabled": true
+    },
+    "productlane": {
+      "type": "remote",
+      "url": "https://productlane.com/api/mcp",
+      "enabled": true
+    },
+    "linear": {
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "enabled": true
+    },
+    "featurebase": {
+      "type": "remote",
+      "url": "https://mcp.featurebase.app",
+      "enabled": true
+    },
+    "clickhouse": {
+      "type": "remote",
+      "url": "https://mcp.clickhouse.cloud/mcp",
+      "enabled": true
+    },
+    "monid-dev": {
+      "type": "remote",
+      "url": "https://mcp.dev.monid.ai/v1",
+      "enabled": true
+    },
+    "treg": {
+      "type": "remote",
+      "url": "https://treg.to/mcp/",
+      "headers": {
+        "Authorization": "Bearer {file:~/.config/opencode/secrets/treg-token}"
+      },
+      "enabled": true
+    }
+  }
+
+}

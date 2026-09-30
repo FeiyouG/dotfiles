@@ -31,6 +31,11 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
     ```shell
     stow wezterm nvim tmux ...
     ```
+1. (opencode) Provide secrets referenced by `opencode.json`, which are not tracked:
+    ```shell
+    mkdir -p ~/.config/opencode/secrets
+    printf '%s' '<treg token>' > ~/.config/opencode/secrets/treg-token
+    ```
 1. Restart zsh,
     zinit and zsh pluins will be installed automatically.
 1. Start nvim, 

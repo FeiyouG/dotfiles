@@ -13,5 +13,11 @@ neovim/.config/nvim/plugin/
 **.log
 .luarc.json
 
+# opencode: secrets and generated plugin deps must never be committed
+opencode/.config/opencode/secrets/
+opencode/.config/opencode/node_modules/
+opencode/.config/opencode/package*.json
+opencode/.config/opencode/bun.lock
+
 # third-party binaries (not part of dotfiles)
 bin/.local/share/bin/plannotator

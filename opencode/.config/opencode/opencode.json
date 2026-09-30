@@ -75,14 +75,6 @@
       "type": "remote",
       "url": "https://mcp.dev.monid.ai/v1",
       "enabled": true
-    },
-    "treg": {
-      "type": "remote",
-      "url": "https://treg.to/mcp/",
-      "headers": {
-        "Authorization": "Bearer {file:~/.config/opencode/secrets/treg-token}"
-      },
-      "enabled": true
     }
   }
 

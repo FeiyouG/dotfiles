@@ -25,12 +25,12 @@ M.editor = {
 		winblend = 0,
 		winhighlight = "FloatBorder:FloatBorder,CursorLine:TelescopeSelection,Search:None",
 	},
-  select = "祈"
+  select = "󰕏"
 }
 
 -- MARK: Filesystem
 M.fs = {
-	symbolic_arrow = " 壟 ",
+	symbolic_arrow = " 󰑃 ",
 	file = {
 		default = " ",
 		symlink = " ",
@@ -41,7 +41,7 @@ M.fs = {
 		},
 	},
 	folder = {
-		folders = " ",
+		folders = "󰉓 ",
 		open = " ",
 		closed = " ",
 		empty_open = " ",
@@ -78,15 +78,15 @@ M.vc = {
 -- MARK: Diagnostics
 M.diagnostic = {
 	diagnostics = " ",
-	error = " ",
+	error = "󰅚 ",
 	warning = " ",
-	hint = " ",
+	hint = "󰌶 ",
 	info = " ",
-	other = "﫠",
+	other = "󰗡",
 	error_filled = " ",
 	warning_filled = " ",
 	info_filled = " ",
-	hint_filled = " ",
+	hint_filled = "󰌵 ",
 	other_filled = " ",
 }
 
@@ -94,16 +94,16 @@ M.diagnostic = {
 M.debug = {
 	debug = " ",
 	bug = " ",
-	breakpoint = " ",
-	breakpoint_conditional = "ﯷ ",
-	breakpoint_rejected = " ",
+	breakpoint = "󰏃 ",
+	breakpoint_conditional = "󰛹 ",
+	breakpoint_rejected = "󰅜 ",
 	logpoint = " ",
 	stopped = " ",
 	pause = "",
 	play = "",
-	step_into = " ",
-	step_over = " ",
-	step_out = " ",
+	step_into = "󰆹 ",
+	step_over = "󰆷 ",
+	step_out = "󰆸 ",
 	step_back = " ",
 	run_last = "↻ ",
 	terminate = " ",
@@ -116,12 +116,12 @@ M.test = {
 
 -- MARK: Completion source
 M.cmp = {
-	Icon = " ",
+	Icon = "󰱫 ",
 	Tmux = " ",
 	Git = M.vc.git,
 	Dap = M.debug.debug,
 	Treesitter = " ",
-	Result = " ",
+	Result = "󰃬 ",
 	Word = " ",
   LLM = "󰚩 ",
   Snippet = " ",
@@ -129,48 +129,48 @@ M.cmp = {
 
 -- MARK: Language Server Protocol
 M.lsp = {
-	Text = " ",
-	Method = " ",
-	Function = " ",
+	Text = "󰊄 ",
+	Method = "󰊕 ",
+	Function = "󰊕 ",
 	Constructor = " ",
 	Field = " ",
 	Variable = " ",
-	Class = " ",
+	Class = "󰌗 ",
 	Interface = " ",
 	Module = " ",
 	Property = " ",
-	Unit = "塞",
-	Value = " ",
-	Enum = " ",
-	Keyword = " ",
+	Unit = "󰑭",
+	Value = "󰎠 ",
+	Enum = "󰉹 ",
+	Keyword = "󰌋 ",
 	Snippet = " ",
 	Color = " ",
 	File = M.fs.file.default,
-	Reference = " ",
+	Reference = "󰈇 ",
 	Folder = M.fs.folder.closed,
 	EnumMember = " ",
-	Constant = " ",
+	Constant = "󰏿 ",
 	Struct = " ",
 	Event = " ",
 	Operator = " ",
 	TypeParameter = " ",
-	Namespace = " ",
+	Namespace = "󰌗 ",
 	Package = " ",
 	String = " ",
-	Number = " ",
+	Number = "󰎠 ",
 	Boolean = " ",
-	Array = " ",
-	Object = " ",
-	Key = " ",
+	Array = "󰅪 ",
+	Object = "󰅩 ",
+	Key = "󰌋 ",
 	Null = " ",
 }
 
 -- MARK: TODO Comment
 M.comment = {
-	note = " ",
+	note = "󰍨 ",
 	hack = " ",
 	todo = " ",
-	optimized = " ",
+	optimized = "󰅒 ",
 	bookmark = "󰸖 ",
 }
 

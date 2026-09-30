@@ -2,7 +2,8 @@ local wezterm = require("wezterm")
 
 -- A helper function for my fallback fonts
 local function font_with_fallback(name, params)
-	local names = { name, "Noto Color Emoji", "JetBrains Mono" }
+	-- "Symbols Nerd Font Mono" (brew cask font-symbols-only-nerd-font) supplies Nerd Fonts v3 icons
+	local names = { name, "Symbols Nerd Font Mono", "Noto Color Emoji", "JetBrains Mono" }
 	return wezterm.font_with_fallback(names, params)
 end
 

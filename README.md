@@ -27,6 +27,10 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
     ```shell
     brew bundle
     ```
+    This also installs the fonts: Victor Mono and the Nerd Fonts v3
+    `Symbols Nerd Font` (icons for nvim/tmux via terminal font fallback).
+    Restart the terminal afterwards. Keep icon glyphs on Nerd Fonts v3 codepoints
+    (`brew install nerdfix && nerdfix check -r <path>` finds obsolete ones).
 1. Stow needed config
     ```shell
     stow wezterm nvim tmux ...

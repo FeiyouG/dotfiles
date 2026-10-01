@@ -1,3 +1,6 @@
+# Docker CLI completions (Docker Desktop); loaded by zicompinit below
+[[ -d $HOME/.docker/completions ]] && fpath=($HOME/.docker/completions $fpath)
+
 zinit light-mode wait lucid for \
     blockf \
     atload"export ZSH_AUTOSUGGEST_MANUAL_REBIND=''" \

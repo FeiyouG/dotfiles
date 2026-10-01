@@ -26,9 +26,9 @@ return {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
+		-- Download the prebuilt server binary synchronously (the default
+		-- mkdp#util#install runs async in a terminal and can be cut off)
+		build = "cd app && ./install.sh",
 		ft = { "markdown" },
 		cmd = { "MarkdownPreviewToggle" },
 		keys = {

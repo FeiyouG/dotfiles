@@ -21,7 +21,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 		config = function(_, opts)
-			vim.lsp.set_log_level("debug")
+			vim.lsp.log.set_level("debug")
 			-- Config `lspInfo` floating window
 			local windows = require("lspconfig.ui.windows")
 			windows.default_options.border = settings.icons.editor.border.rounded_with_hl

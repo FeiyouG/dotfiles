@@ -195,6 +195,9 @@ return {
 		config = function()
 			require("project_nvim").setup({
 				silent_chdir = true,
+				-- "lsp" detection uses the deprecated vim.lsp.buf_get_clients()
+				-- (plugin is archived), so detect roots by markers like .git only
+				detection_methods = { "pattern" },
 			})
 			require("telescope").load_extension("projects")
 		end,

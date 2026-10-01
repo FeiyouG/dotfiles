@@ -55,10 +55,7 @@ return {
       -- You need to extend the `bundles` with paths to jar files
       -- if you want to use additional eclipse.jdt.ls plugins.
       init_options = {
-        bundles = vim.tbl_flatten({
-          java.debug_adapter,
-          java.test,
-        }),
+        bundles = vim.list_extend({ java.debug_adapter }, java.test),
       },
       on_attach = function(client, bufnr)
         require("jdtls").setup_dap({

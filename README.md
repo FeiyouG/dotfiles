@@ -35,11 +35,21 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
     ```shell
     stow wezterm nvim tmux ...
     ```
-1. (opencode) Provide secrets referenced by `opencode.json`, which are not tracked:
+1. (opencode) Install agent skills listed in `opencode/.config/opencode/skills-lock.json`
+    (private sources like `monid-ai/skills` need GitHub SSH access):
     ```shell
-    mkdir -p ~/.config/opencode/secrets
-    printf '%s' '<treg token>' > ~/.config/opencode/secrets/treg-token
+    ~/.config/opencode/scripts/sync-skills.sh
     ```
+    Skills are installed to `~/.agents/skills/`, which OpenCode loads globally.
+
+    To add a skill, record it in the lock, then sync:
+    ```shell
+    cd ~/.config/opencode
+    npx skills add <owner/repo> --skill <name> -a opencode -y   # updates skills-lock.json
+    ./scripts/sync-skills.sh
+    ```
+    To remove one, delete its entry from `skills-lock.json` and
+    `rm -rf ~/.agents/skills/<name>`.
 1. Restart zsh,
     zinit and zsh pluins will be installed automatically.
 1. Start nvim, 

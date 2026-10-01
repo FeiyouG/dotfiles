@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/.local/share/bin
+export PATH=$PATH:$HOME/.local/share/bin:$HOME/.local/bin # ~/.local/bin: plannotator
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" #.zshrc is sourced for every interactive zsh shell
 # All env vars that subshell and external commands don't need go here
 

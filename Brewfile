@@ -7,6 +7,7 @@ brew "jq"
 brew "node"
 brew "tree-sitter-cli"
 brew "opencode"
+brew "openspec" # spec-driven workflow; skills installed by opencode scripts/sync-skills.sh
 brew "python" # mason needs python >= 3.10 (black, isort, debugpy)
 
 # CLI tools used by zsh, nvim and tmux (zinit only manages zsh plugins)

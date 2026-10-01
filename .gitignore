@@ -21,6 +21,7 @@ opencode/.config/opencode/bun.lock
 # opencode: installed skills are synced from skills-lock.json (scripts/sync-skills.sh)
 opencode/.config/opencode/skills/
 opencode/.config/opencode/.agents/
+opencode/.config/opencode/commands/
 
 # third-party binaries (not part of dotfiles)
 bin/.local/share/bin/plannotator

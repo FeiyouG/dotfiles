@@ -35,12 +35,19 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
     ```shell
     stow wezterm nvim tmux ...
     ```
-1. (opencode) Install agent skills listed in `opencode/.config/opencode/skills-lock.json`
-    (private sources like `monid-ai/skills` need GitHub SSH access):
+1. (opencode) Install agent skills & tools:
     ```shell
     ~/.config/opencode/scripts/sync-skills.sh
     ```
-    Skills are installed to `~/.agents/skills/`, which OpenCode loads globally.
+    This installs (all globally, nothing written into the repo):
+    - skills listed in `opencode/.config/opencode/skills-lock.json` → `~/.agents/skills/`
+      (private sources need GitHub SSH access)
+    - [OpenSpec](https://github.com/Fission-AI/OpenSpec) skills and `/opsx:*` commands
+      → `~/.config/opencode/{skills,commands}/` (git-ignored).
+      Re-run the script after `brew upgrade openspec`.
+      In a new project, run `openspec init --tools none` once to create `openspec/`.
+    - [Plannotator](https://github.com/backnotprop/plannotator) binary and `/plannotator-*`
+      commands (the plan-review plugin itself is set in `opencode.json`)
 
     To add a skill, record it in the lock, then sync:
     ```shell

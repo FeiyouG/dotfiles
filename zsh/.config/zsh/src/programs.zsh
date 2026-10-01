@@ -11,6 +11,9 @@ export FZF_DEFAULT_COMMAND="fd -t f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d"
 
+# fzf-tab ignores FZF_DEFAULT_OPTS (and its nord colors) unless told otherwise
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
 # Load fzf keybindings before fzf-tab so fzf-tab owns <Tab>
 zinit light-mode wait lucid for \
     atinit'

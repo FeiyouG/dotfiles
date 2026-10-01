@@ -14,6 +14,7 @@ brew "ripgrep"
 brew "fd"
 brew "fzf"
 brew "bat"
+brew "coreutils" # gdircolors for nord LS_COLORS
 
 # Fonts: Victor Mono for text, Nerd Fonts v3 symbols as terminal fallback
 cask "font-victor-mono"

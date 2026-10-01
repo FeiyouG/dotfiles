@@ -109,10 +109,19 @@ return {
 			vim.env.EXTENSION_TAGS = 1
 			vim.env.EXTENSION_WIKI_LINK = 1
 
-			-- Force treesitter-generate to run before compiling
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			parser_config.markdown.install_info.requires_generate_from_grammar = true
-			parser_config.markdown_inline.install_info.requires_generate_from_grammar = true
+			-- Force `tree-sitter generate` to run before compiling so the
+			-- extensions above are included (needed for `(tag)` in after/queries)
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					local parsers = require("nvim-treesitter.parsers")
+					for _, lang in ipairs({ "markdown", "markdown_inline" }) do
+						parsers[lang].install_info.generate = true
+						-- grammar.json ignores the EXTENSION_* env vars, so use grammar.js
+						parsers[lang].install_info.generate_from_json = false
+					end
+				end,
+			})
 
 			opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "markdown", "markdown_inline" })
 			return opts

@@ -12,6 +12,12 @@ return {
         "vim",
         "vimdoc",
         "query", -- For :InspectTree / :EditQuery
+        -- Languages with LSPs: preinstalled so code blocks in LSP hover
+        -- popups (markdown floats) are highlighted before a file of that
+        -- filetype has ever been opened
+        "bash", "c", "cpp", "css", "dockerfile", "go", "graphql", "html",
+        "java", "javascript", "jsdoc", "json", "latex", "python", "rust",
+        "tsx", "typescript", "vue", "xml", "yaml",
       })
       return opts
     end,

@@ -58,11 +58,11 @@ and [Abdullah Khabir](https://abdullah.today/encrypted-dotfiles/).
     To remove one, delete its entry from `skills-lock.json` and
     `rm -rf ~/.agents/skills/<name>`.
 1. Restart zsh,
-    zinit and zsh pluins will be installed automatically.
+    zinit and zsh plugins will be installed automatically.
 1. Start nvim, 
-    plugins, lsps, and treesitters will be isntalled automatically .
+    plugins, lsps, and treesitters will be installed automatically.
 1. Start tmux,
-    tpm and plugins will be installed automatially.
+    tpm and plugins will be installed automatically.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT).

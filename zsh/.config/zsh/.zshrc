@@ -69,3 +69,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/feiyouguo/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions

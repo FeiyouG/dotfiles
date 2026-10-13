@@ -29,21 +29,23 @@ return {
 		-- Download the prebuilt server binary synchronously (the default
 		-- mkdp#util#install runs async in a terminal and can be cut off)
 		build = "cd app && ./install.sh",
-		ft = { "markdown" },
-		cmd = { "MarkdownPreviewToggle" },
-		keys = {
+		-- Not lazy: mkdp defines its commands buffer-locally from a
+		-- BufEnter/FileType autocmd, so buffers entered before the plugin
+		-- loads never get :MarkdownPreviewToggle. The plugin script is a tiny
+		-- shim (heavy parts are autoloaded), so eager loading is cheap.
+		-- <localleader>p is mapped in ftplugin/markdown.lua.
+		lazy = false,
+		commander = {
 			{
-				"<localleader>p",
-				"<Plug>MarkdownPreviewToggle",
-				ft = "markdown",
+				cmd = "<CMD>MarkdownPreviewToggle<CR>",
 				desc = "Toggle markdown preview",
-				remap = true,
 			},
 		},
-		config = function()
-			vim.cmd("let g:mkdp_open_to_the_world = 1")
-			vim.cmd("let g:mkdp_echo_preview_url = 1")
-			vim.cmd("let g:mkdp_page_title = '${name}'")
+		init = function()
+			-- mkdp reads these when its plugin script loads, so set them first
+			vim.g.mkdp_open_to_the_world = 1
+			vim.g.mkdp_echo_preview_url = 1
+			vim.g.mkdp_page_title = "${name}"
 			vim.g.mkdp_preview_options = {
 				mkit = {},
 				katex = {},

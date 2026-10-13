@@ -141,11 +141,10 @@ return {
   {
     "lervag/vimtex",
     ft = { "tex", "plaintex" },
-    keys = {
+    -- <localleader>p is mapped in ftplugin/tex.lua
+    commander = {
       {
-        "<localleader>p",
-        "<CMD>VimtexCompile<CR>",
-        ft = { "tex", "plaintex" },
+        cmd = "<CMD>VimtexCompile<CR>",
         desc = "Compile and repreview latex doc",
       },
     },

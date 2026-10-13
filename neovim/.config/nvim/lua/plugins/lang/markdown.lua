@@ -35,6 +35,7 @@ return {
 			{
 				"<localleader>p",
 				"<Plug>MarkdownPreviewToggle",
+				ft = "markdown",
 				desc = "Toggle markdown preview",
 				remap = true,
 			},

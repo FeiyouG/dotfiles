@@ -140,13 +140,14 @@ return {
   },
   {
     "lervag/vimtex",
-    ft = { "latex", "tex" },
-    commander = {
+    ft = { "tex", "plaintex" },
+    keys = {
       {
+        "<localleader>p",
+        "<CMD>VimtexCompile<CR>",
+        ft = { "tex", "plaintex" },
         desc = "Compile and repreview latex doc",
-        keys = { "n", "<localleader>p" },
-        cmd = " <CMD>VimtexCompile<CR>",
-      }
+      },
     },
     config = function()
       vim.g.vimtex_compiler_latexmk = {
